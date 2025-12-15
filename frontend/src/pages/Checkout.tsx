@@ -103,7 +103,34 @@ const CheckoutForm = () => {
             } else {
                 if (paymentResult.paymentIntent.status === 'succeeded') {
                     // Payment Success!
+                    // Payment Success!
                     const orderId = `PURE-${paymentResult.paymentIntent.id.slice(-8).toUpperCase()}`;
+
+                    // Create and Save Order to Mock DB (localStorage)
+                    const newOrder = {
+                        id: orderId,
+                        date: new Date().toISOString(),
+                        email: formData.email,
+                        status: 'Processing', // Default status
+                        items: items,
+                        total: total,
+                        shipping: {
+                            name: `${formData.firstName} ${formData.lastName}`,
+                            address: formData.address,
+                            city: formData.city,
+                            state: formData.state,
+                            zip: formData.zip
+                        },
+                        timeline: [
+                            { status: 'Order Processed', date: new Date().toISOString(), description: 'Your order has been confirmed and is being packed.', completed: true },
+                            { status: 'Shipped', date: null, description: 'Pending carrier pickup.', completed: false },
+                            { status: 'Delivered', date: null, description: 'Package delivered.', completed: false }
+                        ]
+                    };
+
+                    const existingOrders = JSON.parse(localStorage.getItem('pure_orders') || '[]');
+                    localStorage.setItem('pure_orders', JSON.stringify([...existingOrders, newOrder]));
+
                     clearCart();
                     setLoading(false);
                     navigate('/order-confirmation', { state: { orderId } });

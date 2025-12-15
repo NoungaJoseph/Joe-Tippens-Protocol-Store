@@ -13,8 +13,11 @@ interface CartContextType {
 
 const CartContext = createContext<CartContextType | undefined>(undefined);
 
+import Toast from '../components/Toast';
+
 export const CartProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   const [items, setItems] = useState<CartItem[]>([]);
+  const [notification, setNotification] = useState<{ message: string; isVisible: boolean }>({ message: '', isVisible: false });
 
   // Load cart from local storage on mount
   useEffect(() => {
@@ -45,6 +48,9 @@ export const CartProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
       }
       return [...prev, { ...product, quantity }];
     });
+
+    // Show notification
+    setNotification({ message: `Added ${quantity} x ${product.name} to cart`, isVisible: true });
   };
 
   const removeFromCart = (productId: string) => {
@@ -80,6 +86,11 @@ export const CartProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
       }}
     >
       {children}
+      <Toast
+        message={notification.message}
+        isVisible={notification.isVisible}
+        onClose={() => setNotification(prev => ({ ...prev, isVisible: false }))}
+      />
     </CartContext.Provider>
   );
 };
