@@ -9,12 +9,22 @@ const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 const app = express();
 
 // Middleware
-const corsOptions = {
-  origin: process.env.CORS_ORIGIN || "http://localhost:5173",
-  optionsSuccessStatus: 200
-};
+const allowedOrigins = [
+  "http://localhost:3000",
+  "http://localhost:5173",
+  "https://joe-tippens-protocol-store-5jfm-5d2cq3xxu.vercel.app/"
+];
+
 app.use(helmet()); // Basic security headers
-app.use(cors(corsOptions));
+app.use(cors({
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error("CORS not allowed"));
+    }
+  }
+}));
 app.use(express.json());
 
 // Rate limiting to prevent brute-force attacks
