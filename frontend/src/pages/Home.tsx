@@ -13,15 +13,15 @@ const Home: React.FC = () => {
 
     // Filter products
     const mostLoved = MOCK_PRODUCTS.filter(p =>
-        ['usa-trio', 'safeguard-paste', 'iverheal-6', 'fenben-powder'].includes(p.id)
+        ['usa-trio', 'safeguard-paste', 'iverheal', 'fenben-powder'].includes(p.id)
     );
 
     const featured = MOCK_PRODUCTS.filter(p =>
-        ['fenben-tabs', 'ivermectin-12', 'cbd-oil', 'vit-b17'].includes(p.id)
+        ['fenben-tabs', 'ivermectin-tabs', 'cbd-oil-kids', 'vit-b17-cup'].includes(p.id)
     );
 
     const newArrivals = MOCK_PRODUCTS.filter(p =>
-        ['semaglutide', 'cialis', 'cbd-oil'].includes(p.id)
+        ['ozempic-025', 'rybelsus-14', 'cbd-oil-kids'].includes(p.id)
     );
 
     // Initialize Splide Carousel

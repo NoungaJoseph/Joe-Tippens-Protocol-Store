@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Button from '../components/Button';
+import contactBg from '../assets/images/contact-bg.jpg';
 
 const Contact: React.FC = () => {
   const [submitted, setSubmitted] = useState(false);
@@ -27,9 +28,9 @@ const Contact: React.FC = () => {
       {/* Hero Section */}
       <section className="relative h-64 flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 bg-gray-900/60 z-10"></div>
-        <img 
-          src="https://images.unsplash.com/photo-1534536281715-e28d76689b4d?auto=format&fit=crop&q=80&w=2000" 
-          alt="Contact Support" 
+        <img
+          src={contactBg}
+          alt="Contact Support"
           className="absolute inset-0 w-full h-full object-cover"
         />
         <div className="relative z-20 text-center text-white px-4">
@@ -54,7 +55,7 @@ const Contact: React.FC = () => {
               placeholder="John Doe"
             />
           </div>
-          
+
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-1">Email Address</label>
             <input
@@ -85,8 +86,8 @@ const Contact: React.FC = () => {
             ></textarea>
           </div>
 
-          <button 
-            type="submit" 
+          <button
+            type="submit"
             className="w-full bg-emerald-600 text-white px-6 py-3 rounded-md font-semibold transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-emerald-500 hover:bg-emerald-700"
           >
             Send Message
