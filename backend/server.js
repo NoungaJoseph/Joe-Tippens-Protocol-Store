@@ -12,19 +12,32 @@ const app = express();
 const allowedOrigins = [
   "http://localhost:3000",
   "http://localhost:5173",
-  "https://joe-tippens-protocol-store-5jfm-5d2cq3xxu.vercel.app/"
 ];
 
 app.use(helmet()); // Basic security headers
+
 app.use(cors({
   origin: function (origin, callback) {
-    if (!origin || allowedOrigins.includes(origin)) {
-      callback(null, true);
-    } else {
-      callback(new Error("CORS not allowed"));
+    // Allow server-to-server requests (Stripe webhooks, curl, etc.)
+    if (!origin) return callback(null, true);
+
+    // Allow all Vercel deployments
+    if (
+      origin.endsWith(".vercel.app") ||
+      allowedOrigins.includes(origin)
+    ) {
+      return callback(null, true);
     }
-  }
+
+    return callback(new Error(`CORS blocked: ${origin}`));
+  },
+  methods: ["GET", "POST", "OPTIONS"],
+  allowedHeaders: ["Content-Type", "Authorization"],
 }));
+
+// Explicitly handle preflight requests
+app.options("*", cors());
+
 app.use(express.json());
 
 // Rate limiting to prevent brute-force attacks
