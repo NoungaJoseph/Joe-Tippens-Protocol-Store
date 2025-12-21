@@ -13,7 +13,7 @@ const Home: React.FC = () => {
 
     // Filter products
     const mostLoved = MOCK_PRODUCTS.filter(p =>
-        ['usa-trio', 'safeguard-paste', 'iverheal', 'fenben-powder'].includes(p.id)
+        ['120-day-protocol', 'usa-trio', 'safeguard-paste', 'iverheal', 'fenben-powder'].includes(p.id)
     );
 
     const featured = MOCK_PRODUCTS.filter(p =>
