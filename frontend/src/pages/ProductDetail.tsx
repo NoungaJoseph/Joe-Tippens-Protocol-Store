@@ -228,7 +228,7 @@ const ProductDetail: React.FC = () => {
                                 )}
                             </div>
 
-                            <div className="prose prose-gray mb-8 text-gray-600 leading-relaxed">
+                            <div className="prose prose-gray mb-8 text-gray-600 leading-relaxed whitespace-pre-wrap">
                                 <p>{product.description}</p>
                             </div>
 
@@ -353,7 +353,7 @@ const ProductDetail: React.FC = () => {
                     {/* Tab Content */}
                     <div className="p-8 lg:p-12">
                         {activeTab === 'description' && (
-                            <div className="prose prose-gray max-w-none text-gray-600">
+                            <div className="prose prose-gray max-w-none text-gray-600 whitespace-pre-wrap">
                                 <h3 className="text-xl font-bold text-gray-900 mb-4">Product Description</h3>
                                 <p>{product.description}</p>
                             </div>

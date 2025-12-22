@@ -132,12 +132,12 @@ const Home: React.FC = () => {
 
                                         {/* Slide 1: Ivermectin */}
                                         <li className="splide__slide w-full h-full relative">
-                                            <img src="https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?auto=format&fit=crop&q=80&w=1200" alt="Ivermectin" className="absolute inset-0 w-full h-full object-cover hero-image" />
+                                            <img src="https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?auto=format&fit=crop&q=80&w=1200" alt="Premium Ivermectin Tablets for Joe Tippens Protocol" className="absolute inset-0 w-full h-full object-cover hero-image" />
                                             <div className="absolute inset-0 bg-gradient-to-r from-black/80 to-transparent"></div>
                                             <div className="absolute inset-0 flex flex-col justify-center items-start p-8 md:p-16 text-white hero-content opacity-0">
                                                 <span className="text-cyan-400 font-bold tracking-widest uppercase mb-4 text-sm md:text-base">Buy From Us</span>
-                                                <h2 className="text-4xl md:text-6xl font-bold mb-2 font-serif leading-tight">Buy Ivermectin <br /> <span className="text-cyan-200">Tablets</span></h2>
-                                                <p className="text-lg md:text-xl mb-8 text-gray-200 max-w-lg">Premium quality anti-parasitic medication available now with express shipping.</p>
+                                                <h1 className="text-4xl md:text-6xl font-bold mb-2 font-serif leading-tight">Buy Ivermectin <br /> <span className="text-cyan-200">Tablets Online</span></h1>
+                                                <p className="text-lg md:text-xl mb-8 text-gray-200 max-w-lg">Premium quality anti-parasitic medication available now with express shipping for the Joe Tippens Protocol.</p>
                                                 <Link to="/all-pills?category=Ivermectin" className="bg-cyan-600 text-white px-8 py-3 rounded-full font-bold text-sm md:text-base hover:bg-cyan-700 transition-all shadow-lg hover:shadow-cyan-500/50 flex items-center gap-2">
                                                     Shop Now <ArrowRight size={18} />
                                                 </Link>
@@ -146,7 +146,7 @@ const Home: React.FC = () => {
 
                                         {/* Slide 2: Fenbendazole */}
                                         <li className="splide__slide w-full h-full relative">
-                                            <img src="https://images.unsplash.com/photo-1585435557343-3b092031a831?auto=format&fit=crop&q=80&w=1200" alt="Fenbendazole" className="absolute inset-0 w-full h-full object-cover hero-image" />
+                                            <img src="https://images.unsplash.com/photo-1585435557343-3b092031a831?auto=format&fit=crop&q=80&w=1200" alt="High-quality Fenbendazole for Wellness Protocol" className="absolute inset-0 w-full h-full object-cover hero-image" />
                                             <div className="absolute inset-0 bg-gradient-to-r from-black/70 to-transparent"></div>
                                             <div className="absolute inset-0 flex flex-col justify-center items-start p-8 md:p-16 text-white hero-content opacity-0">
                                                 <span className="text-yellow-400 font-bold tracking-widest uppercase mb-4 text-sm md:text-base">Hot Discounts</span>
@@ -160,7 +160,7 @@ const Home: React.FC = () => {
 
                                         {/* Slide 3: Anti-Parasites */}
                                         <li className="splide__slide w-full h-full relative">
-                                            <img src="https://images.unsplash.com/photo-1624454002302-36b824d7bd0a?auto=format&fit=crop&q=80&w=1200" alt="Anti-Parasites" className="absolute inset-0 w-full h-full object-cover hero-image" />
+                                            <img src="https://images.unsplash.com/photo-1624454002302-36b824d7bd0a?auto=format&fit=crop&q=80&w=1200" alt="Broad-spectrum Anti-Parasite Supplements" className="absolute inset-0 w-full h-full object-cover hero-image" />
                                             <div className="absolute inset-0 bg-blue-900/70"></div>
                                             <div className="absolute inset-0 flex flex-col justify-center items-start p-8 md:p-16 text-white hero-content opacity-0">
                                                 <span className="bg-red-600 text-white text-xs font-bold px-3 py-1 rounded mb-6 uppercase tracking-wider">Big Discount</span>

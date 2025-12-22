@@ -4,9 +4,30 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Joe Tippens Protocol | Professional Solutions</title>
+  <title>Joe Tippens Protocol Store | Official Supplement Source</title>
   <meta name="description"
-    content="Official store for Joe Tippens Protocol supplements. Professional pharmaceutical solutions.">
+    content="The official destination for Joe Tippens Protocol supplements. Find high-quality Fenbendazole, Ivermectin, and more for your health journey. Professional support and fast shipping.">
+  <meta name="keywords"
+    content="Joe Tippens Protocol, Fenbendazole, Ivermectin, Cancer Support Protocol, Supplements, Wellness Store">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://joe-tippens-protocol-store.vercel.app/">
+  <meta property="og:title" content="Joe Tippens Protocol Store | Official Supplement Source">
+  <meta property="og:description"
+    content="Official store for Joe Tippens Protocol supplements. Professional pharmaceutical solutions for your wellness journey.">
+  <meta property="og:image" content="https://joe-tippens-protocol-store.vercel.app/og-image.jpg">
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://joe-tippens-protocol-store.vercel.app/">
+  <meta property="twitter:title" content="Joe Tippens Protocol Store | Official Supplement Source">
+  <meta property="twitter:description"
+    content="Official store for Joe Tippens Protocol supplements. Professional pharmaceutical solutions for your wellness journey.">
+  <meta property="twitter:image" content="https://joe-tippens-protocol-store.vercel.app/og-image.jpg">
+
+  <!-- Canonical Link -->
+  <link rel="canonical" href="https://joe-tippens-protocol-store.vercel.app/">
 
   <!-- External Libraries -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -19,7 +40,7 @@
     href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;600;700;900&family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&display=swap"
     rel="stylesheet">
 
-  <!-- React Dependencies & Stripe -->
+  <!-- React Dependencies -->
   <script type="importmap">
     {
       "imports": {
@@ -27,9 +48,7 @@
         "react": "https://esm.sh/react@^19.2.3",
         "react-router-dom": "https://esm.sh/react-router-dom@^7.10.1",
         "lucide-react": "https://esm.sh/lucide-react@^0.561.0",
-        "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
-        "@stripe/stripe-js": "https://esm.sh/@stripe/stripe-js@2.1.0",
-        "@stripe/react-stripe-js": "https://esm.sh/@stripe/react-stripe-js@2.3.1"
+        "react-dom/": "https://esm.sh/react-dom@^19.2.3/"
       }
     }
     </script>
@@ -87,6 +106,7 @@
     .text-gradient {
       background: linear-gradient(135deg, #1e3a8a, #0891b2);
       -webkit-background-clip: text;
+      background-clip: text;
       -webkit-text-fill-color: transparent;
     }
 
@@ -278,7 +298,7 @@
     .StripeElement--focus {
       box-shadow: 0 1px 3px 0 #cfd7df;
       border-color: #0891b2;
-      ring: 2px solid #0891b2;
+      outline: 2px solid #0891b2;
     }
 
     .StripeElement--invalid {

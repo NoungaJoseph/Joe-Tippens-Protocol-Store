@@ -13,7 +13,18 @@ const allowedOrigins = [
   "http://localhost:5173",
 ];
 
-app.use(helmet());
+app.use(helmet({
+  contentSecurityPolicy: {
+    directives: {
+      defaultSrc: ["'self'"],
+      scriptSrc: ["'self'", "'unsafe-inline'", "https://cdn.tailwindcss.com", "https://cdnjs.cloudflare.com", "https://cdn.jsdelivr.net", "https://www.googletagmanager.com"],
+      styleSrc: ["'self'", "'unsafe-inline'", "https://fonts.googleapis.com", "https://cdn.jsdelivr.net"],
+      imgSrc: ["'self'", "data:", "https://images.unsplash.com", "https://fastpharm.store", "https://*.vercel.app"],
+      fontSrc: ["'self'", "https://fonts.gstatic.com"],
+      connectSrc: ["'self'", "https://*.vercel.app"],
+    },
+  },
+}));
 
 app.use(cors({
   origin: function (origin, callback) {
@@ -35,8 +46,10 @@ app.use(express.json());
 
 const limiter = rateLimit({
   windowMs: 15 * 60 * 1000,
-  max: 100,
-  message: "Too many requests from this IP, please try again after 15 minutes"
+  max: 50, // Reduced max requests for better security
+  message: "Too many requests from this IP, please try again after 15 minutes",
+  standardHeaders: true,
+  legacyHeaders: false,
 });
 
 // Configure Nodemailer
