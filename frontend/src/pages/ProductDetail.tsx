@@ -31,6 +31,9 @@ const ProductDetail: React.FC = () => {
     const [showQuestionModal, setShowQuestionModal] = useState(false);
     const [questionSubmitted, setQuestionSubmitted] = useState(false);
 
+    // Fullscreen Gallery
+    const [isGalleryOpen, setIsGalleryOpen] = useState(false);
+
     // Viewers simulation
     const [viewers] = useState(Math.floor(Math.random() * 40) + 45);
 
@@ -161,10 +164,15 @@ const ProductDetail: React.FC = () => {
                                 <img
                                     src={selectedImage || product.image}
                                     alt={product.name}
-                                    className="w-full h-full object-contain transition-transform duration-200 ease-out will-change-transform"
+                                    className="w-full h-full object-contain transition-transform duration-200 ease-out will-change-transform cursor-zoom-in"
+                                    onClick={() => setIsGalleryOpen(true)}
                                 />
                                 {/* Reflection Overlay */}
                                 <div className="absolute inset-0 bg-gradient-to-tr from-white/0 via-white/10 to-white/0 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none"></div>
+                                {/* Zoom Hint */}
+                                <div className="absolute bottom-4 right-4 bg-black/50 backdrop-blur-md text-white p-2 rounded-full opacity-0 group-hover:opacity-100 transition-all transform translate-y-2 group-hover:translate-y-0 pointer-events-none">
+                                    <Eye size={16} />
+                                </div>
                             </div>
 
                             {/* Gallery Thumbs */}
@@ -566,6 +574,44 @@ const ProductDetail: React.FC = () => {
                                 </form>
                             )}
                         </div>
+                    </div>
+                </div>
+            )}
+            {/* Fullscreen Gallery Modal */}
+            {isGalleryOpen && (
+                <div
+                    className="fixed inset-0 z-[100] bg-black/95 backdrop-blur-xl flex items-center justify-center p-4 sm:p-8 animate-fade-in"
+                    onClick={() => setIsGalleryOpen(false)}
+                >
+                    <button
+                        className="absolute top-6 right-6 text-white/70 hover:text-white transition-colors bg-white/10 p-3 rounded-full hover:bg-white/20 z-[110]"
+                        onClick={() => setIsGalleryOpen(false)}
+                    >
+                        <X size={32} />
+                    </button>
+
+                    <div
+                        className="relative max-w-5xl w-full h-full flex items-center justify-center"
+                        onClick={(e) => e.stopPropagation()}
+                    >
+                        <img
+                            src={selectedImage || product.image}
+                            alt={product.name}
+                            className="max-w-full max-h-full object-contain shadow-2xl animate-zoom-in"
+                        />
+
+                        {/* Navigation dots if multiple images */}
+                        {allImages.length > 1 && (
+                            <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
+                                {allImages.map((img, idx) => (
+                                    <button
+                                        key={idx}
+                                        onClick={() => setSelectedImage(img)}
+                                        className={`w-3 h-3 rounded-full transition-all ${selectedImage === img ? 'bg-cyan-500 w-8' : 'bg-white/30 hover:bg-white/50'}`}
+                                    />
+                                ))}
+                            </div>
+                        )}
                     </div>
                 </div>
             )}

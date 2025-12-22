@@ -7,12 +7,20 @@ import onco3 from './assets/images/onco-adjunct-pathway-3.webp';
 import onco4 from './assets/images/onco-adjunct-pathway-4.webp';
 import onco5 from './assets/images/onco-adjunct-pathway-5.webp';
 
-import proto1 from './assets/images/protocol-120-days-1.webp';
-import proto2 from './assets/images/protocol-120-days-2.jpeg';
-import proto3 from './assets/images/protocol-120-days-3.avif';
-import proto4 from './assets/images/protocol-120-days-4.jpg';
-import proto5 from './assets/images/protocol-120-days-5.jpeg';
-import proto6 from './assets/images/protocol-120-days-6.jpeg';
+// Protocol Images
+import proto1 from './assets/products/protocol/1.webp';
+import proto2 from './assets/products/protocol/2.jpeg';
+import proto3 from './assets/products/protocol/3.avif';
+import proto4 from './assets/products/protocol/4.jpg';
+import proto5 from './assets/products/protocol/5.jpeg';
+import proto6 from './assets/products/protocol/6.jpeg';
+import proto7 from './assets/products/protocol/7.webp';
+import proto8 from './assets/products/protocol/8.jpeg';
+import proto9 from './assets/products/protocol/9.webp';
+import proto10 from './assets/products/protocol/10.webp';
+import proto11 from './assets/products/protocol/11.webp';
+import proto12 from './assets/products/protocol/12.jpg';
+import proto13 from './assets/products/protocol/13.jpeg';
 
 import vitB50 from './assets/images/vitamin-b50.jpg';
 import vitB17Caps from './assets/images/vitamin-b17-caps.jpg';
@@ -80,21 +88,6 @@ const generateReviews = (productId: string, count: number): Review[] => {
 
 export const MOCK_PRODUCTS: Product[] = [
   {
-    id: "test-stripe-product",
-    name: "Test Stripe Product ($1)",
-    brand: "PureProtocol",
-    price: 1.00,
-    oldPrice: 5.00,
-    prescription: false,
-    image: cbdOil,
-    images: [cbdOil],
-    description: "This is a test product created for Stripe live payment verification. Please use it to confirm the checkout flow.",
-    category: 'Test',
-    rating: 5.0,
-    reviews: 1,
-    reviewsData: generateReviews("test-stripe-product", 1)
-  },
-  {
     id: "onco-adjunct",
     name: "Onco-Adjunct Pathway",
     brand: "Onco-Adjunct",
@@ -115,22 +108,9 @@ export const MOCK_PRODUCTS: Product[] = [
     brand: "In Stock",
     price: 750.00,
     prescription: false,
-    image: "https://fastpharm.store/wp-content/uploads/2025/03/IMG_9479-100x100.jpeg",
-    images: [
-      "https://fastpharm.store/wp-content/uploads/2025/03/IMG_9479-100x100.jpeg",
-      "https://fastpharm.store/wp-content/uploads/2024/12/55ab38214eb5381f1fd49890dd694175-1-100x100.avif",
-      "https://fastpharm.store/wp-content/uploads/2024/12/vitamin-b17-100x100.jpg",
-      "https://fastpharm.store/wp-content/uploads/2025/04/IMG_9550-100x100.jpeg",
-      "https://fastpharm.store/wp-content/uploads/2025/01/IMG_7896.jpeg",
-      "https://fastpharm.store/wp-content/uploads/2024/12/CBD-Oil-500-mg-for-Kids-Teens-30-mL-768x768.jpg-600x600.webp",
-      "https://fastpharm.store/wp-content/uploads/2025/04/IMG_9633-100x100.jpeg",
-      "https://fastpharm.store/wp-content/uploads/2025/01/IMG_7892-1.webp",
-      "https://fastpharm.store/wp-content/uploads/2025/01/IMG_7891-100x100.webp",
-      "https://fastpharm.store/wp-content/uploads/2025/01/IMG_7890-100x100.webp",
-      "https://fastpharm.store/wp-content/uploads/2024/12/safegaurdfenbendazol-Paste-100x100.jpg",
-      "https://fastpharm.store/wp-content/uploads/2025/04/IMG_9497-100x100.jpeg"
-    ],
-    description: "•Here’s a general overview of the updated Joe Tippens Protocol and the typical dosages for each supplement:\n. Fenbendazole\n– Typical dosage: 444mg per day.\n\n. Ivermectin\n– Typical dosage: 12mg to 15mg per day.\n\n. Vitamin B17 (Amygdalin). Typical dosage: 100mg to 500mg per day, taken orally.\n\n. Vitamin E\n– Typical dosage: 400 IU to 800 IU per day.\n\n. Milk Thistle/TUDCA\n– Typical dosage: 150mg to 300mg of Milk Thistle extract per day, and 500mg to 1000mg of TUDCA per day.\n\n. FECO (Full Extract Cannabis Oil)\n– Typical dosage: varies widely depending on the individual and the specific product; start with a low dose (e.g., 1/4 teaspoon) and gradually increase as needed.\n\n. Turkey Tail Mushroom\n– Typical dosage: 500mg to 2000mg per day of the dried mushroom or extract.\n\n. Onco Adjunct Pathways (OAPs)\n\nOnco Adjunct Pathway 1 (OAP1)\n– Typical dosage: 2-3 capsules per day.\n\nOnco Adjunct Pathway 2 (OAP2)\n– Typical dosage: 2-3 capsules per day.\n\nOnco Adjunct Pathway 3 (OAP3)\n– Typical dosage: 2-3 capsules per day.\n\nOnco Adjunct Pathway 4 (OAP4)\n– Typical dosage: 2-3 capsules per day.",
+    image: proto1,
+    images: [proto1, proto2, proto3, proto4, proto5, proto6, proto7, proto8, proto9, proto10, proto11, proto12, proto13],
+    description: "A comprehensive 120-day protocol designed to support recovery, stop cancer cell growth, and prevent reoccurrence through targeted supplementation.",
     category: 'Protocols',
     rating: 5.0,
     reviews: 12,
