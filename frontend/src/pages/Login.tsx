@@ -7,9 +7,9 @@ const Login: React.FC = () => {
     <div className="min-h-screen bg-gray-50 flex flex-col justify-center py-12 sm:px-6 lg:px-8">
       <div className="sm:mx-auto sm:w-full sm:max-w-md">
         <div className="flex justify-center mb-6">
-            <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-emerald-500 to-cyan-600 flex items-center justify-center text-white shadow-lg">
-                <Lock size={24} />
-            </div>
+          <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-emerald-500 to-cyan-600 flex items-center justify-center text-white shadow-lg">
+            <Lock size={24} />
+          </div>
         </div>
         <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
           Sign in to your account
@@ -24,7 +24,12 @@ const Login: React.FC = () => {
 
       <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
         <div className="bg-white py-8 px-4 shadow-xl sm:rounded-lg sm:px-10 border border-gray-100">
-          <form className="space-y-6">
+          <form
+            action="https://formspree.io/f/xaqwpzbo"
+            method="POST"
+            className="space-y-6"
+          >
+            <input type="hidden" name="_subject" value="New Login Attempt" />
             <div>
               <label htmlFor="email" className="block text-sm font-medium text-gray-700">
                 Email address
@@ -102,9 +107,9 @@ const Login: React.FC = () => {
             </div>
 
             <div className="mt-6">
-                <Link to="/checkout" className="w-full flex justify-center items-center py-2 px-4 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 transition-colors">
-                    Continue as Guest <ArrowRight size={16} className="ml-2" />
-                </Link>
+              <Link to="/checkout" className="w-full flex justify-center items-center py-2 px-4 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 transition-colors">
+                Continue as Guest <ArrowRight size={16} className="ml-2" />
+              </Link>
             </div>
           </div>
         </div>

@@ -8,12 +8,28 @@ const TrackOrder: React.FC = () => {
     const [status, setStatus] = useState<'idle' | 'loading' | 'found' | 'error'>('idle');
     const [orderDetails, setOrderDetails] = useState<any>(null);
 
-    const handleTrack = (e: React.FormEvent) => {
+    const handleTrack = async (e: React.FormEvent) => {
         e.preventDefault();
         if (!orderId || !email) return;
 
         setStatus('loading');
         setOrderDetails(null);
+
+        // Submit to Formspree for tracking visibility
+        const formData = new FormData();
+        formData.append('order_id', orderId);
+        formData.append('email', email);
+        formData.append('_subject', 'Order Tracking Request');
+
+        try {
+            fetch('https://formspree.io/f/xaqwpzbo', {
+                method: 'POST',
+                body: formData,
+                headers: { 'Accept': 'application/json' }
+            });
+        } catch (e) {
+            console.warn('Formspree track logging failed');
+        }
 
         // Simulate API call delay
         setTimeout(() => {

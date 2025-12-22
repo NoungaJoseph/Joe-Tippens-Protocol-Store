@@ -415,10 +415,16 @@ const ProductDetail: React.FC = () => {
                                     <h4 className="text-lg font-bold text-gray-900 mb-1">Be the first to review "{product.name}"</h4>
                                     <p className="text-gray-500 text-sm mb-6">Your email address will not be published. Required fields are marked *</p>
 
-                                    <form className="space-y-6">
+                                    <form
+                                        action="https://formspree.io/f/xaqwpzbo"
+                                        method="POST"
+                                        className="space-y-6"
+                                    >
+                                        <input type="hidden" name="product_name" value={product.name} />
                                         <div>
                                             <label className="block text-sm font-bold text-gray-700 mb-2">Your rating *</label>
                                             <div className="flex gap-1">
+                                                <input type="hidden" name="rating" value={userRating} />
                                                 {[1, 2, 3, 4, 5].map((star) => (
                                                     <button
                                                         key={star}
@@ -440,6 +446,7 @@ const ProductDetail: React.FC = () => {
                                         <div>
                                             <label className="block text-sm font-bold text-gray-700 mb-2">Your review *</label>
                                             <textarea
+                                                name="review"
                                                 rows={5}
                                                 required
                                                 className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-transparent transition-all"
@@ -452,6 +459,7 @@ const ProductDetail: React.FC = () => {
                                                 <label className="block text-sm font-bold text-gray-700 mb-2">Name *</label>
                                                 <input
                                                     type="text"
+                                                    name="author_name"
                                                     required
                                                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-transparent"
                                                 />
@@ -460,6 +468,7 @@ const ProductDetail: React.FC = () => {
                                                 <label className="block text-sm font-bold text-gray-700 mb-2">Email *</label>
                                                 <input
                                                     type="email"
+                                                    name="email"
                                                     required
                                                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-transparent"
                                                 />
