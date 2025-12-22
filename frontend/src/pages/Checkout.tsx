@@ -90,11 +90,6 @@ const Checkout: React.FC = () => {
                             <p className="text-emerald-700 text-sm leading-relaxed mb-4">
                                 You have selected <span className="font-bold uppercase">{paymentMethod}</span>. We have received your order details and will send payment instructions to <span className="font-bold">{formData.email}</span> shortly.
                             </p>
-                            <div className="space-y-3 font-mono text-sm bg-white p-4 rounded-xl border border-emerald-200">
-                                <p><span className="text-gray-400">Account:</span> pureprotocol.payment@gmail.com</p>
-                                <p><span className="text-gray-400">Reference:</span> PROTO-{Math.floor(Math.random() * 90000) + 10000}</p>
-                            </div>
-                            <p className="mt-4 text-emerald-600 text-[11px] font-bold uppercase tracking-widest text-center">Email us a screenshot once paid</p>
                         </div>
 
                         <button
