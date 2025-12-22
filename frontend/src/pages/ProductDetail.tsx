@@ -130,24 +130,51 @@ const ProductDetail: React.FC = () => {
                 <div className="bg-white rounded-2xl shadow-xl overflow-hidden mb-8">
                     <div className="grid grid-cols-1 md:grid-cols-2">
                         {/* Image Column */}
-                        <div className="bg-gray-100 p-8 flex flex-col items-center justify-center relative">
-                            {/* Main Image */}
-                            <div className="w-full max-w-md aspect-square mb-4 bg-white rounded-xl shadow-sm flex items-center justify-center overflow-hidden">
+                        <div className="bg-gray-100 p-8 flex flex-col items-center justify-center relative overflow-hidden">
+                            {/* Main Image with Hover Zoom and 3D Rotation */}
+                            <div
+                                className="w-full max-w-md aspect-square mb-8 bg-white rounded-3xl shadow-2xl flex items-center justify-center overflow-hidden group perspective-1000"
+                                onMouseMove={(e) => {
+                                    const rect = e.currentTarget.getBoundingClientRect();
+                                    const x = e.clientX - rect.left;
+                                    const y = e.clientY - rect.top;
+
+                                    const centerX = rect.width / 2;
+                                    const centerY = rect.height / 2;
+
+                                    const rotateX = ((y - centerY) / centerY) * -15; // Max 15 degree tilt
+                                    const rotateY = ((x - centerX) / centerX) * 15;
+
+                                    const img = e.currentTarget.querySelector('img');
+                                    if (img) {
+                                        img.style.transform = `scale(1.15) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+                                    }
+                                }}
+                                onMouseLeave={(e) => {
+                                    const img = e.currentTarget.querySelector('img');
+                                    if (img) {
+                                        img.style.transform = `scale(1) rotateX(0deg) rotateY(0deg)`;
+                                    }
+                                }}
+                                style={{ transformStyle: 'preserve-3d' }}
+                            >
                                 <img
                                     src={selectedImage || product.image}
                                     alt={product.name}
-                                    className="w-full h-full object-contain"
+                                    className="w-full h-full object-contain transition-transform duration-200 ease-out will-change-transform"
                                 />
+                                {/* Reflection Overlay */}
+                                <div className="absolute inset-0 bg-gradient-to-tr from-white/0 via-white/10 to-white/0 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none"></div>
                             </div>
 
                             {/* Gallery Thumbs */}
                             {allImages.length > 1 && (
-                                <div className="flex gap-2 overflow-x-auto w-full max-w-md pb-2">
+                                <div className="flex gap-3 overflow-x-auto w-full max-w-md pb-4 pt-2 no-scrollbar">
                                     {allImages.map((img, idx) => (
                                         <button
                                             key={idx}
                                             onClick={() => setSelectedImage(img)}
-                                            className={`w-20 h-20 flex-shrink-0 rounded-lg border-2 overflow-hidden ${selectedImage === img ? 'border-cyan-500' : 'border-transparent hover:border-gray-300'}`}
+                                            className={`w-20 h-20 flex-shrink-0 rounded-2xl border-2 transition-all duration-300 overflow-hidden shadow-sm ${selectedImage === img ? 'border-emerald-500 scale-105 shadow-emerald-100' : 'border-white hover:border-gray-200 hover:scale-105'}`}
                                         >
                                             <img src={img} alt={`View ${idx}`} className="w-full h-full object-cover" />
                                         </button>
@@ -155,8 +182,8 @@ const ProductDetail: React.FC = () => {
                                 </div>
                             )}
 
-                            <div className="absolute top-6 left-6 z-10">
-                                <span className={`${badgeClass} text-white text-xs font-bold px-3 py-1.5 rounded-full shadow-md uppercase tracking-wide`}>
+                            <div className="absolute top-8 left-8 z-10">
+                                <span className={`${badgeClass} text-white text-[10px] font-black px-4 py-2 rounded-full shadow-xl uppercase tracking-[0.2em]`}>
                                     {badgeText}
                                 </span>
                             </div>

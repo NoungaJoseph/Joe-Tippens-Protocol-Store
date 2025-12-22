@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { MOCK_PRODUCTS } from '../constants';
 import ProductCard from '../components/ProductCard';
-import { Search, Filter, X, ChevronRight } from 'lucide-react';
+import { Search, Filter, X, ChevronRight, ChevronLeft } from 'lucide-react';
 
 const Catalog: React.FC = () => {
   const location = useLocation();
@@ -301,18 +301,45 @@ const Catalog: React.FC = () => {
                   {/* Pagination Controls */}
                   {totalPages > 1 && (
                     <div className="flex justify-center items-center space-x-2 mt-12 pt-8 border-t border-gray-100">
-                      {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
-                        <button
-                          key={page}
-                          onClick={() => handlePageChange(page)}
-                          className={`w-10 h-10 rounded-lg flex items-center justify-center font-bold transition-all duration-200 ${currentPage === page
+                      <button
+                        onClick={() => handlePageChange(currentPage - 1)}
+                        disabled={currentPage === 1}
+                        className="w-10 h-10 rounded-lg flex items-center justify-center font-bold bg-white text-gray-600 hover:bg-gray-100 border border-gray-200 hover:border-cyan-200 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-white disabled:hover:border-gray-200 transition-all"
+                      >
+                        <ChevronLeft size={18} />
+                      </button>
+
+                      {(() => {
+                        let startPage = Math.max(1, currentPage - 1);
+                        let endPage = Math.min(totalPages, startPage + 2);
+
+                        // Adjust if we're near the end to still show 3 pages if possible
+                        if (endPage - startPage < 2 && totalPages >= 3) {
+                          if (startPage === 1) {
+                            endPage = 3;
+                          } else if (endPage === totalPages) {
+                            startPage = Math.max(1, totalPages - 2);
+                          }
+                        }
+
+                        const pages = [];
+                        for (let i = startPage; i <= endPage; i++) {
+                          pages.push(i);
+                        }
+
+                        return pages.map((page) => (
+                          <button
+                            key={page}
+                            onClick={() => handlePageChange(page)}
+                            className={`w-10 h-10 rounded-lg flex items-center justify-center font-bold transition-all duration-200 ${currentPage === page
                               ? 'bg-cyan-600 text-white shadow-md transform scale-105'
                               : 'bg-white text-gray-600 hover:bg-gray-100 border border-gray-200 hover:border-cyan-200'
-                            }`}
-                        >
-                          {page}
-                        </button>
-                      ))}
+                              }`}
+                          >
+                            {page}
+                          </button>
+                        ));
+                      })()}
 
                       <button
                         onClick={() => handlePageChange(currentPage + 1)}

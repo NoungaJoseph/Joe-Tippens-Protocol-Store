@@ -46,11 +46,7 @@ const App: React.FC = () => {
             <Route path="/blog" element={<Blog />} />
             <Route path="/blog/:id" element={<BlogPost />} />
             <Route path="/privacy-policy" element={<PrivacyPolicy />} />
-            <Route path="/payment-status" element={
-              <Elements stripe={stripePromise}>
-                <PaymentStatus />
-              </Elements>
-            } />
+            <Route path="/payment-status" element={<PaymentStatus />} />
           </Routes>
         </Layout>
       </Router>
