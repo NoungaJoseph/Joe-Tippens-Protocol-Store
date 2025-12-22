@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
-import { CheckCircle, AlertTriangle, Lock, CreditCard, Landmark, Bitcoin, DollarSign } from 'lucide-react';
+import { CheckCircle, AlertTriangle, Lock, CreditCard, Landmark, Bitcoin, DollarSign, Send } from 'lucide-react';
 
 const Checkout: React.FC = () => {
     const { items, cartTotal, clearCart } = useCart();
@@ -192,10 +192,12 @@ const Checkout: React.FC = () => {
                                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-10">
                                         {[
                                             { id: 'zelle', label: 'Zelle Transfer', icon: <DollarSign size={20} /> },
-                                            { id: 'chime', label: 'Chime', icon: <CreditCard size={20} /> },
-                                            { id: 'bitcoin', label: 'Bitcoin (BTC)', icon: <Bitcoin size={20} /> },
-                                            { id: 'paypal', label: 'PayPal (Family & Friends)', icon: <CreditCard size={20} /> },
-                                            { id: 'bank', label: 'Direct Bank Wire', icon: <Landmark size={20} /> }
+                                            { id: 'cashapp', label: 'Cashapp', icon: <DollarSign size={20} /> },
+                                            { id: 'paypal', label: 'PayPal', icon: <CreditCard size={20} /> },
+                                            { id: 'crypto', label: 'Crypto (BTC/USDT)', icon: <Bitcoin size={20} /> },
+                                            { id: 'western-union', label: 'Western Union', icon: <Landmark size={20} /> },
+                                            { id: 'e-transfer', label: 'E-Transfer', icon: <Send size={20} /> },
+                                            { id: 'bank-transfer', label: 'Bank Transfer', icon: <Landmark size={20} /> }
                                         ].map((method) => (
                                             <button
                                                 key={method.id}

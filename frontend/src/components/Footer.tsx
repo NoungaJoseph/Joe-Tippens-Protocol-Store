@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Mail, Phone, MapPin, Clock, Facebook, Instagram, Twitter, ArrowRight, CreditCard } from 'lucide-react';
+import { Mail, Phone, MapPin, Clock, Facebook, Instagram, Twitter, ArrowRight, CreditCard, Bitcoin } from 'lucide-react';
 
 const Footer: React.FC = () => {
   return (
@@ -123,32 +123,18 @@ const Footer: React.FC = () => {
 
           {/* Real Payment Icons */}
           <div className="flex flex-wrap justify-center gap-4 grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all duration-300">
-            <div className="h-10 bg-white rounded-lg px-3 flex items-center shadow-sm">
-              <span className="text-blue-700 font-extrabold italic text-lg tracking-tighter">VISA</span>
-            </div>
-            <div className="h-10 bg-white rounded-lg px-3 flex items-center shadow-sm">
-              <span className="text-red-500 font-bold flex items-center gap-1">
-                <div className="w-4 h-4 rounded-full bg-red-500/20"></div> Mastercard
-              </span>
-            </div>
-            <div className="h-10 bg-white rounded-lg px-3 flex items-center shadow-sm">
-              <span className="text-blue-600 font-bold flex items-center gap-1">PayPal</span>
-            </div>
-            <div className="h-10 bg-white rounded-lg px-3 flex items-center shadow-sm gap-2">
-              <div className="w-6 h-6 bg-black rounded flex items-center justify-center">
-                <svg viewBox="0 0 24 24" className="w-4 h-4 fill-white"><path d="M17.05 20.28c-.96 0-2.04-.36-3.1-.36-1.14 0-2.02.36-3.08.36-1.83 0-4.47-1.12-5.46-3.03-1.01-1.92-.61-4.74.82-6.6 1.05-1.36 2.33-2.12 3.51-2.12.9 0 1.67.36 2.27.36.6 0 1.14-.36 2.22-.36 1.05 0 2.28.6 3 1.5-2.04 1.2-1.74 3.96.6 5.1-.6 1.44-1.38 3-2.25 4.14-.48.6-.99 1.01-1.53 1.01zM12 7.15c-.03-1.92 1.56-3.54 3.48-3.6.06 1.95-1.59 3.63-3.48 3.6z" /></svg>
-              </div>
-              <span className="text-black font-bold text-sm">Pay</span>
-            </div>
-            <div className="h-10 bg-white rounded-lg px-3 flex items-center shadow-sm gap-2">
-              <div className="w-6 h-6 bg-black rounded flex items-center justify-center overflow-hidden">
-                <span className="text-white font-black italic text-[10px]">G</span>
-              </div>
-              <span className="text-gray-600 font-bold text-sm">Pay</span>
+            <div className="h-10 bg-white rounded-lg px-4 flex items-center shadow-sm">
+              <span className="text-purple-600 font-black text-lg">Z</span>
+              <span className="text-black font-bold ml-1">Zelle</span>
             </div>
             <div className="h-10 bg-white rounded-lg px-4 flex items-center shadow-sm">
-              <span className="text-emerald-500 font-black text-lg">$</span>
-              <span className="text-black font-bold ml-1">Cash App</span>
+              <span className="text-blue-600 font-bold flex items-center gap-1">PayPal</span>
+            </div>
+            <div className="h-10 bg-white rounded-lg px-4 flex items-center shadow-sm gap-2">
+              <div className="w-6 h-6 bg-orange-500 rounded-full flex items-center justify-center">
+                <Bitcoin size={14} className="text-white" />
+              </div>
+              <span className="text-black font-bold text-sm">Crypto</span>
             </div>
           </div>
 
