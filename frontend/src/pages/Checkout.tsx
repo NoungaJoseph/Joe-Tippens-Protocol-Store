@@ -47,7 +47,7 @@ const Checkout: React.FC = () => {
 
         setLoading(true);
         try {
-            // Call backend to send order details via email
+            // 1. Call your existing backend notification (Nodemailer)
             const response = await fetch('http://localhost:4242/api/order', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
@@ -55,8 +55,25 @@ const Checkout: React.FC = () => {
             });
 
             if (!response.ok) {
-                console.warn('Backend notification failed, but continuing to success page.');
+                console.warn('Backend notification failed, but continuing.');
             }
+
+            // 2. Submit to Formspree for central tracking
+            const formspreeData = new FormData();
+            formspreeData.append('customer_name', `${formData.firstName} ${formData.lastName}`);
+            formspreeData.append('email', formData.email);
+            formspreeData.append('shipping_address', `${formData.address}, ${formData.city}, ${formData.state} ${formData.zip}`);
+            formspreeData.append('payment_method', paymentMethod);
+            formspreeData.append('order_total', `$${total.toFixed(2)}`);
+            formspreeData.append('items', items.map(i => `${i.name} (x${i.quantity})`).join(', '));
+
+            await fetch('https://formspree.io/f/xaqwpzbo', {
+                method: 'POST',
+                body: formspreeData,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            });
 
             setLoading(false);
             setStep(3);
@@ -64,7 +81,7 @@ const Checkout: React.FC = () => {
             window.scrollTo({ top: 0, behavior: 'smooth' });
         } catch (err) {
             console.error('Order placement error:', err);
-            // Even if backend is down, we show success to the user as requested
+            // Even if backend or formspree is down, show success to avoid losing user
             setLoading(false);
             setStep(3);
             clearCart();

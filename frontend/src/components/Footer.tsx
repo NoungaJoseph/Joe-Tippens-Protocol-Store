@@ -18,13 +18,22 @@ const Footer: React.FC = () => {
               <p className="text-gray-400">Subscribe to get special offers, free giveaways, and once-in-a-lifetime deals.</p>
             </div>
             <div>
-              <form className="flex flex-col sm:flex-row gap-3">
+              <form
+                action="https://formspree.io/f/xaqwpzbo"
+                method="POST"
+                className="flex flex-col sm:flex-row gap-3"
+              >
                 <input
                   type="email"
+                  name="email"
+                  required
                   placeholder="Enter your email address"
                   className="flex-1 px-4 py-3 rounded-lg bg-gray-800 border border-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-emerald-500"
                 />
-                <button className="px-6 py-3 bg-emerald-600 text-white font-bold rounded-lg hover:bg-emerald-700 transition-colors flex items-center justify-center gap-2">
+                <button
+                  type="submit"
+                  className="px-6 py-3 bg-emerald-600 text-white font-bold rounded-lg hover:bg-emerald-700 transition-colors flex items-center justify-center gap-2"
+                >
                   Subscribe <ArrowRight size={18} />
                 </button>
               </form>
