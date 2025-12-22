@@ -164,12 +164,12 @@ const Checkout: React.FC = () => {
                                             { label: 'ZIP', name: 'zip', placeholder: '12345' }
                                         ].map((input) => (
                                             <div key={input.name} className={`${input.colSpan ? 'md:col-span-2' : ''} space-y-2`}>
-                                                <label className="text-[10px] font-black text-gray-400 uppercase tracking-[0.2em]">{input.label} *</label>
+                                                <label className="text-xs font-bold text-gray-900 uppercase tracking-wider">{input.label} *</label>
                                                 <input
                                                     name={input.name}
                                                     value={(formData as any)[input.name]}
                                                     onChange={handleInputChange}
-                                                    className="w-full px-5 py-4 rounded-2xl bg-gray-50 border border-gray-100 focus:ring-4 focus:ring-emerald-500/10 focus:border-emerald-500 transition-all outline-none text-gray-700 font-medium placeholder:text-gray-300"
+                                                    className="w-full px-5 py-4 rounded-2xl bg-gray-50 border border-gray-200 focus:ring-4 focus:ring-emerald-500/10 focus:border-emerald-500 transition-all outline-none text-gray-900 font-bold placeholder:text-gray-400"
                                                     placeholder={input.placeholder}
                                                 />
                                             </div>
