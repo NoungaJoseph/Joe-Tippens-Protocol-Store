@@ -47,29 +47,18 @@ const Checkout: React.FC = () => {
 
         setLoading(true);
         try {
-            // 1. Call your existing backend notification (Nodemailer)
-            const response = await fetch('http://localhost:4242/api/order', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ formData, items, total, paymentMethod }),
-            });
-
-            if (!response.ok) {
-                console.warn('Backend notification failed, but continuing.');
-            }
-
-            // 2. Submit to Formspree for central tracking
-            const formspreeData = new FormData();
-            formspreeData.append('customer_name', `${formData.firstName} ${formData.lastName}`);
-            formspreeData.append('email', formData.email);
-            formspreeData.append('shipping_address', `${formData.address}, ${formData.city}, ${formData.state} ${formData.zip}`);
-            formspreeData.append('payment_method', paymentMethod);
-            formspreeData.append('order_total', `$${total.toFixed(2)}`);
-            formspreeData.append('items', items.map(i => `${i.name} (x${i.quantity})`).join(', '));
+            // Submit to Getform for order tracking
+            const getformData = new FormData();
+            getformData.append('customer_name', `${formData.firstName} ${formData.lastName}`);
+            getformData.append('email', formData.email);
+            getformData.append('shipping_address', `${formData.address}, ${formData.city}, ${formData.state} ${formData.zip}`);
+            getformData.append('payment_method', paymentMethod);
+            getformData.append('order_total', `$${total.toFixed(2)}`);
+            getformData.append('items', items.map(i => `${i.name} (x${i.quantity})`).join(', '));
 
             await fetch('https://getform.io/f/bmdjklga', {
                 method: 'POST',
-                body: formspreeData,
+                body: getformData,
                 headers: {
                     'Accept': 'application/json'
                 }
@@ -81,7 +70,7 @@ const Checkout: React.FC = () => {
             window.scrollTo({ top: 0, behavior: 'smooth' });
         } catch (err) {
             console.error('Order placement error:', err);
-            // Even if backend or formspree is down, show success to avoid losing user
+            // Even if fetch fails, show success to avoid losing user
             setLoading(false);
             setStep(3);
             clearCart();
