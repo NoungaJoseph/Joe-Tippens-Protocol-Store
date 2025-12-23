@@ -21,7 +21,7 @@ const Cart: React.FC = () => {
                     <div className="text-6xl mb-4 animate-bounce">🛒</div>
                     <h3 className="text-2xl font-bold text-gray-900 mb-2">Your cart is empty</h3>
                     <p className="text-gray-600 mb-6">Add some medications to get started</p>
-                    <Link to="/all-pills" className="bg-cyan-600 text-white px-6 py-3 rounded-lg hover:bg-cyan-700 transition-colors inline-block">
+                    <Link to="/all-pills" className="bg-rose-600 text-white px-6 py-3 rounded-lg hover:bg-rose-700 transition-colors inline-block">
                         Browse Medications
                     </Link>
                 </div>
@@ -54,12 +54,12 @@ const Cart: React.FC = () => {
                             <div className="bg-white rounded-xl shadow-lg p-6">
                                 <div className="flex items-center justify-between mb-6 border-b border-gray-100 pb-4">
                                     <h2 className="text-2xl font-bold text-gray-900">Cart Items</h2>
-                                    <span className="bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded-full">{itemCount} Items</span>
+                                    <span className="bg-rose-100 text-rose-800 text-xs font-semibold px-2.5 py-0.5 rounded-full">{itemCount} Items</span>
                                 </div>
 
                                 <div className="space-y-6">
                                     {items.map((item) => (
-                                        <div key={item.id} className="flex flex-col sm:flex-row items-center gap-4 p-4 bg-gray-50 rounded-lg border border-gray-100 transition-colors hover:border-cyan-200">
+                                        <div key={item.id} className="flex flex-col sm:flex-row items-center gap-4 p-4 bg-gray-50 rounded-lg border border-gray-100 transition-colors hover:border-rose-200">
                                             <img src={item.image} alt={item.name} className="w-20 h-20 object-cover rounded-lg shadow-sm" />
 
                                             <div className="flex-1 text-center sm:text-left">
@@ -84,7 +84,7 @@ const Cart: React.FC = () => {
                                             </div>
 
                                             <div className="text-right min-w-[80px]">
-                                                <p className="text-lg font-bold text-cyan-600">${(item.price * item.quantity).toFixed(2)}</p>
+                                                <p className="text-lg font-bold text-rose-600">${(item.price * item.quantity).toFixed(2)}</p>
                                             </div>
 
                                             <button
@@ -130,11 +130,11 @@ const Cart: React.FC = () => {
                                                         <h4 className="font-semibold text-gray-900 truncate">{product.name}</h4>
                                                     </Link>
                                                     <p className="text-xs text-gray-500 mb-1">{product.category}</p>
-                                                    <p className="font-bold text-cyan-600">${product.price.toFixed(2)}</p>
+                                                    <p className="font-bold text-rose-600">${product.price.toFixed(2)}</p>
                                                 </div>
                                                 <button
                                                     onClick={() => addToCart(product, 1)}
-                                                    className="bg-cyan-600 text-white px-3 py-1.5 rounded text-xs font-bold hover:bg-cyan-700 transition-colors shrink-0"
+                                                    className="bg-rose-600 text-white px-3 py-1.5 rounded text-xs font-bold hover:bg-rose-700 transition-colors shrink-0"
                                                 >
                                                     Add
                                                 </button>
@@ -166,7 +166,7 @@ const Cart: React.FC = () => {
                                     <div className="border-t pt-4">
                                         <div className="flex justify-between items-end">
                                             <span className="text-lg font-bold text-gray-900">Total</span>
-                                            <span className="text-2xl font-bold text-cyan-600">${total.toFixed(2)}</span>
+                                            <span className="text-2xl font-bold text-rose-600">${total.toFixed(2)}</span>
                                         </div>
                                     </div>
                                 </div>
@@ -175,14 +175,14 @@ const Cart: React.FC = () => {
                                 <div className="mb-6">
                                     <h4 className="font-semibold text-gray-900 mb-3 text-sm">Promo Code</h4>
                                     <div className="flex gap-2">
-                                        <input type="text" placeholder="Enter code" className="flex-1 px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-cyan-500 text-sm" />
+                                        <input type="text" placeholder="Enter code" className="flex-1 px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-rose-500 text-sm" />
                                         <button className="bg-gray-100 text-gray-700 px-4 py-2 rounded-lg hover:bg-gray-200 transition-colors text-sm font-medium">Apply</button>
                                     </div>
                                 </div>
 
                                 <button
                                     onClick={() => navigate('/checkout')}
-                                    className="w-full bg-cyan-600 text-white py-4 px-6 rounded-lg hover:bg-cyan-700 transition-all font-bold shadow-lg hover:shadow-cyan-200 transform hover:-translate-y-0.5 flex items-center justify-center gap-2"
+                                    className="w-full bg-rose-600 text-white py-4 px-6 rounded-lg hover:bg-rose-700 transition-all font-bold shadow-lg hover:shadow-rose-200 transform hover:-translate-y-0.5 flex items-center justify-center gap-2"
                                 >
                                     Proceed to Checkout <ArrowRight size={18} />
                                 </button>

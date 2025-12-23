@@ -81,7 +81,7 @@ const Home: React.FC = () => {
             opacity: 1;
         }
         .splide__pagination__page.is-active {
-            background: #0891b2 !important;
+            background: #e11d48 !important;
             transform: scale(1.3);
         }
 
@@ -135,10 +135,10 @@ const Home: React.FC = () => {
                                             <img src="https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?auto=format&fit=crop&q=80&w=1200" alt="Premium Ivermectin Tablets for Joe Tippens Protocol" className="absolute inset-0 w-full h-full object-cover hero-image" />
                                             <div className="absolute inset-0 bg-gradient-to-r from-black/80 to-transparent"></div>
                                             <div className="absolute inset-0 flex flex-col justify-center items-start p-8 md:p-16 text-white hero-content opacity-0">
-                                                <span className="text-cyan-400 font-bold tracking-widest uppercase mb-4 text-sm md:text-base">Buy From Us</span>
-                                                <h1 className="text-4xl md:text-6xl font-bold mb-2 font-serif leading-tight">Buy Ivermectin <br /> <span className="text-cyan-200">Tablets Online</span></h1>
+                                                <span className="text-rose-400 font-bold tracking-widest uppercase mb-4 text-sm md:text-base">Buy From Us</span>
+                                                <h1 className="text-4xl md:text-6xl font-bold mb-2 font-serif leading-tight">Buy Ivermectin <br /> <span className="text-rose-200">Tablets Online</span></h1>
                                                 <p className="text-lg md:text-xl mb-8 text-gray-200 max-w-lg">Premium quality anti-parasitic medication available now with express shipping for the Joe Tippens Protocol.</p>
-                                                <Link to="/all-pills?category=Ivermectin" className="bg-cyan-600 text-white px-8 py-3 rounded-full font-bold text-sm md:text-base hover:bg-cyan-700 transition-all shadow-lg hover:shadow-cyan-500/50 flex items-center gap-2">
+                                                <Link to="/all-pills?category=Ivermectin" className="bg-rose-600 text-white px-8 py-3 rounded-full font-bold text-sm md:text-base hover:bg-rose-700 transition-all shadow-lg hover:shadow-rose-500/50 flex items-center gap-2">
                                                     Shop Now <ArrowRight size={18} />
                                                 </Link>
                                             </div>
@@ -165,7 +165,7 @@ const Home: React.FC = () => {
                                             <div className="absolute inset-0 flex flex-col justify-center items-start p-8 md:p-16 text-white hero-content opacity-0">
                                                 <span className="bg-red-600 text-white text-xs font-bold px-3 py-1 rounded mb-6 uppercase tracking-wider">Big Discount</span>
                                                 <h2 className="text-4xl md:text-6xl font-bold mb-6 font-serif leading-tight">Anti-Parasites <br /> Collection</h2>
-                                                <Link to="/all-pills?category=Anti-Parasites" className="inline-flex items-center text-base md:text-lg font-bold uppercase tracking-wide border-b-2 border-white pb-1 hover:text-cyan-400 hover:border-cyan-400 transition-colors">
+                                                <Link to="/all-pills?category=Anti-Parasites" className="inline-flex items-center text-base md:text-lg font-bold uppercase tracking-wide border-b-2 border-white pb-1 hover:text-rose-400 hover:border-rose-400 transition-colors">
                                                     Shop Now <ArrowRight size={20} className="ml-2" />
                                                 </Link>
                                             </div>
@@ -263,42 +263,34 @@ const Home: React.FC = () => {
             {/* Features Icons */}
             <section className="py-12 bg-white border-b border-gray-100">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-                        <div className="flex items-center gap-4 group hover:-translate-y-1 transition-transform duration-300">
-                            <div className="p-3 bg-blue-50 text-blue-600 rounded-full group-hover:bg-blue-600 group-hover:text-white transition-colors">
-                                <Headphones size={32} />
-                            </div>
-                            <div>
-                                <h4 className="font-bold text-gray-900 font-serif">24/7 Customer Support</h4>
-                                <p className="text-sm text-gray-500">We're here to help anytime.</p>
-                            </div>
-                        </div>
-                        <div className="flex items-center gap-4 group hover:-translate-y-1 transition-transform duration-300">
-                            <div className="p-3 bg-green-50 text-green-600 rounded-full group-hover:bg-green-600 group-hover:text-white transition-colors">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                        <div className="relative group overflow-hidden rounded-2xl bg-white shadow-sm border border-gray-100 p-6 flex flex-col items-center text-center hover:shadow-md transition-all">
+                            <div className="w-16 h-16 rounded-2xl bg-rose-50 flex items-center justify-center text-rose-600 mb-4 group-hover:scale-110 transition-transform">
                                 <Leaf size={32} />
                             </div>
-                            <div>
-                                <h4 className="font-bold text-gray-900 font-serif">Eco-Friendly Packaging</h4>
-                                <p className="text-sm text-gray-500">Secured Packaging</p>
-                            </div>
+                            <h3 className="font-bold text-gray-900 mb-1">Premium Quality</h3>
+                            <p className="text-gray-500 text-xs lowercase leading-relaxed">Verified and high-efficacy pharmaceutical supplements.</p>
                         </div>
-                        <div className="flex items-center gap-4 group hover:-translate-y-1 transition-transform duration-300">
-                            <div className="p-3 bg-purple-50 text-purple-600 rounded-full group-hover:bg-purple-600 group-hover:text-white transition-colors">
+                        <div className="relative group overflow-hidden rounded-2xl bg-white shadow-sm border border-gray-100 p-6 flex flex-col items-center text-center hover:shadow-md transition-all">
+                            <div className="w-16 h-16 rounded-2xl bg-rose-50 flex items-center justify-center text-rose-600 mb-4 group-hover:scale-110 transition-transform">
                                 <Lock size={32} />
                             </div>
-                            <div>
-                                <h4 className="font-bold text-gray-900 font-serif">Secure Payments</h4>
-                                <p className="text-sm text-gray-500">Multi-payment Support</p>
-                            </div>
+                            <h3 className="font-bold text-gray-900 mb-1">Secure Payments</h3>
+                            <p className="text-gray-500 text-xs lowercase leading-relaxed">Encrypted transactions via secure payment gateways.</p>
                         </div>
-                        <div className="flex items-center gap-4 group hover:-translate-y-1 transition-transform duration-300">
-                            <div className="p-3 bg-pink-50 text-pink-600 rounded-full group-hover:bg-pink-600 group-hover:text-white transition-colors">
+                        <div className="relative group overflow-hidden rounded-2xl bg-white shadow-sm border border-gray-100 p-6 flex flex-col items-center text-center hover:shadow-md transition-all">
+                            <div className="w-16 h-16 rounded-2xl bg-rose-50 flex items-center justify-center text-rose-600 mb-4 group-hover:scale-110 transition-transform">
+                                <Headphones size={32} />
+                            </div>
+                            <h3 className="font-bold text-gray-900 mb-1">24/7 Support</h3>
+                            <p className="text-gray-500 text-xs lowercase leading-relaxed">Dedicated expert support whenever you need assistance.</p>
+                        </div>
+                        <div className="relative group overflow-hidden rounded-2xl bg-white shadow-sm border border-gray-100 p-6 flex flex-col items-center text-center hover:shadow-md transition-all">
+                            <div className="w-16 h-16 rounded-2xl bg-rose-50 flex items-center justify-center text-rose-600 mb-4 group-hover:scale-110 transition-transform">
                                 <Gift size={32} />
                             </div>
-                            <div>
-                                <h4 className="font-bold text-gray-900 font-serif">Exclusive Gifts</h4>
-                                <p className="text-sm text-gray-500">Secured Delivering</p>
-                            </div>
+                            <h3 className="font-bold text-gray-900 mb-1">Fast Delivery</h3>
+                            <p className="text-gray-500 text-xs lowercase leading-relaxed">Express shipping on all protocol orders.</p>
                         </div>
                     </div>
                 </div>
@@ -309,7 +301,7 @@ const Home: React.FC = () => {
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="text-center mb-12">
                         <h2 className="text-3xl font-bold text-gray-900 font-serif">Most Loved Products</h2>
-                        <div className="w-16 h-1 bg-cyan-600 mx-auto mt-4"></div>
+                        <div className="w-16 h-1 bg-rose-600 mx-auto mt-4"></div>
                     </div>
                     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
                         {mostLoved.map(product => (
@@ -324,7 +316,7 @@ const Home: React.FC = () => {
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="text-center mb-12">
                         <h2 className="text-3xl font-bold text-gray-900 font-serif">Our Featured Products</h2>
-                        <div className="w-16 h-1 bg-cyan-600 mx-auto mt-4"></div>
+                        <div className="w-16 h-1 bg-rose-600 mx-auto mt-4"></div>
                     </div>
                     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
                         {featured.map(product => (
@@ -347,27 +339,27 @@ const Home: React.FC = () => {
                             </p>
                             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
                                 <div className="flex items-center gap-3">
-                                    <span className="w-2 h-2 bg-cyan-500 rounded-full"></span>
+                                    <span className="w-2 h-2 bg-rose-500 rounded-full"></span>
                                     <span>Fractions and Dislocations</span>
                                 </div>
                                 <div className="flex items-center gap-3">
-                                    <span className="w-2 h-2 bg-cyan-500 rounded-full"></span>
+                                    <span className="w-2 h-2 bg-rose-500 rounded-full"></span>
                                     <span>Desensitisation Injections</span>
                                 </div>
                                 <div className="flex items-center gap-3">
-                                    <span className="w-2 h-2 bg-cyan-500 rounded-full"></span>
+                                    <span className="w-2 h-2 bg-rose-500 rounded-full"></span>
                                     <span>Home Medicine Review</span>
                                 </div>
                                 <div className="flex items-center gap-3">
-                                    <span className="w-2 h-2 bg-cyan-500 rounded-full"></span>
+                                    <span className="w-2 h-2 bg-rose-500 rounded-full"></span>
                                     <span>Health Assessments</span>
                                 </div>
                                 <div className="flex items-center gap-3">
-                                    <span className="w-2 h-2 bg-cyan-500 rounded-full"></span>
+                                    <span className="w-2 h-2 bg-rose-500 rounded-full"></span>
                                     <span>High Quality Care</span>
                                 </div>
                             </div>
-                            <Link to="/contact" className="bg-cyan-600 text-white px-8 py-3 rounded-lg font-bold hover:bg-cyan-700 transition-colors inline-block">
+                            <Link to="/contact" className="bg-rose-600 text-white px-8 py-3 rounded-lg font-bold hover:bg-rose-700 transition-colors inline-block">
                                 Contact Us
                             </Link>
                         </div>
@@ -423,7 +415,7 @@ const Home: React.FC = () => {
                     </div>
                 </div>
             </section>
-        </div>
+        </div >
     );
 };
 

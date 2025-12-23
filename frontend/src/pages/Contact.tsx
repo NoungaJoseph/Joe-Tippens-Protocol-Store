@@ -69,7 +69,7 @@ const Contact: React.FC = () => {
               type="text"
               name="name"
               required
-              className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-emerald-500 focus:border-emerald-500"
+              className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-rose-500 focus:border-rose-500"
               placeholder="John Doe"
             />
           </div>
@@ -80,14 +80,14 @@ const Contact: React.FC = () => {
               type="email"
               name="email"
               required
-              className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-emerald-500 focus:border-emerald-500"
+              className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-rose-500 focus:border-rose-500"
               placeholder="john@example.com"
             />
           </div>
 
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-1">Subject</label>
-            <select name="subject" className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-emerald-500 focus:border-emerald-500">
+            <select name="subject" className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-rose-500 focus:border-rose-500">
               <option>Order Inquiry</option>
               <option>Product Question</option>
               <option>Shipping Issue</option>
@@ -101,14 +101,14 @@ const Contact: React.FC = () => {
               name="message"
               required
               rows={5}
-              className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-emerald-500 focus:border-emerald-500"
+              className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-rose-500 focus:border-rose-500"
               placeholder="How can we assist you today?"
             ></textarea>
           </div>
 
           <button
             type="submit"
-            className="w-full bg-emerald-600 text-white px-6 py-3 rounded-md font-semibold transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-emerald-500 hover:bg-emerald-700"
+            className="w-full bg-rose-600 text-white px-6 py-3 rounded-md font-semibold transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-rose-500 hover:bg-rose-700"
           >
             Send Message
           </button>

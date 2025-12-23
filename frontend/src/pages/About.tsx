@@ -27,7 +27,7 @@ const About: React.FC = () => {
                 {/* Intro */}
                 <div className="mb-16 text-center">
                     <p className="text-lg text-gray-600 leading-relaxed">
-                        <span className="font-bold text-emerald-600">PureProtocol</span> is an online portal that sells a variety of pills, including prescription or FDA-approved medications, generic medications, and over-the-counter medications. We believe in offering home delivery as quickly as possible, and to that end, we have our own highly efficient delivery team. At our portal, we also assist you with placing orders, tracking packages, canceling orders, and receiving refunds, as well as providing information on discounts and availing offers with the assistance of our 24/7 customer support team. Our clientele is entirely based on our commitment to quality assurance and speedy delivery.
+                        <span className="font-bold text-rose-600">PureProtocol</span> is an online portal that sells a variety of pills, including prescription or FDA-approved medications, generic medications, and over-the-counter medications. We believe in offering home delivery as quickly as possible, and to that end, we have our own highly efficient delivery team. At our portal, we also assist you with placing orders, tracking packages, canceling orders, and receiving refunds, as well as providing information on discounts and availing offers with the assistance of our 24/7 customer support team. Our clientele is entirely based on our commitment to quality assurance and speedy delivery.
                     </p>
                 </div>
 
@@ -35,9 +35,9 @@ const About: React.FC = () => {
                 <div className="grid grid-cols-1 gap-12">
 
                     {/* Mission */}
-                    <section className="bg-emerald-50 rounded-2xl p-8 border border-emerald-100">
+                    <section className="bg-rose-50 rounded-2xl p-8 border border-rose-100">
                         <div className="flex items-center gap-4 mb-4">
-                            <div className="p-3 bg-emerald-100 text-emerald-600 rounded-full">
+                            <div className="p-3 bg-rose-100 text-rose-600 rounded-full">
                                 <Activity size={24} />
                             </div>
                             <h2 className="text-2xl font-bold text-gray-900">Our Mission</h2>
@@ -130,9 +130,9 @@ const About: React.FC = () => {
                     </section>
 
                     {/* Logistics */}
-                    <section className="bg-cyan-50 rounded-2xl p-8 border border-cyan-100">
+                    <section className="bg-rose-50 rounded-2xl p-8 border border-rose-100">
                         <div className="flex items-center gap-4 mb-4">
-                            <div className="p-3 bg-cyan-100 text-cyan-600 rounded-full">
+                            <div className="p-3 bg-rose-100 text-rose-600 rounded-full">
                                 <Truck size={24} />
                             </div>
                             <h2 className="text-2xl font-bold text-gray-900">Delivery & Logistics</h2>

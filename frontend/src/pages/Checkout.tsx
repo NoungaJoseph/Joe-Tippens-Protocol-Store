@@ -82,18 +82,18 @@ const Checkout: React.FC = () => {
         return (
             <div className="bg-gray-50 min-h-screen pt-24 pb-12">
                 <div className="max-w-3xl mx-auto px-4 text-center">
-                    <div className="bg-white rounded-3xl shadow-2xl p-8 md:p-12 border border-emerald-100">
-                        <div className="w-24 h-24 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mx-auto mb-8 shadow-inner">
+                    <div className="bg-white rounded-3xl shadow-2xl p-8 md:p-12 border border-rose-100">
+                        <div className="w-24 h-24 bg-rose-100 text-rose-600 rounded-full flex items-center justify-center mx-auto mb-8 shadow-inner">
                             <CheckCircle size={48} />
                         </div>
                         <h1 className="text-3xl md:text-4xl font-black text-gray-900 mb-4 tracking-tight">Order Placed Successfully!</h1>
-                        <p className="text-gray-600 mb-8 text-lg">We will now contact you on email within the next 24 hours and everything is fine. Your order ID is <span className="font-bold text-emerald-600">#PROTO-{Math.floor(Math.random() * 90000) + 10000}</span></p>
+                        <p className="text-gray-600 mb-8 text-lg">We will now contact you on email within the next 24 hours and everything is fine. Your order ID is <span className="font-bold text-rose-600">#PROTO-{Math.floor(Math.random() * 90000) + 10000}</span></p>
 
-                        <div className="bg-emerald-50 rounded-2xl p-6 mb-8 border border-emerald-100 text-left">
-                            <h3 className="font-bold text-emerald-800 mb-3 flex items-center gap-2">
+                        <div className="bg-rose-50 rounded-2xl p-6 mb-8 border border-rose-100 text-left">
+                            <h3 className="font-bold text-rose-800 mb-3 flex items-center gap-2">
                                 <Landmark size={20} /> Payment Instructions Sent
                             </h3>
-                            <p className="text-emerald-700 text-sm leading-relaxed mb-4">
+                            <p className="text-rose-700 text-sm leading-relaxed mb-4">
                                 You have selected <span className="font-bold uppercase">{paymentMethod}</span>. We have received your order details and will send payment instructions to <span className="font-bold">{formData.email}</span> shortly.
                             </p>
                         </div>
@@ -130,12 +130,12 @@ const Checkout: React.FC = () => {
             <section className="py-6 bg-white border-b shadow-sm sticky top-16 z-20">
                 <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="flex justify-center space-x-12">
-                        <div className={`flex items-center gap-2 ${step === 1 ? 'text-emerald-600' : 'text-gray-400'}`}>
-                            <div className={`w-8 h-8 rounded-full flex items-center justify-center font-bold ${step === 1 ? 'bg-emerald-600 text-white' : 'bg-gray-100'}`}>1</div>
+                        <div className={`flex items-center gap-2 ${step === 1 ? 'text-rose-600' : 'text-gray-400'}`}>
+                            <div className={`w-8 h-8 rounded-full flex items-center justify-center font-bold ${step === 1 ? 'bg-rose-600 text-white' : 'bg-gray-100'}`}>1</div>
                             <span className="font-bold text-sm">Shipping</span>
                         </div>
-                        <div className={`flex items-center gap-2 ${step === 2 ? 'text-emerald-600' : 'text-gray-400'}`}>
-                            <div className={`w-8 h-8 rounded-full flex items-center justify-center font-bold ${step === 2 ? 'bg-emerald-600 text-white' : 'bg-gray-100'}`}>2</div>
+                        <div className={`flex items-center gap-2 ${step === 2 ? 'text-rose-600' : 'text-gray-400'}`}>
+                            <div className={`w-8 h-8 rounded-full flex items-center justify-center font-bold ${step === 2 ? 'bg-rose-600 text-white' : 'bg-gray-100'}`}>2</div>
                             <span className="font-bold text-sm">Payment</span>
                         </div>
                     </div>
@@ -156,7 +156,7 @@ const Checkout: React.FC = () => {
                             {step === 1 ? (
                                 <div className="bg-white rounded-2xl shadow-xl p-6 md:p-10 border border-gray-100">
                                     <h2 className="text-2xl font-bold mb-8 flex items-center gap-3">
-                                        <div className="w-10 h-10 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center text-sm font-black italic">SH</div>
+                                        <div className="w-10 h-10 bg-rose-100 text-rose-600 rounded-full flex items-center justify-center text-sm font-black italic">SH</div>
                                         Shipping Information
                                     </h2>
                                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -175,13 +175,13 @@ const Checkout: React.FC = () => {
                                                     name={input.name}
                                                     value={(formData as any)[input.name]}
                                                     onChange={handleInputChange}
-                                                    className="w-full px-5 py-4 rounded-2xl bg-gray-50 border border-gray-200 focus:ring-4 focus:ring-emerald-500/10 focus:border-emerald-500 transition-all outline-none text-gray-900 font-bold placeholder:text-gray-400"
+                                                    className="w-full px-5 py-4 rounded-2xl bg-gray-50 border border-gray-200 focus:ring-4 focus:ring-rose-500/10 focus:border-rose-500 transition-all outline-none text-gray-900 font-bold placeholder:text-gray-400"
                                                     placeholder={input.placeholder}
                                                 />
                                             </div>
                                         ))}
                                     </div>
-                                    <button onClick={nextStep} className="w-full bg-emerald-600 text-white py-5 rounded-2xl mt-10 font-black text-lg hover:bg-emerald-700 transition-all shadow-xl shadow-emerald-600/20 active:scale-[0.98]">
+                                    <button onClick={nextStep} className="w-full bg-rose-600 text-white py-5 rounded-2xl mt-10 font-black text-lg hover:bg-rose-700 transition-all shadow-xl shadow-rose-600/20 active:scale-[0.98]">
                                         Proceed to Payment
                                     </button>
                                 </div>
@@ -189,10 +189,10 @@ const Checkout: React.FC = () => {
                                 <div className="bg-white rounded-2xl shadow-xl p-6 md:p-10 border border-gray-100">
                                     <div className="flex justify-between items-center mb-10">
                                         <h2 className="text-2xl font-bold flex items-center gap-3">
-                                            <div className="w-10 h-10 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center text-sm font-black italic">PY</div>
+                                            <div className="w-10 h-10 bg-rose-100 text-rose-600 rounded-full flex items-center justify-center text-sm font-black italic">PY</div>
                                             Select Payment Method
                                         </h2>
-                                        <button onClick={() => setStep(1)} className="text-emerald-600 font-black text-xs uppercase tracking-widest hover:underline">Edit Shipping</button>
+                                        <button onClick={() => setStep(1)} className="text-rose-600 font-black text-xs uppercase tracking-widest hover:underline">Edit Shipping</button>
                                     </div>
 
                                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-10">
@@ -207,13 +207,14 @@ const Checkout: React.FC = () => {
                                         ].map((method) => (
                                             <button
                                                 key={method.id}
+                                                checked={paymentMethod === method.id}
                                                 onClick={() => setPaymentMethod(method.id)}
                                                 className={`flex items-center gap-4 p-5 rounded-2xl border-2 transition-all text-left ${paymentMethod === method.id
-                                                    ? 'border-emerald-500 bg-emerald-50 ring-4 ring-emerald-500/5'
+                                                    ? 'border-rose-500 bg-rose-50 ring-4 ring-rose-500/5'
                                                     : 'border-gray-100 hover:border-gray-200 bg-white'
                                                     }`}
                                             >
-                                                <div className={`w-12 h-12 rounded-xl flex items-center justify-center ${paymentMethod === method.id ? 'bg-emerald-500 text-white' : 'bg-gray-100 text-gray-400'}`}>
+                                                <div className={`w-12 h-12 rounded-xl flex items-center justify-center ${paymentMethod === method.id ? 'bg-rose-500 text-white' : 'bg-gray-100 text-gray-400'}`}>
                                                     {method.icon}
                                                 </div>
                                                 <div>
@@ -228,7 +229,7 @@ const Checkout: React.FC = () => {
                                         <button
                                             type="submit"
                                             disabled={loading || !paymentMethod}
-                                            className="w-full bg-emerald-600 text-white py-5 rounded-2xl font-black text-lg hover:bg-emerald-700 transition-all shadow-xl shadow-emerald-600/20 active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-3"
+                                            className="w-full bg-rose-600 text-white py-5 rounded-2xl font-black text-lg hover:bg-rose-700 transition-all shadow-xl shadow-rose-600/20 active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-3"
                                         >
                                             {loading ? (
                                                 <>
@@ -240,7 +241,7 @@ const Checkout: React.FC = () => {
                                             )}
                                         </button>
                                         <div className="mt-6 flex items-center justify-center gap-2 text-gray-300 text-[10px] font-black uppercase tracking-[0.2em]">
-                                            <Lock size={12} className="text-emerald-500" />
+                                            <Lock size={12} className="text-rose-500" />
                                             End-to-End Encrypted Checkout
                                         </div>
                                     </form>
@@ -253,7 +254,7 @@ const Checkout: React.FC = () => {
                             <div className="bg-white rounded-2xl shadow-xl p-8 border border-gray-100 flex flex-col gap-8 lg:sticky lg:top-32">
                                 <h3 className="text-xl font-bold flex items-center justify-between">
                                     Summary
-                                    <span className="bg-emerald-100 text-emerald-600 px-3 py-1 rounded-full text-[10px] font-black uppercase">{items.length} Items</span>
+                                    <span className="bg-rose-100 text-rose-600 px-3 py-1 rounded-full text-[10px] font-black uppercase">{items.length} Items</span>
                                 </h3>
                                 <div className="space-y-4 max-h-[40vh] overflow-y-auto pr-2 custom-scrollbar">
                                     {items.map(item => (
@@ -278,7 +279,7 @@ const Checkout: React.FC = () => {
                                     </div>
                                     <div className="border-t pt-6 flex justify-between items-center">
                                         <span className="text-sm font-black uppercase tracking-[0.2em] text-gray-400">Total Amount</span>
-                                        <span className="text-3xl font-black text-emerald-600 tracking-tighter">${total.toFixed(2)}</span>
+                                        <span className="text-3xl font-black text-rose-600 tracking-tighter">${total.toFixed(2)}</span>
                                     </div>
                                 </div>
                             </div>

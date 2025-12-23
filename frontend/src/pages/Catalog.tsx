@@ -118,7 +118,7 @@ const Catalog: React.FC = () => {
                 checked={selectedCategories.includes(cat)}
                 onChange={() => handleCategoryChange(cat)}
               />
-              <span className={`flex-1 px-3 py-2 rounded-lg border border-gray-200 transition-colors text-sm ${selectedCategories.includes(cat) ? 'bg-cyan-600 text-white border-cyan-600' : 'bg-white text-gray-700 hover:bg-gray-50'}`}>
+              <span className={`flex-1 px-3 py-2 rounded-lg border border-gray-200 transition-colors text-sm ${selectedCategories.includes(cat) ? 'bg-rose-600 text-white border-rose-600' : 'bg-white text-gray-700 hover:bg-gray-50'}`}>
                 {cat}
               </span>
             </label>
@@ -136,7 +136,7 @@ const Catalog: React.FC = () => {
             max="1000"
             value={priceRange}
             onChange={(e) => setPriceRange(Number(e.target.value))}
-            className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-cyan-600"
+            className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-rose-600"
           />
           <div className="flex justify-between text-sm text-gray-600 mt-2">
             <span>$0</span>
@@ -155,7 +155,7 @@ const Catalog: React.FC = () => {
               name="prescription"
               checked={prescriptionFilter === 'all'}
               onChange={() => setPrescriptionFilter('all')}
-              className="text-cyan-600 focus:ring-cyan-500"
+              className="text-rose-600 focus:ring-rose-500"
             />
             <span className="ml-3 text-gray-700 text-sm">All Products</span>
           </label>
@@ -165,7 +165,7 @@ const Catalog: React.FC = () => {
               name="prescription"
               checked={prescriptionFilter === 'prescription'}
               onChange={() => setPrescriptionFilter('prescription')}
-              className="text-cyan-600 focus:ring-cyan-500"
+              className="text-rose-600 focus:ring-rose-500"
             />
             <span className="ml-3 text-gray-700 text-sm">Prescription Only</span>
           </label>
@@ -175,7 +175,7 @@ const Catalog: React.FC = () => {
               name="prescription"
               checked={prescriptionFilter === 'otc'}
               onChange={() => setPrescriptionFilter('otc')}
-              className="text-cyan-600 focus:ring-cyan-500"
+              className="text-rose-600 focus:ring-rose-500"
             />
             <span className="ml-3 text-gray-700 text-sm">Over-the-Counter</span>
           </label>
@@ -215,7 +215,7 @@ const Catalog: React.FC = () => {
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
                 placeholder="Search medications..."
-                className="w-full px-4 py-3 pl-12 border border-gray-300 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-transparent"
+                className="w-full px-4 py-3 pl-12 border border-gray-300 rounded-lg focus:ring-2 focus:ring-rose-500 focus:border-transparent"
               />
               <div className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400">
                 <Search size={20} />
@@ -233,7 +233,7 @@ const Catalog: React.FC = () => {
               <select
                 value={sortOption}
                 onChange={(e) => setSortOption(e.target.value)}
-                className="flex-1 lg:flex-none w-full lg:w-auto px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-cyan-500"
+                className="flex-1 lg:flex-none w-full lg:w-auto px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-rose-500"
               >
                 <option value="">Sort by</option>
                 <option value="price-low">Price: Low to High</option>
@@ -284,7 +284,7 @@ const Catalog: React.FC = () => {
               <div className="flex justify-between items-center mb-6">
                 <h2 className="text-2xl font-bold text-gray-900">All Medications</h2>
                 <div className="flex items-center gap-4">
-                  <p className="text-gray-600 text-sm font-medium"><span className="text-cyan-600">{products.length}</span> products found</p>
+                  <p className="text-gray-600 text-sm font-medium"><span className="text-rose-600">{products.length}</span> products found</p>
                   <span className="text-gray-300">|</span>
                   <p className="text-gray-600 text-sm">Page {currentPage} of {totalPages}</p>
                 </div>
@@ -304,7 +304,7 @@ const Catalog: React.FC = () => {
                       <button
                         onClick={() => handlePageChange(currentPage - 1)}
                         disabled={currentPage === 1}
-                        className="w-10 h-10 rounded-lg flex items-center justify-center font-bold bg-white text-gray-600 hover:bg-gray-100 border border-gray-200 hover:border-cyan-200 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-white disabled:hover:border-gray-200 transition-all"
+                        className="w-10 h-10 rounded-lg flex items-center justify-center font-bold bg-white text-gray-600 hover:bg-gray-100 border border-gray-200 hover:border-rose-200 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-white disabled:hover:border-gray-200 transition-all"
                       >
                         <ChevronLeft size={18} />
                       </button>
@@ -332,8 +332,8 @@ const Catalog: React.FC = () => {
                             key={page}
                             onClick={() => handlePageChange(page)}
                             className={`w-10 h-10 rounded-lg flex items-center justify-center font-bold transition-all duration-200 ${currentPage === page
-                              ? 'bg-cyan-600 text-white shadow-md transform scale-105'
-                              : 'bg-white text-gray-600 hover:bg-gray-100 border border-gray-200 hover:border-cyan-200'
+                              ? 'bg-rose-600 text-white shadow-md transform scale-105'
+                              : 'bg-white text-gray-600 hover:bg-gray-100 border border-gray-200 hover:border-rose-200'
                               }`}
                           >
                             {page}
@@ -344,7 +344,7 @@ const Catalog: React.FC = () => {
                       <button
                         onClick={() => handlePageChange(currentPage + 1)}
                         disabled={currentPage === totalPages}
-                        className="w-10 h-10 rounded-lg flex items-center justify-center font-bold bg-white text-gray-600 hover:bg-gray-100 border border-gray-200 hover:border-cyan-200 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-white disabled:hover:border-gray-200 transition-all"
+                        className="w-10 h-10 rounded-lg flex items-center justify-center font-bold bg-white text-gray-600 hover:bg-gray-100 border border-gray-200 hover:border-rose-200 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-white disabled:hover:border-gray-200 transition-all"
                       >
                         <ChevronRight size={18} />
                       </button>
@@ -354,7 +354,7 @@ const Catalog: React.FC = () => {
               ) : (
                 <div className="text-center py-20 bg-white rounded-xl shadow-sm border border-gray-100">
                   <p className="text-gray-500 text-lg">No products found matching your criteria.</p>
-                  <button onClick={clearFilters} className="mt-4 text-cyan-600 font-medium hover:underline">Clear Filters</button>
+                  <button onClick={clearFilters} className="mt-4 text-rose-600 font-medium hover:underline">Clear Filters</button>
                 </div>
               )}
             </div>

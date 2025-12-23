@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Mail, Phone, MapPin, Clock, Facebook, Instagram, Twitter, ArrowRight, CreditCard, Bitcoin } from 'lucide-react';
+import logo from '../assets/images/logo.jpg';
 
 const Footer: React.FC = () => {
   return (
@@ -8,7 +9,7 @@ const Footer: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
         {/* Newsletter Section */}
-        <div className="bg-emerald-900/30 rounded-2xl p-8 mb-16 border border-emerald-900/50 relative overflow-hidden">
+        <div className="bg-rose-900/20 rounded-2xl p-8 mb-16 border border-rose-900/30 relative overflow-hidden">
           <div className="absolute top-0 right-0 p-8 opacity-10">
             <Mail size={120} />
           </div>
@@ -28,11 +29,11 @@ const Footer: React.FC = () => {
                   name="email"
                   required
                   placeholder="Enter your email address"
-                  className="flex-1 px-4 py-3 rounded-lg bg-gray-800 border border-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-emerald-500"
+                  className="flex-1 px-4 py-3 rounded-lg bg-gray-800 border border-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-rose-500"
                 />
                 <button
                   type="submit"
-                  className="px-6 py-3 bg-emerald-600 text-white font-bold rounded-lg hover:bg-emerald-700 transition-colors flex items-center justify-center gap-2"
+                  className="px-6 py-3 bg-rose-600 text-white font-bold rounded-lg hover:bg-rose-700 transition-colors flex items-center justify-center gap-2"
                 >
                   Subscribe <ArrowRight size={18} />
                 </button>
@@ -46,16 +47,12 @@ const Footer: React.FC = () => {
           {/* Column 1: About */}
           <div>
             <div className="flex items-center gap-3 mb-6">
-              <div className="w-11 h-11 rounded-xl bg-gradient-to-br from-emerald-600 to-teal-800 flex items-center justify-center shadow-lg border border-white/10">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="w-6 h-6 text-white drop-shadow-md">
-                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10" fill="currentColor" fillOpacity="0.15" />
-                  <path d="M12 8v8" />
-                  <path d="M8 12h8" />
-                </svg>
+              <div className="w-11 h-11 rounded-xl shadow-lg overflow-hidden border border-rose-100/20">
+                <img src={logo} alt="Logo" className="w-full h-full object-cover" />
               </div>
               <div className="flex flex-col">
                 <span className="text-2xl font-black text-white tracking-tight font-bodoni italic leading-none">
-                  Pure<span className="text-emerald-500">Protocol</span>
+                  Pure<span className="text-rose-500">Protocol</span>
                 </span>
                 <span className="text-[0.6rem] uppercase tracking-[0.2em] text-gray-500 font-bold ml-0.5">Wellness Store</span>
               </div>
@@ -64,7 +61,7 @@ const Footer: React.FC = () => {
               We strive to be the first and best choice for health care solutions, providing verified supplements for your wellness journey.
             </p>
             <div className="flex gap-4">
-              <a href="#" className="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-emerald-600 transition-colors">
+              <a href="#" className="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-rose-600 transition-colors">
                 <Facebook size={18} />
               </a>
               <a href="#" className="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-pink-600 transition-colors">
@@ -78,48 +75,48 @@ const Footer: React.FC = () => {
 
           {/* Column 2: Quick Links */}
           <div>
-            <h4 className="text-lg font-bold mb-6 text-white border-b-2 border-emerald-600 inline-block pb-1">Quick Links</h4>
+            <h4 className="text-lg font-bold mb-6 text-white border-b-2 border-rose-600 inline-block pb-1">Quick Links</h4>
             <ul className="space-y-3 text-gray-400 text-sm">
-              <li><Link to="/" className="hover:text-emerald-400 transition-colors hover:pl-2 duration-200">Home</Link></li>
-              <li><Link to="/all-pills" className="hover:text-emerald-400 transition-colors hover:pl-2 duration-200">Shop</Link></li>
-              <li><Link to="/about" className="hover:text-emerald-400 transition-colors hover:pl-2 duration-200">About Us</Link></li>
-              <li><Link to="/contact" className="hover:text-emerald-400 transition-colors hover:pl-2 duration-200">Contact</Link></li>
-              <li><Link to="/faq" className="hover:text-emerald-400 transition-colors hover:pl-2 duration-200">FAQ</Link></li>
-              <li><Link to="/shipping-policy" className="hover:text-emerald-400 transition-colors hover:pl-2 duration-200">Shipping Info</Link></li>
-              <li><Link to="/refund-policy" className="hover:text-emerald-400 transition-colors hover:pl-2 duration-200">Return Policy</Link></li>
-              <li><Link to="/track-order" className="hover:text-emerald-400 transition-colors hover:pl-2 duration-200">Track Order</Link></li>
+              <li><Link to="/" className="hover:text-rose-400 transition-colors hover:pl-2 duration-200">Home</Link></li>
+              <li><Link to="/all-pills" className="hover:text-rose-400 transition-colors hover:pl-2 duration-200">Shop</Link></li>
+              <li><Link to="/about" className="hover:text-rose-400 transition-colors hover:pl-2 duration-200">About Us</Link></li>
+              <li><Link to="/contact" className="hover:text-rose-400 transition-colors hover:pl-2 duration-200">Contact</Link></li>
+              <li><Link to="/faq" className="hover:text-rose-400 transition-colors hover:pl-2 duration-200">FAQ</Link></li>
+              <li><Link to="/shipping-policy" className="hover:text-rose-400 transition-colors hover:pl-2 duration-200">Shipping Info</Link></li>
+              <li><Link to="/refund-policy" className="hover:text-rose-400 transition-colors hover:pl-2 duration-200">Return Policy</Link></li>
+              <li><Link to="/track-order" className="hover:text-rose-400 transition-colors hover:pl-2 duration-200">Track Order</Link></li>
             </ul>
           </div>
 
           {/* Column 3: Categories */}
           <div>
-            <h4 className="text-lg font-bold mb-6 text-white border-b-2 border-emerald-600 inline-block pb-1">Categories</h4>
+            <h4 className="text-lg font-bold mb-6 text-white border-b-2 border-rose-600 inline-block pb-1">Categories</h4>
             <ul className="space-y-3 text-gray-400 text-sm">
-              <li><Link to="/all-pills?category=Anabolics" className="hover:text-emerald-400 transition-colors hover:pl-2 duration-200">Anabolics</Link></li>
-              <li><Link to="/all-pills?category=Erectile Dysfunction" className="hover:text-emerald-400 transition-colors hover:pl-2 duration-200">Erectile Dysfunction</Link></li>
-              <li><Link to="/all-pills?category=Anti-Parasites" className="hover:text-emerald-400 transition-colors hover:pl-2 duration-200">Anti-Parasites</Link></li>
-              <li><Link to="/all-pills?category=Ivermectin" className="hover:text-emerald-400 transition-colors hover:pl-2 duration-200">Ivermectin</Link></li>
-              <li><Link to="/all-pills?category=Semaglutide" className="hover:text-emerald-400 transition-colors hover:pl-2 duration-200">Semaglutide</Link></li>
+              <li><Link to="/all-pills?category=Anabolics" className="hover:text-rose-400 transition-colors hover:pl-2 duration-200">Anabolics</Link></li>
+              <li><Link to="/all-pills?category=Erectile Dysfunction" className="hover:text-rose-400 transition-colors hover:pl-2 duration-200">Erectile Dysfunction</Link></li>
+              <li><Link to="/all-pills?category=Anti-Parasites" className="hover:text-rose-400 transition-colors hover:pl-2 duration-200">Anti-Parasites</Link></li>
+              <li><Link to="/all-pills?category=Ivermectin" className="hover:text-rose-400 transition-colors hover:pl-2 duration-200">Ivermectin</Link></li>
+              <li><Link to="/all-pills?category=Semaglutide" className="hover:text-rose-400 transition-colors hover:pl-2 duration-200">Semaglutide</Link></li>
             </ul>
           </div>
 
           {/* Column 4: Need Help */}
           <div>
-            <h4 className="text-lg font-bold mb-6 text-white border-b-2 border-emerald-600 inline-block pb-1">Need Help</h4>
+            <h4 className="text-lg font-bold mb-6 text-white border-b-2 border-rose-600 inline-block pb-1">Need Help</h4>
             <div className="space-y-4 text-gray-400 text-sm">
               <p className="flex items-start gap-3">
-                <Phone size={18} className="text-emerald-500 mt-1" />
+                <Phone size={18} className="text-rose-500 mt-1" />
                 <span className="text-xl text-white font-bold">+1(581)5085308</span>
               </p>
               <div className="flex items-start gap-3">
-                <Clock size={18} className="text-emerald-500 mt-1" />
+                <Clock size={18} className="text-rose-500 mt-1" />
                 <div>
                   <p className="mb-1">Monday – Friday: 9:00-20:00</p>
                   <p>Saturday: 11:00 – 15:00</p>
                 </div>
               </div>
               <p className="flex items-center gap-3">
-                <Mail size={18} className="text-emerald-500" />
+                <Mail size={18} className="text-rose-500" />
                 joe.tippens@email.com
               </p>
             </div>

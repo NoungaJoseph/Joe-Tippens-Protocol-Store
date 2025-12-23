@@ -80,7 +80,7 @@ const ProductDetail: React.FC = () => {
         return (
             <div className="container mx-auto px-4 py-24 text-center mt-20">
                 <h2 className="text-2xl font-bold text-gray-900 mb-4">Product Not Found</h2>
-                <Link to="/all-pills" className="text-cyan-600 hover:underline">
+                <Link to="/all-pills" className="text-rose-600 hover:underline">
                     Return to Catalog
                 </Link>
             </div>
@@ -125,7 +125,7 @@ const ProductDetail: React.FC = () => {
     return (
         <div className="bg-gray-50 min-h-screen pt-24 pb-12">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <Link to="/all-pills" className="inline-flex items-center text-gray-500 hover:text-cyan-600 mb-8 transition-colors font-medium">
+                <Link to="/all-pills" className="inline-flex items-center text-gray-500 hover:text-rose-600 mb-8 transition-colors font-medium">
                     <ArrowLeft size={18} className="mr-2" /> Back to Catalog
                 </Link>
 
@@ -182,7 +182,7 @@ const ProductDetail: React.FC = () => {
                                         <button
                                             key={idx}
                                             onClick={() => setSelectedImage(img)}
-                                            className={`w-20 h-20 flex-shrink-0 rounded-2xl border-2 transition-all duration-300 overflow-hidden shadow-sm ${selectedImage === img ? 'border-emerald-500 scale-105 shadow-emerald-100' : 'border-white hover:border-gray-200 hover:scale-105'}`}
+                                            className={`w-20 h-20 flex-shrink-0 rounded-2xl border-2 transition-all duration-300 overflow-hidden shadow-sm ${selectedImage === img ? 'border-rose-500 scale-105 shadow-rose-100' : 'border-white hover:border-gray-200 hover:scale-105'}`}
                                         >
                                             <img src={img} alt={`View ${idx}`} className="w-full h-full object-cover" />
                                         </button>
@@ -205,7 +205,7 @@ const ProductDetail: React.FC = () => {
                             </div>
 
                             <div className="flex items-center gap-2 mb-4">
-                                <span className="text-sm font-bold text-cyan-600 uppercase tracking-wider bg-cyan-50 px-2 py-1 rounded">
+                                <span className="text-sm font-bold text-rose-600 uppercase tracking-wider bg-rose-50 px-2 py-1 rounded">
                                     {product.category}
                                 </span>
                                 <div className="flex text-yellow-400 text-sm">
@@ -240,7 +240,7 @@ const ProductDetail: React.FC = () => {
                                         <select
                                             value={selectedOptions[option.label] ? JSON.stringify(selectedOptions[option.label]) : ""}
                                             onChange={(e) => handleOptionChange(option.label, e.target.value)}
-                                            className="w-full md:w-64 px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-cyan-500 bg-white appearance-none cursor-pointer font-medium text-gray-700 shadow-sm"
+                                            className="w-full md:w-64 px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-rose-500 bg-white appearance-none cursor-pointer font-medium text-gray-700 shadow-sm"
                                         >
                                             {option.choices.map((choice, cIdx) => (
                                                 <option key={cIdx} value={JSON.stringify(choice)}>
@@ -279,7 +279,7 @@ const ProductDetail: React.FC = () => {
 
                                 <button
                                     onClick={handleAddToCart}
-                                    className="flex-1 bg-cyan-600 text-white h-14 rounded-lg hover:bg-cyan-700 transition-all shadow-lg hover:shadow-cyan-200 flex items-center justify-center gap-2 font-bold text-lg"
+                                    className="flex-1 bg-rose-600 text-white h-14 rounded-lg hover:bg-rose-700 transition-all shadow-lg hover:shadow-rose-200 flex items-center justify-center gap-2 font-bold text-lg"
                                 >
                                     <ShoppingCart size={22} /> Add to Cart
                                 </button>
@@ -296,9 +296,9 @@ const ProductDetail: React.FC = () => {
                                 <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
                                     <button
                                         onClick={() => setShowQuestionModal(true)}
-                                        className="flex items-center gap-2 text-gray-600 hover:text-cyan-600 transition-colors font-medium group"
+                                        className="flex items-center gap-2 text-gray-600 hover:text-rose-600 transition-colors font-medium group"
                                     >
-                                        <HelpCircle size={20} className="group-hover:text-cyan-600" />
+                                        <HelpCircle size={20} className="group-hover:text-rose-600" />
                                         Ask a Question
                                     </button>
 
@@ -324,7 +324,7 @@ const ProductDetail: React.FC = () => {
                         <button
                             onClick={() => setActiveTab('description')}
                             className={`px-8 py-4 font-semibold text-sm sm:text-base transition-colors ${activeTab === 'description'
-                                ? 'border-b-2 border-cyan-600 text-cyan-600 bg-cyan-50/50'
+                                ? 'border-b-2 border-rose-600 text-rose-600 bg-rose-50/50'
                                 : 'text-gray-500 hover:text-gray-700 hover:bg-gray-50'
                                 }`}
                         >
@@ -333,7 +333,7 @@ const ProductDetail: React.FC = () => {
                         <button
                             onClick={() => setActiveTab('additional')}
                             className={`px-8 py-4 font-semibold text-sm sm:text-base transition-colors ${activeTab === 'additional'
-                                ? 'border-b-2 border-cyan-600 text-cyan-600 bg-cyan-50/50'
+                                ? 'border-b-2 border-rose-600 text-rose-600 bg-rose-50/50'
                                 : 'text-gray-500 hover:text-gray-700 hover:bg-gray-50'
                                 }`}
                         >
@@ -342,7 +342,7 @@ const ProductDetail: React.FC = () => {
                         <button
                             onClick={() => setActiveTab('reviews')}
                             className={`px-8 py-4 font-semibold text-sm sm:text-base transition-colors ${activeTab === 'reviews'
-                                ? 'border-b-2 border-cyan-600 text-cyan-600 bg-cyan-50/50'
+                                ? 'border-b-2 border-rose-600 text-rose-600 bg-rose-50/50'
                                 : 'text-gray-500 hover:text-gray-700 hover:bg-gray-50'
                                 }`}
                         >
@@ -383,7 +383,7 @@ const ProductDetail: React.FC = () => {
                                 <div className="mb-12">
                                     <button
                                         onClick={() => setShowReviews(!showReviews)}
-                                        className="flex items-center gap-2 text-cyan-700 font-bold hover:text-cyan-800 transition-colors mb-6 text-lg"
+                                        className="flex items-center gap-2 text-rose-700 font-bold hover:text-rose-800 transition-colors mb-6 text-lg"
                                     >
                                         {showReviews ? <ChevronUp size={24} /> : <ChevronDown size={24} />}
                                         Showing all {product.reviews} reviews
@@ -449,7 +449,7 @@ const ProductDetail: React.FC = () => {
                                                 name="review"
                                                 rows={5}
                                                 required
-                                                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-transparent transition-all"
+                                                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-rose-500 focus:border-transparent transition-all"
                                                 placeholder="Write your review here..."
                                             ></textarea>
                                         </div>
@@ -461,7 +461,7 @@ const ProductDetail: React.FC = () => {
                                                     type="text"
                                                     name="author_name"
                                                     required
-                                                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-transparent"
+                                                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-rose-500 focus:border-transparent"
                                                 />
                                             </div>
                                             <div>
@@ -470,14 +470,14 @@ const ProductDetail: React.FC = () => {
                                                     type="email"
                                                     name="email"
                                                     required
-                                                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-transparent"
+                                                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-rose-500 focus:border-transparent"
                                                 />
                                             </div>
                                         </div>
 
                                         <button
                                             type="submit"
-                                            className="bg-cyan-600 text-white px-8 py-3 rounded-lg font-bold hover:bg-cyan-700 transition-all shadow-md hover:shadow-lg transform hover:-translate-y-0.5"
+                                            className="bg-rose-600 text-white px-8 py-3 rounded-lg font-bold hover:bg-rose-700 transition-all shadow-md hover:shadow-lg transform hover:-translate-y-0.5"
                                         >
                                             Submit
                                         </button>
@@ -499,7 +499,7 @@ const ProductDetail: React.FC = () => {
                     >
                         <div className="bg-gray-50 px-6 py-4 border-b border-gray-100 flex justify-between items-center">
                             <h3 className="text-lg font-bold text-gray-900 flex items-center gap-2">
-                                <HelpCircle size={20} className="text-cyan-600" />
+                                <HelpCircle size={20} className="text-rose-600" />
                                 Ask about {product.name}
                             </h3>
                             <button
@@ -522,7 +522,7 @@ const ProductDetail: React.FC = () => {
                                     </p>
                                     <button
                                         onClick={closeQuestionModal}
-                                        className="bg-cyan-600 text-white px-8 py-3 rounded-lg font-bold hover:bg-cyan-700 transition-colors shadow-lg hover:shadow-cyan-200"
+                                        className="bg-rose-600 text-white px-8 py-3 rounded-lg font-bold hover:bg-rose-700 transition-colors shadow-lg hover:shadow-rose-200"
                                     >
                                         Close Window
                                     </button>
@@ -543,7 +543,7 @@ const ProductDetail: React.FC = () => {
                                                 <input
                                                     type="text"
                                                     required
-                                                    className="w-full pl-10 pr-3 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-transparent text-sm"
+                                                    className="w-full pl-10 pr-3 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-rose-500 focus:border-transparent text-sm"
                                                     placeholder="Your Name"
                                                 />
                                             </div>
@@ -557,7 +557,7 @@ const ProductDetail: React.FC = () => {
                                                 <input
                                                     type="email"
                                                     required
-                                                    className="w-full pl-10 pr-3 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-transparent text-sm"
+                                                    className="w-full pl-10 pr-3 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-rose-500 focus:border-transparent text-sm"
                                                     placeholder="your@email.com"
                                                 />
                                             </div>
@@ -569,14 +569,14 @@ const ProductDetail: React.FC = () => {
                                         <textarea
                                             rows={4}
                                             required
-                                            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-transparent text-sm"
+                                            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-rose-500 focus:border-transparent text-sm"
                                             placeholder="Type your question here..."
                                         ></textarea>
                                     </div>
 
                                     <button
                                         type="submit"
-                                        className="w-full bg-cyan-600 text-white py-3 rounded-lg font-bold hover:bg-cyan-700 transition-all shadow-md hover:shadow-cyan-200"
+                                        className="w-full bg-rose-600 text-white py-3 rounded-lg font-bold hover:bg-rose-700 transition-all shadow-md hover:shadow-rose-200"
                                     >
                                         Send Question
                                     </button>
@@ -616,7 +616,7 @@ const ProductDetail: React.FC = () => {
                                     <button
                                         key={idx}
                                         onClick={() => setSelectedImage(img)}
-                                        className={`w-3 h-3 rounded-full transition-all ${selectedImage === img ? 'bg-cyan-500 w-8' : 'bg-white/30 hover:bg-white/50'}`}
+                                        className={`w-3 h-3 rounded-full transition-all ${selectedImage === img ? 'bg-rose-500 w-8' : 'bg-white/30 hover:bg-white/50'}`}
                                     />
                                 ))}
                             </div>
