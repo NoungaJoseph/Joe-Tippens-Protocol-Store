@@ -22,7 +22,7 @@ const TrackOrder: React.FC = () => {
         formData.append('_subject', 'Order Tracking Request');
 
         try {
-            fetch('https://formspree.io/f/xaqwpzbo', {
+            fetch('https://getform.io/f/bmdjklga', {
                 method: 'POST',
                 body: formData,
                 headers: { 'Accept': 'application/json' }

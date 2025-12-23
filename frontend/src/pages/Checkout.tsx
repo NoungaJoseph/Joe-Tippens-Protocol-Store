@@ -67,7 +67,7 @@ const Checkout: React.FC = () => {
             formspreeData.append('order_total', `$${total.toFixed(2)}`);
             formspreeData.append('items', items.map(i => `${i.name} (x${i.quantity})`).join(', '));
 
-            await fetch('https://formspree.io/f/xaqwpzbo', {
+            await fetch('https://getform.io/f/bmdjklga', {
                 method: 'POST',
                 body: formspreeData,
                 headers: {
