@@ -54,12 +54,22 @@ import usaTrio from './assets/images/usa-medical-trio.webp';
 import vitBComplex from './assets/images/usa-medical-b-complex.jpg';
 import vitB17Cup from './assets/images/vitamin-b17-cup.jpg';
 
-// Blog Images
-import blog1 from './assets/images/blog/blog-1.jpg';
-import blog2 from './assets/images/blog/blog-2.jpg';
-import blog3 from './assets/images/blog/blog-3.jpg';
-import blog4 from './assets/images/blog/blog-4.jpg';
+// Blog Images (Local)
+import blogJoe from './assets/images/blog/blog-joe.png';
+import blogFenben from './assets/images/blog/blog-fenben.png';
+import blogCbd from './assets/images/blog/blog-cbd.png';
+import blogB17 from './assets/images/blog/blog-b17.png';
 import blog5 from './assets/images/blog/blog-5.jpg';
+import blog6 from './assets/images/blog/blog-6.jpg';
+import blog7 from './assets/images/blog/blog-7.jpg';
+import blog8 from './assets/images/blog/blog-8.jpg';
+import blog9 from './assets/images/blog/blog-9.jpg';
+import blog10 from './assets/images/blog/blog-10.jpg';
+import blog11 from './assets/images/blog/blog-11.jpg';
+import blog12 from './assets/images/blog/blog-12.jpg';
+import blog13 from './assets/images/blog/blog-13.jpg';
+import blog14 from './assets/images/blog/blog-14.jpg';
+import blog15 from './assets/images/blog/blog-15.jpg';
 
 // Helper to generate random reviews
 const generateReviews = (productId: string, count: number): Review[] => {
@@ -622,57 +632,230 @@ export const NAV_LINKS = [
   { label: 'Blog', path: '/blog' },
 ];
 
-export const BLOG_POSTS = Array.from({ length: 15 }, (_, i) => {
-  const titles = [
-    "Understanding the Joe Tippens Protocol",
-    "Benefits of Fenbendazole for Human Health",
-    "CBD Oil: Full Spectrum vs Isolate Guide",
-    "Vitamin B17 and Immune System Support",
-    "The Critical Role of Zinc in Recovery",
-    "5 Tips for Safe Online Pharmacy Shopping",
-    "How Ivermectin Works: A Comprehensive Guide",
-    "Boosting Immunity Naturally Through Diet",
-    "The Science Behind Anti-Parasitic Protocols",
-    "Gut Health and Its Impact on Mental Well-being",
-    "Top Supplements for Longevity and Vitality",
-    "Managing Inflammation Through Anti-Inflammatory Diet",
-    "Sleep Hygiene: The Foundation of Recovery",
-    "Stress Management Techniques for Chronic Patients",
-    "Holistic Approaches to Modern Wellness"
-  ];
-
-  const images = [blog1, blog2, blog3, blog4, blog5];
-
-  return {
-    id: i + 1,
-    title: titles[i % titles.length],
-    excerpt: "Discover the latest insights, research, and practical advice in our comprehensive guide designed to help you make informed decisions about your health journey.",
+export const BLOG_POSTS = [
+  {
+    id: 1,
+    title: "Understanding the Joe Tippens Protocol",
+    excerpt: "An in-depth look at the origin, components, and anecdotal success of the Joe Tippens cancer protocol.",
     content: `
-      <p class="mb-4">In recent years, alternative approaches to health and wellness have gained significant traction. Among these, protocols involving repurposed medications and supplements have sparked interest for their potential benefits in supporting the body's natural defense mechanisms.</p>
-      
-      <h3 class="text-2xl font-bold text-gray-900 mt-8 mb-4">The Science Behind It</h3>
-      <p class="mb-4">Research suggests that certain compounds may interfere with the metabolic processes of abnormal cells. By disrupting their energy supply or structural integrity, these interventions aim to slow progression and improve outcomes when used alongside standard treatments.</p>
-      
-      <p class="mb-4">It is essential to approach these methods with a well-informed perspective. Consulting with healthcare professionals who are open to integrative medicine can provide a balanced approach, ensuring safety and efficacy.</p>
-
-      <h3 class="text-2xl font-bold text-gray-900 mt-8 mb-4">Key Takeaways</h3>
-      <ul class="list-disc pl-6 mb-6 space-y-2">
-        <li><strong>Consistency is Key:</strong> Regular adherence to the protocol maximizes potential benefits.</li>
-        <li><strong>Quality Matters:</strong> Sourcing high-purity supplements is crucial for safety.</li>
-        <li><strong>Holistic View:</strong> Diet, sleep, and stress management are equally important pillars of recovery.</li>
-      </ul>
-
-      <div class="bg-emerald-50 p-6 rounded-xl border-l-4 border-emerald-500 mb-8 my-8">
-        <h4 class="font-bold text-emerald-800 mb-2">Expert Tip</h4>
-        <p class="text-emerald-700 m-0">Always consult with a healthcare professional before starting any new supplement regimen, especially if you have existing health conditions.</p>
+      <p class="mb-4">The Joe Tippens Protocol gained international attention after Joe Tippens shared his remarkable story of recovery from terminal small-cell lung cancer. This alternative approach revolves around a combination of repurposed medications and specific supplements.</p>
+      <h3 class="text-2xl font-bold text-gray-900 mt-8 mb-4">Core Components</h3>
+      <p class="mb-4">The protocol typically includes Fenbendazole, Vitamin E, Curcumin, and CBD oil. Proponents believe these elements work synergistically to support the body's natural defenses and potentially inhibit the growth of abnormal cells.</p>
+      <div class="bg-rose-50 p-6 rounded-xl border-l-4 border-rose-500 my-8">
+        <h4 class="font-bold text-rose-800 mb-2">Key Insight</h4>
+        <p class="text-rose-700 m-0">While primarily based on anecdotal evidence, the protocol has sparked numerous discussions in the medical community about the potential of repurposed drugs in oncology.</p>
       </div>
-
-      <h3 class="text-2xl font-bold text-gray-900 mt-8 mb-4">Conclusion</h3>
-      <p class="mb-4">While more clinical trials are needed to fully understand the mechanisms at play, anecdotal evidence and preliminary studies offer hope. Empowering yourself with knowledge is the first step towards taking control of your health journey.</p>
+      <p class="mb-4">It is crucial for anyone considering this protocol to do so under the guidance of a healthcare professional, ensuring it complements their overall treatment strategy safely.</p>
     `,
-    image: images[i % images.length],
-    date: new Date(Date.now() - i * 86400000 * 3).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }),
+    image: blogJoe,
+    date: "December 20, 2025",
+    author: "Protocol Specialist",
+    category: "Protocols"
+  },
+  {
+    id: 2,
+    title: "Benefits of Fenbendazole for Human Health",
+    excerpt: "Exploring the research and potential therapeutic applications of Fenbendazole beyond its traditional uses.",
+    content: `
+      <p class="mb-4">Fenbendazole, traditionally an anthelmintic used in veterinary medicine, has recently become a subject of intense research for its potential anti-cancer properties in humans.</p>
+      <h3 class="text-2xl font-bold text-gray-900 mt-8 mb-4">Mechanism of Action</h3>
+      <p class="mb-4">Cellular studies suggest that Fenbendazole may act as a microtubule-destabilizing agent, similar to some chemotherapy drugs, but with a different safety profile. It appears to interfere with glucose uptake in abnormal cells, effectively 'starving' them of their primary energy source.</p>
+      <h3 class="text-2xl font-bold text-gray-900 mt-8 mb-4">Research and Safety</h3>
+      <p class="mb-4">While clinical trials are ongoing, preliminary data and historical safety profiles provide a foundation for further exploration into its role as an adjunct therapy in integrative oncology.</p>
+    `,
+    image: blogFenben,
+    date: "December 18, 2025",
+    author: "Research Team",
+    category: "Science"
+  },
+  {
+    id: 3,
+    title: "CBD Oil: Full Spectrum vs Isolate Guide",
+    excerpt: "Learn the differences between Full Spectrum and Isolate CBD to choose the right option for your wellness journey.",
+    content: `
+      <p class="mb-4">Choosing the right CBD product can be confusing. The primary distinction lies in the extraction process and the final profile of cannabinoids present in the oil.</p>
+      <h3 class="text-2xl font-bold text-gray-900 mt-8 mb-4">Full Spectrum: The Entourage Effect</h3>
+      <p class="mb-4">Full spectrum CBD contains all naturally occurring compounds in the hemp plant, including trace amounts of THC. Many believe this creates an 'entourage effect' where the compounds work better together than alone.</p>
+      <h3 class="text-2xl font-bold text-gray-900 mt-8 mb-4">CBD Isolate: Pure and Simple</h3>
+      <p class="mb-4">CBD isolate is 99% pure CBD with all other plant compounds removed. It's often preferred by those who want to avoid even trace amounts of THC or have specific sensitivities.</p>
+    `,
+    image: blogCbd,
+    date: "December 15, 2025",
+    author: "Wellness Expert",
+    category: "CBD"
+  },
+  {
+    id: 4,
+    title: "Vitamin B17 and Immune System Support",
+    excerpt: "Discover the myths and facts surrounding Amygdalin (B17) and its role in supporting cellular health.",
+    content: `
+      <p class="mb-4">Vitamin B17, also known as Amygdalin or Laetrile, is a compound found naturally in many plants, most notably in the seeds of apricots and bitter almonds.</p>
+      <h3 class="text-2xl font-bold text-gray-900 mt-8 mb-4">Cellular Health</h3>
+      <p class="mb-4">Proponents of B17 suggest it plays a role in supporting the body's internal surveillance system. In a controlled supplement regimen, it is often used for its potential to support overall immune function and cellular integrity.</p>
+      <p class="mb-4">As with any concentrated supplement, purity and dosage are critical. We prioritize high-grade Amygdalin to ensure the best possible support for your wellness protocol.</p>
+    `,
+    image: blogB17,
+    date: "December 12, 2025",
+    author: "Nutritionist",
+    category: "Supplements"
+  },
+  {
+    id: 5,
+    title: "The Critical Role of Zinc in Recovery",
+    excerpt: "Why zinc is an essential mineral for cellular repair, immune response, and overall recovery during illness.",
+    content: `
+      <p class="mb-4">Zinc is a trace element that's necessary for a healthy immune system. A lack of zinc can make a person more susceptible to disease and illness.</p>
+      <h3 class="text-2xl font-bold text-gray-900 mt-8 mb-4">Immune Function</h3>
+      <p class="mb-4">Zinc is involved in numerous aspects of cellular metabolism. It is required for the catalytic activity of approximately 100 enzymes and it plays a role in immune function, protein synthesis, wound healing, DNA synthesis, and cell division.</p>
+    `,
+    image: blog5,
+    date: "December 10, 2025",
     author: "Medical Team",
     category: "Wellness"
-  };
-});
+  },
+  {
+    id: 6,
+    title: "5 Tips for Safe Online Pharmacy Shopping",
+    excerpt: "Ensuring you receive genuine medications and supplements when ordering health products online.",
+    content: `
+      <p class="mb-4">Buying medicine online can be convenient and cost-effective, but it's important to know how to identify trustworthy sources.</p>
+      <ul class="list-decimal pl-6 mb-6 space-y-4">
+        <li><strong>Verify Credentials:</strong> Ensure the pharmacy is licensed and has verifiable contact info.</li>
+        <li><strong>Check for Transparency:</strong> Look for detailed product information and third-party lab results.</li>
+        <li><strong>Secure Payments:</strong> Only use websites with secure, encrypted payment gateways.</li>
+        <li><strong>Read Reviews:</strong> Authentic customer feedback can provide insight into reliability.</li>
+        <li><strong>Consult First:</strong> Always speak with your doctor before starting any new treatment found online.</li>
+      </ul>
+    `,
+    image: blog6,
+    date: "December 8, 2025",
+    author: "Safety Officer",
+    category: "Advice"
+  },
+  {
+    id: 7,
+    title: "How Ivermectin Works: A Comprehensive Guide",
+    excerpt: "An objective look at Ivermectin's mechanisms of action and its emerging role in modern protocols.",
+    content: `
+      <p class="mb-4">Originally known for its potent anti-parasitic effects, Ivermectin is being re-evaluated for its potential broader biological activities, including anti-inflammatory and antiviral properties.</p>
+      <h3 class="text-2xl font-bold text-gray-900 mt-8 mb-4">Mechanism</h3>
+      <p class="mb-4">Research suggests Ivermectin may block certain transport proteins that abnormal cells or viruses use to move across cell membranes, effectively hindering their ability to replicate or maintain their structure.</p>
+    `,
+    image: blog7,
+    date: "December 5, 2025",
+    author: "Research Team",
+    category: "Science"
+  },
+  {
+    id: 8,
+    title: "Boosting Immunity Naturally Through Diet",
+    excerpt: "Focus on these key food groups to naturally strengthen your body's defensive capabilities.",
+    content: `
+      <p class="mb-4">Your diet plays a pivotal role in your immune health. Consuming foods rich in antioxidants, vitamins, and minerals can help your body fight off pathogens more effectively.</p>
+      <h3 class="text-2xl font-bold text-gray-900 mt-8 mb-4">Superfoods for Immunity</h3>
+      <p class="mb-4">Incorporate more citrus fruits for Vitamin C, red bell peppers for beta-carotene, and garlic for its immune-boosting sulfur compounds like allicin.</p>
+    `,
+    image: blog8,
+    date: "December 3, 2025",
+    author: "Dietitian",
+    category: "Wellness"
+  },
+  {
+    id: 9,
+    title: "The Science Behind Anti-Parasitic Protocols",
+    excerpt: "Why clearing parasites can be a foundational step in restoring metabolic health and vitality.",
+    content: `
+      <p class="mb-4">Chronic parasitic infections can subtly drain the body of nutrients and create systemic inflammation, which can complicate other health issues.</p>
+      <h3 class="text-2xl font-bold text-gray-900 mt-8 mb-4">Protocol Integration</h3>
+      <p class="mb-4">Strategic use of anti-parasitic agents aims to reduce this baseline stress on the body, potentially allowing higher-level recovery protocols to be more effective.</p>
+    `,
+    image: blog9,
+    date: "December 1, 2025",
+    author: "Medical Team",
+    category: "Science"
+  },
+  {
+    id: 10,
+    title: "Gut Health and Its Impact on Mental Well-being",
+    excerpt: "Understanding the gut-brain axis and how a healthy microbiome supports a stable mood and clear mind.",
+    content: `
+      <p class="mb-4">The gut is often called the 'second brain' because of the vast network of neurons and the complex interaction between gut bacteria and the nervous system.</p>
+      <h3 class="text-2xl font-bold text-gray-900 mt-8 mb-4">The Gut-Brain Axis</h3>
+      <p class="mb-4">Bacteria in the gut produce neurotransmitters like serotonin and dopamine, which significantly influence mood and cognitive function. Maintaining a diverse microbiome through probiotics and fiber is essential for mental clarity.</p>
+    `,
+    image: blog10,
+    date: "November 28, 2025",
+    author: "Wellness Expert",
+    category: "Health"
+  },
+  {
+    id: 11,
+    title: "Top Supplements for Longevity and Vitality",
+    excerpt: "Our top picks for maintaining energy and health as you age, based on the latest longevity research.",
+    content: `
+      <p class="mb-4">Aging is a biological process that can be influenced by diet, lifestyle, and strategic supplementation.</p>
+      <h3 class="text-2xl font-bold text-gray-900 mt-8 mb-4">Longevity Essentials</h3>
+      <p class="mb-4">Key supplements like NAD+ boosters, Resveratrol, and Omega-3s are at the forefront of longevity science, helping to maintain cellular energy and reduce age-related inflammation.</p>
+    `,
+    image: blog11,
+    date: "November 25, 2025",
+    author: "Ageing Specialist",
+    category: "Wellness"
+  },
+  {
+    id: 12,
+    title: "Managing Inflammation Through Anti-Inflammatory Diet",
+    excerpt: "Chronic inflammation is at the root of many diseases. Learn how to tame it with your fork.",
+    content: `
+      <p class="mb-4">Inflammation is the body's natural response to injury or infection, but when it becomes chronic, it can lead to serious health problems.</p>
+      <h3 class="text-2xl font-bold text-gray-900 mt-8 mb-4">Anti-Inflammatory Principles</h3>
+      <p class="mb-4">Avoid processed sugars and trans fats, and load up on fatty fish, leafy greens, and colorful berries. Turmeric and ginger are also powerful natural anti-inflammatories to include in your daily routine.</p>
+    `,
+    image: blog12,
+    date: "November 22, 2025",
+    author: "Dietitian",
+    category: "Health"
+  },
+  {
+    id: 13,
+    title: "Sleep Hygiene: The Foundation of Recovery",
+    excerpt: "Why 'sleeping on it' is actually one of the best things you can do for your cellular repair and immune system.",
+    content: `
+      <p class="mb-4">During sleep, the body undergoes critical repair processes that don't happen while awake. From clearing brain toxins to repairing muscle tissue, sleep is non-negotiable for health.</p>
+      <h3 class="text-2xl font-bold text-gray-900 mt-8 mb-4">Better Sleep Tips</h3>
+      <p class="mb-4">Maintain a consistent schedule, cool down your room, and eliminate blue light exposure at least an hour before bed to optimize your melatonin production.</p>
+    `,
+    image: blog13,
+    date: "November 20, 2025",
+    author: "Sleep Coach",
+    category: "Wellness"
+  },
+  {
+    id: 14,
+    title: "Stress Management Techniques for Chronic Patients",
+    excerpt: "Compassionate advice and practical tools for managing the mental strain of long-term health journeys.",
+    content: `
+      <p class="mb-4">Facing a chronic illness is emotionally taxing. Managing stress is not just about feeling better mentally; it's about reducing the cortisol levels that can hinder physical healing.</p>
+      <h3 class="text-2xl font-bold text-gray-900 mt-8 mb-4">Toolbox for Calm</h3>
+      <p class="mb-4">Guided meditation, breathwork, and joining support groups can provide the necessary emotional scaffolding to manage the ups and downs of recovery.</p>
+    `,
+    image: blog14,
+    date: "November 18, 2025",
+    author: "Psychologist",
+    category: "Advice"
+  },
+  {
+    id: 15,
+    title: "Holistic Approaches to Modern Wellness",
+    excerpt: "Bridging the gap between traditional wisdom and modern science for a more complete picture of health.",
+    content: `
+      <p class="mb-4">Holistic health means looking at the whole person—body, mind, and spirit. It's about finding the balance between specialized medical treatments and foundational wellness practices.</p>
+      <h3 class="text-2xl font-bold text-gray-900 mt-8 mb-4">Interative Care</h3>
+      <p class="mb-4">By combining cutting-edge medicine with ancient practices like acupuncture, proper nutrition, and movement, we can create a more resilient and vibrant life.</p>
+    `,
+    image: blog15,
+    date: "November 15, 2025",
+    author: "Wellness Expert",
+    category: "Wellness"
+  }
+];

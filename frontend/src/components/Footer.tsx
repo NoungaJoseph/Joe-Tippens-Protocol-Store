@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Mail, Phone, MapPin, Clock, Facebook, Instagram, Twitter, ArrowRight, CreditCard, Bitcoin } from 'lucide-react';
-import logo from '../assets/images/logo.jpg';
+import logo from '../assets/images/logo-icon.png';
 
 const Footer: React.FC = () => {
   return (
@@ -47,8 +47,8 @@ const Footer: React.FC = () => {
           {/* Column 1: About */}
           <div>
             <div className="flex items-center gap-3 mb-6">
-              <div className="w-11 h-11 rounded-xl shadow-lg overflow-hidden border border-rose-100/20">
-                <img src={logo} alt="Logo" className="w-full h-full object-cover" />
+              <div className="w-11 h-11 rounded-xl bg-white shadow-lg overflow-hidden border border-gray-800 flex items-center justify-center">
+                <img src={logo} alt="Logo" className="w-8 h-8 object-contain" />
               </div>
               <div className="flex flex-col">
                 <span className="text-2xl font-black text-white tracking-tight font-bodoni italic leading-none">
