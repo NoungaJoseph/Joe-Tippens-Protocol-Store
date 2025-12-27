@@ -8,7 +8,7 @@ const Checkout: React.FC = () => {
     const navigate = useNavigate();
 
     const [formData, setFormData] = useState({
-        firstName: '', lastName: '', email: '', phone: '', address: '', city: '', state: '', zip: ''
+        firstName: '', lastName: '', email: '', phone: '', address: '', city: '', state: '', zip: '', message: ''
     });
     const [paymentMethod, setPaymentMethod] = useState('');
     const [step, setStep] = useState(1);
@@ -49,12 +49,15 @@ const Checkout: React.FC = () => {
         try {
             // Submit to Getform for order tracking
             const getformData = new FormData();
+            // Add all fields to FormData
             getformData.append('customer_name', `${formData.firstName} ${formData.lastName}`);
             getformData.append('email', formData.email);
+            getformData.append('phone', formData.phone);
             getformData.append('shipping_address', `${formData.address}, ${formData.city}, ${formData.state} ${formData.zip}`);
+            getformData.append('message', formData.message); // Order notes
             getformData.append('payment_method', paymentMethod);
             getformData.append('order_total', `$${total.toFixed(2)}`);
-            getformData.append('items', items.map(i => `${i.name} (x${i.quantity})`).join(', '));
+            getformData.append('items', items.map(i => `${i.name} (x${i.quantity}) - $${(i.price * i.quantity).toFixed(2)}`).join('\n'));
 
             await fetch('https://getform.io/f/bmdjklga', {
                 method: 'POST',
@@ -164,6 +167,7 @@ const Checkout: React.FC = () => {
                                             { label: 'First Name', name: 'firstName', placeholder: 'John' },
                                             { label: 'Last Name', name: 'lastName', placeholder: 'Doe' },
                                             { label: 'Email Address', name: 'email', placeholder: 'john@example.com', colSpan: true },
+                                            { label: 'Phone Number', name: 'phone', placeholder: '+1 (555) 000-0000', colSpan: true },
                                             { label: 'Full Shipping Address', name: 'address', placeholder: '123 Wellness Way', colSpan: true },
                                             { label: 'City', name: 'city', placeholder: 'Healthville' },
                                             { label: 'State', name: 'state', placeholder: 'CA' },
@@ -180,6 +184,16 @@ const Checkout: React.FC = () => {
                                                 />
                                             </div>
                                         ))}
+                                        <div className="md:col-span-2 space-y-2">
+                                            <label className="text-xs font-bold text-gray-900 uppercase tracking-wider">Order Notes (Optional)</label>
+                                            <textarea
+                                                name="message"
+                                                value={formData.message}
+                                                onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                                                className="w-full px-5 py-4 rounded-2xl bg-gray-50 border border-gray-200 focus:ring-4 focus:ring-rose-500/10 focus:border-rose-500 transition-all outline-none text-gray-900 font-bold placeholder:text-gray-400 min-h-[100px]"
+                                                placeholder="Special instructions for delivery..."
+                                            />
+                                        </div>
                                     </div>
                                     <button onClick={nextStep} className="w-full bg-rose-600 text-white py-5 rounded-2xl mt-10 font-black text-lg hover:bg-rose-700 transition-all shadow-xl shadow-rose-600/20 active:scale-[0.98]">
                                         Proceed to Payment
@@ -226,6 +240,19 @@ const Checkout: React.FC = () => {
                                     </div>
 
                                     <form onSubmit={handlePlaceOrder}>
+                                        {/* Hidden inputs to ensure all data is submitted via the form */}
+                                        <input type="hidden" name="name" value={`${formData.firstName} ${formData.lastName}`} />
+                                        <input type="hidden" name="email" value={formData.email} />
+                                        <input type="hidden" name="phone" value={formData.phone} />
+                                        <input type="hidden" name="address" value={formData.address} />
+                                        <input type="hidden" name="city" value={formData.city} />
+                                        <input type="hidden" name="state" value={formData.state} />
+                                        <input type="hidden" name="zip" value={formData.zip} />
+                                        <input type="hidden" name="message" value={formData.message} />
+                                        <input type="hidden" name="payment_method" value={paymentMethod} />
+                                        <input type="hidden" name="order_total" value={total.toFixed(2)} />
+                                        <input type="hidden" name="items" value={items.map(i => `${i.name} (x${i.quantity})`).join(', ')} />
+
                                         <button
                                             type="submit"
                                             disabled={loading || !paymentMethod}
