@@ -4,7 +4,7 @@ import { ShoppingCart, Menu, X, ShieldCheck, Search } from 'lucide-react';
 import { useCart } from '../context/CartContext';
 import { NAV_LINKS } from '../constants';
 
-import logo from '../assets/images/logo-icon.png';
+import logo from '../assets/images/logo-v2.png';
 
 const Header: React.FC = () => {
   const { itemCount } = useCart();
@@ -40,9 +40,7 @@ const Header: React.FC = () => {
 
           {/* Logo Section */}
           <Link to="/" className="flex items-center gap-3 group shrink-0" onClick={() => setIsMenuOpen(false)}>
-            <div className="relative flex items-center justify-center w-10 h-10 md:w-12 md:h-12 rounded-lg bg-white shadow-sm group-hover:scale-105 transition-all duration-300 overflow-hidden border border-gray-100">
-              <img src={logo} alt="PureProtocol Logo" className="w-8 h-8 md:w-10 md:h-10 object-contain" />
-            </div>
+            <img src={logo} alt="PureProtocol Logo" className="w-16 h-16 md:w-20 md:h-20 object-contain group-hover:scale-105 transition-all duration-300" />
             <div className="flex flex-col">
               <span className="text-2xl font-black tracking-tight text-gray-900 group-hover:text-rose-600 transition-colors leading-none font-bodoni italic flex items-center">
                 Pure<span className="text-rose-600">Protocol</span>
@@ -120,7 +118,7 @@ const Header: React.FC = () => {
         <div className="p-6">
           <div className="flex justify-between items-center mb-6">
             <div className="flex items-center gap-2">
-              <img src={logo} alt="Logo" className="w-8 h-8 rounded-lg" />
+              <img src={logo} alt="Logo" className="w-12 h-12 object-contain" />
               <span className="font-bold text-xl text-gray-900 font-bodoni italic flex items-center">
                 Pure<span className="text-rose-600">Protocol</span>
               </span>

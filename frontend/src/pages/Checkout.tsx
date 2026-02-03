@@ -213,7 +213,6 @@ const Checkout: React.FC = () => {
                                         {[
                                             { id: 'zelle', label: 'Zelle Transfer', icon: <DollarSign size={20} /> },
                                             { id: 'cashapp', label: 'Cashapp', icon: <DollarSign size={20} /> },
-                                            { id: 'paypal', label: 'PayPal', icon: <CreditCard size={20} /> },
                                             { id: 'crypto', label: 'Crypto (BTC/USDT)', icon: <Bitcoin size={20} /> },
                                             { id: 'western-union', label: 'Western Union', icon: <Landmark size={20} /> },
                                             { id: 'e-transfer', label: 'E-Transfer', icon: <Send size={20} /> },

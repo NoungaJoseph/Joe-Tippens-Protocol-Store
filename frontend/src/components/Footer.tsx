@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Mail, Phone, MapPin, Clock, Facebook, Instagram, Twitter, ArrowRight, CreditCard, Bitcoin } from 'lucide-react';
-import logo from '../assets/images/logo-icon.png';
+import logo from '../assets/images/logo-v2.png';
 
 const Footer: React.FC = () => {
   return (
@@ -47,9 +47,7 @@ const Footer: React.FC = () => {
           {/* Column 1: About */}
           <div>
             <div className="flex items-center gap-3 mb-6">
-              <div className="w-11 h-11 rounded-xl bg-white shadow-lg overflow-hidden border border-gray-800 flex items-center justify-center">
-                <img src={logo} alt="Logo" className="w-8 h-8 object-contain" />
-              </div>
+              <img src={logo} alt="Logo" className="w-20 h-20 object-contain" />
               <div className="flex flex-col">
                 <span className="text-2xl font-black text-white tracking-tight font-bodoni italic leading-none">
                   Pure<span className="text-rose-500">Protocol</span>
@@ -132,9 +130,6 @@ const Footer: React.FC = () => {
             <div className="h-10 bg-white rounded-lg px-4 flex items-center shadow-sm">
               <span className="text-purple-600 font-black text-lg">Z</span>
               <span className="text-black font-bold ml-1">Zelle</span>
-            </div>
-            <div className="h-10 bg-white rounded-lg px-4 flex items-center shadow-sm">
-              <span className="text-blue-600 font-bold flex items-center gap-1">PayPal</span>
             </div>
             <div className="h-10 bg-white rounded-lg px-4 flex items-center shadow-sm gap-2">
               <div className="w-6 h-6 bg-orange-500 rounded-full flex items-center justify-center">
