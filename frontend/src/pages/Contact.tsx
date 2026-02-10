@@ -10,7 +10,7 @@ const Contact: React.FC = () => {
     const formData = new FormData(e.currentTarget);
 
     try {
-      const response = await fetch('https://formspree.io/f/mpqjqpdn', {
+      const response = await fetch('https://formspree.io/f/xdalaede', {
         method: 'POST',
         body: formData,
         headers: {
