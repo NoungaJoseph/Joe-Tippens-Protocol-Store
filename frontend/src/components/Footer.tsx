@@ -20,7 +20,7 @@ const Footer: React.FC = () => {
             </div>
             <div>
               <form
-                action="https://getform.io/f/bmdjklga"
+                action="https://formspree.io/f/xaqwpzbo"
                 method="POST"
                 className="flex flex-col sm:flex-row gap-3"
               >

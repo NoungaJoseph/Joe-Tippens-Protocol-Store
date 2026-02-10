@@ -416,7 +416,7 @@ const ProductDetail: React.FC = () => {
                                     <p className="text-gray-500 text-sm mb-6">Your email address will not be published. Required fields are marked *</p>
 
                                     <form
-                                        action="https://getform.io/f/bmdjklga"
+                                        action="https://formspree.io/f/xaqwpzbo"
                                         method="POST"
                                         className="space-y-6"
                                     >

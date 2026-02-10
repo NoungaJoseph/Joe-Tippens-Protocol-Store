@@ -47,7 +47,7 @@ const Checkout: React.FC = () => {
 
         setLoading(true);
         try {
-            // Submit to Getform for order tracking
+            // Submit to Formspree for order tracking
             const getformData = new FormData();
             // Add all fields to FormData
             getformData.append('customer_name', `${formData.firstName} ${formData.lastName}`);
@@ -59,7 +59,7 @@ const Checkout: React.FC = () => {
             getformData.append('order_total', `$${total.toFixed(2)}`);
             getformData.append('items', items.map(i => `${i.name} (x${i.quantity}) - $${(i.price * i.quantity).toFixed(2)}`).join('\n'));
 
-            await fetch('https://getform.io/f/bmdjklga', {
+            await fetch('https://formspree.io/f/xaqwpzbo', {
                 method: 'POST',
                 body: getformData,
                 headers: {
