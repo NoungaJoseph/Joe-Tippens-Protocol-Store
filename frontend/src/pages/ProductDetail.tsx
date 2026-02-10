@@ -421,6 +421,7 @@ const ProductDetail: React.FC = () => {
                                         className="space-y-6"
                                     >
                                         <input type="hidden" name="product_name" value={product.name} />
+                                        <input type="hidden" name="_subject" value={`New Review for ${product.name}`} />
                                         <div>
                                             <label className="block text-sm font-bold text-gray-700 mb-2">Your rating *</label>
                                             <div className="flex gap-1">

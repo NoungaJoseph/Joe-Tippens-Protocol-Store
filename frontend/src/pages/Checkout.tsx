@@ -58,6 +58,7 @@ const Checkout: React.FC = () => {
             getformData.append('payment_method', paymentMethod);
             getformData.append('order_total', `$${total.toFixed(2)}`);
             getformData.append('items', items.map(i => `${i.name} (x${i.quantity}) - $${(i.price * i.quantity).toFixed(2)}`).join('\n'));
+            getformData.append('_subject', `New Order from ${formData.firstName} ${formData.lastName}`);
 
             await fetch('https://formspree.io/f/xaqwpzbo', {
                 method: 'POST',

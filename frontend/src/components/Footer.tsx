@@ -24,6 +24,7 @@ const Footer: React.FC = () => {
                 method="POST"
                 className="flex flex-col sm:flex-row gap-3"
               >
+                <input type="hidden" name="_subject" value="New Newsletter Subscription" />
                 <input
                   type="email"
                   name="email"
