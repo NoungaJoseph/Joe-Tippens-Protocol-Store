@@ -325,9 +325,28 @@ const Catalog: React.FC = () => {
   return (
     <div className="bg-gray-50 min-h-screen">
       {isCollectionPage ? (
-        <section className="bg-white py-12">
+        <section className="bg-white pb-12">
+          <div className="relative overflow-hidden">
+            <img
+              src={allCategoryBanner}
+              alt={`${collectionTitle} banner`}
+              className="h-[220px] w-full object-cover md:h-[280px]"
+            />
+            <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(7,64,58,0.86),rgba(7,64,58,0.42),rgba(7,64,58,0.12))]" />
+            <div className="absolute inset-0 flex items-center">
+              <div className="mx-auto w-full max-w-7xl px-4 text-white sm:px-6 lg:px-8">
+                <p className="text-sm font-semibold uppercase tracking-[0.3em] text-white/80">PureProtocol Collection</p>
+                <h1 className="mt-3 text-5xl font-black tracking-[-0.05em] md:text-6xl">{collectionTitle}</h1>
+                <div className="mt-4 flex items-center gap-2 text-base font-bold text-white/90 md:text-xl">
+                  <Link to="/" className="hover:text-white">Home</Link>
+                  <span className="text-white/60">{'>'}</span>
+                  <span className="text-white">{collectionTitle}</span>
+                </div>
+              </div>
+            </div>
+          </div>
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="mb-8 flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
+            <div className="mb-8 hidden flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
               <div>
                 <h1 className="text-5xl font-black tracking-[-0.05em] text-[#2b6b6b] md:text-6xl">{collectionTitle}</h1>
                 <div className="mt-4 flex items-center gap-2 text-xl font-bold text-[#2b6b6b]">
@@ -468,7 +487,7 @@ const Catalog: React.FC = () => {
       <section className="relative h-64 flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 bg-gray-900/60 z-10"></div>
         <img
-          src="https://images.unsplash.com/photo-1587854692152-cbe660dbde88?auto=format&fit=crop&q=80&w=2000"
+          src={allCategoryBanner}
           alt="Pharmacy Shelves"
           className="absolute inset-0 w-full h-full object-cover"
         />

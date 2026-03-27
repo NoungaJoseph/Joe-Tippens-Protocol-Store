@@ -85,7 +85,7 @@ const Home: React.FC = () => {
             <HeroBanner />
 
             {currentArrival && (
-                <section className="relative overflow-hidden bg-[radial-gradient(circle_at_top_left,_rgba(191,234,211,0.55),_transparent_28%),radial-gradient(circle_at_bottom_right,_rgba(214,236,247,0.55),_transparent_32%),linear-gradient(135deg,_#f8fffb_0%,_#ffffff_50%,_#f2fbf5_100%)] pt-20 pb-14">
+                <section className="relative overflow-hidden bg-[linear-gradient(180deg,_#fbfefc_0%,_#ffffff_100%)] pt-20 pb-14">
                     <div className="absolute inset-0 opacity-60">
                         <div className="absolute left-[-7rem] top-20 h-64 w-64 rounded-full bg-[#cfeedd] blur-3xl" />
                         <div className="absolute right-[-3rem] top-8 h-72 w-72 rounded-full bg-[#ddf3e7] blur-3xl" />
@@ -123,10 +123,10 @@ const Home: React.FC = () => {
                             </div>
                         </div>
 
-                        <div className="grid items-center gap-12 lg:grid-cols-[1.15fr_0.85fr]">
+                        <div className="flex flex-col gap-12 lg:flex-row lg:items-center">
                             <div
                                 key={currentArrival.id}
-                                className="rounded-[2rem] border border-white/70 bg-white/85 p-8 shadow-[0_24px_70px_rgba(35,73,52,0.08)] backdrop-blur md:p-12"
+                                className="p-2 md:p-4 lg:w-[58%]"
                             >
                                 <div className="mb-6 flex flex-wrap items-center gap-3">
                                     <span className="rounded-full bg-[#eef8f1] px-4 py-2 text-xs font-bold uppercase tracking-[0.2em] text-[#1f8a57]">
@@ -160,7 +160,7 @@ const Home: React.FC = () => {
                                         </div>
                                     </div>
 
-                                    <div className="flex items-center gap-2 rounded-2xl bg-[#f7fbf8] px-5 py-4">
+                                    <div className="flex items-center gap-2 px-1 py-2">
                                         <Star size={18} className="fill-[#f5b301] text-[#f5b301]" />
                                         <span className="text-sm font-bold text-gray-900">{currentArrival.rating.toFixed(1)}</span>
                                         <span className="text-sm text-gray-500">from {currentArrival.reviews} reviews</span>
@@ -203,16 +203,16 @@ const Home: React.FC = () => {
                                 </div>
                             </div>
 
-                            <div className="relative">
-                                <div className="absolute -left-4 top-8 hidden rounded-full border-2 border-[#7bc49b] bg-white px-5 py-4 text-center shadow-sm md:block">
+                            <div className="relative lg:w-[42%]">
+                                <div className="absolute -left-4 top-8 hidden rounded-full border-2 border-[#7bc49b] bg-white px-5 py-4 text-center md:block">
                                     <p className="text-xs font-bold uppercase text-[#7bc49b]">Fast</p>
                                     <p className="text-sm font-semibold text-gray-800">Arrival</p>
                                 </div>
-                                <div className="absolute -bottom-5 left-8 hidden rounded-full border-2 border-[#1f8a57] bg-white px-6 py-4 text-center shadow-sm lg:block">
+                                <div className="absolute -bottom-5 left-8 hidden rounded-full border-2 border-[#1f8a57] bg-white px-6 py-4 text-center lg:block">
                                     <p className="text-xs font-bold uppercase text-[#1f8a57]">Top Rated</p>
                                     <p className="text-sm font-semibold text-gray-800">New Stock</p>
                                 </div>
-                                <div className="absolute -right-3 bottom-10 hidden rounded-full border-2 border-[#7bc49b] bg-white px-5 py-4 text-center shadow-sm xl:block">
+                                <div className="absolute -right-3 bottom-10 hidden rounded-full border-2 border-[#7bc49b] bg-white px-5 py-4 text-center xl:block">
                                     <p className="text-xs font-bold uppercase text-[#7bc49b]">
                                         {currentNewArrival + 1}/{newArrivals.length}
                                     </p>
@@ -220,14 +220,13 @@ const Home: React.FC = () => {
                                 </div>
 
                                 <div className="relative mx-auto max-w-xl">
-                                    <div className="absolute inset-6 rounded-[2rem] bg-[#d5efe0]" />
-                                    <div className="relative overflow-hidden rounded-[2rem] border border-white/70 bg-white p-5 shadow-[0_28px_80px_rgba(23,64,47,0.14)]">
-                                        <div className="aspect-[4/4.2] overflow-hidden rounded-[1.5rem] bg-[linear-gradient(145deg,_#f5faf7,_#ffffff)]">
+                                    <div className="relative overflow-hidden rounded-[2rem] bg-transparent p-2">
+                                        <div className="aspect-[4/4.2] overflow-hidden rounded-[1.5rem] bg-transparent">
                                             <img
                                                 key={currentArrival.id}
                                                 src={currentArrival.image}
                                                 alt={currentArrival.name}
-                                                className="h-full w-full object-cover"
+                                                className="h-full w-full object-contain"
                                             />
                                         </div>
                                     </div>
