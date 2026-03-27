@@ -80,7 +80,7 @@ const ProductDetail: React.FC = () => {
         return (
             <div className="container mx-auto px-4 py-24 text-center mt-20">
                 <h2 className="text-2xl font-bold text-gray-900 mb-4">Product Not Found</h2>
-                <Link to="/all-pills" className="text-rose-600 hover:underline">
+                <Link to="/all-pills" className="text-green-700 hover:underline">
                     Return to Catalog
                 </Link>
             </div>
@@ -106,22 +106,9 @@ const ProductDetail: React.FC = () => {
         setTimeout(() => setShowNotification(false), 3000);
     };
 
-    const handleQuestionSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    const handleQuestionSubmit = (e: React.FormEvent) => {
         e.preventDefault();
-        const formData = new FormData(e.currentTarget);
-        formData.append('_subject', `Product Question: ${product.name}`);
-
-        try {
-            await fetch('https://formspree.io/f/mdawravv', {
-                method: 'POST',
-                body: formData,
-                headers: { 'Accept': 'application/json' }
-            });
-            setQuestionSubmitted(true);
-        } catch (error) {
-            console.error('Question submission failed', error);
-            setQuestionSubmitted(true); // Still show success to user
-        }
+        setQuestionSubmitted(true);
     };
 
     const closeQuestionModal = () => {
@@ -136,20 +123,20 @@ const ProductDetail: React.FC = () => {
     const allImages = product.images && product.images.length > 0 ? product.images : [product.image];
 
     return (
-        <div className="bg-gray-50 min-h-screen pt-24 pb-12">
+        <div className="bg-white min-h-screen pt-24 pb-12">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <Link to="/all-pills" className="inline-flex items-center text-gray-500 hover:text-rose-600 mb-8 transition-colors font-medium">
+                <Link to="/all-pills" className="inline-flex items-center text-gray-500 hover:text-green-700 mb-8 transition-colors font-medium">
                     <ArrowLeft size={18} className="mr-2" /> Back to Catalog
                 </Link>
 
                 {/* Main Product Section */}
-                <div className="bg-white rounded-2xl shadow-xl overflow-hidden mb-8">
-                    <div className="grid grid-cols-1 md:grid-cols-2">
+                <div className="mb-12 border-b border-gray-200 pb-12">
+                    <div className="flex flex-col gap-12 lg:flex-row">
                         {/* Image Column */}
-                        <div className="bg-gray-100 p-8 flex flex-col items-center justify-center relative overflow-hidden">
+                        <div className="relative flex flex-1 flex-col items-center justify-center overflow-hidden bg-white p-4 lg:p-8">
                             {/* Main Image with Hover Zoom and 3D Rotation */}
                             <div
-                                className="w-full max-w-md aspect-square mb-8 bg-white rounded-3xl shadow-2xl flex items-center justify-center overflow-hidden group perspective-1000"
+                                className="w-full max-w-md aspect-square mb-8 bg-white flex items-center justify-center overflow-hidden group perspective-1000"
                                 onMouseMove={(e) => {
                                     const rect = e.currentTarget.getBoundingClientRect();
                                     const x = e.clientX - rect.left;
@@ -195,7 +182,7 @@ const ProductDetail: React.FC = () => {
                                         <button
                                             key={idx}
                                             onClick={() => setSelectedImage(img)}
-                                            className={`w-20 h-20 flex-shrink-0 rounded-2xl border-2 transition-all duration-300 overflow-hidden shadow-sm ${selectedImage === img ? 'border-rose-500 scale-105 shadow-rose-100' : 'border-white hover:border-gray-200 hover:scale-105'}`}
+                                            className={`w-20 h-20 flex-shrink-0 rounded-2xl border-2 transition-all duration-300 overflow-hidden shadow-sm ${selectedImage === img ? 'border-green-500 scale-105 shadow-green-100' : 'border-white hover:border-gray-200 hover:scale-105'}`}
                                         >
                                             <img src={img} alt={`View ${idx}`} className="w-full h-full object-cover" />
                                         </button>
@@ -203,7 +190,7 @@ const ProductDetail: React.FC = () => {
                                 </div>
                             )}
 
-                            <div className="absolute top-8 left-8 z-10">
+                            <div className="absolute top-4 left-4 z-10 lg:top-8 lg:left-8">
                                 <span className={`${badgeClass} text-white text-[10px] font-black px-4 py-2 rounded-full shadow-xl uppercase tracking-[0.2em]`}>
                                     {badgeText}
                                 </span>
@@ -211,14 +198,14 @@ const ProductDetail: React.FC = () => {
                         </div>
 
                         {/* Details Column */}
-                        <div className="p-8 lg:p-12">
+                        <div className="flex-1 py-2 lg:py-8">
                             {/* Real-time Viewers */}
                             <div className="flex items-center gap-2 text-red-500 font-semibold mb-4 animate-pulse bg-red-50 w-fit px-3 py-1 rounded-full text-sm">
                                 <Eye size={16} /> {viewers} People viewing this product right now!
                             </div>
 
                             <div className="flex items-center gap-2 mb-4">
-                                <span className="text-sm font-bold text-rose-600 uppercase tracking-wider bg-rose-50 px-2 py-1 rounded">
+                                <span className="text-sm font-bold text-green-700 uppercase tracking-wider bg-green-50 px-2 py-1 rounded">
                                     {product.category}
                                 </span>
                                 <div className="flex text-yellow-400 text-sm">
@@ -253,7 +240,7 @@ const ProductDetail: React.FC = () => {
                                         <select
                                             value={selectedOptions[option.label] ? JSON.stringify(selectedOptions[option.label]) : ""}
                                             onChange={(e) => handleOptionChange(option.label, e.target.value)}
-                                            className="w-full md:w-64 px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-rose-500 bg-white appearance-none cursor-pointer font-medium text-gray-700 shadow-sm"
+                                            className="w-full md:w-64 px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 bg-white appearance-none cursor-pointer font-medium text-gray-700 shadow-sm"
                                         >
                                             {option.choices.map((choice, cIdx) => (
                                                 <option key={cIdx} value={JSON.stringify(choice)}>
@@ -292,7 +279,7 @@ const ProductDetail: React.FC = () => {
 
                                 <button
                                     onClick={handleAddToCart}
-                                    className="flex-1 bg-rose-600 text-white h-14 rounded-lg hover:bg-rose-700 transition-all shadow-lg hover:shadow-rose-200 flex items-center justify-center gap-2 font-bold text-lg"
+                                    className="flex-1 bg-green-700 text-white h-14 rounded-lg hover:bg-green-800 transition-all shadow-lg hover:shadow-green-200 flex items-center justify-center gap-2 font-bold text-lg"
                                 >
                                     <ShoppingCart size={22} /> Add to Cart
                                 </button>
@@ -309,9 +296,9 @@ const ProductDetail: React.FC = () => {
                                 <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
                                     <button
                                         onClick={() => setShowQuestionModal(true)}
-                                        className="flex items-center gap-2 text-gray-600 hover:text-rose-600 transition-colors font-medium group"
+                                        className="flex items-center gap-2 text-gray-600 hover:text-green-700 transition-colors font-medium group"
                                     >
-                                        <HelpCircle size={20} className="group-hover:text-rose-600" />
+                                        <HelpCircle size={20} className="group-hover:text-green-700" />
                                         Ask a Question
                                     </button>
 
@@ -331,13 +318,13 @@ const ProductDetail: React.FC = () => {
                 </div>
 
                 {/* Product Tabs Section */}
-                <div className="bg-white rounded-2xl shadow-xl overflow-hidden">
+                <div className="border-t border-gray-200">
                     {/* Tabs Header */}
                     <div className="flex border-b border-gray-200">
                         <button
                             onClick={() => setActiveTab('description')}
                             className={`px-8 py-4 font-semibold text-sm sm:text-base transition-colors ${activeTab === 'description'
-                                ? 'border-b-2 border-rose-600 text-rose-600 bg-rose-50/50'
+                                ? 'border-b-2 border-green-700 text-green-700 bg-green-50/50'
                                 : 'text-gray-500 hover:text-gray-700 hover:bg-gray-50'
                                 }`}
                         >
@@ -346,7 +333,7 @@ const ProductDetail: React.FC = () => {
                         <button
                             onClick={() => setActiveTab('additional')}
                             className={`px-8 py-4 font-semibold text-sm sm:text-base transition-colors ${activeTab === 'additional'
-                                ? 'border-b-2 border-rose-600 text-rose-600 bg-rose-50/50'
+                                ? 'border-b-2 border-green-700 text-green-700 bg-green-50/50'
                                 : 'text-gray-500 hover:text-gray-700 hover:bg-gray-50'
                                 }`}
                         >
@@ -355,7 +342,7 @@ const ProductDetail: React.FC = () => {
                         <button
                             onClick={() => setActiveTab('reviews')}
                             className={`px-8 py-4 font-semibold text-sm sm:text-base transition-colors ${activeTab === 'reviews'
-                                ? 'border-b-2 border-rose-600 text-rose-600 bg-rose-50/50'
+                                ? 'border-b-2 border-green-700 text-green-700 bg-green-50/50'
                                 : 'text-gray-500 hover:text-gray-700 hover:bg-gray-50'
                                 }`}
                         >
@@ -364,7 +351,7 @@ const ProductDetail: React.FC = () => {
                     </div>
 
                     {/* Tab Content */}
-                    <div className="p-8 lg:p-12">
+                    <div className="py-8 lg:py-12">
                         {activeTab === 'description' && (
                             <div className="prose prose-gray max-w-none text-gray-600 whitespace-pre-wrap">
                                 <h3 className="text-xl font-bold text-gray-900 mb-4">Product Description</h3>
@@ -375,7 +362,7 @@ const ProductDetail: React.FC = () => {
                         {activeTab === 'additional' && (
                             <div className="text-gray-600">
                                 <h3 className="text-xl font-bold text-gray-900 mb-6">Additional Information</h3>
-                                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-2xl">
+                                <div className="max-w-2xl space-y-4">
                                     <div className="flex border-b border-gray-100 py-2">
                                         <span className="font-semibold w-1/3">Weight</span>
                                         <span>0.15 kg</span>
@@ -406,7 +393,7 @@ const ProductDetail: React.FC = () => {
                                         <div className="space-y-6 animate-fade-in">
                                             {product.reviewsData && product.reviewsData.length > 0 ? (
                                                 product.reviewsData.map((review) => (
-                                                    <div key={review.id} className="bg-gray-50 p-6 rounded-xl border border-gray-100 shadow-sm">
+                                                    <div key={review.id} className="border-b border-gray-100 pb-6">
                                                         <div className="flex items-center justify-between mb-3">
                                                             <div className="font-bold text-gray-900 text-lg">{review.author}</div>
                                                             <div className="text-sm text-gray-500">{review.date}</div>
@@ -424,12 +411,12 @@ const ProductDetail: React.FC = () => {
                                     )}
                                 </div>
 
-                                <div className="bg-gray-50 p-6 sm:p-8 rounded-xl border border-gray-200">
+                                <div className="bg-white p-0 sm:p-0">
                                     <h4 className="text-lg font-bold text-gray-900 mb-1">Be the first to review "{product.name}"</h4>
                                     <p className="text-gray-500 text-sm mb-6">Your email address will not be published. Required fields are marked *</p>
 
                                     <form
-                                        action="https://formspree.io/f/mdawravv"
+                                        action="https://formspree.io/f/xaqwpzbo"
                                         method="POST"
                                         className="space-y-6"
                                     >
@@ -468,8 +455,8 @@ const ProductDetail: React.FC = () => {
                                             ></textarea>
                                         </div>
 
-                                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                            <div>
+                                        <div className="space-y-6 md:space-y-0 md:flex md:gap-6">
+                                            <div className="flex-1">
                                                 <label className="block text-sm font-bold text-gray-700 mb-2">Name *</label>
                                                 <input
                                                     type="text"
@@ -478,7 +465,7 @@ const ProductDetail: React.FC = () => {
                                                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-rose-500 focus:border-transparent"
                                                 />
                                             </div>
-                                            <div>
+                                            <div className="flex-1">
                                                 <label className="block text-sm font-bold text-gray-700 mb-2">Email *</label>
                                                 <input
                                                     type="email"
@@ -556,7 +543,6 @@ const ProductDetail: React.FC = () => {
                                                 </div>
                                                 <input
                                                     type="text"
-                                                    name="name"
                                                     required
                                                     className="w-full pl-10 pr-3 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-rose-500 focus:border-transparent text-sm"
                                                     placeholder="Your Name"
@@ -571,7 +557,6 @@ const ProductDetail: React.FC = () => {
                                                 </div>
                                                 <input
                                                     type="email"
-                                                    name="email"
                                                     required
                                                     className="w-full pl-10 pr-3 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-rose-500 focus:border-transparent text-sm"
                                                     placeholder="your@email.com"
@@ -583,7 +568,6 @@ const ProductDetail: React.FC = () => {
                                     <div>
                                         <label className="block text-sm font-bold text-gray-700 mb-1">Question <span className="text-red-500">*</span></label>
                                         <textarea
-                                            name="question"
                                             rows={4}
                                             required
                                             className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-rose-500 focus:border-transparent text-sm"

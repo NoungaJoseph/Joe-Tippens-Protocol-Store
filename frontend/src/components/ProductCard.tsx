@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Product } from '../types';
-import { ShoppingCart, Star, Eye } from 'lucide-react';
+import { ShoppingCart } from 'lucide-react';
 import { useCart } from '../context/CartContext';
 
 interface ProductCardProps {
@@ -16,66 +16,59 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
     addToCart(product, 1);
   };
 
-  const badgeClass = product.prescription ? 'badge-prescription' : 'badge-otc';
-  const badgeText = product.prescription ? 'Prescription' : 'OTC';
-
   return (
-    <Link
-      to={`/product/${product.id}`}
-      className="product-card group block bg-white rounded-xl shadow-lg overflow-hidden card-hover relative"
-    >
-      <div className="relative">
-        <div className="h-48 w-full bg-gray-100 overflow-hidden">
+    <div className="flex flex-col h-full px-2">
+      <Link
+        to={`/product/${product.id}`}
+        className="mb-6 flex-shrink-0 group"
+      >
+        <div className="h-64 flex items-center justify-center overflow-hidden bg-transparent">
           <img
             src={product.image}
             alt={product.name}
-            className="w-full h-full object-cover object-center group-hover:scale-110 transition-transform duration-500"
+            className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300"
           />
         </div>
+      </Link>
 
-        {/* Badges */}
-        <div className="absolute top-4 left-4">
-          <span className={`${badgeClass} text-white text-xs font-bold px-2 py-1 rounded shadow-sm`}>
-            {badgeText}
-          </span>
-        </div>
-        <div className="absolute top-4 right-4 flex gap-1">
-          {/* Simple visual rating */}
-          {[...Array(5)].map((_, i) => (
-            <Star key={i} size={14} className={`${i < Math.floor(product.rating) ? 'text-yellow-400 fill-current' : 'text-gray-300'}`} />
-          ))}
+      <div className="flex-grow flex flex-col">
+        <Link
+          to={`/product/${product.id}`}
+          className="text-xl font-black text-[#165c56] hover:text-green-700 transition-colors mb-3 leading-snug min-h-[3.2rem] flex items-start"
+        >
+          {product.name}
+        </Link>
+
+        {product.brand && (
+          <p className="text-sm text-gray-500 mb-3 font-medium">
+            {product.brand}
+          </p>
+        )}
+
+        {product.description && (
+          <p className="text-sm text-gray-600 mb-5 line-clamp-3 leading-7">
+            {product.description}
+          </p>
+        )}
+
+        <div className="mb-6">
+          <div className="flex items-center gap-3">
+            <span className="text-3xl font-black text-[#165c56]">
+              ${product.price.toFixed(2)}
+            </span>
+            <span className="text-sm text-gray-400 font-medium">In Stock</span>
+          </div>
         </div>
 
-        {/* Quick View Button Overlay */}
-        <button className="absolute bottom-4 right-4 bg-white/90 text-gray-900 px-3 py-1.5 rounded-lg text-sm font-medium hover:bg-white transition-all opacity-0 group-hover:opacity-100 transform translate-y-2 group-hover:translate-y-0 flex items-center gap-2 shadow-sm">
-          <Eye size={14} /> Quick View
+        <button
+          onClick={handleAddToCart}
+          className="w-full py-3 px-4 border border-[#2b7f79] bg-white text-[#165c56] font-bold text-lg rounded-xl hover:bg-[#165c56] hover:text-white active:bg-[#114945] transition-colors duration-150 flex items-center justify-center gap-2"
+        >
+          <ShoppingCart size={16} strokeWidth={2.5} />
+          Add to Cart
         </button>
       </div>
-
-      <div className="p-6">
-        <h3 className="text-xl font-bold text-gray-900 mb-1 group-hover:text-rose-600 transition-colors truncate">
-          {product.name}
-        </h3>
-        <p className="text-sm text-gray-500 mb-3">{product.brand}</p>
-
-        <p className="text-gray-600 text-sm mb-4 line-clamp-2 h-10">
-          {product.description}
-        </p>
-
-        <div className="flex justify-between items-center mt-4">
-          <div className="flex flex-col">
-            <span className="text-2xl font-bold text-rose-600">${product.price.toFixed(2)}</span>
-            <span className="text-xs text-gray-400">In Stock</span>
-          </div>
-          <button
-            onClick={handleAddToCart}
-            className="bg-rose-600 text-white px-4 py-2 rounded-lg hover:bg-rose-700 transition-colors shadow-md hover:shadow-lg flex items-center gap-2 z-10"
-          >
-            <ShoppingCart size={18} /> Add
-          </button>
-        </div>
-      </div>
-    </Link>
+    </div>
   );
 };
 

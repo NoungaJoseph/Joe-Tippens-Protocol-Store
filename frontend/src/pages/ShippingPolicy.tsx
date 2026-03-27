@@ -64,7 +64,7 @@ const ShippingPolicy: React.FC = () => {
                                 please contact the shipment carrier to file a claim.
                             </p>
                             <p className="mt-2">
-                                However, we want to help. If your package is lost, please contact our support team at <strong>joe.tippens@email.com</strong> and we will do our best to assist you with a replacement or resolution.
+                                However, we want to help. If your package is lost, please contact our support team at <strong>Joe.tippens.protocol@outlook.com</strong> and we will do our best to assist you with a replacement or resolution.
                             </p>
                         </div>
                     </div>

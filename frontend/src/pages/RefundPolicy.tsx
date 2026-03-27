@@ -71,7 +71,7 @@ const RefundPolicy: React.FC = () => {
                             <p>Then contact your credit card company, it may take some time before your refund is officially posted.</p>
                             <p>Next contact your bank. There is often some processing time before a refund is posted.</p>
                             <p className="mt-4 font-semibold">
-                                If you’ve done all of this and you still have not received your refund yet, please contact us at joe.tippens@email.com.
+                                If you’ve done all of this and you still have not received your refund yet, please contact us at Joe.tippens.protocol@outlook.com.
                             </p>
                         </section>
 

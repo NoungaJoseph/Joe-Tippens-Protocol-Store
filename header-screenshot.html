@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ivermectinkart - Header Design</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+            background: #f5f5f5;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        /* ========== TOP BAR ========== */
+        .top-bar {
+            background: #2d8680;
+            padding: 11px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .top-bar-left {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: white;
+            font-size: 13px;
+            font-weight: 500;
+            letter-spacing: 0.2px;
+        }
+
+        .top-bar-left svg {
+            width: 18px;
+            height: 18px;
+            stroke-width: 2;
+        }
+
+        .top-bar-right {
+            display: flex;
+            gap: 28px;
+            align-items: center;
+        }
+
+        .top-bar-right a {
+            color: white;
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 500;
+            transition: opacity 0.2s ease;
+            letter-spacing: 0.2px;
+        }
+
+        .top-bar-right a:hover {
+            opacity: 0.85;
+        }
+
+        .divider {
+            color: rgba(255, 255, 255, 0.3);
+        }
+
+        /* ========== MAIN HEADER ========== */
+        .main-header {
+            background: white;
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            min-width: 200px;
+            flex-shrink: 0;
+        }
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: #2d8680;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 24px;
+            position: relative;
+        }
+
+        .logo-icon::before {
+            content: '🛒';
+            font-size: 20px;
+        }
+
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .logo-text .main-name {
+            font-size: 19px;
+            font-weight: 730;
+            color: #2d8680;
+            letter-spacing: -0.3px;
+        }
+
+        .logo-text .tagline {
+            font-size: 11px;
+            color: #888888;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+        }
+
+        /* ========== SEARCH BAR ========== */
+        .search-container {
+            flex: 1;
+            max-width: 550px;
+        }
+
+        .search-bar {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            border: 1.5px solid #2d8680;
+            border-radius: 24px;
+            padding: 11px 18px;
+            background: white;
+            transition: all 0.3s ease;
+        }
+
+        .search-bar:focus-within {
+            border-color: #2d8680;
+            box-shadow: 0 0 0 3px rgba(45, 134, 128, 0.08);
+        }
+
+        .search-bar svg {
+            width: 18px;
+            height: 18px;
+            color: #2d8680;
+            stroke-width: 2;
+            flex-shrink: 0;
+        }
+
+        .search-bar input {
+            border: none;
+            outline: none;
+            flex: 1;
+            font-size: 14px;
+            color: #333;
+            background: transparent;
+            font-family: inherit;
+        }
+
+        .search-bar input::placeholder {
+            color: #b0b0b0;
+            font-weight: 500;
+        }
+
+        /* ========== RIGHT ICONS ========== */
+        .right-icons {
+            display: flex;
+            gap: 24px;
+            align-items: center;
+            min-width: 100px;
+            justify-content: flex-end;
+            flex-shrink: 0;
+        }
+
+        .icon-button {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            position: relative;
+        }
+
+        .icon-button svg {
+            width: 22px;
+            height: 22px;
+            color: #333;
+            stroke-width: 2;
+        }
+
+        .icon-button:hover svg {
+            color: #2d8680;
+        }
+
+        .cart-icon {
+            position: relative;
+        }
+
+        .cart-badge {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            width: 22px;
+            height: 22px;
+            background: #2d8680;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+            font-weight: 700;
+            box-shadow: 0 2px 4px rgba(45, 134, 128, 0.2);
+        }
+
+        .user-icon {
+            width: 32px;
+            height: 32px;
+            border: 1.5px solid #d0d0d0;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #2d8680;
+            font-weight: 600;
+            font-size: 13px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            background: white;
+        }
+
+        .user-icon:hover {
+            border-color: #2d8680;
+            background: #f5f9f9;
+        }
+
+        /* ========== NAVIGATION BAR ========== */
+        .nav-bar {
+            background: white;
+            border-top: 1px solid #f0f0f0;
+            padding: 0 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 50px;
+            min-height: 56px;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 45px;
+            align-items: center;
+            flex: 1;
+        }
+
+        .nav-menu a {
+            color: #2d8680;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 620;
+            transition: all 0.2s ease;
+            white-space: nowrap;
+            letter-spacing: 0.2px;
+            padding: 16px 0;
+            border-bottom: 3px solid transparent;
+        }
+
+        .nav-menu a:hover {
+            color: #2d8680;
+            border-bottom-color: #2d8680;
+        }
+
+        .nav-button {
+            border: 1.5px solid #2d8680;
+            color: #2d8680;
+            background: white;
+            padding: 9px 18px;
+            border-radius: 5px;
+            font-size: 12px;
+            font-weight: 620;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            white-space: nowrap;
+            letter-spacing: 0.2px;
+        }
+
+        .nav-button:hover {
+            background: #f5f9f9;
+            border-color: #2d8680;
+            color: #2d8680;
+        }
+
+        /* ========== RESPONSIVE ========== */
+        @media (max-width: 1200px) {
+            .main-header {
+                padding: 16px 30px;
+                gap: 30px;
+            }
+
+            .top-bar {
+                padding: 10px 30px;
+            }
+
+            .nav-bar {
+                padding: 0 30px;
+                gap: 30px;
+            }
+
+            .search-container {
+                max-width: 400px;
+            }
+
+            .nav-menu {
+                gap: 30px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .main-header {
+                padding: 12px 16px;
+                gap: 12px;
+                flex-wrap: wrap;
+            }
+
+            .search-container {
+                order: 3;
+                flex-basis: 100%;
+                max-width: 100%;
+            }
+
+            .top-bar-right {
+                gap: 16px;
+            }
+
+            .nav-menu {
+                gap: 20px;
+                font-size: 12px;
+            }
+
+            .nav-button {
+                padding: 8px 12px;
+                font-size: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- TOP BAR -->
+        <div class="top-bar">
+            <div class="top-bar-left">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                    <polyline points="22,6 12,13 2,6"></polyline>
+                </svg>
+                <span>ivermectinkart@yahoo.com</span>
+            </div>
+            <div class="top-bar-right">
+                <a href="#">About us</a>
+                <span class="divider">|</span>
+                <a href="#">Contact us</a>
+                <span class="divider">|</span>
+                <a href="#">Shipping & Return</a>
+            </div>
+        </div>
+
+        <!-- MAIN HEADER -->
+        <div class="main-header">
+            <!-- LOGO -->
+            <div class="logo-section">
+                <div class="logo-icon"></div>
+                <div class="logo-text">
+                    <div class="main-name">Ivermectinkart</div>
+                    <div class="tagline">Quality Meds</div>
+                </div>
+            </div>
+
+            <!-- SEARCH BAR -->
+            <div class="search-container">
+                <div class="search-bar">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <path d="m21 21-4.35-4.35"></path>
+                    </svg>
+                    <input type="text" placeholder="Search here">
+                </div>
+            </div>
+
+            <!-- RIGHT ICONS -->
+            <div class="right-icons">
+                <div class="icon-button cart-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <circle cx="9" cy="21" r="1"></circle>
+                        <circle cx="20" cy="21" r="1"></circle>
+                        <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                    </svg>
+                    <div class="cart-badge">0</div>
+                </div>
+                <div class="icon-button">
+                    <div class="user-icon">L</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- NAVIGATION BAR -->
+        <div class="nav-bar">
+            <div class="nav-menu">
+                <a href="#">All Category</a>
+                <a href="#">Ivermectin</a>
+                <a href="#">Erectile Dysfunction</a>
+                <a href="#">Blog</a>
+            </div>
+            <button class="nav-button">Free Shipping for all orders</button>
+        </div>
+    </div>
+</body>
+</html>

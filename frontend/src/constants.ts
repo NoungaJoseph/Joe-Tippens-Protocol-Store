@@ -1,4 +1,5 @@
 import { Product, Review } from './types';
+import { IVERMECTIN_COLLECTION_PRODUCTS } from './ivermectinCollection';
 
 // Import Images
 import onco1 from './assets/images/onco-adjunct-pathway-1.webp';
@@ -104,8 +105,8 @@ export const MOCK_PRODUCTS: Product[] = [
     price: 250.00,
     oldPrice: 300.00,
     prescription: false,
-    image: "https://fastpharm.store/wp-content/uploads/2025/01/IMG_7894.webp",
-    images: ["https://fastpharm.store/wp-content/uploads/2025/01/IMG_7894.webp", onco2, onco3, onco4, onco5],
+    image: onco1,
+    images: [onco1, onco2, onco3, onco4, onco5],
     description: "Onco-Adjunct Pathway are a series of supplements designed to support cancer treatment and overall health.",
     category: 'Supplements',
     rating: 5.0,
@@ -621,7 +622,8 @@ export const MOCK_PRODUCTS: Product[] = [
       }
     ],
     reviewsData: generateReviews("vit-b17-cup", 9)
-  }
+  },
+  ...IVERMECTIN_COLLECTION_PRODUCTS
 ];
 
 export const NAV_LINKS = [

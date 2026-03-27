@@ -1,332 +1,310 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { ArrowRight, ChevronLeft, ChevronRight, Star } from 'lucide-react';
 import { MOCK_PRODUCTS } from '../constants';
 import ProductCard from '../components/ProductCard';
-import { Headphones, Leaf, Lock, Gift, ArrowRight } from 'lucide-react';
 import SocialShare from '../components/SocialShare';
+import TopTrendingSearch from '../components/TopTrendingSearch';
+import ProductShowcase from '../components/ProductShowcase';
+import FAQ from '../components/FAQ';
+import HeroBanner from '../components/HeroBanner';
+import premiumQualityImage from '../assets/DESIGN PHASE/premium quality.png';
+import securePaymentsImage from '../assets/DESIGN PHASE/secure payments.png';
+import supportImage from '../assets/DESIGN PHASE/247service.png';
+import fastDeliveryImage from '../assets/DESIGN PHASE/fast delivery.png';
 
 const Home: React.FC = () => {
-    const splideRef = useRef<HTMLDivElement>(null);
-
-    // New Arrivals State
     const [currentNewArrival, setCurrentNewArrival] = useState(0);
 
-    // Filter products
-    const mostLoved = MOCK_PRODUCTS.filter(p =>
-        ['120-day-protocol', 'usa-trio', 'safeguard-paste', 'iverheal', 'fenben-powder'].includes(p.id)
+    const featureHighlights = [
+        {
+            title: 'Premium Quality',
+            description: 'Verified and high-efficacy pharmaceutical supplements.',
+            image: premiumQualityImage,
+            alt: 'Premium quality',
+        },
+        {
+            title: 'Secure Payments',
+            description: 'Encrypted transactions via secure payment gateways.',
+            image: securePaymentsImage,
+            alt: 'Secure payments',
+        },
+        {
+            title: '24/7 Support',
+            description: 'Dedicated expert support whenever you need assistance.',
+            image: supportImage,
+            alt: '24/7 support',
+        },
+        {
+            title: 'Fast Delivery',
+            description: 'Express shipping on all protocol orders.',
+            image: fastDeliveryImage,
+            alt: 'Fast delivery',
+        },
+    ];
+
+    const mostLoved = MOCK_PRODUCTS.filter((product) =>
+        ['120-day-protocol', 'usa-trio', 'iverjohn-3mg', 'iverjohn-6mg', 'covilife-40mg', 'fenben-powder'].includes(product.id)
     );
 
-    const featured = MOCK_PRODUCTS.filter(p =>
-        ['fenben-tabs', 'ivermectin-tabs', 'cbd-oil-kids', 'vit-b17-cup'].includes(p.id)
+    const featured = MOCK_PRODUCTS.filter((product) =>
+        ['fenben-tabs', 'ivermectin-tabs', 'cbd-oil-kids', 'vit-b17-cup', 'ivermectin-injection-1', 'ivermectin-paste-dewormer'].includes(product.id)
     );
 
-    const newArrivals = MOCK_PRODUCTS.filter(p =>
-        ['ozempic-025', 'rybelsus-14', 'cbd-oil-kids'].includes(p.id)
+    const newArrivals = MOCK_PRODUCTS.filter((product) =>
+        ['iverjohn-3mg', 'iverjohn-6mg', 'covilife-40mg', 'ivermectin-injection-1', 'ozempic-025'].includes(product.id)
     );
 
-    // Initialize Splide Carousel
-    useEffect(() => {
-        if (splideRef.current && (window as any).Splide) {
-            const splide = new (window as any).Splide(splideRef.current, {
-                type: 'loop',
-                autoplay: true,
-                interval: 5000,
-                arrows: true,
-                pagination: true,
-                pauseOnHover: false, // Prevent stopping on touch/scroll on mobile
-                pauseOnFocus: false, // Prevent stopping when clicking
-                resetProgress: false,
-                speed: 800,
-                easing: 'cubic-bezier(0.25, 1, 0.5, 1)',
-            });
-            splide.mount();
-        }
-    }, []);
-
-    // New Arrivals Rotation Timer
     useEffect(() => {
         if (newArrivals.length === 0) return;
+
         const interval = setInterval(() => {
             setCurrentNewArrival((prev) => (prev + 1) % newArrivals.length);
-        }, 4500);
+        }, 5000);
+
         return () => clearInterval(interval);
     }, [newArrivals.length]);
 
+    const currentArrival = newArrivals[currentNewArrival];
+
+    const handlePrevArrival = () => {
+        setCurrentNewArrival((prev) => (prev - 1 + newArrivals.length) % newArrivals.length);
+    };
+
+    const handleNextArrival = () => {
+        setCurrentNewArrival((prev) => (prev + 1) % newArrivals.length);
+    };
+
+    const getShortDescription = (description: string) => {
+        const normalized = description.replace(/\s+/g, ' ').trim();
+        return normalized.length > 185 ? `${normalized.slice(0, 182)}...` : normalized;
+    };
+
     return (
         <div className="flex flex-col bg-white">
+            <HeroBanner />
 
-            {/* Custom Styles for Slider Animations */}
-            <style>{`
-        /* Hero Slider Styles */
-        .splide__slide.is-active .hero-content {
-          animation: heroSlideUp 1s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
-        }
-        .splide__slide.is-active .hero-image {
-          animation: heroScale 6s ease-in-out infinite alternate;
-        }
-        @keyframes heroSlideUp {
-          from { opacity: 0; transform: translateY(40px); }
-          to { opacity: 1; transform: translateY(0); }
-        }
-        @keyframes heroScale {
-          from { transform: scale(1); }
-          to { transform: scale(1.1); }
-        }
-        .splide__arrow {
-            background: rgba(255, 255, 255, 0.8) !important;
-            opacity: 0;
-            transition: opacity 0.3s ease !important;
-        }
-        .splide:hover .splide__arrow {
-            opacity: 1;
-        }
-        .splide__pagination__page.is-active {
-            background: #e11d48 !important;
-            transform: scale(1.3);
-        }
-
-        /* New Arrivals "Wipe" Animation */
-        @keyframes wipeIn {
-            0% { clip-path: inset(100% 0 0 0); }
-            100% { clip-path: inset(0 0 0 0); }
-        }
-        
-        .new-arrival-active {
-            animation: wipeIn 1.2s cubic-bezier(0.19, 1, 0.22, 1) forwards;
-            z-index: 20;
-        }
-        
-        /* Keep previous slide visible behind the wiping slide until animation finishes */
-        .new-arrival-exit {
-            z-index: 10;
-            opacity: 1;
-        }
-        
-        /* Staggered text animations for New Arrivals */
-        .new-arrival-active .na-content-badge {
-             animation: slideInRight 0.8s ease-out 0.4s forwards;
-        }
-        .new-arrival-active .na-content-title {
-             animation: slideInRight 0.8s ease-out 0.5s forwards;
-        }
-        .new-arrival-active .na-content-price {
-             animation: slideInRight 0.8s ease-out 0.6s forwards;
-        }
-
-        @keyframes slideInRight {
-            from { opacity: 0; transform: translateX(-30px); }
-            to { opacity: 1; transform: translateX(0); }
-        }
-      `}</style>
-
-            {/* Hero Grid Section */}
-            <section className="pt-24 pb-8 bg-gray-50">
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className="grid grid-cols-1 lg:grid-cols-4 gap-4 h-auto lg:h-[500px]">
-
-                        {/* Main Slider (Takes up 3 columns) */}
-                        <div className="lg:col-span-3 rounded-2xl overflow-hidden shadow-md relative group h-[400px] lg:h-full">
-                            <div className="splide h-full" ref={splideRef}>
-                                <div className="splide__track h-full">
-                                    <ul className="splide__list h-full">
-
-                                        {/* Slide 1: Ivermectin */}
-                                        <li className="splide__slide w-full h-full relative">
-                                            <img src="https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?auto=format&fit=crop&q=80&w=1200" alt="Premium Ivermectin Tablets for Joe Tippens Protocol" className="absolute inset-0 w-full h-full object-cover hero-image" />
-                                            <div className="absolute inset-0 bg-gradient-to-r from-black/80 to-transparent"></div>
-                                            <div className="absolute inset-0 flex flex-col justify-center items-start p-8 md:p-16 text-white hero-content opacity-0">
-                                                <span className="text-rose-400 font-bold tracking-widest uppercase mb-4 text-sm md:text-base">Buy From Us</span>
-                                                <h1 className="text-4xl md:text-6xl font-bold mb-2 font-serif leading-tight">Buy Ivermectin <br /> <span className="text-rose-200">Tablets Online</span></h1>
-                                                <p className="text-lg md:text-xl mb-8 text-gray-200 max-w-lg">Premium quality anti-parasitic medication available now with express shipping for the Joe Tippens Protocol.</p>
-                                                <Link to="/all-pills?category=Ivermectin" className="bg-rose-600 text-white px-8 py-3 rounded-full font-bold text-sm md:text-base hover:bg-rose-700 transition-all shadow-lg hover:shadow-rose-500/50 flex items-center gap-2">
-                                                    Shop Now <ArrowRight size={18} />
-                                                </Link>
-                                            </div>
-                                        </li>
-
-                                        {/* Slide 2: Fenbendazole */}
-                                        <li className="splide__slide w-full h-full relative">
-                                            <img src="https://images.unsplash.com/photo-1585435557343-3b092031a831?auto=format&fit=crop&q=80&w=1200" alt="High-quality Fenbendazole for Wellness Protocol" className="absolute inset-0 w-full h-full object-cover hero-image" />
-                                            <div className="absolute inset-0 bg-gradient-to-r from-black/70 to-transparent"></div>
-                                            <div className="absolute inset-0 flex flex-col justify-center items-start p-8 md:p-16 text-white hero-content opacity-0">
-                                                <span className="text-yellow-400 font-bold tracking-widest uppercase mb-4 text-sm md:text-base">Hot Discounts</span>
-                                                <h2 className="text-4xl md:text-6xl font-bold mb-4 font-serif leading-tight">Buy Fenbendazole</h2>
-                                                <p className="text-lg md:text-xl mb-8 text-gray-200 max-w-lg">Get the best deals on high-efficacy Fenbendazole products today.</p>
-                                                <Link to="/all-pills?category=Anti-Parasites" className="bg-yellow-500 text-gray-900 px-8 py-3 rounded-full font-bold text-sm md:text-base hover:bg-yellow-400 transition-all shadow-lg hover:shadow-yellow-500/50">
-                                                    Get Discounts
-                                                </Link>
-                                            </div>
-                                        </li>
-
-                                        {/* Slide 3: Anti-Parasites */}
-                                        <li className="splide__slide w-full h-full relative">
-                                            <img src="https://images.unsplash.com/photo-1624454002302-36b824d7bd0a?auto=format&fit=crop&q=80&w=1200" alt="Broad-spectrum Anti-Parasite Supplements" className="absolute inset-0 w-full h-full object-cover hero-image" />
-                                            <div className="absolute inset-0 bg-blue-900/70"></div>
-                                            <div className="absolute inset-0 flex flex-col justify-center items-start p-8 md:p-16 text-white hero-content opacity-0">
-                                                <span className="bg-red-600 text-white text-xs font-bold px-3 py-1 rounded mb-6 uppercase tracking-wider">Big Discount</span>
-                                                <h2 className="text-4xl md:text-6xl font-bold mb-6 font-serif leading-tight">Anti-Parasites <br /> Collection</h2>
-                                                <Link to="/all-pills?category=Anti-Parasites" className="inline-flex items-center text-base md:text-lg font-bold uppercase tracking-wide border-b-2 border-white pb-1 hover:text-rose-400 hover:border-rose-400 transition-colors">
-                                                    Shop Now <ArrowRight size={20} className="ml-2" />
-                                                </Link>
-                                            </div>
-                                        </li>
-
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-
-                        {/* Right Column: Side Banners (Stacked) */}
-                        <div className="lg:col-span-1 flex flex-col gap-4 h-[400px] lg:h-full">
-                            {/* Animated New Arrivals Box with "Wipe" Effect */}
-                            <div className="relative flex-[2] rounded-2xl overflow-hidden shadow-md cursor-pointer h-full bg-gray-900 group">
-                                {newArrivals.map((product, index) => {
-                                    const isActive = index === currentNewArrival;
-                                    return (
-                                        <div
-                                            key={product.id}
-                                            className={`absolute inset-0 w-full h-full ${isActive ? 'new-arrival-active' : 'new-arrival-exit'}`}
-                                        >
-                                            {/* Background Image */}
-                                            <img
-                                                src={product.image}
-                                                alt={product.name}
-                                                className={`absolute inset-0 w-full h-full object-cover transition-transform duration-[6000ms] ease-linear ${isActive ? 'scale-110' : 'scale-100'
-                                                    }`}
-                                            />
-
-                                            {/* Overlay */}
-                                            <div className="absolute inset-0 bg-gradient-to-t from-gray-900/95 via-gray-900/40 to-transparent"></div>
-
-                                            {/* Content */}
-                                            <div className="absolute inset-0 flex flex-col justify-end p-6 pb-8">
-                                                <div className="opacity-0 na-content-badge transform translate-x-[-20px]">
-                                                    <span className="inline-block px-3 py-1 bg-white/20 backdrop-blur-md border border-white/30 rounded-full text-[10px] font-bold uppercase tracking-widest text-white mb-3 shadow-sm">
-                                                        Just Landed
-                                                    </span>
-                                                </div>
-
-                                                <h2 className="opacity-0 na-content-title transform translate-x-[-20px] text-3xl font-black text-white mb-2 font-serif leading-none tracking-tight">
-                                                    {product.name}
-                                                </h2>
-
-                                                <div className="opacity-0 na-content-price transform translate-x-[-20px] flex items-center justify-between mt-2 pt-4 border-t border-white/20">
-                                                    <div>
-                                                        <p className="text-xs text-gray-300 uppercase tracking-wide font-medium">Starting at</p>
-                                                        <p className="text-xl font-bold text-emerald-400">${product.price}</p>
-                                                    </div>
-                                                    <Link
-                                                        to={`/product/${product.id}`}
-                                                        className="bg-white text-gray-900 w-10 h-10 rounded-full flex items-center justify-center hover:bg-emerald-400 transition-colors shadow-lg hover:scale-110"
-                                                    >
-                                                        <ArrowRight size={20} />
-                                                    </Link>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    );
-                                })}
-
-                                {/* Status Indicators */}
-                                <div className="absolute top-4 right-4 z-30 flex gap-1.5">
-                                    {newArrivals.map((_, idx) => (
-                                        <div
-                                            key={idx}
-                                            onClick={(e) => { e.preventDefault(); setCurrentNewArrival(idx); }}
-                                            className={`h-1.5 rounded-full cursor-pointer transition-all duration-500 shadow-sm ${idx === currentNewArrival ? 'w-8 bg-emerald-400' : 'w-2 bg-white/30 hover:bg-white/60'
-                                                }`}
-                                        />
-                                    ))}
-                                </div>
-                            </div>
-
-                            {/* See All Box */}
-                            <Link to="/all-pills" className="relative flex-1 rounded-2xl overflow-hidden group shadow-md bg-gradient-to-br from-cyan-600 to-blue-700 flex items-center justify-between px-6 hover:shadow-xl transition-all transform hover:-translate-y-1">
-                                <div className="text-white z-10">
-                                    <h3 className="font-bold text-xl font-serif mb-1">See All Products</h3>
-                                    <span className="text-sm opacity-90 font-medium tracking-wide">Browse Catalog</span>
-                                </div>
-                                <div className="bg-white/20 p-3 rounded-full z-10 group-hover:bg-white/30 transition-colors">
-                                    <ArrowRight className="text-white w-6 h-6" />
-                                </div>
-
-                                {/* Decorative circles */}
-                                <div className="absolute -right-4 -bottom-4 w-24 h-24 bg-white/10 rounded-full blur-xl group-hover:bg-white/20 transition-all"></div>
-                                <div className="absolute -left-4 -top-4 w-20 h-20 bg-cyan-400/20 rounded-full blur-xl"></div>
-                            </Link>
-                        </div>
-
+            {currentArrival && (
+                <section className="relative overflow-hidden bg-[radial-gradient(circle_at_top_left,_rgba(191,234,211,0.55),_transparent_28%),radial-gradient(circle_at_bottom_right,_rgba(214,236,247,0.55),_transparent_32%),linear-gradient(135deg,_#f8fffb_0%,_#ffffff_50%,_#f2fbf5_100%)] pt-20 pb-14">
+                    <div className="absolute inset-0 opacity-60">
+                        <div className="absolute left-[-7rem] top-20 h-64 w-64 rounded-full bg-[#cfeedd] blur-3xl" />
+                        <div className="absolute right-[-3rem] top-8 h-72 w-72 rounded-full bg-[#ddf3e7] blur-3xl" />
+                        <div className="absolute bottom-0 left-1/3 h-44 w-44 rounded-full bg-[#dceef7] blur-3xl" />
                     </div>
-                </div>
-            </section>
 
-            {/* Features Icons */}
-            <section className="py-12 bg-white border-b border-gray-100">
+                    <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+                        <div className="mb-8 flex items-center justify-between gap-4">
+                            <div>
+                                <span className="inline-flex items-center rounded-full bg-[#dff6e8] px-4 py-2 text-xs font-bold uppercase tracking-[0.24em] text-[#1f8a57]">
+                                    New Arrivals
+                                </span>
+                                <p className="mt-3 max-w-2xl text-sm text-gray-500">
+                                    Fresh products in rotation with bold details, pricing, and direct access to each item.
+                                </p>
+                            </div>
+
+                            <div className="hidden items-center gap-3 md:flex">
+                                <button
+                                    type="button"
+                                    onClick={handlePrevArrival}
+                                    className="flex h-12 w-12 items-center justify-center rounded-full border border-[#bfdccf] bg-white/90 text-[#1f6f52] transition hover:bg-[#1f8a57] hover:text-white"
+                                    aria-label="Previous arrival"
+                                >
+                                    <ChevronLeft size={20} />
+                                </button>
+                                <button
+                                    type="button"
+                                    onClick={handleNextArrival}
+                                    className="flex h-12 w-12 items-center justify-center rounded-full border border-[#bfdccf] bg-white/90 text-[#1f6f52] transition hover:bg-[#1f8a57] hover:text-white"
+                                    aria-label="Next arrival"
+                                >
+                                    <ChevronRight size={20} />
+                                </button>
+                            </div>
+                        </div>
+
+                        <div className="grid items-center gap-12 lg:grid-cols-[1.15fr_0.85fr]">
+                            <div
+                                key={currentArrival.id}
+                                className="rounded-[2rem] border border-white/70 bg-white/85 p-8 shadow-[0_24px_70px_rgba(35,73,52,0.08)] backdrop-blur md:p-12"
+                            >
+                                <div className="mb-6 flex flex-wrap items-center gap-3">
+                                    <span className="rounded-full bg-[#eef8f1] px-4 py-2 text-xs font-bold uppercase tracking-[0.2em] text-[#1f8a57]">
+                                        {currentArrival.category}
+                                    </span>
+                                    <span className="rounded-full bg-gray-900 px-4 py-2 text-xs font-semibold uppercase tracking-[0.18em] text-white">
+                                        {currentArrival.prescription ? 'Prescription product' : 'Ready to order'}
+                                    </span>
+                                </div>
+
+                                <h1 className="mb-5 max-w-3xl text-4xl font-black leading-[0.95] tracking-[-0.04em] text-gray-950 md:text-6xl lg:text-7xl">
+                                    {currentArrival.name}
+                                </h1>
+
+                                <p className="mb-8 max-w-2xl text-base leading-8 text-gray-600 md:text-lg">
+                                    {getShortDescription(currentArrival.description)}
+                                </p>
+
+                                <div className="mb-8 flex flex-wrap items-end gap-6">
+                                    <div>
+                                        <p className="mb-2 text-xs font-bold uppercase tracking-[0.25em] text-gray-400">Price</p>
+                                        <div className="flex items-end gap-3">
+                                            <span className="text-3xl font-black text-[#16663f] md:text-5xl">
+                                                ${currentArrival.price.toFixed(2)}
+                                            </span>
+                                            {currentArrival.oldPrice && (
+                                                <span className="pb-1 text-lg font-medium text-gray-400 line-through">
+                                                    ${currentArrival.oldPrice.toFixed(2)}
+                                                </span>
+                                            )}
+                                        </div>
+                                    </div>
+
+                                    <div className="flex items-center gap-2 rounded-2xl bg-[#f7fbf8] px-5 py-4">
+                                        <Star size={18} className="fill-[#f5b301] text-[#f5b301]" />
+                                        <span className="text-sm font-bold text-gray-900">{currentArrival.rating.toFixed(1)}</span>
+                                        <span className="text-sm text-gray-500">from {currentArrival.reviews} reviews</span>
+                                    </div>
+                                </div>
+
+                                <div className="flex flex-col gap-4 sm:flex-row">
+                                    <Link
+                                        to={`/product/${currentArrival.id}`}
+                                        className="inline-flex items-center justify-center gap-2 rounded-xl bg-[#1f8a57] px-8 py-4 text-sm font-bold uppercase tracking-[0.14em] text-white transition hover:bg-[#16663f]"
+                                    >
+                                        View Product
+                                        <ArrowRight size={16} />
+                                    </Link>
+                                    <Link
+                                        to="/all-pills"
+                                        className="inline-flex items-center justify-center rounded-xl border border-[#1f8a57] px-8 py-4 text-sm font-bold uppercase tracking-[0.14em] text-[#1f8a57] transition hover:bg-[#eef8f1]"
+                                    >
+                                        Explore More
+                                    </Link>
+                                </div>
+
+                                <div className="mt-8 flex flex-wrap items-center gap-3 md:hidden">
+                                    <button
+                                        type="button"
+                                        onClick={handlePrevArrival}
+                                        className="flex h-11 w-11 items-center justify-center rounded-full border border-[#bfdccf] bg-white text-[#1f6f52] transition hover:bg-[#1f8a57] hover:text-white"
+                                        aria-label="Previous arrival"
+                                    >
+                                        <ChevronLeft size={18} />
+                                    </button>
+                                    <button
+                                        type="button"
+                                        onClick={handleNextArrival}
+                                        className="flex h-11 w-11 items-center justify-center rounded-full border border-[#bfdccf] bg-white text-[#1f6f52] transition hover:bg-[#1f8a57] hover:text-white"
+                                        aria-label="Next arrival"
+                                    >
+                                        <ChevronRight size={18} />
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div className="relative">
+                                <div className="absolute -left-4 top-8 hidden rounded-full border-2 border-[#7bc49b] bg-white px-5 py-4 text-center shadow-sm md:block">
+                                    <p className="text-xs font-bold uppercase text-[#7bc49b]">Fast</p>
+                                    <p className="text-sm font-semibold text-gray-800">Arrival</p>
+                                </div>
+                                <div className="absolute -bottom-5 left-8 hidden rounded-full border-2 border-[#1f8a57] bg-white px-6 py-4 text-center shadow-sm lg:block">
+                                    <p className="text-xs font-bold uppercase text-[#1f8a57]">Top Rated</p>
+                                    <p className="text-sm font-semibold text-gray-800">New Stock</p>
+                                </div>
+                                <div className="absolute -right-3 bottom-10 hidden rounded-full border-2 border-[#7bc49b] bg-white px-5 py-4 text-center shadow-sm xl:block">
+                                    <p className="text-xs font-bold uppercase text-[#7bc49b]">
+                                        {currentNewArrival + 1}/{newArrivals.length}
+                                    </p>
+                                    <p className="text-sm font-semibold text-gray-800">Showing</p>
+                                </div>
+
+                                <div className="relative mx-auto max-w-xl">
+                                    <div className="absolute inset-6 rounded-[2rem] bg-[#d5efe0]" />
+                                    <div className="relative overflow-hidden rounded-[2rem] border border-white/70 bg-white p-5 shadow-[0_28px_80px_rgba(23,64,47,0.14)]">
+                                        <div className="aspect-[4/4.2] overflow-hidden rounded-[1.5rem] bg-[linear-gradient(145deg,_#f5faf7,_#ffffff)]">
+                                            <img
+                                                key={currentArrival.id}
+                                                src={currentArrival.image}
+                                                alt={currentArrival.name}
+                                                className="h-full w-full object-cover"
+                                            />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
+                            {newArrivals.map((product, index) => (
+                                <button
+                                    key={product.id}
+                                    type="button"
+                                    onClick={() => setCurrentNewArrival(index)}
+                                    className={`rounded-full px-4 py-2 text-xs font-bold uppercase tracking-[0.16em] transition ${
+                                        index === currentNewArrival
+                                            ? 'bg-[#1f8a57] text-white'
+                                            : 'bg-white/90 text-gray-500 hover:bg-white hover:text-[#1f8a57]'
+                                    }`}
+                                >
+                                    {product.name}
+                                </button>
+                            ))}
+                        </div>
+                    </div>
+                </section>
+            )}
+
+            <section className="py-12 bg-white">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                        <div className="relative group overflow-hidden rounded-2xl bg-white shadow-sm border border-gray-100 p-6 flex flex-col items-center text-center hover:shadow-md transition-all">
-                            <div className="w-16 h-16 rounded-2xl bg-rose-50 flex items-center justify-center text-rose-600 mb-4 group-hover:scale-110 transition-transform">
-                                <Leaf size={32} />
+                        {featureHighlights.map((feature) => (
+                            <div key={feature.title} className="bg-white p-2 flex flex-col items-center text-center">
+                                <img
+                                    src={feature.image}
+                                    alt={feature.alt}
+                                    className="h-20 w-20 object-contain mb-4"
+                                />
+                                <h3 className="font-bold text-gray-900 mb-1">{feature.title}</h3>
+                                <p className="text-gray-500 text-xs lowercase leading-relaxed">{feature.description}</p>
                             </div>
-                            <h3 className="font-bold text-gray-900 mb-1">Premium Quality</h3>
-                            <p className="text-gray-500 text-xs lowercase leading-relaxed">Verified and high-efficacy pharmaceutical supplements.</p>
-                        </div>
-                        <div className="relative group overflow-hidden rounded-2xl bg-white shadow-sm border border-gray-100 p-6 flex flex-col items-center text-center hover:shadow-md transition-all">
-                            <div className="w-16 h-16 rounded-2xl bg-rose-50 flex items-center justify-center text-rose-600 mb-4 group-hover:scale-110 transition-transform">
-                                <Lock size={32} />
-                            </div>
-                            <h3 className="font-bold text-gray-900 mb-1">Secure Payments</h3>
-                            <p className="text-gray-500 text-xs lowercase leading-relaxed">Encrypted transactions via secure payment gateways.</p>
-                        </div>
-                        <div className="relative group overflow-hidden rounded-2xl bg-white shadow-sm border border-gray-100 p-6 flex flex-col items-center text-center hover:shadow-md transition-all">
-                            <div className="w-16 h-16 rounded-2xl bg-rose-50 flex items-center justify-center text-rose-600 mb-4 group-hover:scale-110 transition-transform">
-                                <Headphones size={32} />
-                            </div>
-                            <h3 className="font-bold text-gray-900 mb-1">24/7 Support</h3>
-                            <p className="text-gray-500 text-xs lowercase leading-relaxed">Dedicated expert support whenever you need assistance.</p>
-                        </div>
-                        <div className="relative group overflow-hidden rounded-2xl bg-white shadow-sm border border-gray-100 p-6 flex flex-col items-center text-center hover:shadow-md transition-all">
-                            <div className="w-16 h-16 rounded-2xl bg-rose-50 flex items-center justify-center text-rose-600 mb-4 group-hover:scale-110 transition-transform">
-                                <Gift size={32} />
-                            </div>
-                            <h3 className="font-bold text-gray-900 mb-1">Fast Delivery</h3>
-                            <p className="text-gray-500 text-xs lowercase leading-relaxed">Express shipping on all protocol orders.</p>
-                        </div>
+                        ))}
                     </div>
                 </div>
             </section>
 
-            {/* Most Loved Products */}
-            <section className="py-16 bg-gray-50">
+            <TopTrendingSearch />
+
+            <ProductShowcase />
+
+            <section className="py-12 bg-white">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="text-center mb-12">
                         <h2 className="text-3xl font-bold text-gray-900 font-serif">Most Loved Products</h2>
-                        <div className="w-16 h-1 bg-rose-600 mx-auto mt-4"></div>
+                        <div className="w-16 h-1 bg-green-700 mx-auto mt-4"></div>
                     </div>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
-                        {mostLoved.map(product => (
+                    <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-10 xl:gap-14">
+                        {mostLoved.map((product) => (
                             <ProductCard key={product.id} product={product} />
                         ))}
                     </div>
                 </div>
             </section>
 
-            {/* Featured Products */}
-            <section className="py-16 bg-white">
+            <section className="py-12 bg-white">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="text-center mb-12">
                         <h2 className="text-3xl font-bold text-gray-900 font-serif">Our Featured Products</h2>
-                        <div className="w-16 h-1 bg-rose-600 mx-auto mt-4"></div>
+                        <div className="w-16 h-1 bg-green-700 mx-auto mt-4"></div>
                     </div>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
-                        {featured.map(product => (
+                    <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-10 xl:gap-14">
+                        {featured.map((product) => (
                             <ProductCard key={product.id} product={product} />
                         ))}
                     </div>
                 </div>
             </section>
 
-            {/* About / Commitment Section */}
             <section className="py-20 bg-gray-900 text-white relative overflow-hidden">
                 <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&q=80&w=1600')] bg-cover bg-center opacity-10"></div>
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -339,83 +317,71 @@ const Home: React.FC = () => {
                             </p>
                             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
                                 <div className="flex items-center gap-3">
-                                    <span className="w-2 h-2 bg-rose-500 rounded-full"></span>
+                                    <span className="w-2 h-2 bg-green-600 rounded-full"></span>
                                     <span>Fractions and Dislocations</span>
                                 </div>
                                 <div className="flex items-center gap-3">
-                                    <span className="w-2 h-2 bg-rose-500 rounded-full"></span>
+                                    <span className="w-2 h-2 bg-green-600 rounded-full"></span>
                                     <span>Desensitisation Injections</span>
                                 </div>
                                 <div className="flex items-center gap-3">
-                                    <span className="w-2 h-2 bg-rose-500 rounded-full"></span>
+                                    <span className="w-2 h-2 bg-green-600 rounded-full"></span>
                                     <span>Home Medicine Review</span>
                                 </div>
                                 <div className="flex items-center gap-3">
-                                    <span className="w-2 h-2 bg-rose-500 rounded-full"></span>
+                                    <span className="w-2 h-2 bg-green-600 rounded-full"></span>
                                     <span>Health Assessments</span>
                                 </div>
                                 <div className="flex items-center gap-3">
-                                    <span className="w-2 h-2 bg-rose-500 rounded-full"></span>
+                                    <span className="w-2 h-2 bg-green-600 rounded-full"></span>
                                     <span>High Quality Care</span>
                                 </div>
                             </div>
-                            <Link to="/contact" className="bg-rose-600 text-white px-8 py-3 rounded-lg font-bold hover:bg-rose-700 transition-colors inline-block">
+                            <Link to="/contact" className="bg-green-700 text-white px-8 py-3 rounded-lg font-bold hover:bg-green-800 transition-colors inline-block">
                                 Contact Us
                             </Link>
                         </div>
                         <div className="hidden lg:block relative">
-                            <div className="border-8 border-white/10 rounded-2xl p-2">
-                                <img src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&q=80&w=800" alt="Doctor" className="rounded-xl shadow-2xl" />
+                            <div className="border-4 border-gray-200 rounded-2xl p-2">
+                                <img
+                                    src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&q=80&w=800"
+                                    alt="Doctor"
+                                    className="rounded-xl"
+                                />
                             </div>
                         </div>
                     </div>
                 </div>
             </section>
 
-            {/* Success Stories / Reviews Teaser */}
-            <section className="py-20 bg-gray-50">
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className="text-center mb-16">
-                        <h2 className="text-4xl font-bold text-gray-900 mb-4 font-serif">Success Stories</h2>
-                        <p className="text-xl text-gray-600">See what our customers have to say</p>
-                    </div>
+            <FAQ />
 
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
-                        {[
-                            { name: "Robert Fox", text: "Excellent service and genuine products. The shipping was incredibly fast." },
-                            { name: "Bessie Cooper", text: "I was skeptical at first, but the quality of the supplements is top notch." },
-                            { name: "Arlene McCoy", text: "Customer support helped me choose the right dosage. Very thankful." }
-                        ].map((review, idx) => (
-                            <div key={idx} className="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
-                                <div className="flex text-yellow-400 mb-4">
-                                    {'⭐'.repeat(5)}
-                                </div>
-                                <p className="text-gray-600 italic mb-6">"{review.text}"</p>
-                                <h4 className="font-bold text-gray-900">{review.name}</h4>
-                                <p className="text-xs text-gray-400">Verified Buyer</p>
-                            </div>
-                        ))}
-                    </div>
+            <section className="bg-white px-4 py-16 sm:px-6 lg:px-8">
+                <div className="mx-auto max-w-6xl overflow-hidden rounded-[2rem] border border-emerald-100 bg-[linear-gradient(135deg,_#f7fff9_0%,_#ffffff_44%,_#eef7ff_100%)] p-8 shadow-[0_24px_80px_rgba(15,23,42,0.06)] md:p-12">
+                    <div className="grid items-center gap-8 lg:grid-cols-[1fr_auto]">
+                        <div className="text-center lg:text-left">
+                            <span className="inline-flex rounded-full bg-emerald-100 px-4 py-2 text-xs font-black uppercase tracking-[0.24em] text-emerald-700">
+                                Share PureProtocol
+                            </span>
+                            <h2 className="mt-5 text-3xl font-black tracking-[-0.04em] text-slate-900 md:text-5xl">
+                                Help more people discover trusted wellness products.
+                            </h2>
+                            <p className="mt-4 max-w-2xl text-lg leading-8 text-slate-600">
+                                Share the store directly to social platforms or copy the link and send it anywhere. Every action below uses a real share destination.
+                            </p>
+                        </div>
 
-                    <div className="text-center">
-                        <Link to="/reviews" className="bg-white text-gray-900 border-2 border-gray-900 px-8 py-3 rounded-lg font-bold hover:bg-gray-900 hover:text-white transition-colors">
-                            View More Reviews
-                        </Link>
+                        <div className="flex justify-center lg:justify-end">
+                            <SocialShare
+                                url={window.location.origin}
+                                title="PureProtocol - Professional Health Solutions"
+                                className="max-w-xl"
+                            />
+                        </div>
                     </div>
                 </div>
             </section>
-
-            {/* Social Share Section */}
-            <section className="py-12 bg-white border-t border-gray-100">
-                <div className="max-w-7xl mx-auto px-4 text-center">
-                    <h2 className="text-2xl font-bold text-gray-900 font-serif mb-4">Share PureProtocol</h2>
-                    <p className="text-gray-500 mb-6">Help your friends and family discover professional health solutions.</p>
-                    <div className="flex justify-center">
-                        <SocialShare url={window.location.origin} title="PureProtocol - Professional Health Solutions" />
-                    </div>
-                </div>
-            </section>
-        </div >
+        </div>
     );
 };
 

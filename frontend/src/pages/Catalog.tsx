@@ -1,11 +1,29 @@
 import React, { useState, useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { MOCK_PRODUCTS } from '../constants';
 import ProductCard from '../components/ProductCard';
-import { Search, Filter, X, ChevronRight, ChevronLeft } from 'lucide-react';
+import {
+  Search,
+  Filter,
+  X,
+  ChevronRight,
+  ChevronLeft
+} from 'lucide-react';
+import { useCart } from '../context/CartContext';
+import freeDeliveryPromo from '../assets/promo/free delivery.png';
+import allCategoryBanner from '../assets/images/all-category-banner.jpg';
+
+const trendingSearchImages = import.meta.glob('../assets/trendind searchs/*', {
+  eager: true,
+  import: 'default'
+}) as Record<string, string>;
+
+const findTrendingImage = (fileName: string) =>
+  Object.entries(trendingSearchImages).find(([path]) => path.endsWith(`/${fileName}`) || path.endsWith(`\\${fileName}`))?.[1] ?? '';
 
 const Catalog: React.FC = () => {
   const location = useLocation();
+  const { addToCart } = useCart();
   const [products, setProducts] = useState(MOCK_PRODUCTS);
   const [searchTerm, setSearchTerm] = useState('');
   const [priceRange, setPriceRange] = useState(1000);
@@ -97,6 +115,80 @@ const Catalog: React.FC = () => {
   const totalPages = Math.ceil(products.length / ITEMS_PER_PAGE);
   const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
   const paginatedProducts = products.slice(startIndex, startIndex + ITEMS_PER_PAGE);
+  const normalizedSearchTerm = searchTerm.trim().toLowerCase();
+  const isIvermectinPage = selectedCategories.length === 1 && selectedCategories[0] === 'Ivermectin';
+  const isFenbendazolePage = normalizedSearchTerm === 'fenbendazole';
+  const isCollectionPage = isIvermectinPage || isFenbendazolePage;
+  const isAllCategoryLanding =
+    selectedCategories.length === 0 &&
+    !searchTerm &&
+    prescriptionFilter === 'all' &&
+    sortOption === '' &&
+    priceRange === 1000;
+  const visibleProducts = isCollectionPage ? products : paginatedProducts;
+
+  const allCategoryCards = [
+    { title: 'ANTI FUNGAL', subtitle: 'Medication', href: '/all-pills?search=anti fungal', image: findTrendingImage('ANTI FUNGAL.png') },
+    { title: 'ALLERGY', subtitle: 'Medication', href: '/all-pills?search=allergy', image: findTrendingImage('ALLERGY.png') },
+    { title: 'ACNE', subtitle: 'Care', href: '/all-pills?search=acne', image: findTrendingImage('ACNE Care.png') },
+    { title: 'ALZHEIMER', subtitle: 'Medication', href: '/all-pills?search=alzheimer', image: findTrendingImage('ALZHEIMER.png') },
+    { title: 'ADDICTION', subtitle: 'Medication', href: '/all-pills?search=addiction', image: findTrendingImage('ADDICTION.png') },
+    { title: 'ANTI BIOTICS', subtitle: 'Medication', href: '/all-pills?search=antibiotic', image: findTrendingImage('ANTI BIOTIC.png') },
+    { title: 'ANTI CANCER', subtitle: 'Medication', href: '/all-pills?search=anti cancer', image: findTrendingImage('ANTI CANCER.png') },
+    { title: 'ANTI MALERIAL', subtitle: 'Medication', href: '/all-pills?search=anti malarial', image: findTrendingImage('ANTI MALERIAL.png') },
+    { title: 'ANTI MIGRAINE', subtitle: 'Medication', href: '/all-pills?search=migraine', image: findTrendingImage('ANTI MIGRAINE.png') },
+    { title: 'ANTI PARKINSONIAN', subtitle: 'Medication', href: '/all-pills?search=parkinsonian', image: findTrendingImage('ANTI PARKINSONIAN.png') },
+    { title: 'ANTI VIRAL', subtitle: 'Medication', href: '/all-pills?search=anti viral', image: findTrendingImage('ANTI VIRAL.png') },
+    { title: 'ANTI WORM', subtitle: 'Medication', href: '/all-pills?search=worm', image: findTrendingImage('ANTI WORM.png') },
+    { title: 'ARTHRITIS', subtitle: 'Medication', href: '/all-pills?search=arthritis', image: findTrendingImage('ARTHRITIS.png') },
+    { title: 'ANXIETY', subtitle: 'Medication', href: '/all-pills?search=anxiety', image: findTrendingImage('ANXIETY.png') },
+    { title: 'ASTHAMA', subtitle: 'Medication', href: '/all-pills?search=asthma', image: findTrendingImage('ASTHAMA.png') },
+    { title: 'BIRTH CONTROL', subtitle: 'Medication', href: '/all-pills?search=birth control', image: findTrendingImage('BIRTH CONTROL.png') },
+    { title: 'BLADDER', subtitle: 'Prostate', href: '/all-pills?search=bladder', image: findTrendingImage('BLADDER.png') },
+    { title: 'BLOOD RELATED', subtitle: 'Medication', href: '/all-pills?search=blood', image: findTrendingImage('BLOOD RELATED.png') },
+    { title: 'CARDIAC CARE', subtitle: 'Medication', href: '/all-pills?search=cardiac', image: findTrendingImage('CARDIAC CARE.png') },
+    { title: 'COLON CARE', subtitle: 'Medication', href: '/all-pills?search=colon', image: findTrendingImage('COLON CARE.png') },
+    { title: 'COVID CARE', subtitle: 'Medication', href: '/all-pills?search=covid', image: findTrendingImage('COVID CARE.png') },
+    { title: 'DIABETES', subtitle: 'Treatment', href: '/all-pills?search=diabetes', image: findTrendingImage('DAIBETIC.png') },
+    { title: 'ERECTILE', subtitle: 'Dysfunction', href: '/all-pills?category=Erectile Dysfunction', image: findTrendingImage('ERECTILE disfunction.png') },
+    { title: 'EYE CARE', subtitle: 'Medication', href: '/all-pills?search=eye care', image: findTrendingImage('EYE CARE.png') },
+    { title: 'FITNESS', subtitle: 'Medication', href: '/all-pills?search=fitness', image: findTrendingImage('FITNESS.png') },
+    { title: 'GASTRO', subtitle: 'Medication', href: '/all-pills?search=gastro', image: findTrendingImage('GASTRO.png') },
+    { title: 'HAIR CARE', subtitle: 'Medication', href: '/all-pills?search=hair care', image: findTrendingImage('HAIR CARE.png') },
+    { title: 'HEALTH CARE', subtitle: 'Devices', href: '/all-pills?search=health care', image: findTrendingImage('HEALTH CARE DEVICES.png') },
+    { title: 'HEPATITIS B', subtitle: 'Medication', href: '/all-pills?search=hepatitis', image: findTrendingImage('HEPATITIS B.png') },
+    { title: 'HERBAL', subtitle: 'Products', href: '/all-pills?search=herbal', image: findTrendingImage('HERBAL Products.png') },
+    { title: 'HIV-AIDS', subtitle: 'Medication', href: '/all-pills?search=hiv', image: findTrendingImage('HIVAIDS.png') },
+    { title: 'HORMONES', subtitle: 'Care', href: '/all-pills?search=hormones', image: findTrendingImage('HORMONES Care.png') },
+    { title: 'IVERMECTIN', subtitle: 'Tablets', href: '/all-pills?category=Ivermectin', image: findTrendingImage('IVERMECTIN Tablets.png') },
+    { title: 'UROLOGY', subtitle: 'Care', href: '/all-pills?search=urology', image: findTrendingImage('UROLOGY Care.png') },
+    { title: 'LIFE SAVING', subtitle: 'Drug', href: '/all-pills?search=life saving', image: findTrendingImage('LIFE SAVING Drug.png') },
+    { title: 'NEURO/CNS', subtitle: 'Care', href: '/all-pills?search=neuro', image: findTrendingImage('NEURO_CNS Care.png') },
+    { title: 'NUTRITION', subtitle: 'Care', href: '/all-pills?search=nutrition', image: findTrendingImage('NUTRITION Care.png') },
+    { title: 'ORTHO', subtitle: 'Care', href: '/all-pills?search=ortho', image: findTrendingImage('ORTHO Care.png') },
+    { title: 'OEDEMA', subtitle: 'Care', href: '/all-pills?search=oedema', image: findTrendingImage('OEDEMA Care.png') },
+    { title: 'PAIN & ANALGESIC', subtitle: 'Medication', href: '/all-pills?search=pain', image: findTrendingImage('PAIN & ANALGESIC Medication.png') },
+    { title: 'RESPIRATORY', subtitle: 'Care', href: '/all-pills?search=respiratory', image: findTrendingImage('RESPIRATORY.png') },
+    { title: 'SKIN', subtitle: 'Care', href: '/all-pills?search=skin care', image: findTrendingImage('SKIN Care.png') },
+    { title: 'SLEEPING', subtitle: 'Disorder', href: '/all-pills?search=sleep', image: findTrendingImage('SLEEPING Disorder.png') },
+    { title: 'THYROID CARE', subtitle: 'Medication', href: '/all-pills?search=thyroid', image: findTrendingImage('THYROID CARE Medication.png') },
+    { title: 'KIDNEY/LIVER', subtitle: 'Medication', href: '/all-pills?search=kidney liver', image: findTrendingImage('KIDNEY_LIVER Medication.png') },
+    { title: 'WEIGHT LOSS', subtitle: 'Medication', href: '/all-pills?search=weight loss', image: findTrendingImage('WEIGHT LOSS Medication.png') },
+    { title: 'WOMEN CARE', subtitle: 'Medication', href: '/all-pills?search=women care', image: findTrendingImage('WOMEN.png') },
+    { title: 'HCQS', subtitle: 'Medication', href: '/all-pills?search=hcqs', image: findTrendingImage('HCQS Medication.png') },
+    { title: 'AZITHROMYCIN', subtitle: 'Medication', href: '/all-pills?search=azithromycin', image: findTrendingImage('AZITHROMYCIN Medication.png') }
+  ];
+
+  const categoryPalettes = [
+    'from-[#6d8fa9] to-[#6488a3]',
+    'from-[#8b84b8] to-[#8079ab]',
+    'from-[#9c74ea] to-[#8d69e0]',
+    'from-[#c1777d] to-[#b56f76]',
+    'from-[#95a0f3] to-[#8794ec]',
+    'from-[#c5ff68] to-[#b8f255]',
+    'from-[#8f97f5] to-[#7d88ea]',
+    'from-[#96bcc8] to-[#89b0bc]'
+  ];
 
   const handlePageChange = (page: number) => {
     if (page >= 1 && page <= totalPages) {
@@ -104,6 +196,13 @@ const Catalog: React.FC = () => {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
   };
+
+  const quickCategoryLinks = allCategoryCards.slice(0, 10);
+  const collectionTitle = isIvermectinPage ? 'Ivermectin' : 'Fenbendazole';
+  const collectionPromoImage =
+    isIvermectinPage
+      ? freeDeliveryPromo
+      : products.find((product) => product.name.toLowerCase().includes('fenbendazole'))?.image ?? products[0]?.image ?? freeDeliveryPromo;
 
   const FilterContent = () => (
     <>
@@ -189,8 +288,182 @@ const Catalog: React.FC = () => {
     </>
   );
 
+  const IvermectinCard: React.FC<{ product: typeof products[number] }> = ({ product }) => (
+    <div className="group flex h-full flex-col px-2">
+      <Link to={`/product/${product.id}`} className="mb-6 flex h-64 items-center justify-center overflow-hidden bg-transparent">
+        <img
+          src={product.image}
+          alt={product.name}
+          className="max-h-full w-full object-contain transition duration-300 group-hover:scale-105"
+        />
+      </Link>
+
+      <Link
+        to={`/product/${product.id}`}
+        className="mb-3 text-center text-[1.45rem] font-black leading-tight tracking-[-0.03em] text-[#1b6f6a] transition hover:text-[#114945]"
+      >
+        {product.name}
+      </Link>
+
+      <p className="mb-5 text-center text-base leading-7 text-slate-500 line-clamp-3">
+        {product.description}
+      </p>
+
+      <div className="mb-6 text-center text-[1.7rem] font-black text-[#1b6f6a]">
+        ${product.price.toFixed(2)}
+      </div>
+
+      <button
+        onClick={() => addToCart(product, 1)}
+        className="mt-auto rounded-xl border border-[#2b7f79] bg-white px-4 py-3 text-lg font-bold text-[#1b6f6a] transition hover:bg-[#1b6f6a] hover:text-white"
+      >
+        Add to Cart
+      </button>
+    </div>
+  );
+
   return (
     <div className="bg-gray-50 min-h-screen">
+      {isCollectionPage ? (
+        <section className="bg-white py-12">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="mb-8 flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
+              <div>
+                <h1 className="text-5xl font-black tracking-[-0.05em] text-[#2b6b6b] md:text-6xl">{collectionTitle}</h1>
+                <div className="mt-4 flex items-center gap-2 text-xl font-bold text-[#2b6b6b]">
+                  <Link to="/" className="hover:text-[#1b6f6a]">Home</Link>
+                  <span className="text-slate-400">»</span>
+                  <span className="text-slate-900">{collectionTitle}</span>
+                </div>
+              </div>
+
+              <div className="w-full lg:w-[220px]">
+                <select
+                  value={sortOption}
+                  onChange={(e) => setSortOption(e.target.value)}
+                  className="w-full rounded-none border border-[#75a8a3] bg-white px-5 py-4 text-xl text-[#2b6b6b] outline-none"
+                >
+                  <option value="">Sort by</option>
+                  <option value="price-low">Price: Low to High</option>
+                  <option value="price-high">Price: High to Low</option>
+                  <option value="name">Name A-Z</option>
+                  <option value="rating">Highest Rated</option>
+                </select>
+              </div>
+            </div>
+
+            <div className="grid gap-12 lg:grid-cols-[360px_1fr]">
+              <aside className="hidden lg:block">
+                <div className="sticky top-32 space-y-8">
+                  <div className="overflow-hidden rounded-[2rem] shadow-[0_25px_60px_rgba(10,78,62,0.22)]">
+                    <img
+                      src={collectionPromoImage}
+                      alt={`${collectionTitle} promo`}
+                      className="w-full h-auto object-cover"
+                    />
+                  </div>
+
+                  <div className="rounded-[2rem] border border-[#d7ece8] bg-[#f7fcfb] p-6">
+                    <h2 className="text-2xl font-black tracking-[-0.03em] text-[#1b6f6a]">Search category</h2>
+                    <div className="mt-4 rounded-2xl border border-[#d7ece8] bg-white px-4 py-3">
+                      <input
+                        type="text"
+                        value={searchTerm}
+                        onChange={(e) => setSearchTerm(e.target.value)}
+                        placeholder="Search medications..."
+                        className="w-full bg-transparent text-base text-slate-700 outline-none placeholder:text-slate-400"
+                      />
+                    </div>
+
+                    <div className="mt-5 flex flex-wrap gap-3">
+                      {quickCategoryLinks.map((category) => (
+                        <Link
+                          key={`${category.title}-quick`}
+                          to={category.href}
+                          className="rounded-full border border-[#bfe0db] bg-white px-4 py-2 text-sm font-semibold text-[#1b6f6a] transition hover:border-[#1b6f6a] hover:bg-[#1b6f6a] hover:text-white"
+                        >
+                          {category.title}
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </aside>
+
+              <div>
+                <div className="mb-8 flex items-center justify-between text-base font-semibold text-slate-500">
+                  <p><span className="font-black text-[#1b6f6a]">{products.length}</span> products available</p>
+                </div>
+                <div className="grid grid-cols-1 gap-y-14 gap-x-12 md:grid-cols-2 xl:grid-cols-3">
+                  {visibleProducts.map((product) => (
+                    <IvermectinCard key={product.id} product={product} />
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      ) : isAllCategoryLanding ? (
+      <section className="bg-white pb-14">
+        <div className="relative mb-12 overflow-hidden">
+          <div className="relative">
+            <img
+              src={allCategoryBanner}
+              alt="All category banner"
+              className="h-[220px] w-full object-cover md:h-[300px]"
+            />
+            <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(6,70,62,0.86),rgba(6,70,62,0.3),rgba(6,70,62,0.08))]" />
+            <div className="absolute inset-0 flex items-center">
+              <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
+                <div className="max-w-2xl text-white">
+                  <p className="text-sm font-semibold uppercase tracking-[0.35em] text-white/80">PureProtocol Directory</p>
+                  <h1 className="mt-3 text-4xl font-black tracking-[-0.05em] md:text-6xl">ALL CATEGORY</h1>
+                  <p className="mt-4 max-w-xl text-base text-white/85 md:text-lg">
+                    Browse the same medical category structure and jump straight into the area you need.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+            {allCategoryCards.map((category, index) => (
+              <Link
+                key={`${category.title}-${category.subtitle}`}
+                to={category.href}
+                className={`group relative min-h-[270px] overflow-hidden rounded-[2rem] border-[3px] border-white bg-gradient-to-br p-6 text-white shadow-[0_8px_24px_rgba(17,77,72,0.18)] transition duration-300 hover:-translate-y-1.5 hover:shadow-[0_18px_38px_rgba(17,77,72,0.22)] ${categoryPalettes[index % categoryPalettes.length]}`}
+              >
+                <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_right,_rgba(255,255,255,0.18),_transparent_32%)]" />
+                <div className="pointer-events-none absolute inset-0 rounded-[2rem] ring-1 ring-inset ring-[#8ad2c2]/35" />
+
+                <div className="relative z-10 max-w-[72%]">
+                  <h2 className="text-[1.9rem] font-black uppercase leading-[1.02] tracking-[-0.04em] sm:text-[2.05rem]">
+                    {category.title}
+                  </h2>
+                  <p className="mt-2 text-[1.12rem] leading-none text-white/95 sm:text-[1.2rem]">
+                    {category.subtitle}
+                  </p>
+                </div>
+
+                <div className="absolute bottom-3 right-3 flex h-28 w-28 items-end justify-end transition duration-300 group-hover:scale-105 sm:h-32 sm:w-32">
+                  <div className="absolute bottom-1 right-1 h-20 w-20 rounded-full bg-white/10 blur-xl" />
+                  {category.image ? (
+                    <img
+                      src={category.image}
+                      alt={category.title}
+                      className="relative max-h-full max-w-full object-contain object-bottom-right"
+                    />
+                  ) : null}
+                </div>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+      ) : (
+      <>
       {/* Page Header with Background Image */}
       <section className="relative h-64 flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 bg-gray-900/60 z-10"></div>
@@ -284,7 +557,7 @@ const Catalog: React.FC = () => {
               <div className="flex justify-between items-center mb-6">
                 <h2 className="text-2xl font-bold text-gray-900">All Medications</h2>
                 <div className="flex items-center gap-4">
-                  <p className="text-gray-600 text-sm font-medium"><span className="text-rose-600">{products.length}</span> products found</p>
+                  <p className="text-gray-600 text-sm font-medium"><span className="text-green-700">{products.length}</span> products found</p>
                   <span className="text-gray-300">|</span>
                   <p className="text-gray-600 text-sm">Page {currentPage} of {totalPages}</p>
                 </div>
@@ -292,19 +565,19 @@ const Catalog: React.FC = () => {
 
               {paginatedProducts.length > 0 ? (
                 <>
-                  <div className="product-grid">
-                    {paginatedProducts.map(product => (
+                  <div className="grid grid-cols-1 gap-y-14 gap-x-12 md:grid-cols-2 xl:grid-cols-3">
+                    {visibleProducts.map(product => (
                       <ProductCard key={product.id} product={product} />
                     ))}
                   </div>
 
                   {/* Pagination Controls */}
-                  {totalPages > 1 && (
+                  {!isCollectionPage && totalPages > 1 && (
                     <div className="flex justify-center items-center space-x-2 mt-12 pt-8 border-t border-gray-100">
                       <button
                         onClick={() => handlePageChange(currentPage - 1)}
                         disabled={currentPage === 1}
-                        className="w-10 h-10 rounded-lg flex items-center justify-center font-bold bg-white text-gray-600 hover:bg-gray-100 border border-gray-200 hover:border-rose-200 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-white disabled:hover:border-gray-200 transition-all"
+                        className="w-10 h-10 rounded-lg flex items-center justify-center font-bold bg-white text-gray-600 hover:bg-gray-100 border border-gray-200 hover:border-green-200 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-white disabled:hover:border-gray-200 transition-all"
                       >
                         <ChevronLeft size={18} />
                       </button>
@@ -332,8 +605,8 @@ const Catalog: React.FC = () => {
                             key={page}
                             onClick={() => handlePageChange(page)}
                             className={`w-10 h-10 rounded-lg flex items-center justify-center font-bold transition-all duration-200 ${currentPage === page
-                              ? 'bg-rose-600 text-white shadow-md transform scale-105'
-                              : 'bg-white text-gray-600 hover:bg-gray-100 border border-gray-200 hover:border-rose-200'
+                              ? 'bg-green-700 text-white shadow-md transform scale-105'
+                              : 'bg-white text-gray-600 hover:bg-gray-100 border border-gray-200 hover:border-green-200'
                               }`}
                           >
                             {page}
@@ -344,7 +617,7 @@ const Catalog: React.FC = () => {
                       <button
                         onClick={() => handlePageChange(currentPage + 1)}
                         disabled={currentPage === totalPages}
-                        className="w-10 h-10 rounded-lg flex items-center justify-center font-bold bg-white text-gray-600 hover:bg-gray-100 border border-gray-200 hover:border-rose-200 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-white disabled:hover:border-gray-200 transition-all"
+                        className="w-10 h-10 rounded-lg flex items-center justify-center font-bold bg-white text-gray-600 hover:bg-gray-100 border border-gray-200 hover:border-green-200 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-white disabled:hover:border-gray-200 transition-all"
                       >
                         <ChevronRight size={18} />
                       </button>
@@ -361,6 +634,8 @@ const Catalog: React.FC = () => {
           </div>
         </div>
       </section>
+      </>
+      )}
     </div>
   );
 };

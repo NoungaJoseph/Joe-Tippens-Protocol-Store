@@ -2,8 +2,6 @@ import React from 'react';
 import { HashRouter as Router, Routes, Route } from 'react-router-dom';
 import { CartProvider } from './context/CartContext';
 import Layout from './components/Layout';
-import { Elements } from '@stripe/react-stripe-js';
-import { stripePromise } from './lib/stripe';
 
 // Pages
 import Home from './pages/Home';

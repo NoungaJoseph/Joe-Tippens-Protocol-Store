@@ -1,29 +1,31 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { ShoppingCart, Menu, X, ShieldCheck, Search } from 'lucide-react';
+import { ShoppingCart, Menu, X, User, Search } from 'lucide-react';
 import { useCart } from '../context/CartContext';
 import { NAV_LINKS } from '../constants';
-
 import logo from '../assets/images/logo-v2.png';
 
 const Header: React.FC = () => {
   const { itemCount } = useCart();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [animateCount, setAnimateCount] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
+  const [isVisible, setIsVisible] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
   const location = useLocation();
   const navigate = useNavigate();
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
-  // Animate cart count on change
   useEffect(() => {
-    if (itemCount > 0) {
-      setAnimateCount(true);
-      const timer = setTimeout(() => setAnimateCount(false), 300);
-      return () => clearTimeout(timer);
-    }
-  }, [itemCount]);
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+      setIsVisible(currentScrollY < lastScrollY || currentScrollY < 50);
+      setLastScrollY(currentScrollY);
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [lastScrollY]);
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
@@ -33,156 +35,172 @@ const Header: React.FC = () => {
     }
   };
 
+  const primaryNavLinks = [
+    { label: 'All Category', path: '/all-pills' },
+    { label: 'Ivermectin', path: '/all-pills?category=Ivermectin' },
+    { label: 'Fenbendazole', path: '/all-pills?search=fenbendazole' },
+    { label: 'Erectile Dysfunction', path: '/all-pills?category=Erectile%20Dysfunction' },
+    { label: 'Blog', path: '/blog' }
+  ];
+
   return (
-    <nav className="bg-white shadow-lg sticky top-0 z-50 transition-all duration-300 border-b border-gray-100">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16 md:h-20 gap-4">
+    <>
+      {/* Main Header - 3 Column Layout */}
+      <header className={`bg-white border-b border-gray-100 z-40 transition-all duration-300 ease-in-out transform ${
+        isVisible ? 'translate-y-0 shadow-sm' : '-translate-y-full'
+      }`}>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex justify-between items-center h-20 gap-6">
+            
+            {/* LEFT: Logo + Tagline */}
+            <Link 
+              to="/" 
+              className="flex items-center gap-2.5 shrink-0 group min-w-0" 
+              onClick={() => setIsMenuOpen(false)}
+            >
+              <img 
+                src={logo} 
+                alt="Pure Protocol" 
+                className="w-[60px] h-[60px] object-contain"
+              />
+              <div className="hidden min-w-0 sm:flex sm:flex-col">
+                <span className="text-base font-bold text-[#2d8680]">
+                  Pure Protocol
+                </span>
+                <span className="text-xs text-gray-500 font-medium">Medical Wellness</span>
+              </div>
+            </Link>
 
-          {/* Logo Section */}
-          <Link to="/" className="flex items-center gap-3 group shrink-0" onClick={() => setIsMenuOpen(false)}>
-            <img src={logo} alt="PureProtocol Logo" className="w-16 h-16 md:w-20 md:h-20 object-contain group-hover:scale-105 transition-all duration-300" />
-            <div className="flex flex-col">
-              <span className="text-2xl font-black tracking-tight text-gray-900 group-hover:text-rose-600 transition-colors leading-none font-bodoni italic flex items-center">
-                Pure<span className="text-rose-600">Protocol</span>
-              </span>
-              <span className="text-[0.65rem] uppercase tracking-[0.25em] text-gray-400 font-bold ml-0.5 font-sans">Wellness Store</span>
-            </div>
-          </Link>
+            {/* CENTER: Search Bar - Desktop Only */}
+            <form onSubmit={handleSearch} className="hidden lg:block flex-1 max-w-2xl">
+              <div className="relative">
+                <input
+                  type="text"
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  placeholder="Search here"
+                  className="w-full px-6 py-3.5 pr-12 bg-white border border-[#2d8680] rounded-full text-base text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#2d8680]/20 focus:border-[#2d8680] transition-all"
+                />
+                <button 
+                  type="submit"
+                  className="absolute right-5 top-1/2 transform -translate-y-1/2 text-[#2d8680]"
+                >
+                  <Search size={20} strokeWidth={2} />
+                </button>
+              </div>
+            </form>
 
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex space-x-6 lg:space-x-8 items-center shrink-0">
-            {NAV_LINKS.map((link) => (
-              <Link
-                key={link.path}
-                to={link.path}
-                className={`font-semibold text-sm uppercase tracking-wide transition-colors hover:text-rose-600 ${location.pathname === link.path ? 'text-rose-600' : 'text-gray-600'
-                  }`}
+            {/* RIGHT: Cart + User Icons */}
+            <div className="flex items-center gap-5 shrink-0">
+              {/* Cart Icon */}
+              <Link 
+                to="/cart" 
+                className="relative text-gray-600 hover:text-[#2d8680] transition-colors group"
               >
-                {link.label}
+                <ShoppingCart size={22} strokeWidth={1.5} />
+                {itemCount > 0 && (
+                  <span className="absolute -top-2 -right-2 bg-[#2d8680] text-white text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center">
+                    {itemCount}
+                  </span>
+                )}
               </Link>
-            ))}
 
+              {/* User Icon */}
+              <Link 
+                to="/track-order" 
+                className="text-gray-600 hover:text-[#2d8680] transition-colors"
+              >
+                <User size={22} strokeWidth={1.5} />
+              </Link>
+
+              {/* Mobile Menu Button */}
+              <button
+                className="lg:hidden text-gray-700 p-2 hover:bg-gray-100 rounded-lg transition-colors"
+                onClick={toggleMenu}
+              >
+                {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+              </button>
+            </div>
           </div>
 
-          {/* Search Bar - Desktop */}
-          <div className="hidden md:block flex-1 max-w-xs mx-4">
-            <form onSubmit={handleSearch} className="relative w-full">
+          {/* CENTER Search for md/sm screens */}
+          <form onSubmit={handleSearch} className="lg:hidden pb-4">
+            <div className="relative">
               <input
                 type="text"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                placeholder="Search..."
-                className="w-full pl-9 pr-4 py-2 bg-gray-50 border border-gray-200 rounded-full text-sm focus:outline-none focus:ring-2 focus:ring-rose-500 focus:border-transparent transition-all"
+                placeholder="Search here"
+                className="w-full px-6 py-3 pr-10 bg-white border border-[#2d8680] rounded-full text-base text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#2d8680]/20 focus:border-[#2d8680] transition-all"
               />
-              <Search size={16} className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
-            </form>
-          </div>
-
-          {/* Right Actions */}
-          <div className="flex items-center space-x-4 shrink-0">
-
-            {/* Cart Icon */}
-            <Link to="/cart" className="hidden md:block text-gray-600 hover:text-rose-600 transition-colors relative group">
-              <div className="cart-icon group-hover:scale-110">
-                <ShoppingCart size={24} />
-                <span
-                  className={`cart-count ${itemCount === 0 ? 'hidden' : 'flex'} ${animateCount ? 'cart-count-update' : ''}`}
-                >
-                  {itemCount}
-                </span>
-              </div>
-            </Link>
-
-            <div className="hidden lg:flex items-center space-x-3 text-xs text-gray-500 font-medium border-r border-gray-200 pr-4 mr-2">
-              <span className="flex items-center gap-1">
-                <ShieldCheck size={14} className="text-rose-500" /> Verified
-              </span>
+              <button 
+                type="submit"
+                className="absolute right-4 top-1/2 transform -translate-y-1/2 text-[#2d8680]"
+              >
+                <Search size={18} strokeWidth={2} />
+              </button>
             </div>
-
-            {/* Mobile Menu Button */}
-            <button
-              className="md:hidden text-gray-700 p-2 hover:bg-gray-100 rounded-md transition-colors"
-              onClick={toggleMenu}
-            >
-              {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
-            </button>
-          </div>
+          </form>
         </div>
-      </div>
+
+        {/* Navigation Bar - Desktop */}
+        <nav className="hidden lg:block bg-white border-t border-gray-200">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="grid grid-cols-[1fr_auto_1fr] items-center min-h-[5.5rem]">
+              <div></div>
+              <div className="flex justify-center items-center gap-8 xl:gap-10 text-center">
+                {primaryNavLinks.map((item) => (
+                  <Link
+                    key={item.label}
+                    to={item.path}
+                    className="border-b-4 border-transparent py-5 text-xl font-bold leading-none text-[#2d8680] transition-colors hover:border-[#2d8680] hover:text-[#2d8680] xl:text-2xl"
+                  >
+                    {item.label}
+                  </Link>
+                ))}
+              </div>
+              <div className="flex justify-end">
+              <button className="px-6 py-2.5 border-2 border-[#2d8680] rounded-lg text-sm font-bold text-[#2d8680] bg-white hover:bg-blue-50 transition-colors whitespace-nowrap">
+                Free Shipping for all orders
+              </button>
+              </div>
+            </div>
+          </div>
+        </nav>
+      </header>
 
       {/* Mobile Menu */}
       <div
-        className={`md:hidden fixed inset-y-0 left-0 w-64 bg-white shadow-2xl z-40 transform transition-transform duration-300 ease-in-out ${isMenuOpen ? 'translate-x-0' : '-translate-x-full'
-          }`}
+        className={`lg:hidden fixed inset-y-14 left-0 w-64 bg-white shadow-xl z-30 transform transition-transform duration-300 ease-in-out overflow-y-auto ${
+          isMenuOpen ? 'translate-x-0' : '-translate-x-full'
+        }`}
       >
         <div className="p-6">
-          <div className="flex justify-between items-center mb-6">
-            <div className="flex items-center gap-2">
-              <img src={logo} alt="Logo" className="w-12 h-12 object-contain" />
-              <span className="font-bold text-xl text-gray-900 font-bodoni italic flex items-center">
-                Pure<span className="text-rose-600">Protocol</span>
-              </span>
-            </div>
-            <button onClick={toggleMenu} className="text-gray-500 hover:text-red-500 transition-colors">
-              <X size={24} />
-            </button>
-          </div>
-
-          {/* Mobile Search */}
-          <form onSubmit={handleSearch} className="mb-6 relative">
-            <input
-              type="text"
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              placeholder="Search products..."
-              className="w-full pl-10 pr-4 py-3 bg-gray-50 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-rose-500"
-            />
-            <Search size={18} className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
-          </form>
-
+          {/* Mobile Navigation Menu */}
           <nav className="space-y-2">
+            {primaryNavLinks.map((item, index) => (
+              <Link
+                key={`${item.label}-${index}`}
+                to={item.path}
+                onClick={() => setIsMenuOpen(false)}
+                className="block px-4 py-2.5 rounded-lg text-sm font-medium text-gray-700 hover:bg-green-50 hover:text-green-700 transition-colors"
+              >
+                {item.label}
+              </Link>
+            ))}
+          </nav>
+
+          <div className="border-t border-gray-100 my-6 pt-6 space-y-2">
             {NAV_LINKS.map((link) => (
               <Link
                 key={link.path}
                 to={link.path}
                 onClick={() => setIsMenuOpen(false)}
-                className={`block px-4 py-3 rounded-lg text-base font-bold transition-colors ${location.pathname === link.path
-                  ? 'bg-rose-50 text-rose-600'
-                  : 'text-gray-600 hover:bg-gray-50 hover:text-rose-600'
-                  }`}
+                className="block px-4 py-2.5 rounded-lg text-sm font-medium text-gray-700 hover:bg-green-50 hover:text-green-700 transition-colors"
               >
                 {link.label}
               </Link>
             ))}
-
-            <Link
-              to="/track-order"
-              onClick={() => setIsMenuOpen(false)}
-              className="block px-4 py-3 rounded-lg text-base font-bold text-gray-600 hover:bg-gray-50 hover:text-rose-600"
-            >
-              Track Order
-            </Link>
-            <Link
-              to="/cart"
-              onClick={() => setIsMenuOpen(false)}
-              className="block px-4 py-3 rounded-lg text-base font-bold text-gray-600 hover:bg-gray-50 hover:text-rose-600 flex justify-between items-center"
-            >
-              Cart
-              {itemCount > 0 && (
-                <span className="bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
-                  {itemCount}
-                </span>
-              )}
-            </Link>
-          </nav>
-
-          <div className="border-t border-gray-100 mt-8 pt-6">
-            <div className="text-sm text-gray-500 space-y-3">
-              <div className="flex items-center gap-2">
-                <ShieldCheck size={16} className="text-rose-600" />
-                <span>SSL Secured</span>
-              </div>
-            </div>
           </div>
         </div>
       </div>
@@ -190,11 +208,11 @@ const Header: React.FC = () => {
       {/* Mobile Overlay */}
       {isMenuOpen && (
         <div
-          className="md:hidden fixed inset-0 bg-black/20 z-30 backdrop-blur-sm"
+          className="lg:hidden fixed inset-14 bg-black/20 z-20 backdrop-blur-sm"
           onClick={() => setIsMenuOpen(false)}
         ></div>
       )}
-    </nav>
+    </>
   );
 };
 

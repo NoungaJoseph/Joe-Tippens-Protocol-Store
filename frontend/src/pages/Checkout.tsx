@@ -14,9 +14,11 @@ const Checkout: React.FC = () => {
     const [step, setStep] = useState(1);
     const [error, setError] = useState<string | null>(null);
     const [loading, setLoading] = useState(false);
+    const [submittedOrderId, setSubmittedOrderId] = useState('');
 
     const tax = cartTotal * 0.08;
     const total = cartTotal + tax;
+    const supportEmail = 'Joe.tippens.protocol@outlook.com';
 
     useEffect(() => {
         if (items.length === 0 && step !== 3) {
@@ -46,29 +48,31 @@ const Checkout: React.FC = () => {
         }
 
         setLoading(true);
-        try {
-            // Submit to Formspree for order tracking
-            const getformData = new FormData();
-            // Add all fields to FormData
-            getformData.append('customer_name', `${formData.firstName} ${formData.lastName}`);
-            getformData.append('email', formData.email);
-            getformData.append('phone', formData.phone);
-            getformData.append('shipping_address', `${formData.address}, ${formData.city}, ${formData.state} ${formData.zip}`);
-            getformData.append('message', formData.message); // Order notes
-            getformData.append('payment_method', paymentMethod);
-            getformData.append('order_total', `$${total.toFixed(2)}`);
-            getformData.append('items', items.map(i => `${i.name} (x${i.quantity}) - $${(i.price * i.quantity).toFixed(2)}`).join('\n'));
-            getformData.append('_subject', `New Order from ${formData.firstName} ${formData.lastName}`);
+        const orderId = `PROTO-${Math.floor(Math.random() * 90000) + 10000}`;
 
-            await fetch('https://formspree.io/f/mdawravv', {
-                method: 'POST',
-                body: getformData,
-                headers: {
-                    'Accept': 'application/json'
-                }
-            });
+        const emailSubject = encodeURIComponent(`New Order ${orderId} from ${formData.firstName} ${formData.lastName}`);
+        const emailBody = encodeURIComponent(
+            [
+                `Order ID: ${orderId}`,
+                `Customer: ${formData.firstName} ${formData.lastName}`,
+                `Email: ${formData.email}`,
+                `Phone: ${formData.phone}`,
+                `Shipping Address: ${formData.address}, ${formData.city}, ${formData.state} ${formData.zip}`,
+                `Payment Method: ${paymentMethod}`,
+                `Order Total: $${total.toFixed(2)}`,
+                '',
+                'Items:',
+                ...items.map(i => `- ${i.name} (x${i.quantity}) - $${(i.price * i.quantity).toFixed(2)}`),
+                '',
+                `Order Notes: ${formData.message || 'None'}`
+            ].join('\n')
+        );
+
+        try {
+            window.location.href = `mailto:${supportEmail}?subject=${emailSubject}&body=${emailBody}`;
 
             setLoading(false);
+            setSubmittedOrderId(orderId);
             setStep(3);
             clearCart();
             window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -86,18 +90,18 @@ const Checkout: React.FC = () => {
         return (
             <div className="bg-gray-50 min-h-screen pt-24 pb-12">
                 <div className="max-w-3xl mx-auto px-4 text-center">
-                    <div className="bg-white rounded-3xl shadow-2xl p-8 md:p-12 border border-rose-100">
-                        <div className="w-24 h-24 bg-rose-100 text-rose-600 rounded-full flex items-center justify-center mx-auto mb-8 shadow-inner">
+                    <div className="bg-white rounded-3xl shadow-2xl p-8 md:p-12 border border-green-100">
+                        <div className="w-24 h-24 bg-green-100 text-green-700 rounded-full flex items-center justify-center mx-auto mb-8 shadow-inner">
                             <CheckCircle size={48} />
                         </div>
                         <h1 className="text-3xl md:text-4xl font-black text-gray-900 mb-4 tracking-tight">Order Placed Successfully!</h1>
-                        <p className="text-gray-600 mb-8 text-lg">We will now contact you on email within the next 24 hours and everything is fine. Your order ID is <span className="font-bold text-rose-600">#PROTO-{Math.floor(Math.random() * 90000) + 10000}</span></p>
+                        <p className="text-gray-600 mb-8 text-lg">Your mail app has been prepared with your order details for <span className="font-bold text-green-700">{supportEmail}</span>. Your order ID is <span className="font-bold text-green-700">#{submittedOrderId}</span></p>
 
-                        <div className="bg-rose-50 rounded-2xl p-6 mb-8 border border-rose-100 text-left">
-                            <h3 className="font-bold text-rose-800 mb-3 flex items-center gap-2">
+                        <div className="bg-green-50 rounded-2xl p-6 mb-8 border border-green-100 text-left">
+                            <h3 className="font-bold text-green-800 mb-3 flex items-center gap-2">
                                 <Landmark size={20} /> Payment Instructions Sent
                             </h3>
-                            <p className="text-rose-700 text-sm leading-relaxed mb-4">
+                            <p className="text-green-700 text-sm leading-relaxed mb-4">
                                 You have selected <span className="font-bold uppercase">{paymentMethod}</span>. We have received your order details and will send payment instructions to <span className="font-bold">{formData.email}</span> shortly.
                             </p>
                         </div>
@@ -134,12 +138,12 @@ const Checkout: React.FC = () => {
             <section className="py-6 bg-white border-b shadow-sm sticky top-16 z-20">
                 <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="flex justify-center space-x-12">
-                        <div className={`flex items-center gap-2 ${step === 1 ? 'text-rose-600' : 'text-gray-400'}`}>
-                            <div className={`w-8 h-8 rounded-full flex items-center justify-center font-bold ${step === 1 ? 'bg-rose-600 text-white' : 'bg-gray-100'}`}>1</div>
+                        <div className={`flex items-center gap-2 ${step === 1 ? 'text-green-700' : 'text-gray-400'}`}>
+                            <div className={`w-8 h-8 rounded-full flex items-center justify-center font-bold ${step === 1 ? 'bg-green-700 text-white' : 'bg-gray-100'}`}>1</div>
                             <span className="font-bold text-sm">Shipping</span>
                         </div>
-                        <div className={`flex items-center gap-2 ${step === 2 ? 'text-rose-600' : 'text-gray-400'}`}>
-                            <div className={`w-8 h-8 rounded-full flex items-center justify-center font-bold ${step === 2 ? 'bg-rose-600 text-white' : 'bg-gray-100'}`}>2</div>
+                        <div className={`flex items-center gap-2 ${step === 2 ? 'text-green-700' : 'text-gray-400'}`}>
+                            <div className={`w-8 h-8 rounded-full flex items-center justify-center font-bold ${step === 2 ? 'bg-green-700 text-white' : 'bg-gray-100'}`}>2</div>
                             <span className="font-bold text-sm">Payment</span>
                         </div>
                     </div>
@@ -160,7 +164,7 @@ const Checkout: React.FC = () => {
                             {step === 1 ? (
                                 <div className="bg-white rounded-2xl shadow-xl p-6 md:p-10 border border-gray-100">
                                     <h2 className="text-2xl font-bold mb-8 flex items-center gap-3">
-                                        <div className="w-10 h-10 bg-rose-100 text-rose-600 rounded-full flex items-center justify-center text-sm font-black italic">SH</div>
+                                        <div className="w-10 h-10 bg-green-100 text-green-700 rounded-full flex items-center justify-center text-sm font-black italic">SH</div>
                                         Shipping Information
                                     </h2>
                                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -180,7 +184,7 @@ const Checkout: React.FC = () => {
                                                     name={input.name}
                                                     value={(formData as any)[input.name]}
                                                     onChange={handleInputChange}
-                                                    className="w-full px-5 py-4 rounded-2xl bg-gray-50 border border-gray-200 focus:ring-4 focus:ring-rose-500/10 focus:border-rose-500 transition-all outline-none text-gray-900 font-bold placeholder:text-gray-400"
+                                                    className="w-full px-5 py-4 rounded-2xl bg-gray-50 border border-gray-200 focus:ring-4 focus:ring-green-500/10 focus:border-green-500 transition-all outline-none text-gray-900 font-bold placeholder:text-gray-400"
                                                     placeholder={input.placeholder}
                                                 />
                                             </div>
@@ -191,12 +195,12 @@ const Checkout: React.FC = () => {
                                                 name="message"
                                                 value={formData.message}
                                                 onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                                                className="w-full px-5 py-4 rounded-2xl bg-gray-50 border border-gray-200 focus:ring-4 focus:ring-rose-500/10 focus:border-rose-500 transition-all outline-none text-gray-900 font-bold placeholder:text-gray-400 min-h-[100px]"
+                                                className="w-full px-5 py-4 rounded-2xl bg-gray-50 border border-gray-200 focus:ring-4 focus:ring-green-500/10 focus:border-green-500 transition-all outline-none text-gray-900 font-bold placeholder:text-gray-400 min-h-[100px]"
                                                 placeholder="Special instructions for delivery..."
                                             />
                                         </div>
                                     </div>
-                                    <button onClick={nextStep} className="w-full bg-rose-600 text-white py-5 rounded-2xl mt-10 font-black text-lg hover:bg-rose-700 transition-all shadow-xl shadow-rose-600/20 active:scale-[0.98]">
+                                    <button onClick={nextStep} className="w-full bg-green-700 text-white py-5 rounded-2xl mt-10 font-black text-lg hover:bg-green-800 transition-all shadow-xl shadow-green-700/20 active:scale-[0.98]">
                                         Proceed to Payment
                                     </button>
                                 </div>

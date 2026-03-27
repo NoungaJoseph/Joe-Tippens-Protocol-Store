@@ -21,7 +21,7 @@ const Cart: React.FC = () => {
                     <div className="text-6xl mb-4 animate-bounce">🛒</div>
                     <h3 className="text-2xl font-bold text-gray-900 mb-2">Your cart is empty</h3>
                     <p className="text-gray-600 mb-6">Add some medications to get started</p>
-                    <Link to="/all-pills" className="bg-rose-600 text-white px-6 py-3 rounded-lg hover:bg-rose-700 transition-colors inline-block">
+                    <Link to="/all-pills" className="bg-green-700 text-white px-6 py-3 rounded-lg hover:bg-green-800 transition-colors inline-block">
                         Browse Medications
                     </Link>
                 </div>
@@ -84,7 +84,7 @@ const Cart: React.FC = () => {
                                             </div>
 
                                             <div className="text-right min-w-[80px]">
-                                                <p className="text-lg font-bold text-rose-600">${(item.price * item.quantity).toFixed(2)}</p>
+                                                <p className="text-lg font-bold text-green-700">${(item.price * item.quantity).toFixed(2)}</p>
                                             </div>
 
                                             <button
@@ -130,11 +130,11 @@ const Cart: React.FC = () => {
                                                         <h4 className="font-semibold text-gray-900 truncate">{product.name}</h4>
                                                     </Link>
                                                     <p className="text-xs text-gray-500 mb-1">{product.category}</p>
-                                                    <p className="font-bold text-rose-600">${product.price.toFixed(2)}</p>
+                                                    <p className="font-bold text-green-700">${product.price.toFixed(2)}</p>
                                                 </div>
                                                 <button
                                                     onClick={() => addToCart(product, 1)}
-                                                    className="bg-rose-600 text-white px-3 py-1.5 rounded text-xs font-bold hover:bg-rose-700 transition-colors shrink-0"
+                                                    className="bg-green-700 text-white px-3 py-1.5 rounded text-xs font-bold hover:bg-green-800 transition-colors shrink-0"
                                                 >
                                                     Add
                                                 </button>
@@ -166,7 +166,7 @@ const Cart: React.FC = () => {
                                     <div className="border-t pt-4">
                                         <div className="flex justify-between items-end">
                                             <span className="text-lg font-bold text-gray-900">Total</span>
-                                            <span className="text-2xl font-bold text-rose-600">${total.toFixed(2)}</span>
+                                            <span className="text-2xl font-bold text-green-700">${total.toFixed(2)}</span>
                                         </div>
                                     </div>
                                 </div>
@@ -182,7 +182,7 @@ const Cart: React.FC = () => {
 
                                 <button
                                     onClick={() => navigate('/checkout')}
-                                    className="w-full bg-rose-600 text-white py-4 px-6 rounded-lg hover:bg-rose-700 transition-all font-bold shadow-lg hover:shadow-rose-200 transform hover:-translate-y-0.5 flex items-center justify-center gap-2"
+                                    className="w-full bg-green-700 text-white py-4 px-6 rounded-lg hover:bg-green-800 transition-all font-bold shadow-lg hover:shadow-green-200 transform hover:-translate-y-0.5 flex items-center justify-center gap-2"
                                 >
                                     Proceed to Checkout <ArrowRight size={18} />
                                 </button>

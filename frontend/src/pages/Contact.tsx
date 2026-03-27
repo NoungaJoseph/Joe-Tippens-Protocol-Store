@@ -10,7 +10,7 @@ const Contact: React.FC = () => {
     const formData = new FormData(e.currentTarget);
 
     try {
-      const response = await fetch('https://formspree.io/f/mdawravv', {
+      const response = await fetch('https://formspree.io/f/xaqwpzbo', {
         method: 'POST',
         body: formData,
         headers: {
@@ -87,7 +87,7 @@ const Contact: React.FC = () => {
 
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-1">Subject</label>
-            <select name="_subject" className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-rose-500 focus:border-rose-500">
+            <select name="_subject" className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-green-500 focus:border-green-500">
               <option>Order Inquiry</option>
               <option>Product Question</option>
               <option>Shipping Issue</option>
@@ -101,14 +101,14 @@ const Contact: React.FC = () => {
               name="message"
               required
               rows={5}
-              className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-rose-500 focus:border-rose-500"
+              className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-green-500 focus:border-green-500"
               placeholder="How can we assist you today?"
             ></textarea>
           </div>
 
           <button
             type="submit"
-            className="w-full bg-rose-600 text-white px-6 py-3 rounded-md font-semibold transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-rose-500 hover:bg-rose-700"
+            className="w-full bg-green-700 text-white px-6 py-3 rounded-md font-semibold transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-600 hover:bg-green-800"
           >
             Send Message
           </button>
