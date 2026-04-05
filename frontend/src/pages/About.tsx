@@ -14,10 +14,7 @@ const About: React.FC = () => {
                     className="absolute inset-0 w-full h-full object-cover"
                 />
                 <div className="relative z-20 text-center text-white px-4">
-                    <h1 className="text-5xl font-bold mb-4">About Us</h1>
-                    <p className="text-xl text-gray-200 max-w-2xl mx-auto">
-                        Your trusted partner in health and wellness delivery.
-                    </p>
+                    <h1 className="text-5xl font-bold">About Us</h1>
                 </div>
             </section>
 

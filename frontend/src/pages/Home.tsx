@@ -44,15 +44,15 @@ const Home: React.FC = () => {
     ];
 
     const mostLoved = MOCK_PRODUCTS.filter((product) =>
-        ['120-day-protocol', 'usa-trio', 'iverjohn-3mg', 'iverjohn-6mg', 'covilife-40mg', 'fenben-powder'].includes(product.id)
+        ['120-day-protocol', 'usa-trio', 'iverjohn-3mg', 'iverjohn-6mg', 'covimectin-tablet-12mg', 'fenben-powder'].includes(product.id)
     );
 
     const featured = MOCK_PRODUCTS.filter((product) =>
-        ['fenben-tabs', 'ivermectin-tabs', 'cbd-oil-kids', 'vit-b17-cup', 'ivermectin-injection-1', 'ivermectin-paste-dewormer'].includes(product.id)
+        ['fenben-tabs', 'ivermectin-tabs', 'cbd-oil-kids', 'vit-b17-cup', 'ivecop-standard-tablet', 'ivermectin-paste-dewormer'].includes(product.id)
     );
 
     const newArrivals = MOCK_PRODUCTS.filter((product) =>
-        ['iverjohn-3mg', 'iverjohn-6mg', 'covilife-40mg', 'ivermectin-injection-1', 'ozempic-025'].includes(product.id)
+        ['iverjohn-3mg', 'iverjohn-6mg', 'covimectin-tablet-12mg', 'ivecop-standard-tablet', 'ozempic-025'].includes(product.id)
     );
 
     useEffect(() => {

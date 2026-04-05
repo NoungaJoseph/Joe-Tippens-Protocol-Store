@@ -20,8 +20,7 @@ const Blog: React.FC = () => {
                 {/* Use imported background image */}
                 <div className="absolute inset-0 bg-cover bg-center opacity-20" style={{ backgroundImage: `url(${blogBg})` }}></div>
                 <div className="max-w-7xl mx-auto px-4 relative z-10 text-center">
-                    <h1 className="text-4xl md:text-5xl font-bold font-serif mb-4">Health Hub</h1>
-                    <p className="text-emerald-100 text-lg max-w-2xl mx-auto">Latest news, research, and wellness tips from the PureProtocol team.</p>
+                    <h1 className="text-4xl md:text-5xl font-bold font-serif">Health Hub</h1>
                 </div>
             </section>
 

@@ -40,8 +40,7 @@ const Cart: React.FC = () => {
                     className="absolute inset-0 w-full h-full object-cover"
                 />
                 <div className="relative z-20 text-center text-white px-4">
-                    <h1 className="text-4xl lg:text-5xl font-bold mb-3 tracking-tight">Shopping Cart</h1>
-                    <p className="text-lg lg:text-xl text-blue-100">Review your medications and proceed to checkout</p>
+                    <h1 className="text-4xl lg:text-5xl font-bold tracking-tight">Shopping Cart</h1>
                 </div>
             </section>
 

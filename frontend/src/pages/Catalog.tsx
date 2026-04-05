@@ -289,8 +289,8 @@ const Catalog: React.FC = () => {
   );
 
   const IvermectinCard: React.FC<{ product: typeof products[number] }> = ({ product }) => (
-    <div className="group flex h-full flex-col px-2">
-      <Link to={`/product/${product.id}`} className="mb-6 flex h-64 items-center justify-center overflow-hidden bg-transparent">
+    <div className="group flex h-full flex-col px-1 sm:px-2">
+      <Link to={`/product/${product.id}`} className="mb-3 flex h-32 items-center justify-center overflow-hidden bg-transparent sm:mb-6 sm:h-64">
         <img
           src={product.image}
           alt={product.name}
@@ -300,22 +300,18 @@ const Catalog: React.FC = () => {
 
       <Link
         to={`/product/${product.id}`}
-        className="mb-3 text-center text-[1.45rem] font-black leading-tight tracking-[-0.03em] text-[#1b6f6a] transition hover:text-[#114945]"
+        className="mb-2 text-center text-[1.05rem] font-black leading-tight tracking-[-0.03em] text-[#1b6f6a] transition hover:text-[#114945] sm:mb-3 sm:text-[1.45rem]"
       >
         {product.name}
       </Link>
 
-      <p className="mb-5 text-center text-base leading-7 text-slate-500 line-clamp-3">
-        {product.description}
-      </p>
-
-      <div className="mb-6 text-center text-[1.7rem] font-black text-[#1b6f6a]">
+      <div className="mb-3 text-center text-[2rem] font-black text-[#1b6f6a] sm:mb-6 sm:text-[1.7rem]">
         ${product.price.toFixed(2)}
       </div>
 
       <button
         onClick={() => addToCart(product, 1)}
-        className="mt-auto rounded-xl border border-[#2b7f79] bg-white px-4 py-3 text-lg font-bold text-[#1b6f6a] transition hover:bg-[#1b6f6a] hover:text-white"
+        className="mt-auto rounded-xl border border-[#2b7f79] bg-white px-2 py-2 text-base font-bold text-[#1b6f6a] transition hover:bg-[#1b6f6a] hover:text-white sm:px-4 sm:py-3 sm:text-lg"
       >
         Add to Cart
       </button>
@@ -335,13 +331,7 @@ const Catalog: React.FC = () => {
             <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(7,64,58,0.86),rgba(7,64,58,0.42),rgba(7,64,58,0.12))]" />
             <div className="absolute inset-0 flex items-center">
               <div className="mx-auto w-full max-w-7xl px-4 text-white sm:px-6 lg:px-8">
-                <p className="text-sm font-semibold uppercase tracking-[0.3em] text-white/80">PureProtocol Collection</p>
-                <h1 className="mt-3 text-5xl font-black tracking-[-0.05em] md:text-6xl">{collectionTitle}</h1>
-                <div className="mt-4 flex items-center gap-2 text-base font-bold text-white/90 md:text-xl">
-                  <Link to="/" className="hover:text-white">Home</Link>
-                  <span className="text-white/60">{'>'}</span>
-                  <span className="text-white">{collectionTitle}</span>
-                </div>
+                <h1 className="text-5xl font-black tracking-[-0.05em] md:text-6xl">{collectionTitle}</h1>
               </div>
             </div>
           </div>
@@ -413,7 +403,7 @@ const Catalog: React.FC = () => {
                 <div className="mb-8 flex items-center justify-between text-base font-semibold text-slate-500">
                   <p><span className="font-black text-[#1b6f6a]">{products.length}</span> products available</p>
                 </div>
-                <div className="grid grid-cols-1 gap-y-14 gap-x-12 md:grid-cols-2 xl:grid-cols-3">
+                <div className="grid grid-cols-2 gap-x-3 gap-y-10 md:grid-cols-2 md:gap-x-12 md:gap-y-14 xl:grid-cols-3">
                   {visibleProducts.map((product) => (
                     <IvermectinCard key={product.id} product={product} />
                   ))}
@@ -435,11 +425,7 @@ const Catalog: React.FC = () => {
             <div className="absolute inset-0 flex items-center">
               <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
                 <div className="max-w-2xl text-white">
-                  <p className="text-sm font-semibold uppercase tracking-[0.35em] text-white/80">PureProtocol Directory</p>
-                  <h1 className="mt-3 text-4xl font-black tracking-[-0.05em] md:text-6xl">ALL CATEGORY</h1>
-                  <p className="mt-4 max-w-xl text-base text-white/85 md:text-lg">
-                    Browse the same medical category structure and jump straight into the area you need.
-                  </p>
+                  <h1 className="text-4xl font-black tracking-[-0.05em] md:text-6xl">ALL CATEGORY</h1>
                 </div>
               </div>
             </div>
@@ -447,26 +433,26 @@ const Catalog: React.FC = () => {
         </div>
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+          <div className="grid grid-cols-2 gap-4 sm:gap-6 lg:grid-cols-3 xl:grid-cols-4">
             {allCategoryCards.map((category, index) => (
               <Link
                 key={`${category.title}-${category.subtitle}`}
                 to={category.href}
-                className={`group relative min-h-[270px] overflow-hidden rounded-[2rem] border-[3px] border-white bg-gradient-to-br p-6 text-white shadow-[0_8px_24px_rgba(17,77,72,0.18)] transition duration-300 hover:-translate-y-1.5 hover:shadow-[0_18px_38px_rgba(17,77,72,0.22)] ${categoryPalettes[index % categoryPalettes.length]}`}
+                className={`group relative min-h-[170px] overflow-hidden rounded-[1.5rem] border-[3px] border-white bg-gradient-to-br p-4 text-white shadow-[0_8px_24px_rgba(17,77,72,0.18)] transition duration-300 hover:-translate-y-1.5 hover:shadow-[0_18px_38px_rgba(17,77,72,0.22)] sm:min-h-[250px] sm:rounded-[2rem] sm:p-6 ${categoryPalettes[index % categoryPalettes.length]}`}
               >
                 <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_right,_rgba(255,255,255,0.18),_transparent_32%)]" />
                 <div className="pointer-events-none absolute inset-0 rounded-[2rem] ring-1 ring-inset ring-[#8ad2c2]/35" />
 
                 <div className="relative z-10 max-w-[72%]">
-                  <h2 className="text-[1.9rem] font-black uppercase leading-[1.02] tracking-[-0.04em] sm:text-[2.05rem]">
+                  <h2 className="text-[1rem] font-black uppercase leading-[1.02] tracking-[-0.04em] sm:text-[2.05rem]">
                     {category.title}
                   </h2>
-                  <p className="mt-2 text-[1.12rem] leading-none text-white/95 sm:text-[1.2rem]">
+                  <p className="mt-1 text-[0.9rem] leading-none text-white/95 sm:mt-2 sm:text-[1.2rem]">
                     {category.subtitle}
                   </p>
                 </div>
 
-                <div className="absolute bottom-3 right-3 flex h-28 w-28 items-end justify-end transition duration-300 group-hover:scale-105 sm:h-32 sm:w-32">
+                <div className="absolute bottom-2 right-2 flex h-20 w-20 items-end justify-end transition duration-300 group-hover:scale-105 sm:bottom-3 sm:right-3 sm:h-32 sm:w-32">
                   <div className="absolute bottom-1 right-1 h-20 w-20 rounded-full bg-white/10 blur-xl" />
                   {category.image ? (
                     <img
@@ -492,8 +478,7 @@ const Catalog: React.FC = () => {
           className="absolute inset-0 w-full h-full object-cover"
         />
         <div className="relative z-20 text-center text-white px-4">
-          <h1 className="text-4xl lg:text-5xl font-bold mb-3 tracking-tight">All Products</h1>
-          <p className="text-lg lg:text-xl text-blue-100">Professional pharmaceutical solutions for your health needs</p>
+          <h1 className="text-4xl lg:text-5xl font-bold tracking-tight">All Products</h1>
         </div>
       </section>
 
@@ -584,7 +569,7 @@ const Catalog: React.FC = () => {
 
               {paginatedProducts.length > 0 ? (
                 <>
-                  <div className="grid grid-cols-1 gap-y-14 gap-x-12 md:grid-cols-2 xl:grid-cols-3">
+                  <div className="grid grid-cols-2 gap-x-3 gap-y-10 md:grid-cols-2 md:gap-x-12 md:gap-y-14 xl:grid-cols-3">
                     {visibleProducts.map(product => (
                       <ProductCard key={product.id} product={product} />
                     ))}

@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { MessageCircle } from 'lucide-react';
-import { Link } from 'react-router-dom';
 import contactBg from '../assets/images/contact-bg.jpg';
 import aboutBg from '../assets/images/about-bg.jpg';
 
@@ -11,18 +10,12 @@ const HeroBanner: React.FC = () => {
     {
       id: 1,
       image: contactBg,
-      badge: '100% Trusted Medication',
       heading: 'Fast & Reliable Medical Solutions',
-      subtext:
-        'Premium quality pharmaceutical supplements with express shipping. Trusted by thousands of customers worldwide.'
     },
     {
       id: 2,
       image: aboutBg,
-      badge: 'Express Delivery Available',
       heading: 'Your Health, Our Priority',
-      subtext:
-        'Access premium medications and supplements with free delivery. Shop with confidence from trusted healthcare experts.'
     }
   ];
 
@@ -55,34 +48,9 @@ const HeroBanner: React.FC = () => {
               <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
                 <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-2">
                   <div className="text-white">
-                    <div className="mb-6 inline-flex w-fit items-center gap-2">
-                      <span className="inline-block rounded-full border border-white/30 bg-white/20 px-4 py-2 text-xs font-bold uppercase tracking-wide text-white backdrop-blur-sm">
-                        {slide.badge}
-                      </span>
-                    </div>
-
-                    <h1 className="mb-6 text-4xl font-bold leading-tight sm:text-5xl md:text-6xl lg:text-7xl">
+                    <h1 className="text-4xl font-bold leading-tight sm:text-5xl md:text-6xl lg:text-7xl">
                       {slide.heading}
                     </h1>
-
-                    <p className="mb-8 max-w-xl text-base leading-relaxed text-white/90 sm:text-lg md:text-xl">
-                      {slide.subtext}
-                    </p>
-
-                    <div className="flex flex-col gap-4 sm:flex-row">
-                      <Link
-                        to="/all-pills"
-                        className="rounded-lg bg-[#2d8680] px-8 py-4 text-center font-bold text-white transition-colors hover:bg-[#1f5d58]"
-                      >
-                        Shop Now
-                      </Link>
-                      <Link
-                        to="/all-pills"
-                        className="rounded-lg border-2 border-white px-8 py-4 text-center font-bold text-white transition-colors hover:bg-white/10"
-                      >
-                        Explore Categories
-                      </Link>
-                    </div>
                   </div>
 
                   <div className="hidden lg:block" />

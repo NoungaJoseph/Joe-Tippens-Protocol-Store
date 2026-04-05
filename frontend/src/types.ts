@@ -13,6 +13,11 @@ export interface Product {
   reviews: number;
   reviewsData?: Review[];
   prescription: boolean;
+  highlights?: string[];
+  additionalInfo?: {
+    label: string;
+    value: string;
+  }[];
   options?: {
     label: string;
     choices: {

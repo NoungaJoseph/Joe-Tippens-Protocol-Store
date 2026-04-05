@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { MessageCircle } from 'lucide-react';
 import acneCareImage from '../assets/trendind searchs/ACNE Care.png';
 import diabeticCareImage from '../assets/trendind searchs/DAIBETIC.png';
@@ -82,7 +83,7 @@ const TopTrendingSearch: React.FC = () => {
   ];
 
   return (
-    <section className="w-full py-20 px-4 sm:px-6 lg:px-8 bg-white">
+    <section className="w-full bg-white px-4 py-14 sm:px-6 lg:px-8 lg:py-20">
       <style>{`
         @keyframes fadeIn {
           from {
@@ -100,53 +101,72 @@ const TopTrendingSearch: React.FC = () => {
       `}</style>
 
       {/* Section Title */}
-      <div className="text-center mb-16">
-        <h2 className="text-4xl sm:text-5xl font-semibold text-center" style={{ color: '#2f5d50' }}>
+      <div className="mb-10 text-center sm:mb-16">
+        <h2 className="text-4xl font-semibold text-center sm:text-5xl" style={{ color: '#2f5d50' }}>
           Top Trending Search
         </h2>
       </div>
 
       {/* Categories Grid */}
-      <div className="max-w-7xl mx-auto mb-12">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
-          {categories.map((category) => (
-            <div
-              key={category.id}
-              className={`relative overflow-hidden rounded-3xl p-8 h-56 flex flex-col justify-between cursor-pointer transition-transform duration-300 hover:scale-105 shadow-md hover:shadow-lg ${
-                category.bgGradient ? category.bgColor : category.bgColor
-              }`}
-              style={{
-                borderRadius: '24px',
-              }}
-            >
-              {/* Content */}
-              <div className="relative z-10">
-                <h3 className="text-2xl sm:text-3xl font-bold text-white uppercase tracking-wide">
-                  {category.title}
-                </h3>
-                <p className="text-base sm:text-lg text-white/90 font-light mt-1">
-                  {category.subtitle}
-                </p>
-              </div>
+      <div className="mx-auto mb-12 max-w-7xl">
+        <div className="grid grid-cols-2 gap-4 sm:gap-6 lg:grid-cols-4 lg:gap-8">
+          {categories.map((category) => {
+            const categoryMap: { [key: string]: string } = {
+              acne: 'Acne Care',
+              diabetic: 'Supplements',
+              hiv: 'Anti Viral',
+              respiratory: 'Supplements',
+              bladder: 'Supplements',
+              women: 'Supplements',
+              antifungal: 'Anti Fungal',
+              antibiotic: 'Anti Biotic'
+            };
 
-              <img
-                src={category.illustration}
-                alt={`${category.title} ${category.subtitle}`}
-                className="absolute bottom-0 right-3 h-28 w-28 object-contain sm:h-32 sm:w-32"
-              />
-            </div>
-          ))}
+            const productCategory = categoryMap[category.id];
+            const categoryPath = `/all-pills?category=${encodeURIComponent(productCategory)}`;
+
+            return (
+              <Link key={category.id} to={categoryPath} className="block no-underline">
+                <div
+                  className={`relative flex h-44 cursor-pointer flex-col justify-between overflow-hidden rounded-3xl p-4 shadow-md transition-transform duration-300 hover:scale-105 hover:shadow-lg sm:h-52 sm:p-6 ${
+                    category.bgGradient ? category.bgColor : category.bgColor
+                  }`}
+                  style={{
+                    borderRadius: '24px'
+                  }}
+                >
+                  {/* Content */}
+                  <div className="relative z-10">
+                    <h3 className="text-lg font-bold uppercase tracking-wide text-white sm:text-2xl">
+                      {category.title}
+                    </h3>
+                    <p className="mt-1 text-sm font-light text-white/90 sm:text-base">
+                      {category.subtitle}
+                    </p>
+                  </div>
+
+                  <img
+                    src={category.illustration}
+                    alt={`${category.title} ${category.subtitle}`}
+                    className="absolute bottom-0 right-2 h-20 w-20 object-contain sm:right-3 sm:h-28 sm:w-28"
+                  />
+                </div>
+              </Link>
+            );
+          })}
         </div>
       </div>
 
       {/* All Category Button */}
       <div className="text-center mb-20">
-        <button
-          className="px-8 py-3 rounded-xl font-semibold text-white text-lg transition-all duration-300 hover:brightness-110 active:scale-95"
-          style={{ backgroundColor: '#2f5d50' }}
-        >
-          All Category &gt;
-        </button>
+        <Link to="/all-pills" className="inline-block no-underline">
+          <button
+            className="px-8 py-3 rounded-xl font-semibold text-white text-lg transition-all duration-300 hover:brightness-110 active:scale-95"
+            style={{ backgroundColor: '#2f5d50' }}
+          >
+            All Category &gt;
+          </button>
+        </Link>
       </div>
 
       {/* Floating Chat Button */}
