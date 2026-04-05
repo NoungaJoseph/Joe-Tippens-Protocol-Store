@@ -164,14 +164,14 @@ const Header: React.FC = () => {
                   <Link
                     key={item.label}
                     to={item.path}
-                    className="border-b-4 border-transparent py-5 text-xl font-bold leading-none text-[#2d8680] transition-colors hover:border-[#2d8680] hover:text-[#2d8680] xl:text-2xl"
+                    className="border-b-4 border-transparent py-5 text-lg font-bold leading-none text-[#2d8680] transition-colors hover:border-[#2d8680] hover:text-[#2d8680] xl:text-[1.3rem]"
                   >
                     {item.label}
                   </Link>
                 ))}
               </div>
               <div className="flex justify-end">
-              <button className="px-6 py-2.5 border-2 border-[#2d8680] rounded-lg text-sm font-bold text-[#2d8680] bg-white hover:bg-blue-50 transition-colors whitespace-nowrap">
+              <button className="px-8 py-3 border-2 border-[#2d8680] rounded-lg text-base font-extrabold tracking-[0.01em] text-[#2d8680] bg-white hover:bg-blue-50 transition-colors whitespace-nowrap">
                 Free Shipping for all orders
               </button>
               </div>

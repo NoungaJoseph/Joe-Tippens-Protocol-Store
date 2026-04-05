@@ -1,34 +1,46 @@
 import { Product } from './types';
 
 const PACK_100_500 = [
-  { text: '100 tablets' },
-  { text: '200 tablets', modifier: 90 },
-  { text: '300 tablets', modifier: 180 },
-  { text: '400 tablets', modifier: 270 },
-  { text: '500 tablets', modifier: 360 }
+  { text: '100' },
+  { text: '200', modifier: 90 },
+  { text: '300', modifier: 180 },
+  { text: '400', modifier: 270 },
+  { text: '500', modifier: 360 }
 ];
 
-const FAQ_BLOCK = (name: string) =>
-  [
-    `How to buy ${name} online? Use only with a valid prescription and buy from licensed pharmacies.`,
-    'Is it safe? It is generally well tolerated when used as directed by a healthcare professional.',
-    'What if a dose is missed? Take it when remembered unless it is close to the next dose; do not double-dose.',
-    'How long does it take to work? It depends on the infection; some symptoms improve in days while others take weeks.'
-  ].join('\n');
+const PACK_30_500 = [
+  { text: '30 tablet' },
+  { text: '50 tablet', modifier: 18 },
+  { text: '100 tablet', modifier: 45 },
+  { text: '200 tablet', modifier: 90 },
+  { text: '500 tablet', modifier: 210 }
+];
 
-const WHY_CONSIDER_BLOCK = (name: string) =>
+const whyConsider = (name: string) =>
   [
-    `${name} may be considered when your clinician confirms a parasitic infection and chooses ivermectin as part of care.`,
-    'It is commonly selected for practical dosing, broad clinical familiarity, and established antiparasitic use.',
-    'Always follow clinician guidance and local treatment protocols.'
-  ].join('\n');
+    `${name} may be considered when a clinician confirms a parasitic infection and ivermectin is appropriate.`,
+    'It offers practical oral dosing and broad familiarity in parasite-treatment protocols.',
+    'Use should be individualized to diagnosis, age, body weight, and medical history.',
+    'Always follow licensed healthcare guidance.'
+  ].join('\n\n');
 
-const SIDE_EFFECT_BLOCK =
+const sideEffects = (name: string) =>
   [
-    'Common side effects can include dizziness, nausea, diarrhea, abdominal discomfort, and mild skin reactions.',
-    'Less common but serious reactions may include allergic symptoms, severe rash, confusion, or liver-related effects.',
-    'Seek medical care promptly if severe symptoms occur.'
-  ].join('\n');
+    `${name} can cause side effects, although many people tolerate it well when used correctly.`,
+    'Common effects include dizziness, nausea, abdominal discomfort, vomiting, diarrhea, and mild rash.',
+    'Rare but serious reactions include severe allergy, confusion, severe skin reactions, or liver-related effects.',
+    'Seek urgent care for breathing trouble, swelling, severe rash, or severe neurologic symptoms.'
+  ].join('\n\n');
+
+const faqs = (name: string) =>
+  [
+    `How to buy ${name} online? Use only with a valid prescription and trusted pharmacy sources.`,
+    'Are these drugs safe? Ivermectin is generally safe when used at correct dose under medical supervision.',
+    'How effective is it? It is effective for selected parasitic infections when diagnosis and dosing are correct.',
+    'What if you miss a dose? Take when remembered unless close to next dose; do not double-dose.',
+    'Can it treat COVID-19? It is not an established standard COVID-19 treatment.',
+    'How long does it take to work? Depends on infection; some improve in days, others in weeks.'
+  ].join('\n\n');
 
 export const IVERMECTIN_COLLECTION_PRODUCTS: Product[] = [
   {
@@ -43,35 +55,21 @@ export const IVERMECTIN_COLLECTION_PRODUCTS: Product[] = [
       'https://static.wixstatic.com/media/07e3c6_117fcfe1462945ca8e38b5049d35f052~mv2.jpg/v1/fill/w_498,h_498,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/07e3c6_117fcfe1462945ca8e38b5049d35f052~mv2.jpg'
     ],
     description: [
-      'Iverjohn 3 mg is a brand of ivermectin medication used to treat certain parasitic infections in humans. The dose depends on body weight, infection type, and medical history.',
-      'Ivermectin is not broadly approved as a standard COVID-19 treatment; evidence remains mixed and clinicians should guide decisions.',
-      'Iverjohn 3 mg may cause side effects such as dizziness, nausea, vomiting, and diarrhea. Rare serious effects can occur.',
-      'Always consult a healthcare professional before taking this medicine.',
+      'Iverjohn 3mg is a brand of ivermectin used to treat selected parasitic infections. Dose depends on body weight, infection, and medical history.',
+      'Ivermectin is not broadly recommended as a standard treatment for COVID-19; research is ongoing.',
+      'Common side effects include dizziness, nausea, vomiting, and diarrhea. Rare severe reactions can occur.',
       '',
-      'Why Consider Iverjohn 3 mg?',
-      WHY_CONSIDER_BLOCK('Iverjohn 3 mg'),
-      '',
-      'Some Interesting Insights About Ivermectin',
-      'Ivermectin is an antiparasitic medicine used against infections caused by certain worms, lice, and mites. It works by disrupting parasite nerve and muscle function.',
+      'Why Consider it Iverjohn 3mg?',
+      'Consult a healthcare professional who can evaluate your history and symptoms. Ivermectin is commonly used for selected parasitic infections such as river blindness and threadworm infections.',
       '',
       'FAQs',
-      FAQ_BLOCK('Iverjohn 3 mg'),
+      faqs('Iverjohn 3mg'),
       '',
-      'Additional Product Description',
-      'Iverjohn 3 mg contains ivermectin, an antiparasitic agent used for conditions such as river blindness, scabies, and roundworm infections. It works by paralyzing and killing susceptible parasites.'
+      'Iverjohn 3 mg contains ivermectin, an antiparasitic agent used in conditions such as scabies, roundworm infections, and river blindness under clinician guidance.'
     ].join('\n\n'),
     category: 'Ivermectin',
-    rating: 5.0,
-    reviews: 31,
-    highlights: ['Strength: 3 mg', 'Category: Antiparasitic', 'Prescription required', 'Oral tablet'],
-    additionalInfo: [
-      { label: 'Active Ingredient', value: 'Ivermectin' },
-      { label: 'Strength', value: '3 mg' },
-      { label: 'Pack Size', value: '100, 200, 300, 400, 500 tablets' },
-      { label: 'Why Consider', value: WHY_CONSIDER_BLOCK('Iverjohn 3 mg') },
-      { label: 'Side Effects', value: SIDE_EFFECT_BLOCK },
-      { label: 'FAQs', value: FAQ_BLOCK('Iverjohn 3 mg') }
-    ],
+    rating: 5,
+    reviews: 42,
     options: [{ label: 'Pack Size', choices: PACK_100_500 }]
   },
   {
@@ -86,30 +84,21 @@ export const IVERMECTIN_COLLECTION_PRODUCTS: Product[] = [
       'https://static.wixstatic.com/media/07e3c6_6a38b685f51d45e08972edfe08bb778e~mv2.jpg/v1/fill/w_498,h_498,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/07e3c6_6a38b685f51d45e08972edfe08bb778e~mv2.jpg'
     ],
     description: [
-      'Iverjohn 6 mg is a highly effective medication that contains ivermectin, an antiparasitic agent used to treat selected parasitic infections.',
-      'Iverjohn 6 mg is a higher-strength tablet option compared with 3 mg and should be used strictly under clinician guidance.',
+      'Iverjohn 6 mg is a higher-strength ivermectin tablet used for selected parasitic infections.',
+      'Use only with healthcare guidance and prescribed dosing.',
       '',
-      'Why Consider Iverjohn 6 mg?',
-      WHY_CONSIDER_BLOCK('Iverjohn 6 mg'),
+      'Why Consider it Iverjohn 6mg?',
+      whyConsider('Iverjohn 6mg'),
       '',
       'Side Effects',
-      SIDE_EFFECT_BLOCK,
+      sideEffects('Iverjohn 6mg'),
       '',
       'FAQs',
-      FAQ_BLOCK('Iverjohn 6 mg')
+      faqs('Iverjohn 6mg')
     ].join('\n\n'),
     category: 'Ivermectin',
     rating: 4.9,
-    reviews: 29,
-    highlights: ['Strength: 6 mg', 'High-strength tablet option', 'Prescription required', 'Oral use'],
-    additionalInfo: [
-      { label: 'Active Ingredient', value: 'Ivermectin' },
-      { label: 'Strength', value: '6 mg' },
-      { label: 'Pack Size', value: '100, 200, 300, 400, 500 tablets' },
-      { label: 'Why Consider', value: WHY_CONSIDER_BLOCK('Iverjohn 6 mg') },
-      { label: 'Side Effects', value: SIDE_EFFECT_BLOCK },
-      { label: 'FAQs', value: FAQ_BLOCK('Iverjohn 6 mg') }
-    ],
+    reviews: 38,
     options: [{ label: 'Pack Size', choices: PACK_100_500 }]
   },
   {
@@ -124,31 +113,26 @@ export const IVERMECTIN_COLLECTION_PRODUCTS: Product[] = [
       'https://static.wixstatic.com/media/07e3c6_8003b014111941ceaf8fff42b2564f53~mv2.jpeg/v1/fill/w_494,h_203,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/07e3c6_8003b014111941ceaf8fff42b2564f53~mv2.jpeg'
     ],
     description: [
-      'Ivermectin Paste Dewormer is effective against a wide range of parasites and is available in paste and liquid formats.',
-      'Incorporating ivermectin in a full parasite-control strategy can help reduce infestation burden; however, resistance can occur with improper use.',
+      'Ivermectin Paste Dewormer is effective against a wide range of parasites including strongyles, pinworms, and botflies.',
+      'It is available in paste and liquid formats and should be used as part of a veterinarian-guided parasite-control plan.',
       '',
-      'How Ivermectin Paste Works',
-      'Ivermectin belongs to the avermectin class and targets parasite nervous systems while having comparatively low impact on mammalian cells at recommended use.',
+      'How Ivermectin paste Work',
+      'Ivermectin paste is in the avermectin class and targets parasite nervous systems.',
       '',
-      'How to Use',
-      'Commercial formulations vary. Dose calculations should be accurate and guided by a veterinary professional when used in animals.'
+      'How to use Ivermectin paste',
+      'Common reference dose is 200 ug/kg (0.2 mg/kg) body weight in horses. Confirm exact dosing with a veterinarian.'
     ].join('\n\n'),
     category: 'Ivermectin',
     rating: 4.8,
-    reviews: 22,
-    highlights: ['Paste format', 'Broad antiparasitic use', '1, 2, 4, or 6 tube packs', 'Follow dosing instructions'],
-    additionalInfo: [
-      { label: 'Form', value: 'Oral paste' },
-      { label: 'Common Packs', value: '1 tube, 2 tubes, 4 tubes, 6 tubes' }
-    ],
+    reviews: 19,
     options: [
       {
         label: 'Pack Size',
         choices: [
-          { text: '1 tube' },
-          { text: '2 tubes', modifier: 30 },
-          { text: '4 tubes', modifier: 95 },
-          { text: '6 tubes', modifier: 150 }
+          { text: '1 Tube' },
+          { text: '2 Tube', modifier: 18 },
+          { text: '4 Tube', modifier: 54 },
+          { text: '6 Tube', modifier: 90 }
         ]
       }
     ]
@@ -165,32 +149,30 @@ export const IVERMECTIN_COLLECTION_PRODUCTS: Product[] = [
       'https://static.wixstatic.com/media/20d0e2_16b5c057e88d4c5c820acf572d0a663b~mv2.jpg/v1/fill/w_498,h_498,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/20d0e2_16b5c057e88d4c5c820acf572d0a663b~mv2.jpg'
     ],
     description: [
-      'Ivermectin Tablets are used for selected parasitic infections and work by paralyzing and killing susceptible parasites.',
+      'Ivermectin tablets are used for selected parasitic infections and should be used only when prescribed.',
+      'Use with caution in allergy history, pregnancy, breastfeeding, and liver or neurological conditions.',
       '',
-      'What is Ivermectin and why is it used?',
-      'It is used for conditions such as intestinal strongyloidiasis and other confirmed parasitic infections depending on physician diagnosis.',
+      'What is Ivermectin, and why is it used?',
+      'It is used in physician-guided treatment of selected parasitic infections.',
       '',
-      'Before use',
-      'Use only if prescribed. Avoid use when there is known hypersensitivity to ivermectin or formulation components.',
+      'Range of Ivermectin',
+      'Strength and regimen vary by diagnosis and body weight.',
       '',
-      'Storage and precautions',
-      'Store in a cool, dry place away from direct sunlight. Keep out of reach of children.'
+      'How to store?',
+      'Store in a cool, dry place away from heat and moisture.',
+      '',
+      'Ivermectin and other medications',
+      'Tell your clinician all medicines and supplements you take.',
+      '',
+      'Precautions and warnings',
+      'Follow prescribed dose exactly and attend follow-up reviews.'
     ].join('\n\n'),
     category: 'Ivermectin',
     rating: 4.9,
-    reviews: 20,
-    highlights: ['Standard tablet format', 'Prescription required', 'Pack size with strength selection', 'Clinician-guided use'],
-    additionalInfo: [
-      { label: 'Active Ingredient', value: 'Ivermectin' },
-      { label: 'Pack Size', value: '100, 200, 300, 400, 500 tablets' },
-      { label: 'Strength', value: 'Selectable on product page' }
-    ],
+    reviews: 27,
     options: [
       { label: 'Pack Size', choices: PACK_100_500 },
-      {
-        label: 'Strength',
-        choices: [{ text: '3 mg' }, { text: '6 mg' }, { text: '12 mg' }]
-      }
+      { label: 'Strength', choices: [{ text: '3 mg' }, { text: '6 mg' }, { text: '12 mg' }] }
     ]
   },
   {
@@ -205,30 +187,20 @@ export const IVERMECTIN_COLLECTION_PRODUCTS: Product[] = [
       'https://static.wixstatic.com/media/20d0e2_4c3aa5196245498dab3617061eee0047~mv2.png/v1/fill/w_498,h_498,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/20d0e2_4c3aa5196245498dab3617061eee0047~mv2.png'
     ],
     description: [
-      'Iverjohn 12 mg contains ivermectin and is used for physician-directed treatment of selected parasitic infections.',
-      'This higher-strength option should only be used when a clinician determines it is appropriate.',
+      'Iverjohn 12mg is a higher-strength ivermectin tablet for selected parasitic infections under clinician supervision.',
       '',
-      'Why Consider Iverjohn 12 mg?',
-      WHY_CONSIDER_BLOCK('Iverjohn 12 mg'),
+      'Why Consider it Iverjohn 12mg?',
+      whyConsider('Iverjohn 12mg'),
       '',
       'Side Effects',
-      SIDE_EFFECT_BLOCK,
+      sideEffects('Iverjohn 12mg'),
       '',
       'FAQs',
-      FAQ_BLOCK('Iverjohn 12 mg')
+      faqs('Iverjohn 12mg')
     ].join('\n\n'),
     category: 'Ivermectin',
     rating: 4.9,
-    reviews: 23,
-    highlights: ['Strength: 12 mg', 'Higher-strength option', 'Prescription required', 'Oral tablet'],
-    additionalInfo: [
-      { label: 'Active Ingredient', value: 'Ivermectin' },
-      { label: 'Strength', value: '12 mg' },
-      { label: 'Pack Size', value: '100, 200, 300, 400, 500 tablets' },
-      { label: 'Why Consider', value: WHY_CONSIDER_BLOCK('Iverjohn 12 mg') },
-      { label: 'Side Effects', value: SIDE_EFFECT_BLOCK },
-      { label: 'FAQs', value: FAQ_BLOCK('Iverjohn 12 mg') }
-    ],
+    reviews: 35,
     options: [{ label: 'Pack Size', choices: PACK_100_500 }]
   },
   {
@@ -245,42 +217,26 @@ export const IVERMECTIN_COLLECTION_PRODUCTS: Product[] = [
       'https://static.wixstatic.com/media/07e3c6_7d2376b19c22421fa0a0f9866960d37c~mv2.jpeg/v1/fill/w_498,h_498,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/07e3c6_7d2376b19c22421fa0a0f9866960d37c~mv2.jpeg'
     ],
     description: [
-      'Iverheal USP Tablet (Ivermectin) is an antiparasitic oral medicine used in physician-guided treatment plans for skin, intestinal, and eye-related parasitic infections.',
-      'Patients with scabies and filariasis are often evaluated for ivermectin options depending on diagnosis and severity.',
+      'Iverheal USP Tablet is an oral ivermectin medicine used for selected parasitic infections of intestine, skin, and eyes.',
       '',
-      'What is Iverheal?',
-      'Iverheal is a branded ivermectin tablet line. It should be purchased and used only with a valid prescription.',
+      'What Is Iverheal?',
+      'A branded ivermectin line used under medical supervision.',
       '',
-      'How Generic Ivermectin Pills Work',
-      'Ivermectin targets parasite nervous systems and can help clear susceptible parasites.',
+      'How Generic Ivermectin Pills Works',
+      'It disrupts parasite nerve and muscle function.',
       '',
       'Recommended Ways to Take Iverheal Tablets',
-      'Use exactly as prescribed, usually on an empty stomach unless your clinician advises otherwise.',
+      'Usually taken by mouth as prescribed, often on an empty stomach.',
       '',
-      'Vital Precautions and Warnings',
-      'Use under clinician supervision, especially with liver disease, neurological disorders, pregnancy, or breastfeeding.'
+      'Vital Precautions & Warnings',
+      'Use only with prescription and clinician guidance.'
     ].join('\n\n'),
     category: 'Ivermectin',
     rating: 4.8,
     reviews: 26,
-    highlights: ['USP tablet presentation', 'Includes image gallery', 'Prescription required', 'Dose and pack selectable'],
-    additionalInfo: [
-      { label: 'Active Ingredient', value: 'Ivermectin' },
-      { label: 'Dose', value: 'Selectable on product page' },
-      { label: 'Pack Size', value: 'Selectable on product page' }
-    ],
     options: [
-      {
-        label: 'Pack Size',
-        choices: [
-          { text: '30 tablets' },
-          { text: '50 tablets', modifier: 22 },
-          { text: '100 tablets', modifier: 68 },
-          { text: '200 tablets', modifier: 145 },
-          { text: '500 tablets', modifier: 380 }
-        ]
-      },
-      { label: 'Dose', choices: [{ text: '3 mg' }, { text: '6 mg' }, { text: '12 mg' }] }
+      { label: 'Pack Size', choices: PACK_30_500 },
+      { label: 'Dose', choices: [{ text: '3 mg' }, { text: '6 mg', modifier: 10 }, { text: '12 mg', modifier: 18 }] }
     ]
   },
   {
@@ -288,44 +244,35 @@ export const IVERMECTIN_COLLECTION_PRODUCTS: Product[] = [
     name: 'Ivermectin Cream',
     brand: 'Ivrea',
     price: 50.0,
-    prescription: true,
+    prescription: false,
     image:
       'https://static.wixstatic.com/media/20d0e2_0db1341ac9084686b6138fea90cd0240~mv2.jpg/v1/fill/w_498,h_498,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/20d0e2_0db1341ac9084686b6138fea90cd0240~mv2.jpg',
     images: [
       'https://static.wixstatic.com/media/20d0e2_0db1341ac9084686b6138fea90cd0240~mv2.jpg/v1/fill/w_498,h_498,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/20d0e2_0db1341ac9084686b6138fea90cd0240~mv2.jpg'
     ],
     description: [
-      'Ivermectin Cream is used in treatment of rosacea and helps reduce redness, swelling, and pimples.',
-      'Apply on clean, dry skin exactly as directed. Avoid contact with eyes, mouth, and inside the nose.',
+      'Ivermectin Cream is used for rosacea and helps reduce facial redness, swelling, and pimples.',
       '',
-      'Uses',
-      'Rosacea, clinician-directed parasite-related skin treatment.',
+      'USES OF IVREA CREAM',
+      'Rosacea; Treatment of selected parasitic skin infections.',
       '',
-      'Benefits',
-      'Targeted topical treatment with localized action on affected skin.',
+      'BENEFITS OF IVREA CREAM',
+      'Can reduce inflammatory facial symptoms with regular use.',
       '',
-      'Side Effects',
-      'Temporary burning, irritation, itching, or redness at the application site can occur.',
+      'SIDE EFFECTS OF IVREA CREAM',
+      'Possible burning, irritation, itching, and redness at application site.',
       '',
-      'How to Use',
-      'Apply a thin layer once daily or as prescribed.',
+      'HOW TO USE IVREA CREAM',
+      'Apply a thin layer to clean, dry affected skin as directed.',
       '',
-      'How it Works',
-      'Acts on parasite-related inflammatory pathways and helps reduce lesion burden in susceptible conditions.'
+      'HOW IVREA CREAM WORKS',
+      'Provides topical anti-inflammatory and antiparasitic activity.'
     ].join('\n\n'),
     category: 'Ivermectin',
     rating: 4.7,
-    reviews: 18,
-    highlights: ['Topical cream', 'Commonly used for rosacea', 'Prescription recommended', '2/4/6 cream pack options'],
-    additionalInfo: [
-      { label: 'Form', value: 'Topical cream' },
-      { label: 'Pack Size', value: '2 cream, 4 cream, 6 cream' }
-    ],
+    reviews: 17,
     options: [
-      {
-        label: 'Pack Size',
-        choices: [{ text: '2 cream' }, { text: '4 cream', modifier: 45 }, { text: '6 cream', modifier: 90 }]
-      }
+      { label: 'Pack Size', choices: [{ text: '2 cream' }, { text: '4 cream', modifier: 25 }, { text: '6 cream', modifier: 45 }] }
     ]
   },
   {
@@ -340,41 +287,27 @@ export const IVERMECTIN_COLLECTION_PRODUCTS: Product[] = [
       'https://static.wixstatic.com/media/20d0e2_8e0f63df26664e83873d6550607a2ec2~mv2.jpg/v1/fill/w_498,h_498,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/20d0e2_8e0f63df26664e83873d6550607a2ec2~mv2.jpg'
     ],
     description: [
-      'Vermact 12mg is an antiparasitic medication used for intestinal, skin, and eye parasite infections under medical advice.',
-      'It is often taken on an empty stomach as directed, and hydration is recommended unless your clinician advises otherwise.',
+      'Vermact 12mg is an antiparasitic tablet used for selected intestinal, skin, and eye parasite infections.',
       '',
-      'Uses',
-      'Treatment of parasitic infections.',
+      'USES OF VERMACT TABLET DT',
+      'Treatment of Parasitic infections',
       '',
-      'Benefits',
-      'Supports parasite clearance and symptom relief in susceptible infections.',
+      'BENEFITS OF VERMACT TABLET DT',
+      'Helps reduce parasite burden in indicated infections.',
       '',
-      'Side Effects',
-      SIDE_EFFECT_BLOCK,
+      'SIDE EFFECTS OF VERMACT TABLET DT',
+      'Possible nausea, dizziness, diarrhea, and abdominal discomfort.',
       '',
-      'How to Use',
-      'Take exactly as prescribed; do not self-adjust dose.',
+      'HOW TO USE VERMACT TABLET DT',
+      'Use on an empty stomach as prescribed.',
       '',
-      'How it Works',
-      'Paralyzes and kills susceptible parasites by affecting their neuromuscular function.'
+      'HOW VERMACT TABLET DT WORKS',
+      'Interferes with parasite nerve-muscle signaling.'
     ].join('\n\n'),
     category: 'Ivermectin',
     rating: 4.7,
-    reviews: 16,
-    highlights: ['Strength: 12 mg', 'Tablet DT format', 'Prescription required', 'Low entry price'],
-    additionalInfo: [{ label: 'Pack Size', value: 'Selectable on product page' }],
-    options: [
-      {
-        label: 'Pack Size',
-        choices: [
-          { text: '30 tablets' },
-          { text: '50 tablets', modifier: 12 },
-          { text: '100 tablets', modifier: 36 },
-          { text: '200 tablets', modifier: 80 },
-          { text: '500 tablets', modifier: 220 }
-        ]
-      }
-    ]
+    reviews: 14,
+    options: [{ label: 'Pack Size', choices: PACK_30_500 }]
   },
   {
     id: 'iversun-tablet-6mg',
@@ -388,34 +321,21 @@ export const IVERMECTIN_COLLECTION_PRODUCTS: Product[] = [
       'https://static.wixstatic.com/media/20d0e2_07080ad426744fb987ea6eedbad52aea~mv2.jpg/v1/fill/w_498,h_498,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/20d0e2_07080ad426744fb987ea6eedbad52aea~mv2.jpg'
     ],
     description: [
-      'Iversun 6 mg is listed as an ivermectin product for parasite-focused treatment plans under medical supervision.',
+      'Iversun 6mg is used in clinician-guided treatment plans for selected parasitic infections.',
       '',
       'Used For',
       'Parasitic infections of intestinal tract, skin, and eyes.',
       '',
       'Dosage',
-      'Dose is individualized by body weight and diagnosis; follow clinician instructions.',
+      'Weight-based and diagnosis-specific as prescribed.',
       '',
       'Description',
-      'Continue treatment as prescribed to reduce risk of incomplete parasite clearance.'
+      'Follow the full prescribed plan to reduce risk of treatment failure.'
     ].join('\n\n'),
     category: 'Ivermectin',
-    rating: 4.6,
-    reviews: 14,
-    highlights: ['Strength: 6 mg', 'Tablet format', 'Prescription required', '30 to 500 tablet pack options'],
-    additionalInfo: [{ label: 'Pack Size', value: '30, 50, 100, 200, 500 tablets' }],
-    options: [
-      {
-        label: 'Pack Size',
-        choices: [
-          { text: '30 tablets' },
-          { text: '50 tablets', modifier: 10 },
-          { text: '100 tablets', modifier: 30 },
-          { text: '200 tablets', modifier: 70 },
-          { text: '500 tablets', modifier: 190 }
-        ]
-      }
-    ]
+    rating: 4.7,
+    reviews: 15,
+    options: [{ label: 'Pack Size', choices: PACK_30_500 }]
   },
   {
     id: 'covimectin-tablet-12mg',
@@ -429,41 +349,27 @@ export const IVERMECTIN_COLLECTION_PRODUCTS: Product[] = [
       'https://static.wixstatic.com/media/20d0e2_4eaed3c479544645ace476fe4af61efe~mv2.jpg/v1/fill/w_498,h_498,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/20d0e2_4eaed3c479544645ace476fe4af61efe~mv2.jpg'
     ],
     description: [
-      'Covimectin 12 mg is an antiparasitic medication used to treat selected parasitic infections.',
-      'It is typically taken on an empty stomach as prescribed by a healthcare professional.',
+      'Covimectin 12mg is an antiparasitic medication for selected intestinal, skin, and eye parasite infections.',
       '',
-      'Uses',
-      'Treatment of parasitic infections.',
+      'USES OF COVIMECTIN TABLET',
+      'Treatment of Parasitic infections',
       '',
-      'Benefits',
-      'Helps clear susceptible parasites and reduce related symptoms.',
+      'BENEFITS OF COVIMECTIN TABLET',
+      'Provides targeted antiparasitic action for indicated infections.',
       '',
-      'Side Effects',
-      SIDE_EFFECT_BLOCK,
+      'SIDE EFFECTS OF COVIMECTIN TABLET',
+      'Possible nausea, dizziness, diarrhea, and stomach discomfort.',
       '',
-      'How to Use',
-      'Take exactly as prescribed and avoid dose changes without medical advice.',
+      'HOW TO USE COVIMECTIN TABLET',
+      'Take on empty stomach as prescribed.',
       '',
-      'How it Works',
-      'Disrupts parasite neuromuscular activity, causing paralysis and death of susceptible organisms.'
+      'HOW COVIMECTIN TABLET WORKS',
+      'Disrupts parasite nerve-muscle function.'
     ].join('\n\n'),
     category: 'Ivermectin',
-    rating: 4.7,
-    reviews: 17,
-    highlights: ['Strength: 12 mg', 'Tablet format', 'Prescription required', '30 to 500 tablet pack options'],
-    additionalInfo: [{ label: 'Pack Size', value: '30, 50, 100, 200, 500 tablets' }],
-    options: [
-      {
-        label: 'Pack Size',
-        choices: [
-          { text: '30 tablets' },
-          { text: '50 tablets', modifier: 14 },
-          { text: '100 tablets', modifier: 36 },
-          { text: '200 tablets', modifier: 84 },
-          { text: '500 tablets', modifier: 220 }
-        ]
-      }
-    ]
+    rating: 4.8,
+    reviews: 21,
+    options: [{ label: 'Pack Size', choices: PACK_30_500 }]
   },
   {
     id: 'ivervid-tablet-6mg',
@@ -477,41 +383,27 @@ export const IVERMECTIN_COLLECTION_PRODUCTS: Product[] = [
       'https://static.wixstatic.com/media/20d0e2_59af0285ba564fb1a8222021210180ab~mv2.jpeg/v1/fill/w_498,h_664,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/20d0e2_59af0285ba564fb1a8222021210180ab~mv2.jpeg'
     ],
     description: [
-      'Ivervid 6mg Tablet is an antiparasitic medication used in treatment of intestinal, skin, and eye parasite infections.',
-      'Generally taken on an empty stomach as advised by a clinician.',
+      'Ivervid 6mg Tablet is an antiparasitic medication used for selected intestinal, skin, and eye parasite infections.',
       '',
-      'Uses',
-      'Treatment of parasitic infections.',
+      'USES OF IVERCID TABLET',
+      'Treatment of Parasitic infections',
       '',
-      'Benefits',
-      'Supports clinical parasite clearance when used correctly.',
+      'BENEFITS OF IVERCID TABLET',
+      'Supports effective parasite clearance in indicated use.',
       '',
-      'Side Effects',
-      SIDE_EFFECT_BLOCK,
+      'SIDE EFFECTS OF IVERCID TABLET',
+      'May include nausea, dizziness, abdominal discomfort, and diarrhea.',
       '',
-      'How to Use',
-      'Use only under prescription and complete follow-up as advised.',
+      'HOW TO USE IVERCID TABLET',
+      'Take as prescribed, usually on empty stomach.',
       '',
-      'How it Works',
-      'Acts on parasite nervous signaling and helps eliminate susceptible organisms.'
+      'HOW IVERCID TABLET WORKS',
+      'Targets parasite neuromuscular pathways.'
     ].join('\n\n'),
     category: 'Ivermectin',
     rating: 4.8,
-    reviews: 13,
-    highlights: ['Strength: 6 mg', 'Tablet format', 'Prescription required', 'Pack sizes aligned with category tablets'],
-    additionalInfo: [{ label: 'Pack Size', value: '30, 50, 100, 200, 500 tablets' }],
-    options: [
-      {
-        label: 'Pack Size',
-        choices: [
-          { text: '30 tablets' },
-          { text: '50 tablets', modifier: 25 },
-          { text: '100 tablets', modifier: 60 },
-          { text: '200 tablets', modifier: 130 },
-          { text: '500 tablets', modifier: 340 }
-        ]
-      }
-    ]
+    reviews: 20,
+    options: [{ label: 'Pack Size', choices: PACK_30_500 }]
   },
   {
     id: 'ivervid-tablet-3mg',
@@ -525,41 +417,27 @@ export const IVERMECTIN_COLLECTION_PRODUCTS: Product[] = [
       'https://static.wixstatic.com/media/20d0e2_583e882c19b2449988c94930544581df~mv2.jpeg/v1/fill/w_498,h_498,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/20d0e2_583e882c19b2449988c94930544581df~mv2.jpeg'
     ],
     description: [
-      'Ivervid 3mg Tablet is an antiparasitic medication used for selected intestinal, skin, and eye parasite infections.',
-      'Usually taken on an empty stomach per clinician guidance.',
+      'Ivervid 3mg Tablet is an antiparasitic option for selected infections under clinician supervision.',
       '',
-      'Uses',
-      'Treatment of parasitic infections.',
+      'USES OF IVERCID TABLET',
+      'Treatment of Parasitic infections',
       '',
-      'Benefits',
-      'Lower-strength ivermectin option for clinician-guided dose planning.',
+      'BENEFITS OF IVERCID TABLET',
+      'Can reduce parasite burden and related symptoms in indicated use.',
       '',
-      'Side Effects',
-      SIDE_EFFECT_BLOCK,
+      'SIDE EFFECTS OF IVERCID TABLET',
+      'Possible nausea, dizziness, and mild gastrointestinal upset.',
       '',
-      'How to Use',
-      'Use exactly as prescribed and avoid self-dosing changes.',
+      'HOW TO USE IVERCID TABLET',
+      'Take as prescribed; do not double-dose.',
       '',
-      'How it Works',
-      'Disrupts parasite neuromuscular function and supports parasite elimination.'
+      'HOW IVERCID TABLET WORKS',
+      'Interferes with parasite nerve transmission.'
     ].join('\n\n'),
     category: 'Ivermectin',
     rating: 4.8,
-    reviews: 12,
-    highlights: ['Strength: 3 mg', 'Lower-strength tablet option', 'Prescription required', 'Oral use'],
-    additionalInfo: [{ label: 'Pack Size', value: '30, 50, 100, 200, 500 tablets' }],
-    options: [
-      {
-        label: 'Pack Size',
-        choices: [
-          { text: '30 tablets' },
-          { text: '50 tablets', modifier: 20 },
-          { text: '100 tablets', modifier: 52 },
-          { text: '200 tablets', modifier: 115 },
-          { text: '500 tablets', modifier: 300 }
-        ]
-      }
-    ]
+    reviews: 18,
+    options: [{ label: 'Pack Size', choices: PACK_30_500 }]
   },
   {
     id: 'ivervid-tablet-12mg',
@@ -573,40 +451,37 @@ export const IVERMECTIN_COLLECTION_PRODUCTS: Product[] = [
       'https://static.wixstatic.com/media/20d0e2_c2f9cafbd9984699b467cfd50cc90d3a~mv2.jpeg/v1/fill/w_498,h_512,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/20d0e2_c2f9cafbd9984699b467cfd50cc90d3a~mv2.jpeg'
     ],
     description: [
-      'Ivervid Tablet 12mg is an antiparasitic medication used in treatment of selected parasitic infections of intestinal tract, skin, and eyes.',
-      'Generally taken on an empty stomach, with dose based on clinician instruction and patient profile.',
+      'Ivervid 12mg Tablet is an antiparasitic medicine used for selected intestinal, skin, and eye infections.',
       '',
-      'Uses',
-      'Treatment of parasitic infections.',
+      'USES OF IVERVID TABLET',
+      'Treatment of Parasitic infections',
       '',
-      'Benefits',
-      'Higher-strength ivermectin tablet option for clinician-guided plans.',
+      'BENEFITS OF IVERVID TABLET',
+      'Helps control susceptible parasite infections in clinician-guided treatment.',
       '',
-      'Side Effects',
-      SIDE_EFFECT_BLOCK,
+      'SIDE EFFECTS OF IVERVID TABLET',
+      'Can include nausea, dizziness, diarrhea, and abdominal discomfort.',
       '',
-      'How to Use',
-      'Take exactly as prescribed; do not double-dose if one dose is missed.',
+      'HOW TO USE IVERVID TABLET',
+      'Take as prescribed, often on an empty stomach.',
       '',
-      'How it Works',
-      'Interferes with parasite nerve function leading to paralysis and death of susceptible parasites.'
+      'HOW IVERVID TABLET WORKS',
+      'Disrupts parasite neuromuscular activity.'
     ].join('\n\n'),
     category: 'Ivermectin',
-    rating: 4.9,
-    reviews: 15,
-    highlights: ['Strength: 12 mg', 'Higher-strength option', 'Prescription required', 'Wide pack-size range'],
-    additionalInfo: [{ label: 'Pack Size', value: '30, 50, 100, 200, 300, 500, 1000 tablets' }],
+    rating: 4.8,
+    reviews: 24,
     options: [
       {
         label: 'Pack Size',
         choices: [
           { text: '30 tablets' },
-          { text: '50 tablets', modifier: 20 },
-          { text: '100 tablets', modifier: 55 },
-          { text: '200 tablets', modifier: 125 },
-          { text: '300 tablets', modifier: 195 },
-          { text: '500 tablets', modifier: 340 },
-          { text: '1000 tablets', modifier: 700 }
+          { text: '50 tablets', modifier: 15 },
+          { text: '100 tablets', modifier: 35 },
+          { text: '200 tablets', modifier: 70 },
+          { text: '300', modifier: 105 },
+          { text: '500', modifier: 165 },
+          { text: '1000', modifier: 310 }
         ]
       }
     ]
