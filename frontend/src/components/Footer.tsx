@@ -1,171 +1,149 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Clock, Facebook, Instagram, Mail, Phone, Twitter } from 'lucide-react';
+import { Facebook, Instagram, Mail, MapPin, Phone, Twitter } from 'lucide-react';
 import logo from '../assets/images/logo-v2.png';
 
 const Footer: React.FC = () => {
   return (
-    <footer className="border-t border-slate-200 bg-white pt-20 text-slate-800 font-sans">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="mb-16 overflow-hidden rounded-[2rem] border border-emerald-100 bg-[linear-gradient(135deg,_#f6fffb_0%,_#ffffff_42%,_#eef8ff_100%)] p-10 shadow-[0_24px_80px_rgba(15,23,42,0.06)] lg:p-12">
-          <div className="grid grid-cols-1 gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
-            <div>
-              <p className="mb-4 text-base font-black uppercase tracking-[0.28em] text-emerald-600">Newsletter</p>
-              <h3 className="mb-4 text-4xl font-black tracking-[-0.04em] text-slate-900 md:text-5xl">
-                Join the wellness updates list.
-              </h3>
-              <p className="max-w-2xl text-lg leading-8 text-slate-600 md:text-xl">
-                Subscribe for product drops, fresh arrivals, and occasional offers from the store.
-              </p>
-            </div>
-
-            <form
-              action="https://formspree.io/f/xaqwpzbo"
-              method="POST"
-              className="grid gap-4"
-            >
-              <input type="hidden" name="_subject" value="New Newsletter Subscription" />
-              <input
-                type="email"
-                name="email"
-                required
-                placeholder="Enter your email address"
-                className="w-full rounded-2xl border border-slate-200 bg-white px-6 py-4 text-lg text-slate-900 outline-none transition focus:border-emerald-500 focus:ring-4 focus:ring-emerald-100"
-              />
-              <button
-                type="submit"
-                className="inline-flex items-center justify-center gap-2 rounded-2xl bg-emerald-600 px-8 py-4 text-lg font-bold text-white transition hover:bg-emerald-700"
-              >
-                Subscribe Now <ArrowRight size={20} />
-              </button>
-            </form>
-          </div>
-        </div>
-
-        <div className="grid grid-cols-1 gap-12 pb-14 md:grid-cols-2 xl:grid-cols-4">
+    <footer className="border-t border-slate-200 bg-[#f7f7f7] pt-14 text-slate-900">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 gap-10 border-b border-slate-300 pb-10 lg:grid-cols-2">
           <div>
-            <div className="mb-8 flex items-center gap-4">
-              <img src={logo} alt="Pure Protocol logo" className="h-16 w-16 object-contain" />
+            <div className="mb-5 flex items-center gap-4">
+              <img src={logo} alt="Ivermectinkart" className="h-16 w-16 object-contain" />
               <div>
-                <p className="text-3xl font-black tracking-[-0.04em] text-slate-900">
-                  Pure<span className="text-emerald-600">Protocol</span>
-                </p>
-                <p className="mt-1 text-base font-semibold uppercase tracking-[0.18em] text-slate-500">
-                  Wellness Store
-                </p>
+                <p className="text-3xl font-black tracking-[-0.04em] text-[#2d7f78] sm:text-4xl">Ivermectinkart</p>
+                <p className="text-base font-medium text-slate-500">Quality Meds</p>
               </div>
             </div>
 
-            <p className="mb-8 max-w-sm text-lg leading-8 text-slate-600">
-              Verified pharmaceutical supplements, premium protocol products, and responsive customer support for your wellness journey.
+            <p className="max-w-xl text-lg leading-relaxed text-slate-800 sm:text-2xl">
+              Your Trusted Online Pharmacy for Quality Medicines and Healthcare Products
             </p>
 
-            <div className="flex flex-wrap gap-4">
-              <a
-                href="https://facebook.com"
-                target="_blank"
-                rel="noreferrer"
-                className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[#1877F2] text-white shadow-[0_12px_24px_rgba(24,119,242,0.25)] transition hover:-translate-y-1"
-                aria-label="Facebook"
-              >
-                <Facebook size={22} />
-              </a>
+            <div className="mt-6 flex items-center gap-4">
               <a
                 href="https://instagram.com"
                 target="_blank"
                 rel="noreferrer"
-                className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[linear-gradient(135deg,_#f58529,_#dd2a7b,_#8134af,_#515bd4)] text-white shadow-[0_12px_24px_rgba(221,42,123,0.22)] transition hover:-translate-y-1"
+                className="flex h-11 w-11 items-center justify-center rounded-full bg-black text-white transition hover:opacity-80"
                 aria-label="Instagram"
               >
-                <Instagram size={22} />
+                <Instagram size={20} />
+              </a>
+              <a
+                href="https://facebook.com"
+                target="_blank"
+                rel="noreferrer"
+                className="flex h-11 w-11 items-center justify-center rounded-full bg-black text-white transition hover:opacity-80"
+                aria-label="Facebook"
+              >
+                <Facebook size={20} />
               </a>
               <a
                 href="https://x.com"
                 target="_blank"
                 rel="noreferrer"
-                className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[#1DA1F2] text-white shadow-[0_12px_24px_rgba(29,161,242,0.22)] transition hover:-translate-y-1"
+                className="flex h-11 w-11 items-center justify-center rounded-full bg-black text-white transition hover:opacity-80"
                 aria-label="Twitter"
               >
-                <Twitter size={22} />
+                <Twitter size={20} />
               </a>
             </div>
           </div>
 
           <div>
-            <h4 className="mb-6 text-2xl font-black text-slate-900">Quick Links</h4>
-            <ul className="space-y-4 text-lg text-slate-600">
-              <li><Link to="/" className="transition hover:text-emerald-600">Home</Link></li>
-              <li><Link to="/all-pills" className="transition hover:text-emerald-600">Shop</Link></li>
-              <li><Link to="/about" className="transition hover:text-emerald-600">About Us</Link></li>
-              <li><Link to="/contact" className="transition hover:text-emerald-600">Contact</Link></li>
-              <li><Link to="/faq" className="transition hover:text-emerald-600">FAQ</Link></li>
-              <li><Link to="/shipping-policy" className="transition hover:text-emerald-600">Shipping Info</Link></li>
-              <li><Link to="/refund-policy" className="transition hover:text-emerald-600">Return Policy</Link></li>
-              <li><Link to="/track-order" className="transition hover:text-emerald-600">Track Order</Link></li>
-            </ul>
-          </div>
-
-          <div>
-            <h4 className="mb-6 text-2xl font-black text-slate-900">Popular Categories</h4>
-            <ul className="space-y-4 text-lg text-slate-600">
-              <li><Link to="/all-pills?category=Anabolics" className="transition hover:text-emerald-600">Anabolics</Link></li>
-              <li><Link to="/all-pills?category=Erectile Dysfunction" className="transition hover:text-emerald-600">Erectile Dysfunction</Link></li>
-              <li><Link to="/all-pills?category=Anti-Parasites" className="transition hover:text-emerald-600">Anti-Parasites</Link></li>
-              <li><Link to="/all-pills?category=Ivermectin" className="transition hover:text-emerald-600">Ivermectin</Link></li>
-              <li><Link to="/all-pills?category=Semaglutide" className="transition hover:text-emerald-600">Semaglutide</Link></li>
-              <li><Link to="/all-pills?category=Protocols" className="transition hover:text-emerald-600">Protocols</Link></li>
-            </ul>
-          </div>
-
-          <div>
-            <h4 className="mb-6 text-2xl font-black text-slate-900">Need Help</h4>
-            <div className="space-y-5 text-lg text-slate-600">
-              <p className="flex items-start gap-3">
-                <Phone size={22} className="mt-1 text-emerald-600" />
-                <span className="font-semibold text-slate-900">+1(581)5085308</span>
-              </p>
-              <div className="flex items-start gap-3">
-                <Clock size={22} className="mt-1 text-emerald-600" />
-                <div>
-                  <p>Monday - Friday: 9:00 - 20:00</p>
-                  <p>Saturday: 11:00 - 15:00</p>
-                </div>
+            <h3 className="mb-6 text-2xl font-black tracking-[-0.03em] text-[#2d7f78] sm:text-3xl">
+              Subscribe to our newsletter • Don&apos;t miss out!
+            </h3>
+            <form action="https://formspree.io/f/xaqwpzbo" method="POST" className="space-y-4">
+              <label className="block text-lg font-medium text-slate-700" htmlFor="footer-email">
+                Email *
+              </label>
+              <div className="grid grid-cols-1 gap-3 sm:grid-cols-[1fr_auto]">
+                <input
+                  id="footer-email"
+                  type="email"
+                  name="email"
+                  required
+                  placeholder="e.g., email@example.com"
+                  className="h-12 border-2 border-[#2d7f78] bg-white px-4 text-lg outline-none focus:ring-2 focus:ring-[#2d7f78]/20"
+                />
+                <button
+                  type="submit"
+                  className="h-12 min-w-[120px] bg-[#2d7f78] px-8 text-xl font-black text-white transition hover:bg-[#246962] sm:text-2xl"
+                >
+                  Join
+                </button>
               </div>
-              <p className="flex items-start gap-3">
-                <Mail size={22} className="mt-1 text-emerald-600" />
-                <span>Joe.tippens.protocol@outlook.com</span>
-              </p>
-            </div>
+              <label className="mt-2 flex items-center gap-3 text-lg text-slate-700">
+                <input type="checkbox" className="h-5 w-5 rounded-none border-2 border-[#2d7f78]" />
+                I want to subscribe to your mailing list.
+              </label>
+            </form>
           </div>
         </div>
 
-        <div className="flex flex-col gap-6 border-t border-slate-200 py-8 xl:flex-row xl:items-center xl:justify-between">
-          <p className="text-lg text-slate-600">
-            {new Date().getFullYear()} Ivermectinkart | All Rights Reserved
+        <div className="grid grid-cols-1 gap-10 py-10 md:grid-cols-2 xl:grid-cols-4">
+          <div>
+            <h4 className="mb-4 border-b-2 border-black pb-2 text-3xl font-black tracking-[-0.04em] text-[#2d7f78] sm:text-4xl">Information</h4>
+            <ul className="space-y-2 text-lg leading-tight text-slate-900 sm:text-2xl">
+              <li><Link to="/refund-policy" className="hover:text-[#2d7f78]">Terms & Condition</Link></li>
+              <li><Link to="/shipping-policy" className="hover:text-[#2d7f78]">Shipping information</Link></li>
+              <li><Link to="/privacy-policy" className="hover:text-[#2d7f78]">Privacy policy</Link></li>
+              <li><Link to="/refund-policy" className="hover:text-[#2d7f78]">Refund policy</Link></li>
+              <li><Link to="/privacy-policy" className="hover:text-[#2d7f78]">Anti-Spam policy</Link></li>
+              <li><Link to="/refund-policy" className="hover:text-[#2d7f78]">Cancellation policy</Link></li>
+              <li><Link to="/privacy-policy" className="hover:text-[#2d7f78]">Drug policy</Link></li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 className="mb-4 border-b-2 border-black pb-2 text-3xl font-black tracking-[-0.04em] text-[#2d7f78] sm:text-4xl">Categories</h4>
+            <ul className="space-y-2 text-lg leading-tight text-slate-900 sm:text-2xl">
+              <li><Link to="/all-pills?search=anti%20cancer" className="hover:text-[#2d7f78]">Anti cancer</Link></li>
+              <li><Link to="/all-pills?search=anti%20viral" className="hover:text-[#2d7f78]">Anti viral</Link></li>
+              <li><Link to="/all-pills?category=Ivermectin" className="hover:text-[#2d7f78]">Ivermectin</Link></li>
+              <li><Link to="/all-pills?category=Erectile%20Dysfunction" className="hover:text-[#2d7f78]">Men&apos;s health</Link></li>
+              <li><Link to="/all-pills?search=life%20saving" className="hover:text-[#2d7f78]">Life saving drug</Link></li>
+              <li><Link to="/all-pills?search=women%20care" className="hover:text-[#2d7f78]">Women care</Link></li>
+              <li><Link to="/all-pills?search=asthma" className="hover:text-[#2d7f78]">Asthma</Link></li>
+              <li><Link to="/all-pills?search=respiratory" className="hover:text-[#2d7f78]">Respiratory care</Link></li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 className="mb-4 border-b-2 border-black pb-2 text-3xl font-black tracking-[-0.04em] text-[#2d7f78] sm:text-4xl">Quick links</h4>
+            <ul className="space-y-2 text-lg leading-tight text-slate-900 sm:text-2xl">
+              <li><Link to="/about" className="hover:text-[#2d7f78]">Why Ivermectinkart</Link></li>
+              <li><Link to="/about" className="hover:text-[#2d7f78]">About us</Link></li>
+              <li><Link to="/contact" className="hover:text-[#2d7f78]">Contact us</Link></li>
+              <li><Link to="/all-pills" className="hover:text-[#2d7f78]">Sitemap</Link></li>
+              <li><Link to="/faq" className="hover:text-[#2d7f78]">FAQ&apos;s</Link></li>
+              <li><Link to="/shipping-policy" className="hover:text-[#2d7f78]">Package & packets</Link></li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 className="mb-4 border-b-2 border-black pb-2 text-3xl font-black tracking-[-0.04em] text-[#2d7f78] sm:text-4xl">Support</h4>
+            <ul className="space-y-3 text-lg leading-tight text-slate-900 sm:text-2xl">
+              <li className="flex items-center gap-3"><Mail size={22} className="text-[#e6246f]" /> ivermectinkart@gmail.com</li>
+              <li className="flex items-center gap-3"><Phone size={22} className="text-[#e6246f]" /> +1 (434) 424 3932</li>
+              <li className="flex items-center gap-3"><MapPin size={22} className="text-[#e6246f]" /> Chennai, India</li>
+            </ul>
+          </div>
+        </div>
+
+        <div className="border border-[#2d7f78] bg-white p-4 text-center">
+          <h5 className="mb-2 text-2xl font-bold tracking-[-0.03em] text-[#2d7f78] sm:text-3xl">Disclaimer</h5>
+          <p className="text-sm text-slate-600">
+            All products sold through this website have not been evaluated by the U.S. Food and Drug Administration (FDA).
+            These products are not intended to diagnose, treat, cure, or prevent any disease.
           </p>
+        </div>
 
-          <div className="flex flex-wrap items-center gap-3">
-            <div className="flex h-14 items-center rounded-xl border border-slate-200 bg-white px-4 shadow-sm">
-              <span className="text-[0.7rem] font-black uppercase tracking-[0.14em] text-[#016FD0]">American</span>
-              <span className="ml-1 text-[0.7rem] font-black uppercase tracking-[0.14em] text-[#016FD0]">Express</span>
-            </div>
-            <div className="flex h-14 items-center rounded-xl border border-slate-200 bg-white px-5 shadow-sm">
-              <span className="text-2xl font-black italic text-[#1A1F71]">VISA</span>
-            </div>
-            <div className="flex h-14 items-center rounded-xl border border-slate-200 bg-white px-5 shadow-sm">
-              <span className="text-xl font-black text-[#003087]">Pay</span>
-              <span className="ml-1 text-xl font-black text-[#009CDE]">Pal</span>
-            </div>
-            <div className="flex h-14 items-center rounded-xl border border-slate-200 bg-white px-5 shadow-sm">
-              <div className="h-8 w-8 rounded-full bg-[#EB001B] opacity-90" />
-              <div className="-ml-3 h-8 w-8 rounded-full bg-[#F79E1B] opacity-90" />
-            </div>
-          </div>
-
-          <div className="flex flex-wrap items-center gap-5 text-lg text-slate-600">
-            <Link to="/privacy-policy" className="transition hover:text-emerald-600">Privacy Policy</Link>
-            <Link to="/refund-policy" className="transition hover:text-emerald-600">Terms & Conditions</Link>
-          </div>
+        <div className="py-6 text-center text-sm text-slate-600">
+          {new Date().getFullYear()} Ivermectinkart | All Rights Reserved
         </div>
       </div>
     </footer>
