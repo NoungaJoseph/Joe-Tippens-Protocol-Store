@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+﻿import React, { useState, useEffect } from 'react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { MOCK_PRODUCTS } from '../constants';
 import ProductCard from '../components/ProductCard';
 import {
@@ -23,6 +23,7 @@ const findTrendingImage = (fileName: string) =>
 
 const Catalog: React.FC = () => {
   const location = useLocation();
+  const navigate = useNavigate();
   const { addToCart } = useCart();
   const [products, setProducts] = useState(MOCK_PRODUCTS);
   const [searchTerm, setSearchTerm] = useState('');
@@ -291,7 +292,14 @@ const Catalog: React.FC = () => {
 
   const IvermectinCard: React.FC<{ product: typeof products[number] }> = ({ product }) => (
     <div className="group flex h-full flex-col px-0.5 sm:px-2">
-      <Link to={`/product/${product.id}`} className="mb-2 flex h-28 items-center justify-center overflow-hidden bg-transparent sm:mb-6 sm:h-64">
+      <Link
+        to={`/product/${product.id}`}
+        onClick={(e) => {
+          e.preventDefault();
+          navigate(`/product/${product.id}`);
+        }}
+        className="mb-2 flex h-28 items-center justify-center overflow-hidden bg-transparent sm:mb-6 sm:h-64"
+      >
         <img
           src={product.image}
           alt={product.name}
@@ -301,6 +309,10 @@ const Catalog: React.FC = () => {
 
       <Link
         to={`/product/${product.id}`}
+        onClick={(e) => {
+          e.preventDefault();
+          navigate(`/product/${product.id}`);
+        }}
         className="mb-2 text-center text-[0.82rem] font-black leading-tight tracking-[-0.03em] text-[#1b6f6a] transition hover:text-[#114945] sm:mb-3 sm:text-[1.45rem]"
       >
         {product.name}
@@ -342,7 +354,7 @@ const Catalog: React.FC = () => {
                 <h1 className="text-5xl font-black tracking-[-0.05em] text-[#2b6b6b] md:text-6xl">{collectionTitle}</h1>
                 <div className="mt-4 flex items-center gap-2 text-xl font-bold text-[#2b6b6b]">
                   <Link to="/" className="hover:text-[#1b6f6a]">Home</Link>
-                  <span className="text-slate-400">�</span>
+                  <span className="text-slate-400">»</span>
                   <span className="text-slate-900">{collectionTitle}</span>
                 </div>
               </div>
@@ -643,3 +655,4 @@ const Catalog: React.FC = () => {
 };
 
 export default Catalog;
+

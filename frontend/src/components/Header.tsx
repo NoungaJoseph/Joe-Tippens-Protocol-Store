@@ -157,9 +157,9 @@ const Header: React.FC = () => {
         {/* Navigation Bar - Desktop */}
         <nav className="hidden lg:block bg-white border-t border-gray-200">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid grid-cols-[1fr_auto_1fr] items-center min-h-[5.5rem]">
+            <div className="grid grid-cols-[1fr_auto_auto] items-center gap-x-8 xl:gap-x-12 min-h-[5.5rem]">
               <div></div>
-              <div className="flex justify-center items-center gap-8 xl:gap-10 text-center">
+              <div className="flex justify-center items-center gap-7 xl:gap-9 text-center pr-1 xl:pr-3">
                 {primaryNavLinks.map((item) => (
                   <Link
                     key={item.label}
@@ -170,7 +170,7 @@ const Header: React.FC = () => {
                   </Link>
                 ))}
               </div>
-              <div className="flex justify-end">
+              <div className="flex justify-end pl-1 xl:pl-3">
               <button className="px-8 py-3 border-2 border-[#2d8680] rounded-lg text-base font-extrabold tracking-[0.01em] text-[#2d8680] bg-white hover:bg-blue-50 transition-colors whitespace-nowrap">
                 Free Shipping for all orders
               </button>
@@ -182,7 +182,7 @@ const Header: React.FC = () => {
 
       {/* Mobile Menu */}
       <div
-        className={`lg:hidden fixed left-0 top-[8.75rem] bottom-0 w-72 max-w-[85vw] bg-white shadow-xl z-30 transform transition-transform duration-300 ease-in-out overflow-y-auto ${
+        className={`lg:hidden fixed left-0 top-[11.5rem] bottom-0 w-72 max-w-[85vw] bg-white shadow-xl z-30 transform transition-transform duration-300 ease-in-out overflow-y-auto ${
           isMenuOpen ? 'translate-x-0' : '-translate-x-full'
         }`}
       >
@@ -219,7 +219,7 @@ const Header: React.FC = () => {
       {/* Mobile Overlay */}
       {isMenuOpen && (
         <div
-          className="lg:hidden fixed inset-0 top-[8.75rem] bg-black/20 z-20 backdrop-blur-sm"
+          className="lg:hidden fixed inset-0 top-[11.5rem] bg-black/20 z-20 backdrop-blur-sm"
           onClick={() => setIsMenuOpen(false)}
         ></div>
       )}
@@ -228,3 +228,4 @@ const Header: React.FC = () => {
 };
 
 export default Header;
+
