@@ -47,12 +47,16 @@ const Catalog: React.FC = () => {
 
     if (category && categories.includes(category)) {
       setSelectedCategories([category]);
+    } else {
+      setSelectedCategories([]);
     }
 
     if (search) {
       setSearchTerm(search);
+    } else {
+      setSearchTerm('');
     }
-  }, [location]);
+  }, [location.search, categories]);
 
   // Filter Logic
   useEffect(() => {
