@@ -134,24 +134,6 @@ const Header: React.FC = () => {
             </div>
           </div>
 
-          {/* CENTER Search for md/sm screens */}
-          <form onSubmit={handleSearch} className="lg:hidden pb-4">
-            <div className="relative">
-              <input
-                type="text"
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                placeholder="Search here"
-                className="w-full px-6 py-3 pr-10 bg-white border border-[#2d8680] rounded-full text-base text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#2d8680]/20 focus:border-[#2d8680] transition-all"
-              />
-              <button 
-                type="submit"
-                className="absolute right-4 top-1/2 transform -translate-y-1/2 text-[#2d8680]"
-              >
-                <Search size={18} strokeWidth={2} />
-              </button>
-            </div>
-          </form>
         </div>
 
         {/* Navigation Bar - Desktop */}
@@ -182,7 +164,7 @@ const Header: React.FC = () => {
 
       {/* Mobile Menu */}
       <div
-        className={`lg:hidden fixed left-0 top-[11.5rem] bottom-0 w-72 max-w-[85vw] bg-white shadow-xl z-30 transform transition-transform duration-300 ease-in-out overflow-y-auto ${
+        className={`lg:hidden fixed left-0 top-20 bottom-0 w-72 max-w-[85vw] bg-white shadow-xl z-30 transform transition-transform duration-300 ease-in-out overflow-y-auto ${
           isMenuOpen ? 'translate-x-0' : '-translate-x-full'
         }`}
       >
@@ -219,7 +201,7 @@ const Header: React.FC = () => {
       {/* Mobile Overlay */}
       {isMenuOpen && (
         <div
-          className="lg:hidden fixed inset-0 top-[11.5rem] bg-black/20 z-20 backdrop-blur-sm"
+          className="lg:hidden fixed inset-0 top-20 bg-black/20 z-20 backdrop-blur-sm"
           onClick={() => setIsMenuOpen(false)}
         ></div>
       )}
