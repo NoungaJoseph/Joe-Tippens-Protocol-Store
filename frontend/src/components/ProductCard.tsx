@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Product } from '../types';
 import { ShoppingCart } from 'lucide-react';
 import { useCart } from '../context/CartContext';
@@ -10,7 +10,14 @@ interface ProductCardProps {
 
 const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   const { addToCart } = useCart();
+  const navigate = useNavigate();
   const [imageError, setImageError] = useState(false);
+  const productPath = `/product/${product.id}`;
+
+  const handleOpenProduct = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    navigate(productPath);
+  };
 
   const handleAddToCart = (e: React.MouseEvent) => {
     e.preventDefault();
@@ -22,7 +29,8 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   return (
     <div className="flex h-full flex-col px-1 sm:px-2">
       <Link
-        to={`/product/${product.id}`}
+        to={productPath}
+        onClick={handleOpenProduct}
         className="group mb-3 flex-shrink-0 sm:mb-6"
       >
         <div className="flex h-36 items-center justify-center overflow-hidden rounded-lg bg-gray-50 sm:h-64">
@@ -37,7 +45,8 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
 
       <div className="flex-grow flex flex-col">
         <Link
-          to={`/product/${product.id}`}
+          to={productPath}
+          onClick={handleOpenProduct}
           className="mb-2 flex min-h-[2.8rem] items-start text-center text-xl font-black leading-snug text-[#165c56] transition-colors hover:text-green-700 sm:mb-3 sm:min-h-[3.2rem] sm:text-left"
         >
           {product.name}

@@ -285,23 +285,24 @@ export const MOCK_PRODUCTS: Product[] = [
   },
   {
     id: "iverheal",
-    name: "Iverheal 6 MG ( IVERMECTIN 6 MG )",
+    name: "Iverheal USP Tablet (Ivermectin)",
     brand: "Iverheal",
-    price: 63.00,
+    price: 126.00,
     prescription: true,
     image: iverheal,
-    description: "Iverheal 6mg Tablets.",
+    description: "Iverheal USP Tablet is an oral ivermectin product used for selected parasitic infections under medical guidance.",
     category: 'Ivermectin',
     rating: 5.0,
     reviews: 15,
     options: [
       {
-        label: "Number of Tablets",
+        label: "Pack Size",
         choices: [
-          { text: "90 tablets", price: 63.00 },
-          { text: "120 tablets", price: 80.00 }, // Estimated intermediate prices
-          { text: "150 tablets", price: 100.00 },
-          { text: "300 tablets", price: 150.00 }
+          { text: "30 tablet", price: 126.00 },
+          { text: "50 tablet", price: 144.00 },
+          { text: "100 tablet", price: 171.00 },
+          { text: "200 tablet", price: 216.00 },
+          { text: "500 tablet", price: 336.00 }
         ]
       }
     ],
@@ -309,21 +310,23 @@ export const MOCK_PRODUCTS: Product[] = [
   },
   {
     id: "ivermectin-paste",
-    name: "Ivermectin Paste",
+    name: "Ivermectin Paste Dewormer",
     brand: "Generic",
-    price: 60.00,
+    price: 35.00,
     prescription: false,
     image: ivermectinPaste,
-    description: "Ivermectin Paste.",
+    description: "Ivermectin Paste Dewormer for broad parasite-control programs when used with proper dosing guidance.",
     category: 'Anti-Parasites',
     rating: 5.0,
     reviews: 9,
     options: [
       {
-        label: "Packs",
+        label: "Pack Size",
         choices: [
-          { text: "5 tubes", price: 60.00 },
-          { text: "10 tubes", price: 115.00 }
+          { text: "1 Tube", price: 35.00 },
+          { text: "2 Tube", price: 53.00 },
+          { text: "4 Tube", price: 89.00 },
+          { text: "6 Tube", price: 125.00 }
         ]
       }
     ],
@@ -331,21 +334,24 @@ export const MOCK_PRODUCTS: Product[] = [
   },
   {
     id: "ivermectin-tabs",
-    name: "Ivermectin Tablets USP 12 Mg",
+    name: "Ivecop standard tablet (Ivermectin)",
     brand: "Generic",
-    price: 120.00,
+    price: 260.00,
     prescription: true,
     image: ivermectinTabs,
-    description: "Ivermectin Tablets USP 12 Mg.",
+    description: "Ivecop standard tablet (Ivermectin) used for physician-guided treatment of selected parasitic infections.",
     category: 'Ivermectin',
     rating: 5.0,
     reviews: 22,
     options: [
       {
-        label: "Packs",
+        label: "Pack Size",
         choices: [
-          { text: "5 packs", price: 120.00 },
-          { text: "10 packs", price: 220.00 }
+          { text: "100", price: 260.00 },
+          { text: "200", price: 350.00 },
+          { text: "300", price: 440.00 },
+          { text: "400", price: 530.00 },
+          { text: "500", price: 620.00 }
         ]
       }
     ],
