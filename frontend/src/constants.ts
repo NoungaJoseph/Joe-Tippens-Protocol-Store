@@ -1,5 +1,6 @@
 import { Product, Review } from './types';
 import { IVERMECTIN_COLLECTION_PRODUCTS } from './ivermectinCollection';
+import { ED_COLLECTION_PRODUCTS } from './edCollection';
 
 // Import Images
 import onco1 from './assets/images/onco-adjunct-pathway-1.webp';
@@ -629,7 +630,8 @@ export const MOCK_PRODUCTS: Product[] = [
     ],
     reviewsData: generateReviews("vit-b17-cup", 9)
   },
-  ...IVERMECTIN_COLLECTION_PRODUCTS
+  ...IVERMECTIN_COLLECTION_PRODUCTS,
+  ...ED_COLLECTION_PRODUCTS
 ];
 
 export const NAV_LINKS = [
