@@ -163,7 +163,7 @@ const Catalog: React.FC = () => {
     { title: 'HEALTH CARE', subtitle: 'Devices', href: '/all-pills?search=health care', image: findTrendingImage('HEALTH CARE DEVICES.png') },
     { title: 'HEPATITIS B', subtitle: 'Medication', href: '/all-pills?search=hepatitis', image: findTrendingImage('HEPATITIS B.png') },
     { title: 'HERBAL', subtitle: 'Products', href: '/all-pills?search=herbal', image: findTrendingImage('HERBAL Products.png') },
-    { title: 'HIV-AIDS', subtitle: 'Medication', href: '/all-pills?search=hiv', image: findTrendingImage('HIVAIDS.png') },
+    { title: 'HIV-AIDS', subtitle: 'Medication', href: '/all-pills?category=HIV-AIDS', image: findTrendingImage('HIVAIDS.png') },
     { title: 'HORMONES', subtitle: 'Care', href: '/all-pills?search=hormones', image: findTrendingImage('HORMONES Care.png') },
     { title: 'IVERMECTIN', subtitle: 'Tablets', href: '/all-pills?category=Ivermectin', image: findTrendingImage('IVERMECTIN Tablets.png') },
     { title: 'UROLOGY', subtitle: 'Care', href: '/all-pills?search=urology', image: findTrendingImage('UROLOGY Care.png') },

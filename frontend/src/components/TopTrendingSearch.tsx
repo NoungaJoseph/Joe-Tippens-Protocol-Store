@@ -114,7 +114,7 @@ const TopTrendingSearch: React.FC = () => {
             const categoryMap: { [key: string]: string } = {
               acne: 'Acne Care',
               diabetic: 'Supplements',
-              hiv: 'Anti Viral',
+              hiv: 'HIV-AIDS',
               respiratory: 'Supplements',
               bladder: 'Supplements',
               women: 'Supplements',
