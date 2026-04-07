@@ -1,4 +1,4 @@
-﻿import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { MOCK_PRODUCTS } from '../constants';
 import ProductCard from '../components/ProductCard';
@@ -294,10 +294,6 @@ const Catalog: React.FC = () => {
     <div className="group flex h-full flex-col px-0.5 sm:px-2">
       <Link
         to={`/product/${product.id}`}
-        onClick={(e) => {
-          e.preventDefault();
-          navigate(`/product/${product.id}`);
-        }}
         className="mb-2 flex h-28 items-center justify-center overflow-hidden bg-transparent sm:mb-6 sm:h-64"
       >
         <img
@@ -309,10 +305,6 @@ const Catalog: React.FC = () => {
 
       <Link
         to={`/product/${product.id}`}
-        onClick={(e) => {
-          e.preventDefault();
-          navigate(`/product/${product.id}`);
-        }}
         className="mb-2 text-center text-[0.82rem] font-black leading-tight tracking-[-0.03em] text-[#1b6f6a] transition hover:text-[#114945] sm:mb-3 sm:text-[1.45rem]"
       >
         {product.name}
@@ -376,7 +368,7 @@ const Catalog: React.FC = () => {
 
             <div className="grid gap-12 lg:grid-cols-[360px_1fr]">
               <aside className="hidden lg:block">
-                <div className="sticky top-32 space-y-8">
+                <div className="space-y-8">
                   <div className="overflow-hidden rounded-none shadow-[0_18px_40px_rgba(10,78,62,0.2)]">
                     <img
                       src={collectionPromoImage}
@@ -493,7 +485,7 @@ const Catalog: React.FC = () => {
       </section>
 
       {/* Search and Sort Bar */}
-      <section className="py-8 bg-white border-b sticky top-20 z-30 shadow-sm">
+      <section className="py-8 bg-white border-b z-30 shadow-sm">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col lg:flex-row gap-4 items-center">
             <div className="flex-1 relative w-full">
@@ -560,7 +552,7 @@ const Catalog: React.FC = () => {
 
             {/* Desktop Filter Sidebar */}
             <div className="hidden lg:block lg:w-1/4">
-              <div className="filter-sidebar rounded-xl p-6 sticky top-40 border border-gray-200 shadow-sm">
+              <div className="filter-sidebar rounded-xl p-6 border border-gray-200 shadow-sm">
                 <h3 className="text-xl font-bold text-gray-900 mb-6">Filters</h3>
                 <FilterContent />
               </div>
@@ -655,4 +647,3 @@ const Catalog: React.FC = () => {
 };
 
 export default Catalog;
-

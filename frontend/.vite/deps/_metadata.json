@@ -1,0 +1,52 @@
+{
+  "hash": "d90e8bc1",
+  "configHash": "956bda5d",
+  "lockfileHash": "4a2f2aa6",
+  "browserHash": "b406da04",
+  "optimized": {
+    "react/jsx-dev-runtime": {
+      "src": "../../node_modules/react/jsx-dev-runtime.js",
+      "file": "react_jsx-dev-runtime.js",
+      "fileHash": "3427aed6",
+      "needsInterop": true
+    },
+    "react": {
+      "src": "../../node_modules/react/index.js",
+      "file": "react.js",
+      "fileHash": "9f2147c6",
+      "needsInterop": true
+    },
+    "react-dom/client": {
+      "src": "../../node_modules/react-dom/client.js",
+      "file": "react-dom_client.js",
+      "fileHash": "a0b88ae5",
+      "needsInterop": true
+    },
+    "react-router-dom": {
+      "src": "../../node_modules/react-router-dom/dist/index.mjs",
+      "file": "react-router-dom.js",
+      "fileHash": "4df56caa",
+      "needsInterop": false
+    },
+    "lucide-react": {
+      "src": "../../node_modules/lucide-react/dist/esm/lucide-react.js",
+      "file": "lucide-react.js",
+      "fileHash": "68d658e9",
+      "needsInterop": false
+    },
+    "@stripe/react-stripe-js": {
+      "src": "../../node_modules/@stripe/react-stripe-js/dist/react-stripe.esm.js",
+      "file": "@stripe_react-stripe-js.js",
+      "fileHash": "68a78f2a",
+      "needsInterop": false
+    }
+  },
+  "chunks": {
+    "chunk-BAALN47X": {
+      "file": "chunk-BAALN47X.js"
+    },
+    "chunk-NH6CQMGD": {
+      "file": "chunk-NH6CQMGD.js"
+    }
+  }
+}

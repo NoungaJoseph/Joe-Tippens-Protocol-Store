@@ -134,7 +134,7 @@ const Checkout: React.FC = () => {
             </section>
 
             {/* Progress */}
-            <section className="py-6 bg-white border-b shadow-sm sticky top-16 z-20">
+            <section className="py-6 bg-white border-b shadow-sm z-20">
                 <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="flex justify-center space-x-12">
                         <div className={`flex items-center gap-2 ${step === 1 ? 'text-green-700' : 'text-gray-400'}`}>
@@ -281,7 +281,7 @@ const Checkout: React.FC = () => {
 
                         {/* Order Summary */}
                         <div className="lg:col-span-1">
-                            <div className="bg-white rounded-2xl shadow-xl p-8 border border-gray-100 flex flex-col gap-8 lg:sticky lg:top-32">
+                            <div className="bg-white rounded-2xl shadow-xl p-8 border border-gray-100 flex flex-col gap-8 lg:top-32">
                                 <h3 className="text-xl font-bold flex items-center justify-between">
                                     Summary
                                     <span className="bg-rose-100 text-rose-600 px-3 py-1 rounded-full text-[10px] font-black uppercase">{items.length} Items</span>
