@@ -81,7 +81,7 @@ const Home: React.FC = () => {
     };
 
     return (
-        <div className="flex flex-col bg-white">
+        <div className="flex flex-col bg-white fade-in">
             <HeroBanner />
 
             {currentArrival && (

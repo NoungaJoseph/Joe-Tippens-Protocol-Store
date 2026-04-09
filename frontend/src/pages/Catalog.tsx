@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo, Suspense } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { MOCK_PRODUCTS } from '../constants';
 import ProductCard from '../components/ProductCard';
@@ -38,7 +38,7 @@ const Catalog: React.FC = () => {
   const [currentPage, setCurrentPage] = useState(1);
 
   // Extract unique categories
-  const categories = Array.from(new Set(MOCK_PRODUCTS.map(p => p.category)));
+  const categories = useMemo(() => Array.from(new Set(MOCK_PRODUCTS.map(p => p.category))), []);
 
   // Handle URL params for category and search
   useEffect(() => {
@@ -151,7 +151,7 @@ const Catalog: React.FC = () => {
     { title: 'BIRTH CONTROL', subtitle: 'Medication', href: '/all-pills?search=birth control', image: findTrendingImage('BIRTH CONTROL.png') },
     { title: 'BLADDER', subtitle: 'Prostate', href: '/all-pills?search=bladder', image: findTrendingImage('BLADDER.png') },
     { title: 'BLOOD RELATED', subtitle: 'Medication', href: '/all-pills?search=blood', image: findTrendingImage('BLOOD RELATED.png') },
-    { title: 'CARDIAC CARE', subtitle: 'Medication', href: '/all-pills?search=cardiac', image: findTrendingImage('CARDIAC CARE.png') },
+    { title: 'CARDIAC CARE', subtitle: 'Medication', href: '/all-pills?category=Cardiac Care', image: findTrendingImage('CARDIAC CARE.png') },
     { title: 'COLON CARE', subtitle: 'Medication', href: '/all-pills?search=colon', image: findTrendingImage('COLON CARE.png') },
     { title: 'COVID CARE', subtitle: 'Medication', href: '/all-pills?search=covid', image: findTrendingImage('COVID CARE.png') },
     { title: 'DIABETES', subtitle: 'Treatment', href: '/all-pills?search=diabetes', image: findTrendingImage('DAIBETIC.png') },
@@ -324,7 +324,7 @@ const Catalog: React.FC = () => {
   );
 
   return (
-    <div className="bg-gray-50 min-h-screen">
+    <div className="bg-gray-50 min-h-screen fade-in">
       {isCollectionPage ? (
         <section className="bg-white pb-12">
           <div className="relative overflow-hidden">

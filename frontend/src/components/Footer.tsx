@@ -127,9 +127,9 @@ const Footer: React.FC = () => {
           <div>
             <h4 className="mb-4 border-b-2 border-black pb-2 text-3xl font-black tracking-[-0.04em] text-[#2d7f78] sm:text-4xl">Support</h4>
             <ul className="space-y-3 text-lg leading-tight text-slate-900 sm:text-2xl">
-              <li className="flex items-center gap-3"><Mail size={22} className="text-[#e6246f]" /> ivermectinkart@gmail.com</li>
+              <li className="flex items-center gap-3"><Mail size={22} className="text-[#e6246f]" /> Joe.tippens.protocol@outlook.com</li>
               <li className="flex items-center gap-3"><Phone size={22} className="text-[#e6246f]" /> +1 (434) 424 3932</li>
-              <li className="flex items-center gap-3"><MapPin size={22} className="text-[#e6246f]" /> Chennai, India</li>
+              <li className="flex items-center gap-3"><MapPin size={22} className="text-[#e6246f]" /> USA</li>
             </ul>
           </div>
         </div>
