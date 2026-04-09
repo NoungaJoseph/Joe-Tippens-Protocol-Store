@@ -2,6 +2,7 @@ import { Product, Review } from './types';
 import { IVERMECTIN_COLLECTION_PRODUCTS } from './ivermectinCollection';
 import { ED_COLLECTION_PRODUCTS } from './edCollection';
 import { HIV_COLLECTION_PRODUCTS } from './hivCollection';
+import { COLON_CARE_COLLECTION_PRODUCTS } from './colonCareCollection';
 import { CARDIAC_COLLECTION_PRODUCTS } from './cardiacCollection';
 
 // Import Images
@@ -635,7 +636,8 @@ export const MOCK_PRODUCTS: Product[] = [
   ...IVERMECTIN_COLLECTION_PRODUCTS,
   ...ED_COLLECTION_PRODUCTS,
   ...HIV_COLLECTION_PRODUCTS,
-  ...CARDIAC_COLLECTION_PRODUCTS
+  ...CARDIAC_COLLECTION_PRODUCTS,
+  ...COLON_CARE_COLLECTION_PRODUCTS
 ];
 
 export const NAV_LINKS = [

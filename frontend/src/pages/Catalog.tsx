@@ -152,7 +152,7 @@ const Catalog: React.FC = () => {
     { title: 'BLADDER', subtitle: 'Prostate', href: '/all-pills?search=bladder', image: findTrendingImage('BLADDER.png') },
     { title: 'BLOOD RELATED', subtitle: 'Medication', href: '/all-pills?search=blood', image: findTrendingImage('BLOOD RELATED.png') },
     { title: 'CARDIAC CARE', subtitle: 'Medication', href: '/all-pills?category=Cardiac Care', image: findTrendingImage('CARDIAC CARE.png') },
-    { title: 'COLON CARE', subtitle: 'Medication', href: '/all-pills?search=colon', image: findTrendingImage('COLON CARE.png') },
+    { title: 'COLON CARE', subtitle: 'Medication', href: '/all-pills?category=Colon Care', image: findTrendingImage('COLON CARE.png') },
     { title: 'COVID CARE', subtitle: 'Medication', href: '/all-pills?search=covid', image: findTrendingImage('COVID CARE.png') },
     { title: 'DIABETES', subtitle: 'Treatment', href: '/all-pills?search=diabetes', image: findTrendingImage('DAIBETIC.png') },
     { title: 'ERECTILE', subtitle: 'Dysfunction', href: '/all-pills?category=Erectile Dysfunction', image: findTrendingImage('ERECTILE disfunction.png') },
