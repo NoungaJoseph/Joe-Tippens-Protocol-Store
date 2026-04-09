@@ -3,6 +3,7 @@ import { IVERMECTIN_COLLECTION_PRODUCTS } from './ivermectinCollection';
 import { ED_COLLECTION_PRODUCTS } from './edCollection';
 import { HIV_COLLECTION_PRODUCTS } from './hivCollection';
 import { COLON_CARE_COLLECTION_PRODUCTS } from './colonCareCollection';
+import { ANTI_FUNGAL_COLLECTION_PRODUCTS } from './antiFungalCollection';
 import { CARDIAC_COLLECTION_PRODUCTS } from './cardiacCollection';
 
 // Import Images
@@ -637,7 +638,8 @@ export const MOCK_PRODUCTS: Product[] = [
   ...ED_COLLECTION_PRODUCTS,
   ...HIV_COLLECTION_PRODUCTS,
   ...CARDIAC_COLLECTION_PRODUCTS,
-  ...COLON_CARE_COLLECTION_PRODUCTS
+  ...COLON_CARE_COLLECTION_PRODUCTS,
+  ...ANTI_FUNGAL_COLLECTION_PRODUCTS
 ];
 
 export const NAV_LINKS = [
