@@ -10,7 +10,7 @@ export const COLON_CARE_COLLECTION_PRODUCTS: Product[] = [
   {
     id: 'pentasa-suppository-1g-mesalamine',
     name: 'Pentasa Suppository 1g (Mesalamine)',
-    brand: 'Ivermectinkart',
+    brand: 'Pure Protocol',
     price: 280.00,
     prescription: false,
     image: pentasaSupp,
@@ -27,7 +27,7 @@ export const COLON_CARE_COLLECTION_PRODUCTS: Product[] = [
   {
     id: 'pentasa-granules-mesalamine',
     name: 'Pentasa Granules (Mesalamine)',
-    brand: 'Ivermectinkart',
+    brand: 'Pure Protocol',
     price: 207.00,
     prescription: false,
     image: pentasaGranules,
@@ -43,7 +43,7 @@ export const COLON_CARE_COLLECTION_PRODUCTS: Product[] = [
   {
     id: 'pentasa-mesalamine',
     name: 'Pentasa (Mesalamine) Tablets',
-    brand: 'Ivermectinkart',
+    brand: 'Pure Protocol',
     price: 218.00,
     prescription: false,
     image: pentasaTabs,
@@ -59,7 +59,7 @@ export const COLON_CARE_COLLECTION_PRODUCTS: Product[] = [
   {
     id: 'anovate-cream-beclometasone-lidocaine-phenylephrine',
     name: 'Anovate Cream (Beclometasone/Lidocaine/Phenylephrine)',
-    brand: 'Ivermectinkart',
+    brand: 'Pure Protocol',
     price: 129.00,
     prescription: false,
     image: anovateCream,
@@ -75,7 +75,7 @@ export const COLON_CARE_COLLECTION_PRODUCTS: Product[] = [
   {
     id: 'anobliss-cream-lidocaine-nifedipine',
     name: 'Anobliss Cream (Lidocaine/Nifedipine)',
-    brand: 'Ivermectinkart',
+    brand: 'Pure Protocol',
     price: 107.00,
     prescription: false,
     image: anoblissCream,

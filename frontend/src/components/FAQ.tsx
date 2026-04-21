@@ -18,8 +18,8 @@ const FAQ: React.FC = () => {
     },
     {
       id: 2,
-      question: 'What is Ivermectinkart?',
-      answer: 'Ivermectinkart is a trusted online platform offering premium pharmaceutical supplements, including the Joe Tippens Protocol and other health solutions. We provide authentic medications and supplements with secure payment options and fast delivery to your doorstep.'
+      question: 'What is Pure Protocol?',
+      answer: 'Pure Protocol is a trusted online platform offering premium pharmaceutical supplements, including the Joe Tippens Protocol and other health solutions. We provide authentic medications and supplements with secure payment options and fast delivery to your doorstep.'
     },
     {
       id: 3,

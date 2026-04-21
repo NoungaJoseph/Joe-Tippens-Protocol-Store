@@ -1,49 +1,19 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { useForm, ValidationError } from '@formspree/react';
 import Button from '../components/Button';
 import contactBg from '../assets/images/contact-bg.jpg';
-import { FORMSPREE_ENDPOINT } from '../config/formspree';
+import { FORMSPREE_FORM_ID } from '../config/formspree';
 
 const Contact: React.FC = () => {
-  const [submitted, setSubmitted] = useState(false);
-  const [submitting, setSubmitting] = useState(false);
-  const [errorMessage, setErrorMessage] = useState('');
+  const [state, handleSubmit] = useForm(FORMSPREE_FORM_ID);
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    const formElement = e.currentTarget;
-    const formData = new FormData(formElement);
-    setSubmitting(true);
-    setErrorMessage('');
-
-    try {
-      const response = await fetch(FORMSPREE_ENDPOINT, {
-        method: 'POST',
-        body: formData,
-        headers: {
-          'Accept': 'application/json'
-        }
-      });
-
-      if (response.ok) {
-        setSubmitted(true);
-        formElement.reset();
-      } else {
-        setErrorMessage('There was a problem submitting your message. Please try again.');
-      }
-    } catch (error) {
-      setErrorMessage('There was a problem submitting your message. Please try again.');
-    } finally {
-      setSubmitting(false);
-    }
-  };
-
-  if (submitted) {
+  if (state.succeeded) {
     return (
       <div className="min-h-screen bg-gray-50 flex items-center justify-center p-4">
         <div className="bg-white p-8 rounded-lg shadow-sm max-w-md w-full text-center">
           <h2 className="text-2xl font-bold text-gray-900 mb-4">Message Sent</h2>
           <p className="text-gray-600 mb-6">Thank you for contacting us. Our support team will respond to your inquiry within 24 hours.</p>
-          <Button onClick={() => setSubmitted(false)} variant="outline">Send Another Message</Button>
+          <Button onClick={() => window.location.reload()} variant="outline">Send Another Message</Button>
         </div>
       </div>
     );
@@ -80,6 +50,7 @@ const Contact: React.FC = () => {
               className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-rose-500 focus:border-rose-500"
               placeholder="John Doe"
             />
+            <ValidationError field="name" errors={state.errors} />
           </div>
 
           <div>
@@ -91,6 +62,7 @@ const Contact: React.FC = () => {
               className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-rose-500 focus:border-rose-500"
               placeholder="john@example.com"
             />
+            <ValidationError field="email" errors={state.errors} />
           </div>
 
           <div>
@@ -101,6 +73,7 @@ const Contact: React.FC = () => {
               <option>Shipping Issue</option>
               <option>Other</option>
             </select>
+            <ValidationError field="subject" errors={state.errors} />
           </div>
 
           <div>
@@ -112,17 +85,15 @@ const Contact: React.FC = () => {
               className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-green-500 focus:border-green-500"
               placeholder="How can we assist you today?"
             ></textarea>
+            <ValidationError field="message" errors={state.errors} />
           </div>
-          {errorMessage ? (
-            <p className="text-sm font-medium text-red-600">{errorMessage}</p>
-          ) : null}
 
           <button
             type="submit"
-            disabled={submitting}
-            className="w-full bg-green-700 text-white px-6 py-3 rounded-md font-semibold transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-600 hover:bg-green-800"
+            disabled={state.submitting}
+            className="w-full bg-green-700 text-white px-6 py-3 rounded-md font-semibold transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-600 hover:bg-green-800 disabled:bg-gray-400 disabled:cursor-not-allowed"
           >
-            {submitting ? 'Sending...' : 'Send Message'}
+            {state.submitting ? 'Sending...' : 'Send Message'}
           </button>
         </form>
       </div>

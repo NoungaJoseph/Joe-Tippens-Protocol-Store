@@ -41,7 +41,7 @@ export const HIV_COLLECTION_PRODUCTS: Product[] = [
   {
     id: 'acto-pred-tablets',
     name: 'Acto Pred Tablets',
-    brand: 'Ivermectinkart',
+    brand: 'Pure Protocol',
     price: 15.00,
     prescription: false,
     image: img1,
@@ -59,7 +59,7 @@ export const HIV_COLLECTION_PRODUCTS: Product[] = [
   {
     id: 'ab-phylline-capsules-acebrophylline',
     name: 'AB Phylline Capsules (Acebrophylline)',
-    brand: 'Ivermectinkart',
+    brand: 'Pure Protocol',
     price: 180.00,
     prescription: false,
     image: img2,
@@ -77,7 +77,7 @@ export const HIV_COLLECTION_PRODUCTS: Product[] = [
   {
     id: 'stavir-capsules-stavudine',
     name: 'Stavir Capsules (Stavudine)',
-    brand: 'Ivermectinkart',
+    brand: 'Pure Protocol',
     price: 95.00,
     prescription: false,
     image: img3,
@@ -95,7 +95,7 @@ export const HIV_COLLECTION_PRODUCTS: Product[] = [
   {
     id: 'zidovir-tablets-zidovudine',
     name: 'Zidovir Tablets (Zidovudine)',
-    brand: 'Ivermectinkart',
+    brand: 'Pure Protocol',
     price: 75.00,
     prescription: false,
     image: img4,
@@ -113,7 +113,7 @@ export const HIV_COLLECTION_PRODUCTS: Product[] = [
   {
     id: 'zepdon-tablet-raltegravir',
     name: 'Zepdon Tablet (Raltegravir)',
-    brand: 'Ivermectinkart',
+    brand: 'Pure Protocol',
     price: 350.00,
     prescription: false,
     image: img5,
@@ -131,7 +131,7 @@ export const HIV_COLLECTION_PRODUCTS: Product[] = [
   {
     id: 'x-vir-tablet-entecavir',
     name: 'X-Vir Tablet (Entecavir)',
-    brand: 'Ivermectinkart',
+    brand: 'Pure Protocol',
     price: 200.00,
     prescription: false,
     image: img6,
@@ -149,7 +149,7 @@ export const HIV_COLLECTION_PRODUCTS: Product[] = [
   {
     id: 'triomune-tablet',
     name: 'Triomune Tablet',
-    brand: 'Ivermectinkart',
+    brand: 'Pure Protocol',
     price: 95.00,
     prescription: false,
     image: img7,
@@ -167,7 +167,7 @@ export const HIV_COLLECTION_PRODUCTS: Product[] = [
   {
     id: 'trioday-tablet',
     name: 'Trioday Tablet',
-    brand: 'Ivermectinkart',
+    brand: 'Pure Protocol',
     price: 200.00,
     prescription: false,
     image: img8,
@@ -185,7 +185,7 @@ export const HIV_COLLECTION_PRODUCTS: Product[] = [
   {
     id: 'tenvir-l-tablet',
     name: 'Tenvir L Tablet',
-    brand: 'Ivermectinkart',
+    brand: 'Pure Protocol',
     price: 150.00,
     prescription: false,
     image: img9,
@@ -203,7 +203,7 @@ export const HIV_COLLECTION_PRODUCTS: Product[] = [
   {
     id: 'tenvir-em-tablet',
     name: 'Tenvir EM Tablet',
-    brand: 'Ivermectinkart',
+    brand: 'Pure Protocol',
     price: 190.00,
     prescription: false,
     image: img10,
@@ -221,7 +221,7 @@ export const HIV_COLLECTION_PRODUCTS: Product[] = [
   {
     id: 'tenvir-300mg',
     name: 'Tenvir 300mg',
-    brand: 'Ivermectinkart',
+    brand: 'Pure Protocol',
     price: 52.00,
     prescription: false,
     image: img11,
@@ -239,7 +239,7 @@ export const HIV_COLLECTION_PRODUCTS: Product[] = [
   {
     id: 'tavin-em-tablet-tenofovir-emtriotabine',
     name: 'Tavin EM Tablet (Tenofovir & Emtriotabine)',
-    brand: 'Ivermectinkart',
+    brand: 'Pure Protocol',
     price: 172.00,
     prescription: false,
     image: img12,
@@ -257,7 +257,7 @@ export const HIV_COLLECTION_PRODUCTS: Product[] = [
   {
     id: 'tafero-em-tablet-emtricitabine',
     name: 'Tafero EM Tablet (Emtricitabine)',
-    brand: 'Ivermectinkart',
+    brand: 'Pure Protocol',
     price: 195.00,
     prescription: false,
     image: img13,
@@ -275,7 +275,7 @@ export const HIV_COLLECTION_PRODUCTS: Product[] = [
   {
     id: 'synthivan-tablet-atazanavir-ritonavir',
     name: 'Synthivan Tablet (Atazanavir & Ritonavir)',
-    brand: 'Ivermectinkart',
+    brand: 'Pure Protocol',
     price: 198.00,
     prescription: false,
     image: img14,
@@ -293,7 +293,7 @@ export const HIV_COLLECTION_PRODUCTS: Product[] = [
   {
     id: 'ritomune-tablet-ritonavir',
     name: 'Ritomune Tablet (Ritonavir)',
-    brand: 'Ivermectinkart',
+    brand: 'Pure Protocol',
     price: 156.00,
     prescription: false,
     image: img15,
@@ -311,7 +311,7 @@ export const HIV_COLLECTION_PRODUCTS: Product[] = [
   {
     id: 'qvir-kit',
     name: 'Qvir Kit',
-    brand: 'Ivermectinkart',
+    brand: 'Pure Protocol',
     price: 87.00,
     prescription: false,
     image: img16,
@@ -329,7 +329,7 @@ export const HIV_COLLECTION_PRODUCTS: Product[] = [
   {
     id: 'nevimune-tablet-nevirapine',
     name: 'Nevimune Tablet (Nevirapine)',
-    brand: 'Ivermectinkart',
+    brand: 'Pure Protocol',
     price: 190.00,
     prescription: false,
     image: img17,
@@ -347,7 +347,7 @@ export const HIV_COLLECTION_PRODUCTS: Product[] = [
   {
     id: 'lopimune-tablet-lopinavir-ritonavir',
     name: 'Lopimune Tablet (Lopinavir & Ritonavir)',
-    brand: 'Ivermectinkart',
+    brand: 'Pure Protocol',
     price: 145.00,
     prescription: false,
     image: img18,
@@ -365,7 +365,7 @@ export const HIV_COLLECTION_PRODUCTS: Product[] = [
   {
     id: 'lamivir-s-tablet-lamivudine-stavudine',
     name: 'Lamivir S Tablet (Lamivudine & Stavudine)',
-    brand: 'Ivermectinkart',
+    brand: 'Pure Protocol',
     price: 105.00,
     prescription: false,
     image: img19,
@@ -383,7 +383,7 @@ export const HIV_COLLECTION_PRODUCTS: Product[] = [
   {
     id: 'lamivir-tablet-lamivudine',
     name: 'Lamivir Tablet (Lamivudine)',
-    brand: 'Ivermectinkart',
+    brand: 'Pure Protocol',
     price: 80.00,
     prescription: false,
     image: img20,
@@ -401,7 +401,7 @@ export const HIV_COLLECTION_PRODUCTS: Product[] = [
   {
     id: 'isentress-400mg-raltegravir',
     name: 'Isentress 400mg (Raltegravir)',
-    brand: 'Ivermectinkart',
+    brand: 'Pure Protocol',
     price: 165.00,
     prescription: false,
     image: img21,
@@ -419,7 +419,7 @@ export const HIV_COLLECTION_PRODUCTS: Product[] = [
   {
     id: 'instgra-tablet-dolutegravir',
     name: 'Instgra Tablet (Dolutegravir)',
-    brand: 'Ivermectinkart',
+    brand: 'Pure Protocol',
     price: 185.00,
     prescription: false,
     image: img22,
@@ -437,7 +437,7 @@ export const HIV_COLLECTION_PRODUCTS: Product[] = [
   {
     id: 'epzicom-abamun-l',
     name: 'Epzicom (Abamun L )',
-    brand: 'Ivermectinkart',
+    brand: 'Pure Protocol',
     price: 165.00,
     prescription: false,
     image: img23,
@@ -455,7 +455,7 @@ export const HIV_COLLECTION_PRODUCTS: Product[] = [
   {
     id: 'entavir-entecavir',
     name: 'Entavir (Entecavir)',
-    brand: 'Ivermectinkart',
+    brand: 'Pure Protocol',
     price: 100.00,
     prescription: false,
     image: img24,
@@ -473,7 +473,7 @@ export const HIV_COLLECTION_PRODUCTS: Product[] = [
   {
     id: 'entaliv-0-5-mg-entecavir',
     name: 'Entaliv 0.5 mg (Entecavir)',
-    brand: 'Ivermectinkart',
+    brand: 'Pure Protocol',
     price: 46.00,
     prescription: false,
     image: img25,
@@ -491,7 +491,7 @@ export const HIV_COLLECTION_PRODUCTS: Product[] = [
   {
     id: 'efavir-tablet-efavirenz',
     name: 'Efavir Tablet (Efavirenz)',
-    brand: 'Ivermectinkart',
+    brand: 'Pure Protocol',
     price: 110.00,
     prescription: false,
     image: img26,
@@ -509,7 +509,7 @@ export const HIV_COLLECTION_PRODUCTS: Product[] = [
   {
     id: 'duovir-e-kit-tablet',
     name: 'Duovir-E Kit Tablet',
-    brand: 'Ivermectinkart',
+    brand: 'Pure Protocol',
     price: 25.00,
     prescription: false,
     image: img27,
@@ -527,7 +527,7 @@ export const HIV_COLLECTION_PRODUCTS: Product[] = [
   {
     id: 'duovir-n-tablet',
     name: 'Duovir N Tablet',
-    brand: 'Ivermectinkart',
+    brand: 'Pure Protocol',
     price: 100.00,
     prescription: false,
     image: img28,
@@ -545,7 +545,7 @@ export const HIV_COLLECTION_PRODUCTS: Product[] = [
   {
     id: 'duovir-tablet',
     name: 'Duovir Tablet',
-    brand: 'Ivermectinkart',
+    brand: 'Pure Protocol',
     price: 55.00,
     prescription: false,
     image: img29,
@@ -563,7 +563,7 @@ export const HIV_COLLECTION_PRODUCTS: Product[] = [
   {
     id: 'dinex-ec-didanosine',
     name: 'DINEX EC (Didanosine)',
-    brand: 'Ivermectinkart',
+    brand: 'Pure Protocol',
     price: 125.00,
     prescription: false,
     image: img30,
@@ -581,7 +581,7 @@ export const HIV_COLLECTION_PRODUCTS: Product[] = [
   {
     id: 'daruvir-tablet-darunavir',
     name: 'Daruvir Tablet (Darunavir)',
-    brand: 'Ivermectinkart',
+    brand: 'Pure Protocol',
     price: 500.00,
     prescription: false,
     image: img31,
@@ -599,7 +599,7 @@ export const HIV_COLLECTION_PRODUCTS: Product[] = [
   {
     id: 'axentri-tablet-maraviroc',
     name: 'Axentri Tablet (Maraviroc)',
-    brand: 'Ivermectinkart',
+    brand: 'Pure Protocol',
     price: 690.00,
     prescription: false,
     image: img32,
@@ -617,7 +617,7 @@ export const HIV_COLLECTION_PRODUCTS: Product[] = [
   {
     id: 'atazor-r-atazanavir-ritonavir',
     name: 'Atazor R (Atazanavir/Ritonavir)',
-    brand: 'Ivermectinkart',
+    brand: 'Pure Protocol',
     price: 170.00,
     prescription: false,
     image: img33,
@@ -635,7 +635,7 @@ export const HIV_COLLECTION_PRODUCTS: Product[] = [
   {
     id: 'atavir-capsule-atazanavir',
     name: 'Atavir Capsule (Atazanavir)',
-    brand: 'Ivermectinkart',
+    brand: 'Pure Protocol',
     price: 180.00,
     prescription: false,
     image: img34,
@@ -653,7 +653,7 @@ export const HIV_COLLECTION_PRODUCTS: Product[] = [
   {
     id: 'abec-l-tablet-abacavir-lamivudine',
     name: 'Abec-L Tablet (Abacavir/Lamivudine)',
-    brand: 'Ivermectinkart',
+    brand: 'Pure Protocol',
     price: 190.00,
     prescription: false,
     image: img35,
@@ -671,7 +671,7 @@ export const HIV_COLLECTION_PRODUCTS: Product[] = [
   {
     id: 'abamune-tablet-abacavir',
     name: 'Abamune Tablet (Abacavir)',
-    brand: 'Ivermectinkart',
+    brand: 'Pure Protocol',
     price: 122.00,
     prescription: false,
     image: img36,
@@ -689,7 +689,7 @@ export const HIV_COLLECTION_PRODUCTS: Product[] = [
   {
     id: 'abamune-l-abacavir-lamivudine',
     name: 'Abamune L (Abacavir/Lamivudine)',
-    brand: 'Ivermectinkart',
+    brand: 'Pure Protocol',
     price: 188.00,
     prescription: false,
     image: img37,

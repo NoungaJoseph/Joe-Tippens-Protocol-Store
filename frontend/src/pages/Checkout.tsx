@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
 import { CheckCircle, AlertTriangle, Lock, CreditCard, Landmark, Bitcoin, DollarSign, Send } from 'lucide-react';
+import { FORMSPREE_ENDPOINT } from '../config/formspree';
 
 const Checkout: React.FC = () => {
     const { items, cartTotal, clearCart } = useCart();
@@ -18,8 +19,6 @@ const Checkout: React.FC = () => {
 
     const tax = cartTotal * 0.08;
     const total = cartTotal + tax;
-    const supportEmail = 'Joe.tippens.protocol@outlook.com';
-
     useEffect(() => {
         if (items.length === 0 && step !== 3) {
             navigate('/cart');
@@ -50,26 +49,30 @@ const Checkout: React.FC = () => {
         setLoading(true);
         const orderId = `PROTO-${Math.floor(Math.random() * 90000) + 10000}`;
 
-        const emailSubject = encodeURIComponent(`New Order ${orderId} from ${formData.firstName} ${formData.lastName}`);
-        const emailBody = encodeURIComponent(
-            [
-                `Order ID: ${orderId}`,
-                `Customer: ${formData.firstName} ${formData.lastName}`,
-                `Email: ${formData.email}`,
-                `Phone: ${formData.phone}`,
-                `Shipping Address: ${formData.address}, ${formData.city}, ${formData.state} ${formData.zip}`,
-                `Payment Method: ${paymentMethod}`,
-                `Order Total: $${total.toFixed(2)}`,
-                '',
-                'Items:',
-                ...items.map(i => `- ${i.name} (x${i.quantity}) - $${(i.price * i.quantity).toFixed(2)}`),
-                '',
-                `Order Notes: ${formData.message || 'None'}`
-            ].join('\n')
-        );
-
         try {
-            window.location.href = `mailto:${supportEmail}?subject=${emailSubject}&body=${emailBody}`;
+            const response = await fetch(FORMSPREE_ENDPOINT, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    Accept: 'application/json',
+                },
+                body: JSON.stringify({
+                    _subject: `New Order ${orderId} from ${formData.firstName} ${formData.lastName}`,
+                    order_id: orderId,
+                    customer_name: `${formData.firstName} ${formData.lastName}`,
+                    email: formData.email,
+                    phone: formData.phone,
+                    shipping_address: `${formData.address}, ${formData.city}, ${formData.state} ${formData.zip}`,
+                    payment_method: paymentMethod,
+                    order_total: total.toFixed(2),
+                    items: items.map(i => `${i.name} (x${i.quantity}) - $${(i.price * i.quantity).toFixed(2)}`).join('\n'),
+                    order_notes: formData.message || 'None',
+                }),
+            });
+
+            if (!response.ok) {
+                throw new Error(`Formspree submission failed: ${response.status}`);
+            }
 
             setLoading(false);
             setSubmittedOrderId(orderId);
@@ -95,7 +98,7 @@ const Checkout: React.FC = () => {
                             <CheckCircle size={48} />
                         </div>
                         <h1 className="text-3xl md:text-4xl font-black text-gray-900 mb-4 tracking-tight">Order Placed Successfully!</h1>
-                        <p className="text-gray-600 mb-8 text-lg">Your mail app has been prepared with your order details for <span className="font-bold text-green-700">{supportEmail}</span>. Your order ID is <span className="font-bold text-green-700">#{submittedOrderId}</span></p>
+                        <p className="text-gray-600 mb-8 text-lg">Your order details were submitted successfully. Your order ID is <span className="font-bold text-green-700">#{submittedOrderId}</span></p>
 
                         <div className="bg-green-50 rounded-2xl p-6 mb-8 border border-green-100 text-left">
                             <h3 className="font-bold text-green-800 mb-3 flex items-center gap-2">
@@ -207,10 +210,10 @@ const Checkout: React.FC = () => {
                                 <div className="bg-white rounded-2xl shadow-xl p-6 md:p-10 border border-gray-100">
                                     <div className="flex justify-between items-center mb-10">
                                         <h2 className="text-2xl font-bold flex items-center gap-3">
-                                            <div className="w-10 h-10 bg-rose-100 text-rose-600 rounded-full flex items-center justify-center text-sm font-black italic">PY</div>
+                                            <div className="w-10 h-10 bg-green-100 text-green-700 rounded-full flex items-center justify-center text-sm font-black italic">PY</div>
                                             Select Payment Method
                                         </h2>
-                                        <button onClick={() => setStep(1)} className="text-rose-600 font-black text-xs uppercase tracking-widest hover:underline">Edit Shipping</button>
+                                        <button onClick={() => setStep(1)} className="text-green-700 font-black text-xs uppercase tracking-widest hover:underline">Edit Shipping</button>
                                     </div>
 
                                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-10">
@@ -227,11 +230,11 @@ const Checkout: React.FC = () => {
                                                 checked={paymentMethod === method.id}
                                                 onClick={() => setPaymentMethod(method.id)}
                                                 className={`flex items-center gap-4 p-5 rounded-2xl border-2 transition-all text-left ${paymentMethod === method.id
-                                                    ? 'border-rose-500 bg-rose-50 ring-4 ring-rose-500/5'
+                                                    ? 'border-green-600 bg-green-50 ring-4 ring-green-500/10'
                                                     : 'border-gray-100 hover:border-gray-200 bg-white'
                                                     }`}
                                             >
-                                                <div className={`w-12 h-12 rounded-xl flex items-center justify-center ${paymentMethod === method.id ? 'bg-rose-500 text-white' : 'bg-gray-100 text-gray-400'}`}>
+                                                <div className={`w-12 h-12 rounded-xl flex items-center justify-center ${paymentMethod === method.id ? 'bg-green-700 text-white' : 'bg-gray-100 text-gray-400'}`}>
                                                     {method.icon}
                                                 </div>
                                                 <div>
@@ -259,7 +262,7 @@ const Checkout: React.FC = () => {
                                         <button
                                             type="submit"
                                             disabled={loading || !paymentMethod}
-                                            className="w-full bg-rose-600 text-white py-5 rounded-2xl font-black text-lg hover:bg-rose-700 transition-all shadow-xl shadow-rose-600/20 active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-3"
+                                            className="w-full bg-green-700 text-white py-5 rounded-2xl font-black text-lg hover:bg-green-800 transition-all shadow-xl shadow-green-700/20 active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-3"
                                         >
                                             {loading ? (
                                                 <>
@@ -271,7 +274,7 @@ const Checkout: React.FC = () => {
                                             )}
                                         </button>
                                         <div className="mt-6 flex items-center justify-center gap-2 text-gray-300 text-[10px] font-black uppercase tracking-[0.2em]">
-                                            <Lock size={12} className="text-rose-500" />
+                                            <Lock size={12} className="text-green-600" />
                                             End-to-End Encrypted Checkout
                                         </div>
                                     </form>
@@ -284,7 +287,7 @@ const Checkout: React.FC = () => {
                             <div className="bg-white rounded-2xl shadow-xl p-8 border border-gray-100 flex flex-col gap-8 lg:top-32">
                                 <h3 className="text-xl font-bold flex items-center justify-between">
                                     Summary
-                                    <span className="bg-rose-100 text-rose-600 px-3 py-1 rounded-full text-[10px] font-black uppercase">{items.length} Items</span>
+                                    <span className="bg-green-100 text-green-700 px-3 py-1 rounded-full text-[10px] font-black uppercase">{items.length} Items</span>
                                 </h3>
                                 <div className="space-y-4 max-h-[40vh] overflow-y-auto pr-2 custom-scrollbar">
                                     {items.map(item => (
@@ -309,7 +312,7 @@ const Checkout: React.FC = () => {
                                     </div>
                                     <div className="border-t pt-6 flex justify-between items-center">
                                         <span className="text-sm font-black uppercase tracking-[0.2em] text-gray-400">Total Amount</span>
-                                        <span className="text-3xl font-black text-rose-600 tracking-tighter">${total.toFixed(2)}</span>
+                                        <span className="text-3xl font-black text-green-700 tracking-tighter">${total.toFixed(2)}</span>
                                     </div>
                                 </div>
                             </div>

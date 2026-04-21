@@ -21,7 +21,7 @@ export const ANTI_FUNGAL_COLLECTION_PRODUCTS: Product[] = [
   {
     id: 'ivermectin-cream-eu-to-eu',
     name: 'Ivermectin Cream (EU to EU)',
-    brand: 'Ivermectinkart',
+    brand: 'Pure Protocol',
     price: 100.00,
     prescription: false,
     image: img01,
@@ -37,7 +37,7 @@ export const ANTI_FUNGAL_COLLECTION_PRODUCTS: Product[] = [
   {
     id: 'ivercor-3mg-ivermectin',
     name: 'Ivercor 3mg (Ivermectin)',
-    brand: 'Ivermectinkart',
+    brand: 'Pure Protocol',
     price: 60.00,
     prescription: false,
     image: img02,
@@ -53,7 +53,7 @@ export const ANTI_FUNGAL_COLLECTION_PRODUCTS: Product[] = [
   {
     id: 'ivercor-6mg-ivermectin',
     name: 'Ivercor 6mg (Ivermectin)',
-    brand: 'Ivermectinkart',
+    brand: 'Pure Protocol',
     price: 68.00,
     prescription: false,
     image: img03,
@@ -69,7 +69,7 @@ export const ANTI_FUNGAL_COLLECTION_PRODUCTS: Product[] = [
   {
     id: 'zoderm-e-cream-oxiconazole',
     name: 'Zoderm E Cream (Oxiconazole)',
-    brand: 'Ivermectinkart',
+    brand: 'Pure Protocol',
     price: 61.00,
     prescription: false,
     image: img04,
@@ -85,7 +85,7 @@ export const ANTI_FUNGAL_COLLECTION_PRODUCTS: Product[] = [
   {
     id: 'tyza-cream-terbinafine',
     name: 'Tyza Cream (Terbinafine)',
-    brand: 'Ivermectinkart',
+    brand: 'Pure Protocol',
     price: 65.00,
     prescription: false,
     image: img05,
@@ -101,7 +101,7 @@ export const ANTI_FUNGAL_COLLECTION_PRODUCTS: Product[] = [
   {
     id: 'sebifin-cream-terbinafine',
     name: 'Sebifin Cream (Terbinafine)',
-    brand: 'Ivermectinkart',
+    brand: 'Pure Protocol',
     price: 72.00,
     prescription: false,
     image: img06,
@@ -117,7 +117,7 @@ export const ANTI_FUNGAL_COLLECTION_PRODUCTS: Product[] = [
   {
     id: 'nailrox-nail-lacquer-ciclopirox',
     name: 'Nailrox Nail Lacquer (Ciclopirox)',
-    brand: 'Ivermectinkart',
+    brand: 'Pure Protocol',
     price: 105.00,
     prescription: false,
     image: img07,
@@ -133,7 +133,7 @@ export const ANTI_FUNGAL_COLLECTION_PRODUCTS: Product[] = [
   {
     id: 'ketocip-200-mg',
     name: 'Ketocip 200mg (Ketoconazole)',
-    brand: 'Ivermectinkart',
+    brand: 'Pure Protocol',
     price: 30.00,
     prescription: false,
     image: img08,
@@ -149,7 +149,7 @@ export const ANTI_FUNGAL_COLLECTION_PRODUCTS: Product[] = [
   {
     id: 'ebernet-cream',
     name: 'Ebernet Cream (Eberconazole)',
-    brand: 'Ivermectinkart',
+    brand: 'Pure Protocol',
     price: 49.00,
     prescription: false,
     image: img09,
@@ -165,7 +165,7 @@ export const ANTI_FUNGAL_COLLECTION_PRODUCTS: Product[] = [
   {
     id: 'clocip-b-cream-clotrimazole-beclometasone',
     name: 'Clocip B Cream (Clotrimazole/Beclometasone)',
-    brand: 'Ivermectinkart',
+    brand: 'Pure Protocol',
     price: 49.00,
     prescription: false,
     image: img10,
@@ -181,7 +181,7 @@ export const ANTI_FUNGAL_COLLECTION_PRODUCTS: Product[] = [
   {
     id: 'canesten-vaginal-cream-clotrimazole',
     name: 'Canesten Vaginal Cream (Clotrimazole)',
-    brand: 'Ivermectinkart',
+    brand: 'Pure Protocol',
     price: 45.00,
     prescription: false,
     image: img11,
@@ -197,7 +197,7 @@ export const ANTI_FUNGAL_COLLECTION_PRODUCTS: Product[] = [
   {
     id: 'canesten-v6-tablet-vt',
     name: 'Canesten V6 Tablet VT (Clotrimazole)',
-    brand: 'Ivermectinkart',
+    brand: 'Pure Protocol',
     price: 69.00,
     prescription: false,
     image: img12,
@@ -213,7 +213,7 @@ export const ANTI_FUNGAL_COLLECTION_PRODUCTS: Product[] = [
   {
     id: 'fluka-150-mg',
     name: 'Fluka 150mg (Fluconazole)',
-    brand: 'Ivermectinkart',
+    brand: 'Pure Protocol',
     price: 45.00,
     prescription: false,
     image: img13,
@@ -229,7 +229,7 @@ export const ANTI_FUNGAL_COLLECTION_PRODUCTS: Product[] = [
   {
     id: 'forcan-50-mg',
     name: 'Forcan 50mg (Fluconazole)',
-    brand: 'Ivermectinkart',
+    brand: 'Pure Protocol',
     price: 75.00,
     prescription: false,
     image: img14,
@@ -245,7 +245,7 @@ export const ANTI_FUNGAL_COLLECTION_PRODUCTS: Product[] = [
   {
     id: 'forcan-200-mg',
     name: 'Forcan 200mg (Fluconazole)',
-    brand: 'Ivermectinkart',
+    brand: 'Pure Protocol',
     price: 44.00,
     prescription: false,
     image: img15,
@@ -261,7 +261,7 @@ export const ANTI_FUNGAL_COLLECTION_PRODUCTS: Product[] = [
   {
     id: 'forcan-150-mg',
     name: 'Forcan 150mg (Fluconazole)',
-    brand: 'Ivermectinkart',
+    brand: 'Pure Protocol',
     price: 42.00,
     prescription: false,
     image: img16,

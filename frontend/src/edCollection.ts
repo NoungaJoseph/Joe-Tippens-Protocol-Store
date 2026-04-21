@@ -42,7 +42,7 @@ export const ED_COLLECTION_PRODUCTS: Product[] = [
   {
     id: 'vardegra-20-mg-vardenafil-20mg',
     name: 'Vardegra 20 mg (Vardenafil 20mg)',
-    brand: 'Ivermectinkart',
+    brand: 'Pure Protocol',
     price: 50.00,
     prescription: false,
     image: img1,
@@ -60,7 +60,7 @@ export const ED_COLLECTION_PRODUCTS: Product[] = [
   {
     id: 'vigora-100mg-sildenafil-citrate',
     name: 'Vigora 100mg (Sildenafil Citrate)',
-    brand: 'Ivermectinkart',
+    brand: 'Pure Protocol',
     price: 83.00,
     prescription: false,
     image: img2,
@@ -78,7 +78,7 @@ export const ED_COLLECTION_PRODUCTS: Product[] = [
   {
     id: 'vigora-gold-lido-spray-lidocaine',
     name: 'Vigora Gold Lido Spray (Lidocaine)',
-    brand: 'Ivermectinkart',
+    brand: 'Pure Protocol',
     price: 50.00,
     prescription: false,
     image: img3,
@@ -96,7 +96,7 @@ export const ED_COLLECTION_PRODUCTS: Product[] = [
   {
     id: 'aurogra-100-mg-sildenafil-citrate',
     name: 'Aurogra 100 mg (Sildenafil Citrate)',
-    brand: 'Ivermectinkart',
+    brand: 'Pure Protocol',
     price: 99.00,
     prescription: false,
     image: img4,
@@ -114,7 +114,7 @@ export const ED_COLLECTION_PRODUCTS: Product[] = [
   {
     id: 'tadarise-20mg-tadalafil',
     name: 'Tadarise 20mg (Tadalafil)',
-    brand: 'Ivermectinkart',
+    brand: 'Pure Protocol',
     price: 110.00,
     prescription: false,
     image: img5,
@@ -132,7 +132,7 @@ export const ED_COLLECTION_PRODUCTS: Product[] = [
   {
     id: 'tadapox-tadalafil-dapoxetine',
     name: 'Tadapox (Tadalafil/Dapoxetine)',
-    brand: 'Ivermectinkart',
+    brand: 'Pure Protocol',
     price: 110.00,
     prescription: false,
     image: img6,
@@ -150,7 +150,7 @@ export const ED_COLLECTION_PRODUCTS: Product[] = [
   {
     id: 'vega-100-mg-sildenafil-citrate',
     name: 'Vega 100 mg(Sildenafil Citrate)',
-    brand: 'Ivermectinkart',
+    brand: 'Pure Protocol',
     price: 95.00,
     prescription: false,
     image: img7,
@@ -168,7 +168,7 @@ export const ED_COLLECTION_PRODUCTS: Product[] = [
   {
     id: 'malegra-fxt-sildenafil-citrate-fluoxetine',
     name: 'Malegra FXT (Sildenafil Citrate/Fluoxetine)',
-    brand: 'Ivermectinkart',
+    brand: 'Pure Protocol',
     price: 105.00,
     prescription: false,
     image: img8,
@@ -186,7 +186,7 @@ export const ED_COLLECTION_PRODUCTS: Product[] = [
   {
     id: 'vidalista-5mg-tadalafil',
     name: 'Vidalista 5mg (Tadalafil)',
-    brand: 'Ivermectinkart',
+    brand: 'Pure Protocol',
     price: 73.00,
     prescription: false,
     image: img9,
@@ -204,7 +204,7 @@ export const ED_COLLECTION_PRODUCTS: Product[] = [
   {
     id: 'super-tadapox-tadalafil-dapoxetine',
     name: 'Super Tadapox (Tadalafil/Dapoxetine)',
-    brand: 'Ivermectinkart',
+    brand: 'Pure Protocol',
     price: 130.00,
     prescription: false,
     image: img10,
@@ -222,7 +222,7 @@ export const ED_COLLECTION_PRODUCTS: Product[] = [
   {
     id: 'super-p-force-oral-jelly',
     name: 'Super P-Force Oral Jelly',
-    brand: 'Ivermectinkart',
+    brand: 'Pure Protocol',
     price: 39.00,
     prescription: false,
     image: img11,
@@ -240,7 +240,7 @@ export const ED_COLLECTION_PRODUCTS: Product[] = [
   {
     id: 'vidalista-black-80-tadalafil',
     name: 'Vidalista Black 80 (Tadalafil)',
-    brand: 'Ivermectinkart',
+    brand: 'Pure Protocol',
     price: 144.00,
     prescription: false,
     image: img12,
@@ -258,7 +258,7 @@ export const ED_COLLECTION_PRODUCTS: Product[] = [
   {
     id: 'tadarise-pro-20mg-tadalafil',
     name: 'Tadarise Pro 20mg (Tadalafil)',
-    brand: 'Ivermectinkart',
+    brand: 'Pure Protocol',
     price: 96.00,
     prescription: false,
     image: img13,
@@ -276,7 +276,7 @@ export const ED_COLLECTION_PRODUCTS: Product[] = [
   {
     id: 'tastylia-10mg-tadalafil',
     name: 'Tastylia 10mg (Tadalafil)',
-    brand: 'Ivermectinkart',
+    brand: 'Pure Protocol',
     price: 81.00,
     prescription: false,
     image: img14,
@@ -294,7 +294,7 @@ export const ED_COLLECTION_PRODUCTS: Product[] = [
   {
     id: 'sildigra-super-power-sildenafil-dapoxetine',
     name: 'Sildigra Super Power (Sildenafil/Dapoxetine)',
-    brand: 'Ivermectinkart',
+    brand: 'Pure Protocol',
     price: 99.00,
     prescription: false,
     image: img15,
@@ -312,7 +312,7 @@ export const ED_COLLECTION_PRODUCTS: Product[] = [
   {
     id: 'udenafil-100mg-udaforce',
     name: 'Udenafil 100mg (Udaforce)',
-    brand: 'Ivermectinkart',
+    brand: 'Pure Protocol',
     price: 46.00,
     prescription: false,
     image: img16,
@@ -330,7 +330,7 @@ export const ED_COLLECTION_PRODUCTS: Product[] = [
   {
     id: 'penegra-50mg-sildenafil-citrate',
     name: 'Penegra 50mg (Sildenafil Citrate)',
-    brand: 'Ivermectinkart',
+    brand: 'Pure Protocol',
     price: 88.00,
     prescription: false,
     image: img17,
@@ -348,7 +348,7 @@ export const ED_COLLECTION_PRODUCTS: Product[] = [
   {
     id: 'begma-200mg-sildenafil-citrate',
     name: 'Begma 200mg (Sildenafil Citrate)',
-    brand: 'Ivermectinkart',
+    brand: 'Pure Protocol',
     price: 120.00,
     prescription: false,
     image: img18,
@@ -366,7 +366,7 @@ export const ED_COLLECTION_PRODUCTS: Product[] = [
   {
     id: 'hiforce-50-mg-sildenafil-citrate',
     name: 'Hiforce 50 mg (Sildenafil Citrate)',
-    brand: 'Ivermectinkart',
+    brand: 'Pure Protocol',
     price: 85.00,
     prescription: false,
     image: img19,
@@ -384,7 +384,7 @@ export const ED_COLLECTION_PRODUCTS: Product[] = [
   {
     id: 'silditop-sildenafil-citrate',
     name: 'Silditop (Sildenafil Citrate)',
-    brand: 'Ivermectinkart',
+    brand: 'Pure Protocol',
     price: 81.00,
     prescription: false,
     image: img20,
@@ -402,7 +402,7 @@ export const ED_COLLECTION_PRODUCTS: Product[] = [
   {
     id: 'vega-extra-cobra-120-jelly-sildenafil-citrate',
     name: 'Vega Extra Cobra 120 Jelly (Sildenafil Citrate)',
-    brand: 'Ivermectinkart',
+    brand: 'Pure Protocol',
     price: 80.00,
     prescription: false,
     image: img21,
@@ -420,7 +420,7 @@ export const ED_COLLECTION_PRODUCTS: Product[] = [
   {
     id: 'avagra-100-avanafil',
     name: 'Avagra 100 (Avanafil)',
-    brand: 'Ivermectinkart',
+    brand: 'Pure Protocol',
     price: 90.00,
     prescription: false,
     image: img22,
@@ -438,7 +438,7 @@ export const ED_COLLECTION_PRODUCTS: Product[] = [
   {
     id: 'lovento-oral-jelly-orange-flavour',
     name: 'Lovento Oral Jelly Orange Flavour',
-    brand: 'Ivermectinkart',
+    brand: 'Pure Protocol',
     price: 40.00,
     prescription: false,
     image: img23,
@@ -456,7 +456,7 @@ export const ED_COLLECTION_PRODUCTS: Product[] = [
   {
     id: 'p-force-fort-sildenafil-citrate',
     name: 'P Force Fort (Sildenafil Citrate)',
-    brand: 'Ivermectinkart',
+    brand: 'Pure Protocol',
     price: 100.00,
     prescription: false,
     image: img24,
@@ -474,7 +474,7 @@ export const ED_COLLECTION_PRODUCTS: Product[] = [
   {
     id: 'tadaflo-20-tadalafil-20mg',
     name: 'Tadaflo 20 (Tadalafil 20mg)',
-    brand: 'Ivermectinkart',
+    brand: 'Pure Protocol',
     price: 164.00,
     prescription: false,
     image: img25,
@@ -492,7 +492,7 @@ export const ED_COLLECTION_PRODUCTS: Product[] = [
   {
     id: 'alvitra-20mg-vardenafil',
     name: 'Alvitra 20mg (Vardenafil)',
-    brand: 'Ivermectinkart',
+    brand: 'Pure Protocol',
     price: 78.00,
     prescription: false,
     image: img26,
@@ -510,7 +510,7 @@ export const ED_COLLECTION_PRODUCTS: Product[] = [
   {
     id: 'cobra-200-sildenafil-citrate',
     name: 'Cobra 200 (Sildenafil Citrate)',
-    brand: 'Ivermectinkart',
+    brand: 'Pure Protocol',
     price: 111.00,
     prescription: false,
     image: img27,
@@ -528,7 +528,7 @@ export const ED_COLLECTION_PRODUCTS: Product[] = [
   {
     id: 'avanair-200-mg-tablet',
     name: 'Avanair 200 mg Tablet',
-    brand: 'Ivermectinkart',
+    brand: 'Pure Protocol',
     price: 142.00,
     prescription: false,
     image: img28,
@@ -546,7 +546,7 @@ export const ED_COLLECTION_PRODUCTS: Product[] = [
   {
     id: 'varda-super-power-vardenafil-dapoxetine',
     name: 'Varda Super Power (Vardenafil/Dapoxetine)',
-    brand: 'Ivermectinkart',
+    brand: 'Pure Protocol',
     price: 120.00,
     prescription: false,
     image: img29,
@@ -564,7 +564,7 @@ export const ED_COLLECTION_PRODUCTS: Product[] = [
   {
     id: 'lovento-oral-jelly-pineapple-flavour',
     name: 'Lovento Oral Jelly Pineapple flavour',
-    brand: 'Ivermectinkart',
+    brand: 'Pure Protocol',
     price: 40.00,
     prescription: false,
     image: img30,
@@ -582,7 +582,7 @@ export const ED_COLLECTION_PRODUCTS: Product[] = [
   {
     id: 'tadaflo-10-tadalafil-10mg',
     name: 'Tadaflo 10 (Tadalafil 10mg)',
-    brand: 'Ivermectinkart',
+    brand: 'Pure Protocol',
     price: 131.00,
     prescription: false,
     image: img31,
@@ -600,7 +600,7 @@ export const ED_COLLECTION_PRODUCTS: Product[] = [
   {
     id: 'penegra-xpress-50mg-sildenafil-citrate',
     name: 'Penegra Xpress 50mg (Sildenafil Citrate)',
-    brand: 'Ivermectinkart',
+    brand: 'Pure Protocol',
     price: 62.00,
     prescription: false,
     image: img32,
@@ -618,7 +618,7 @@ export const ED_COLLECTION_PRODUCTS: Product[] = [
   {
     id: 'cenforce-ld-sildenafil-dapoxetine',
     name: 'Cenforce LD (Sildenafil/Dapoxetine)',
-    brand: 'Ivermectinkart',
+    brand: 'Pure Protocol',
     price: 110.00,
     prescription: false,
     image: img33,
@@ -636,7 +636,7 @@ export const ED_COLLECTION_PRODUCTS: Product[] = [
   {
     id: 'malegra-gold-sildenafil-citrate',
     name: 'Malegra Gold (Sildenafil Citrate)',
-    brand: 'Ivermectinkart',
+    brand: 'Pure Protocol',
     price: 47.00,
     prescription: false,
     image: img34,
@@ -654,7 +654,7 @@ export const ED_COLLECTION_PRODUCTS: Product[] = [
   {
     id: 'filitra-40mg-vardenafil',
     name: 'Filitra 40mg (Vardenafil)',
-    brand: 'Ivermectinkart',
+    brand: 'Pure Protocol',
     price: 89.00,
     prescription: false,
     image: img35,
@@ -672,7 +672,7 @@ export const ED_COLLECTION_PRODUCTS: Product[] = [
   {
     id: 'mahagra-25mg-sildenafil-citrate',
     name: 'Mahagra 25mg (Sildenafil Citrate)',
-    brand: 'Ivermectinkart',
+    brand: 'Pure Protocol',
     price: 75.00,
     prescription: false,
     image: img36,
@@ -690,7 +690,7 @@ export const ED_COLLECTION_PRODUCTS: Product[] = [
   {
     id: 'caverta-100mg-sildenafil',
     name: 'Caverta 100mg (Sildenafil)',
-    brand: 'Ivermectinkart',
+    brand: 'Pure Protocol',
     price: 245.00,
     prescription: false,
     image: img37,
@@ -708,7 +708,7 @@ export const ED_COLLECTION_PRODUCTS: Product[] = [
   {
     id: 'malegra-200mg-sildenafil-citrate',
     name: 'Malegra 200mg (Sildenafil Citrate)',
-    brand: 'Ivermectinkart',
+    brand: 'Pure Protocol',
     price: 110.00,
     prescription: false,
     image: img38,

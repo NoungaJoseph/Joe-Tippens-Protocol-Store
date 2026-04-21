@@ -153,9 +153,9 @@ const Header: React.FC = () => {
                 ))}
               </div>
               <div className="flex justify-end pl-1 xl:pl-3">
-              <button className="px-8 py-3 border-2 border-[#2d8680] rounded-lg text-base font-extrabold tracking-[0.01em] text-[#2d8680] bg-white hover:bg-blue-50 transition-colors whitespace-nowrap">
+              <Link to="/shipping-policy" className="px-8 py-3 border-2 border-[#2d8680] rounded-lg text-base font-extrabold tracking-[0.01em] text-[#2d8680] bg-white hover:bg-blue-50 transition-colors whitespace-nowrap">
                 Free Shipping for all orders
-              </button>
+              </Link>
               </div>
             </div>
           </div>

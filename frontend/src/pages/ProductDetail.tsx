@@ -4,6 +4,7 @@ import { Minus, Plus, ShoppingCart, ArrowLeft, Truck, Shield, CheckCircle, Eye, 
 import { MOCK_PRODUCTS } from '../constants';
 import { useCart } from '../context/CartContext';
 import SocialShare from '../components/SocialShare';
+import { FORMSPREE_ENDPOINT } from '../config/formspree';
 
 const ProductDetail: React.FC = () => {
     const { id } = useParams<{ id: string }>();
@@ -30,6 +31,11 @@ const ProductDetail: React.FC = () => {
     // Question Modal
     const [showQuestionModal, setShowQuestionModal] = useState(false);
     const [questionSubmitted, setQuestionSubmitted] = useState(false);
+    const [questionForm, setQuestionForm] = useState({
+        name: '',
+        email: '',
+        question: '',
+    });
 
     // Fullscreen Gallery
     const [isGalleryOpen, setIsGalleryOpen] = useState(false);
@@ -106,14 +112,42 @@ const ProductDetail: React.FC = () => {
         setTimeout(() => setShowNotification(false), 3000);
     };
 
-    const handleQuestionSubmit = (e: React.FormEvent) => {
+    const handleQuestionChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+        const { name, value } = e.target;
+        setQuestionForm((prev) => ({ ...prev, [name]: value }));
+    };
+
+    const handleQuestionSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
+        try {
+            const response = await fetch(FORMSPREE_ENDPOINT, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    Accept: 'application/json',
+                },
+                body: JSON.stringify({
+                    _subject: `Product Question: ${product.name}`,
+                    product_name: product.name,
+                    name: questionForm.name,
+                    email: questionForm.email,
+                    question: questionForm.question,
+                }),
+            });
+
+            if (!response.ok) {
+                throw new Error(`Formspree submission failed: ${response.status}`);
+            }
+        } catch (error) {
+            console.error('Question submission error:', error);
+        }
         setQuestionSubmitted(true);
     };
 
     const closeQuestionModal = () => {
         setShowQuestionModal(false);
         setTimeout(() => setQuestionSubmitted(false), 300);
+        setQuestionForm({ name: '', email: '', question: '' });
     };
 
     const badgeClass = product.prescription ? 'bg-red-500' : 'bg-green-500';
@@ -416,7 +450,7 @@ const ProductDetail: React.FC = () => {
                                     <p className="text-gray-500 text-sm mb-6">Your email address will not be published. Required fields are marked *</p>
 
                                     <form
-                                        action="https://formspree.io/f/xaqwpzbo"
+                                        action={FORMSPREE_ENDPOINT}
                                         method="POST"
                                         className="space-y-6"
                                     >
@@ -543,6 +577,9 @@ const ProductDetail: React.FC = () => {
                                                 </div>
                                                 <input
                                                     type="text"
+                                                    name="name"
+                                                    value={questionForm.name}
+                                                    onChange={handleQuestionChange}
                                                     required
                                                     className="w-full pl-10 pr-3 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-rose-500 focus:border-transparent text-sm"
                                                     placeholder="Your Name"
@@ -557,6 +594,9 @@ const ProductDetail: React.FC = () => {
                                                 </div>
                                                 <input
                                                     type="email"
+                                                    name="email"
+                                                    value={questionForm.email}
+                                                    onChange={handleQuestionChange}
                                                     required
                                                     className="w-full pl-10 pr-3 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-rose-500 focus:border-transparent text-sm"
                                                     placeholder="your@email.com"
@@ -568,6 +608,9 @@ const ProductDetail: React.FC = () => {
                                     <div>
                                         <label className="block text-sm font-bold text-gray-700 mb-1">Question <span className="text-red-500">*</span></label>
                                         <textarea
+                                            name="question"
+                                            value={questionForm.question}
+                                            onChange={handleQuestionChange}
                                             rows={4}
                                             required
                                             className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-rose-500 focus:border-transparent text-sm"

@@ -57,7 +57,7 @@ export const CARDIAC_COLLECTION_PRODUCTS: Product[] = [
   {
     id: 'lotensyl-lercanidipine',
     name: 'Lotensyl (Lercanidipine)',
-    brand: 'Ivermectinkart',
+    brand: 'Pure Protocol',
     price: 35.00,
     prescription: true,
     image: img01,
@@ -73,7 +73,7 @@ export const CARDIAC_COLLECTION_PRODUCTS: Product[] = [
   {
     id: 'irovel-irbesartan',
     name: 'Irovel (Irbesartan)',
-    brand: 'Ivermectinkart',
+    brand: 'Pure Protocol',
     price: 40.00,
     prescription: true,
     image: img02,
@@ -89,7 +89,7 @@ export const CARDIAC_COLLECTION_PRODUCTS: Product[] = [
   {
     id: 'zytanix-metolazone',
     name: 'Zytanix (Metolazone)',
-    brand: 'Ivermectinkart',
+    brand: 'Pure Protocol',
     price: 30.00,
     prescription: true,
     image: img03,
@@ -105,7 +105,7 @@ export const CARDIAC_COLLECTION_PRODUCTS: Product[] = [
   {
     id: 'zocor-simvastatin',
     name: 'Zocor (Simvastatin)',
-    brand: 'Ivermectinkart',
+    brand: 'Pure Protocol',
     price: 45.00,
     prescription: true,
     image: img04,
@@ -121,7 +121,7 @@ export const CARDIAC_COLLECTION_PRODUCTS: Product[] = [
   {
     id: 'xarelto-20mg-rivaroxaban',
     name: 'Xarelto 20mg (Rivaroxaban)',
-    brand: 'Ivermectinkart',
+    brand: 'Pure Protocol',
     price: 180.00,
     prescription: true,
     image: img05,
@@ -137,7 +137,7 @@ export const CARDIAC_COLLECTION_PRODUCTS: Product[] = [
   {
     id: 'vymada-sacubitril-valsartan',
     name: 'Vymada (Sacubitril/Valsartan)',
-    brand: 'Ivermectinkart',
+    brand: 'Pure Protocol',
     price: 250.00,
     prescription: true,
     image: img06,
@@ -153,7 +153,7 @@ export const CARDIAC_COLLECTION_PRODUCTS: Product[] = [
   {
     id: 'valzaar-160-mg-valsartan',
     name: 'Valzaar 160 mg (Valsartan)',
-    brand: 'Ivermectinkart',
+    brand: 'Pure Protocol',
     price: 55.00,
     prescription: true,
     image: img07,
@@ -169,7 +169,7 @@ export const CARDIAC_COLLECTION_PRODUCTS: Product[] = [
   {
     id: 'triplixam-tablet',
     name: 'Triplixam Tablet (Perindopril, Indapamide & Amlodipine)',
-    brand: 'Ivermectinkart',
+    brand: 'Pure Protocol',
     price: 75.00,
     prescription: true,
     image: img08,
@@ -185,7 +185,7 @@ export const CARDIAC_COLLECTION_PRODUCTS: Product[] = [
   {
     id: 'terapress-terazosin',
     name: 'Terapress (Terazosin)',
-    brand: 'Ivermectinkart',
+    brand: 'Pure Protocol',
     price: 35.00,
     prescription: true,
     image: img09,
@@ -201,7 +201,7 @@ export const CARDIAC_COLLECTION_PRODUCTS: Product[] = [
   {
     id: 'telma-r-telmisartan-ramipril',
     name: 'Telma-R (Telmisartan & Ramipril)',
-    brand: 'Ivermectinkart',
+    brand: 'Pure Protocol',
     price: 60.00,
     prescription: true,
     image: img10,
@@ -217,7 +217,7 @@ export const CARDIAC_COLLECTION_PRODUCTS: Product[] = [
   {
     id: 'telma-beta-telmisartan-metoprolol',
     name: 'Telma-Beta Tablet ER (Telmisartan & Metoprolol)',
-    brand: 'Ivermectinkart',
+    brand: 'Pure Protocol',
     price: 55.00,
     prescription: true,
     image: img11,
@@ -233,7 +233,7 @@ export const CARDIAC_COLLECTION_PRODUCTS: Product[] = [
   {
     id: 'sumatriptan-tablet',
     name: 'Sumatriptan Tablet',
-    brand: 'Ivermectinkart',
+    brand: 'Pure Protocol',
     price: 45.00,
     prescription: true,
     image: img12,
@@ -249,7 +249,7 @@ export const CARDIAC_COLLECTION_PRODUCTS: Product[] = [
   {
     id: 'rosubest-rosuvastatin',
     name: 'Rosubest (Rosuvastatin)',
-    brand: 'Ivermectinkart',
+    brand: 'Pure Protocol',
     price: 50.00,
     prescription: true,
     image: img13,
@@ -265,7 +265,7 @@ export const CARDIAC_COLLECTION_PRODUCTS: Product[] = [
   {
     id: 'rioteph-riociguat',
     name: 'Rioteph (Riociguat)',
-    brand: 'Ivermectinkart',
+    brand: 'Pure Protocol',
     price: 320.00,
     prescription: true,
     image: img14,
@@ -281,7 +281,7 @@ export const CARDIAC_COLLECTION_PRODUCTS: Product[] = [
   {
     id: 'refsav-sacubitril-valsartan',
     name: 'Refsav Tablet (Sacubitril & Valsartan)',
-    brand: 'Ivermectinkart',
+    brand: 'Pure Protocol',
     price: 220.00,
     prescription: true,
     image: img15,
@@ -297,7 +297,7 @@ export const CARDIAC_COLLECTION_PRODUCTS: Product[] = [
   {
     id: 'ramnil-t-telmisartan-ramipril',
     name: 'Ramnil-T Tablet (Telmisartan & Ramipril)',
-    brand: 'Ivermectinkart',
+    brand: 'Pure Protocol',
     price: 55.00,
     prescription: true,
     image: img16,
@@ -313,7 +313,7 @@ export const CARDIAC_COLLECTION_PRODUCTS: Product[] = [
   {
     id: 'ramistar-h-ramipril-hydrochlorothiazide',
     name: 'Ramistar-H Tablet (Ramipril & Hydrochlorothiazide)',
-    brand: 'Ivermectinkart',
+    brand: 'Pure Protocol',
     price: 48.00,
     prescription: true,
     image: img17,
@@ -329,7 +329,7 @@ export const CARDIAC_COLLECTION_PRODUCTS: Product[] = [
   {
     id: 'q-press-h-quinapril-hydrochlorothiazide',
     name: 'Q Press H Tablet (Quinapril & Hydrochlorothiazide)',
-    brand: 'Ivermectinkart',
+    brand: 'Pure Protocol',
     price: 52.00,
     prescription: true,
     image: img18,
@@ -345,7 +345,7 @@ export const CARDIAC_COLLECTION_PRODUCTS: Product[] = [
   {
     id: 'provanol-propranolol',
     name: 'Provanol (Propranolol)',
-    brand: 'Ivermectinkart',
+    brand: 'Pure Protocol',
     price: 38.00,
     prescription: true,
     image: img19,
@@ -361,7 +361,7 @@ export const CARDIAC_COLLECTION_PRODUCTS: Product[] = [
   {
     id: 'pivasta-pitavastatin',
     name: 'Pivasta (Pitavastatin)',
-    brand: 'Ivermectinkart',
+    brand: 'Pure Protocol',
     price: 65.00,
     prescription: true,
     image: img20,
@@ -377,7 +377,7 @@ export const CARDIAC_COLLECTION_PRODUCTS: Product[] = [
   {
     id: 'olmesar-olmesartan',
     name: 'Olmesar (Olmesartan)',
-    brand: 'Ivermectinkart',
+    brand: 'Pure Protocol',
     price: 42.00,
     prescription: true,
     image: img21,
@@ -393,7 +393,7 @@ export const CARDIAC_COLLECTION_PRODUCTS: Product[] = [
   {
     id: 'nexred-bempedoic-acid',
     name: 'Nexred Tablet (Bempedoic Acid)',
-    brand: 'Ivermectinkart',
+    brand: 'Pure Protocol',
     price: 95.00,
     prescription: true,
     image: img22,
@@ -409,7 +409,7 @@ export const CARDIAC_COLLECTION_PRODUCTS: Product[] = [
   {
     id: 'nebicard-nebivolol',
     name: 'Nebicard (Nebivolol)',
-    brand: 'Ivermectinkart',
+    brand: 'Pure Protocol',
     price: 40.00,
     prescription: true,
     image: img23,
@@ -425,7 +425,7 @@ export const CARDIAC_COLLECTION_PRODUCTS: Product[] = [
   {
     id: 'mymarda-sacubitril-valsartan',
     name: 'Mymarda Tablet (Sacubitril & Valsartan)',
-    brand: 'Ivermectinkart',
+    brand: 'Pure Protocol',
     price: 210.00,
     prescription: true,
     image: img24,
@@ -441,7 +441,7 @@ export const CARDIAC_COLLECTION_PRODUCTS: Product[] = [
   {
     id: 'losar-losartan-potassium',
     name: 'Losar (Losartan Potassium)',
-    brand: 'Ivermectinkart',
+    brand: 'Pure Protocol',
     price: 35.00,
     prescription: true,
     image: img25,
@@ -457,7 +457,7 @@ export const CARDIAC_COLLECTION_PRODUCTS: Product[] = [
   {
     id: 'listril-plus-lisinopril-hydrochlorothiazide',
     name: 'Listril Plus Tablet (Lisinopril & Hydrochlorothiazide)',
-    brand: 'Ivermectinkart',
+    brand: 'Pure Protocol',
     price: 45.00,
     prescription: true,
     image: img26,
@@ -473,7 +473,7 @@ export const CARDIAC_COLLECTION_PRODUCTS: Product[] = [
   {
     id: 'listril-lisinopril',
     name: 'Listril (Lisinopril)',
-    brand: 'Ivermectinkart',
+    brand: 'Pure Protocol',
     price: 32.00,
     prescription: true,
     image: img27,
@@ -489,7 +489,7 @@ export const CARDIAC_COLLECTION_PRODUCTS: Product[] = [
   {
     id: 'lipicard-fenofibrate',
     name: 'Lipicard (Fenofibrate)',
-    brand: 'Ivermectinkart',
+    brand: 'Pure Protocol',
     price: 50.00,
     prescription: true,
     image: img28,
@@ -505,7 +505,7 @@ export const CARDIAC_COLLECTION_PRODUCTS: Product[] = [
   {
     id: 'labebet-labetalol',
     name: 'Labebet Tablet (Labetalol)',
-    brand: 'Ivermectinkart',
+    brand: 'Pure Protocol',
     price: 48.00,
     prescription: true,
     image: img29,
@@ -521,7 +521,7 @@ export const CARDIAC_COLLECTION_PRODUCTS: Product[] = [
   {
     id: 'kerendia-finerenone',
     name: 'Kerendia (Finerenone)',
-    brand: 'Ivermectinkart',
+    brand: 'Pure Protocol',
     price: 280.00,
     prescription: true,
     image: img30,
@@ -537,7 +537,7 @@ export const CARDIAC_COLLECTION_PRODUCTS: Product[] = [
   {
     id: 'hftril-sacubitril-valsartan',
     name: 'Hftril Tablet (Sacubitril & Valsartan)',
-    brand: 'Ivermectinkart',
+    brand: 'Pure Protocol',
     price: 200.00,
     prescription: true,
     image: img31,
@@ -553,7 +553,7 @@ export const CARDIAC_COLLECTION_PRODUCTS: Product[] = [
   {
     id: 'ezentia-ezetimibe',
     name: 'Ezentia Tablet (Ezetimibe)',
-    brand: 'Ivermectinkart',
+    brand: 'Pure Protocol',
     price: 60.00,
     prescription: true,
     image: img32,
@@ -569,7 +569,7 @@ export const CARDIAC_COLLECTION_PRODUCTS: Product[] = [
   {
     id: 'ezedoc-ezetimibe',
     name: 'Ezedoc Tablet (Ezetimibe)',
-    brand: 'Ivermectinkart',
+    brand: 'Pure Protocol',
     price: 58.00,
     prescription: true,
     image: img33,
@@ -585,7 +585,7 @@ export const CARDIAC_COLLECTION_PRODUCTS: Product[] = [
   {
     id: 'eptus-eplerenone',
     name: 'Eptus (Eplerenone)',
-    brand: 'Ivermectinkart',
+    brand: 'Pure Protocol',
     price: 90.00,
     prescription: true,
     image: img34,
@@ -601,7 +601,7 @@ export const CARDIAC_COLLECTION_PRODUCTS: Product[] = [
   {
     id: 'endobloc-ambrisentan',
     name: 'Endobloc (Ambrisentan)',
-    brand: 'Ivermectinkart',
+    brand: 'Pure Protocol',
     price: 350.00,
     prescription: true,
     image: img35,
@@ -617,7 +617,7 @@ export const CARDIAC_COLLECTION_PRODUCTS: Product[] = [
   {
     id: 'enapril-ht-enalapril-hydrochlorothiazide',
     name: 'Enapril-HT Tablet (Enalapril & Hydrochlorothiazide)',
-    brand: 'Ivermectinkart',
+    brand: 'Pure Protocol',
     price: 40.00,
     prescription: true,
     image: img36,
@@ -633,7 +633,7 @@ export const CARDIAC_COLLECTION_PRODUCTS: Product[] = [
   {
     id: 'enapril-enalapril',
     name: 'Enapril Tablet (Enalapril)',
-    brand: 'Ivermectinkart',
+    brand: 'Pure Protocol',
     price: 32.00,
     prescription: true,
     image: img37,
@@ -649,7 +649,7 @@ export const CARDIAC_COLLECTION_PRODUCTS: Product[] = [
   {
     id: 'cytogard-trimetazidine',
     name: 'Cytogard (Trimetazidine)',
-    brand: 'Ivermectinkart',
+    brand: 'Pure Protocol',
     price: 45.00,
     prescription: true,
     image: img38,
@@ -665,7 +665,7 @@ export const CARDIAC_COLLECTION_PRODUCTS: Product[] = [
   {
     id: 'coversyl-plus-perindopril-indapamide',
     name: 'Coversyl Plus Tablet (Perindopril & Indapamide)',
-    brand: 'Ivermectinkart',
+    brand: 'Pure Protocol',
     price: 65.00,
     prescription: true,
     image: img39,
@@ -681,7 +681,7 @@ export const CARDIAC_COLLECTION_PRODUCTS: Product[] = [
   {
     id: 'cardace-h-ramipril-hydrochlorothiazide',
     name: 'Cardace H Tablet (Ramipril & Hydrochlorothiazide)',
-    brand: 'Ivermectinkart',
+    brand: 'Pure Protocol',
     price: 38.00,
     prescription: true,
     image: img40,
@@ -697,7 +697,7 @@ export const CARDIAC_COLLECTION_PRODUCTS: Product[] = [
   {
     id: 'brillo-bempedoic-acid',
     name: 'Brillo Tablet (Bempedoic Acid)',
-    brand: 'Ivermectinkart',
+    brand: 'Pure Protocol',
     price: 90.00,
     prescription: true,
     image: img41,
@@ -713,7 +713,7 @@ export const CARDIAC_COLLECTION_PRODUCTS: Product[] = [
   {
     id: 'bosentas-bosentan',
     name: 'Bosentas (Bosentan)',
-    brand: 'Ivermectinkart',
+    brand: 'Pure Protocol',
     price: 380.00,
     prescription: true,
     image: img42,
@@ -729,7 +729,7 @@ export const CARDIAC_COLLECTION_PRODUCTS: Product[] = [
   {
     id: 'bemzire-bempedoic-acid',
     name: 'Bemzire Tablet (Bempedoic Acid)',
-    brand: 'Ivermectinkart',
+    brand: 'Pure Protocol',
     price: 88.00,
     prescription: true,
     image: img43,
@@ -745,7 +745,7 @@ export const CARDIAC_COLLECTION_PRODUCTS: Product[] = [
   {
     id: 'bempify-bempedoic-acid',
     name: 'Bempify Tablet (Bempedoic Acid)',
-    brand: 'Ivermectinkart',
+    brand: 'Pure Protocol',
     price: 85.00,
     prescription: true,
     image: img44,
@@ -761,7 +761,7 @@ export const CARDIAC_COLLECTION_PRODUCTS: Product[] = [
   {
     id: 'atorva-atorvastatin',
     name: 'Atorva (Atorvastatin)',
-    brand: 'Ivermectinkart',
+    brand: 'Pure Protocol',
     price: 40.00,
     prescription: true,
     image: img45,
@@ -777,7 +777,7 @@ export const CARDIAC_COLLECTION_PRODUCTS: Product[] = [
   {
     id: 'aspisol-aspirin-glycine',
     name: 'Aspisol Tablet (Aspirin & Glycine)',
-    brand: 'Ivermectinkart',
+    brand: 'Pure Protocol',
     price: 20.00,
     prescription: false,
     image: img46,
@@ -793,7 +793,7 @@ export const CARDIAC_COLLECTION_PRODUCTS: Product[] = [
   {
     id: 'arnx-sacubitril-valsartan',
     name: 'Arnx Tablet (Sacubitril & Valsartan)',
-    brand: 'Ivermectinkart',
+    brand: 'Pure Protocol',
     price: 215.00,
     prescription: true,
     image: img47,
@@ -809,7 +809,7 @@ export const CARDIAC_COLLECTION_PRODUCTS: Product[] = [
   {
     id: 'arnipin-sacubitril-valsartan',
     name: 'Arnipin Tablet (Sacubitril & Valsartan)',
-    brand: 'Ivermectinkart',
+    brand: 'Pure Protocol',
     price: 205.00,
     prescription: true,
     image: img48,
@@ -825,7 +825,7 @@ export const CARDIAC_COLLECTION_PRODUCTS: Product[] = [
   {
     id: 'arney-sacubitril-valsartan',
     name: 'Arney Tablet (Sacubitril & Valsartan)',
-    brand: 'Ivermectinkart',
+    brand: 'Pure Protocol',
     price: 200.00,
     prescription: true,
     image: img49,
@@ -841,7 +841,7 @@ export const CARDIAC_COLLECTION_PRODUCTS: Product[] = [
   {
     id: 'arkamin-clonidine',
     name: 'Arkamin Tablet (Clonidine)',
-    brand: 'Ivermectinkart',
+    brand: 'Pure Protocol',
     price: 25.00,
     prescription: true,
     image: img50,
@@ -857,7 +857,7 @@ export const CARDIAC_COLLECTION_PRODUCTS: Product[] = [
   {
     id: 'alsectan-sacubitril-valsartan',
     name: 'Alsectan Tablet (Sacubitril & Valsartan)',
-    brand: 'Ivermectinkart',
+    brand: 'Pure Protocol',
     price: 230.00,
     prescription: true,
     image: img51,
@@ -873,7 +873,7 @@ export const CARDIAC_COLLECTION_PRODUCTS: Product[] = [
   {
     id: 'alpostin-alprostadil',
     name: 'Alpostin Injection (Alprostadil)',
-    brand: 'Ivermectinkart',
+    brand: 'Pure Protocol',
     price: 180.00,
     prescription: true,
     image: img52,

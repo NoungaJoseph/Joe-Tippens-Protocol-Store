@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Truck, Search, AlertCircle, CheckCircle, Package } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { FORMSPREE_ENDPOINT } from '../config/formspree';
 
 const TrackOrder: React.FC = () => {
     const [orderId, setOrderId] = useState('');
@@ -22,7 +23,7 @@ const TrackOrder: React.FC = () => {
         formData.append('_subject', 'Order Tracking Request');
 
         try {
-            fetch('https://formspree.io/f/xaqwpzbo', {
+            fetch(FORMSPREE_ENDPOINT, {
                 method: 'POST',
                 body: formData,
                 headers: { 'Accept': 'application/json' }

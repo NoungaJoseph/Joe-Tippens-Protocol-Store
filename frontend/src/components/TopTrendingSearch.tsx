@@ -11,6 +11,10 @@ import bladderImage from '../assets/trendind searchs/BLADDER.png';
 import womenImage from '../assets/trendind searchs/WOMEN.png';
 import antiFungalImage from '../assets/trendind searchs/ANTI FUNGAL.png';
 import antiBioticImage from '../assets/trendind searchs/ANTI BIOTIC.png';
+import ivermectinImage from '../assets/trendind searchs/IVERMECTIN Tablets.png';
+import edImage from '../assets/trendind searchs/ERECTILE disfunction.png';
+import cardiacImage from '../assets/trendind searchs/CARDIAC CARE.png';
+import colonImage from '../assets/trendind searchs/COLON CARE.png';
 
 interface CategoryCard {
   id: string;
@@ -90,6 +94,38 @@ const TopTrendingSearch: React.FC = () => {
       bgColor: 'bg-green-300',
       illustration: antiBioticImage,
       href: '/all-pills?search=antibiotic',
+    },
+    {
+      id: 'ivermectin',
+      title: 'IVERMECTIN',
+      subtitle: 'Tablets',
+      bgColor: 'bg-emerald-500',
+      illustration: ivermectinImage,
+      href: '/all-pills?category=Ivermectin',
+    },
+    {
+      id: 'ed',
+      title: 'ERECTILE',
+      subtitle: 'Dysfunction',
+      bgColor: 'bg-teal-500',
+      illustration: edImage,
+      href: '/all-pills?category=Erectile%20Dysfunction',
+    },
+    {
+      id: 'cardiac',
+      title: 'CARDIAC',
+      subtitle: 'Care',
+      bgColor: 'bg-cyan-500',
+      illustration: cardiacImage,
+      href: '/all-pills?category=Cardiac%20Care',
+    },
+    {
+      id: 'colon',
+      title: 'COLON',
+      subtitle: 'Care',
+      bgColor: 'bg-green-500',
+      illustration: colonImage,
+      href: '/all-pills?category=Colon%20Care',
     },
   ];
   const visibleCategories = useMemo(
