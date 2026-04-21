@@ -34,7 +34,7 @@ const ShippingPolicy: React.FC = () => {
                             </div>
                             <p>Shipping charges for your order will be calculated and displayed at checkout.</p>
                             <ul className="list-disc pl-5 space-y-2 mt-4">
-                                <li><strong>Standard Shipping (3-5 business days):</strong> Free for orders over $100. Flat rate $9.99 for orders under $100.</li>
+                                <li><strong>Standard Shipping (3-5 business days):</strong> Free for all orders.</li>
                                 <li><strong>Express Shipping (1-2 business days):</strong> Flat rate $24.99.</li>
                                 <li><strong>Overnight Delivery:</strong> Available upon request for select locations. Cost varies by weight and location.</li>
                             </ul>
@@ -64,7 +64,7 @@ const ShippingPolicy: React.FC = () => {
                                 please contact the shipment carrier to file a claim.
                             </p>
                             <p className="mt-2">
-                                However, we want to help. If your package is lost, please contact our support team at <strong>Joe.tippens.protocol@outlook.com</strong> and we will do our best to assist you with a replacement or resolution.
+                                However, we want to help. If your package is lost, please contact our support team at <strong>Joe.tippens@email.com</strong> and we will do our best to assist you with a replacement or resolution.
                             </p>
                         </div>
                     </div>

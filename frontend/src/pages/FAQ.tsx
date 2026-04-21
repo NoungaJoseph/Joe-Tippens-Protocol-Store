@@ -268,8 +268,8 @@ const FAQ: React.FC = () => {
               <Link to="/contact" className="bg-cyan-600 text-white px-8 py-3 rounded-lg font-bold hover:bg-cyan-500 transition-all shadow-lg hover:shadow-cyan-500/30 flex items-center justify-center gap-2">
                 Contact Us <ArrowRight size={18} />
               </Link>
-              <a href="tel:+12109018480" className="bg-white/10 backdrop-blur-sm text-white border border-white/20 px-8 py-3 rounded-lg font-bold hover:bg-white/20 transition-all flex items-center justify-center gap-2">
-                Call +1(581)5085308
+              <a href="tel:+15795015923" className="bg-white/10 backdrop-blur-sm text-white border border-white/20 px-8 py-3 rounded-lg font-bold hover:bg-white/20 transition-all flex items-center justify-center gap-2">
+                Call +1(579) 5015923
               </a>
             </div>
           </div>

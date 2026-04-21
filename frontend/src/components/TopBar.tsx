@@ -8,9 +8,9 @@ const TopBar: React.FC = () => {
       <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-3 text-center md:flex-row md:text-left">
         {/* Left: Email */}
         <div className="min-w-0">
-          <a href="mailto:Joe.tippens.protocol@outlook.com" className="flex items-center justify-center gap-2 font-medium transition-opacity hover:opacity-85 md:justify-start">
+          <a href="mailto:Joe.tippens@email.com" className="flex items-center justify-center gap-2 font-medium transition-opacity hover:opacity-85 md:justify-start">
             <Mail size={18} />
-            <span className="break-all sm:break-normal">Joe.tippens.protocol@outlook.com</span>
+            <span className="break-all sm:break-normal">Joe.tippens@email.com</span>
           </a>
         </div>
 
