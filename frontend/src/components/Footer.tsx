@@ -1,18 +1,36 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import { Facebook, Instagram, Mail, MapPin, Phone, Twitter } from 'lucide-react';
 import logo from '../assets/images/logo-v2.png';
+import { FORMSPREE_ENDPOINT } from '../config/formspree';
+import { MOCK_PRODUCTS } from '../constants';
+import { hasProductsForCatalogPath } from '../utils/catalogVisibility';
 
 const Footer: React.FC = () => {
+  const categoryLinks = useMemo(
+    () =>
+      [
+        { label: 'Anti cancer', path: '/all-pills?search=anti%20cancer' },
+        { label: 'Anti viral', path: '/all-pills?search=anti%20viral' },
+        { label: 'Ivermectin', path: '/all-pills?category=Ivermectin' },
+        { label: "Men's health", path: '/all-pills?category=Erectile%20Dysfunction' },
+        { label: 'Life saving drug', path: '/all-pills?search=life%20saving' },
+        { label: 'Women care', path: '/all-pills?search=women%20care' },
+        { label: 'Asthma', path: '/all-pills?search=asthma' },
+        { label: 'Respiratory care', path: '/all-pills?search=respiratory' }
+      ].filter((link) => hasProductsForCatalogPath(MOCK_PRODUCTS, link.path)),
+    []
+  );
+
   return (
     <footer className="border-t border-slate-200 bg-[#f7f7f7] pt-14 text-slate-900">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 gap-10 border-b border-slate-300 pb-10 lg:grid-cols-2">
           <div>
             <div className="mb-5 flex items-center gap-4">
-              <img src={logo} alt="Ivermectinkart" className="h-16 w-16 object-contain" />
+              <img src={logo} alt="Pure Protocol" className="h-16 w-16 object-contain" />
               <div>
-                <p className="text-3xl font-black tracking-[-0.04em] text-[#2d7f78] sm:text-4xl">Ivermectinkart</p>
+                <p className="text-3xl font-black tracking-[-0.04em] text-[#2d7f78] sm:text-4xl">Pure Protocol</p>
                 <p className="text-base font-medium text-slate-500">Quality Meds</p>
               </div>
             </div>
@@ -56,7 +74,7 @@ const Footer: React.FC = () => {
             <h3 className="mb-6 text-2xl font-black tracking-[-0.03em] text-[#2d7f78] sm:text-3xl">
               Subscribe to our newsletter • Don&apos;t miss out!
             </h3>
-            <form action="https://formspree.io/f/xaqwpzbo" method="POST" className="space-y-4">
+            <form action={FORMSPREE_ENDPOINT} method="POST" className="space-y-4">
               <label className="block text-lg font-medium text-slate-700" htmlFor="footer-email">
                 Email *
               </label>
@@ -101,21 +119,18 @@ const Footer: React.FC = () => {
           <div>
             <h4 className="mb-4 border-b-2 border-black pb-2 text-3xl font-black tracking-[-0.04em] text-[#2d7f78] sm:text-4xl">Categories</h4>
             <ul className="space-y-2 text-lg leading-tight text-slate-900 sm:text-2xl">
-              <li><Link to="/all-pills?search=anti%20cancer" className="hover:text-[#2d7f78]">Anti cancer</Link></li>
-              <li><Link to="/all-pills?search=anti%20viral" className="hover:text-[#2d7f78]">Anti viral</Link></li>
-              <li><Link to="/all-pills?category=Ivermectin" className="hover:text-[#2d7f78]">Ivermectin</Link></li>
-              <li><Link to="/all-pills?category=Erectile%20Dysfunction" className="hover:text-[#2d7f78]">Men&apos;s health</Link></li>
-              <li><Link to="/all-pills?search=life%20saving" className="hover:text-[#2d7f78]">Life saving drug</Link></li>
-              <li><Link to="/all-pills?search=women%20care" className="hover:text-[#2d7f78]">Women care</Link></li>
-              <li><Link to="/all-pills?search=asthma" className="hover:text-[#2d7f78]">Asthma</Link></li>
-              <li><Link to="/all-pills?search=respiratory" className="hover:text-[#2d7f78]">Respiratory care</Link></li>
+              {categoryLinks.map((category) => (
+                <li key={category.path}>
+                  <Link to={category.path} className="hover:text-[#2d7f78]">{category.label}</Link>
+                </li>
+              ))}
             </ul>
           </div>
 
           <div>
             <h4 className="mb-4 border-b-2 border-black pb-2 text-3xl font-black tracking-[-0.04em] text-[#2d7f78] sm:text-4xl">Quick links</h4>
             <ul className="space-y-2 text-lg leading-tight text-slate-900 sm:text-2xl">
-              <li><Link to="/about" className="hover:text-[#2d7f78]">Why Ivermectinkart</Link></li>
+              <li><Link to="/about" className="hover:text-[#2d7f78]">Why Pure Protocol</Link></li>
               <li><Link to="/about" className="hover:text-[#2d7f78]">About us</Link></li>
               <li><Link to="/contact" className="hover:text-[#2d7f78]">Contact us</Link></li>
               <li><Link to="/all-pills" className="hover:text-[#2d7f78]">Sitemap</Link></li>
@@ -143,7 +158,7 @@ const Footer: React.FC = () => {
         </div>
 
         <div className="py-6 text-center text-sm text-slate-600">
-          {new Date().getFullYear()} Ivermectinkart | All Rights Reserved
+          {new Date().getFullYear()} Pure Protocol | All Rights Reserved
         </div>
       </div>
     </footer>

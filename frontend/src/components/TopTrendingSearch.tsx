@@ -1,6 +1,8 @@
-import React, { useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { MessageCircle } from 'lucide-react';
+import { MOCK_PRODUCTS } from '../constants';
+import { hasProductsForCatalogPath } from '../utils/catalogVisibility';
 import acneCareImage from '../assets/trendind searchs/ACNE Care.png';
 import diabeticCareImage from '../assets/trendind searchs/DAIBETIC.png';
 import hivAidsImage from '../assets/trendind searchs/HIVAIDS.png';
@@ -17,6 +19,7 @@ interface CategoryCard {
   bgColor: string;
   bgGradient?: boolean;
   illustration: string;
+  href: string;
 }
 
 const TopTrendingSearch: React.FC = () => {
@@ -29,6 +32,7 @@ const TopTrendingSearch: React.FC = () => {
       subtitle: 'Care',
       bgColor: 'bg-purple-300',
       illustration: acneCareImage,
+      href: '/all-pills?search=acne',
     },
     {
       id: 'diabetic',
@@ -36,6 +40,7 @@ const TopTrendingSearch: React.FC = () => {
       subtitle: 'Care',
       bgColor: 'bg-blue-400',
       illustration: diabeticCareImage,
+      href: '/all-pills?search=diabetic',
     },
     {
       id: 'hiv',
@@ -43,6 +48,7 @@ const TopTrendingSearch: React.FC = () => {
       subtitle: 'Care',
       bgColor: 'bg-red-400',
       illustration: hivAidsImage,
+      href: '/all-pills?category=HIV-AIDS',
     },
     {
       id: 'respiratory',
@@ -50,6 +56,7 @@ const TopTrendingSearch: React.FC = () => {
       subtitle: 'Care',
       bgColor: 'bg-purple-400',
       illustration: respiratoryImage,
+      href: '/all-pills?search=respiratory',
     },
     {
       id: 'bladder',
@@ -57,6 +64,7 @@ const TopTrendingSearch: React.FC = () => {
       subtitle: 'Prostate',
       bgColor: 'bg-blue-300',
       illustration: bladderImage,
+      href: '/all-pills?search=bladder',
     },
     {
       id: 'women',
@@ -65,6 +73,7 @@ const TopTrendingSearch: React.FC = () => {
       bgColor: 'bg-gradient-to-br from-pink-400 to-purple-400',
       bgGradient: true,
       illustration: womenImage,
+      href: '/all-pills?search=women',
     },
     {
       id: 'antifungal',
@@ -72,6 +81,7 @@ const TopTrendingSearch: React.FC = () => {
       subtitle: 'Medication',
       bgColor: 'bg-blue-500',
       illustration: antiFungalImage,
+      href: '/all-pills?category=Anti%20Fungal',
     },
     {
       id: 'antibiotic',
@@ -79,8 +89,13 @@ const TopTrendingSearch: React.FC = () => {
       subtitle: 'Medication',
       bgColor: 'bg-green-300',
       illustration: antiBioticImage,
+      href: '/all-pills?search=antibiotic',
     },
   ];
+  const visibleCategories = useMemo(
+    () => categories.filter((category) => hasProductsForCatalogPath(MOCK_PRODUCTS, category.href)),
+    []
+  );
 
   return (
     <section className="w-full bg-white px-4 py-14 sm:px-6 lg:px-8 lg:py-20">
@@ -110,23 +125,9 @@ const TopTrendingSearch: React.FC = () => {
       {/* Categories Grid */}
       <div className="mx-auto mb-12 max-w-7xl">
         <div className="grid grid-cols-2 gap-4 sm:gap-6 lg:grid-cols-4 lg:gap-8">
-          {categories.map((category) => {
-            const categoryMap: { [key: string]: string } = {
-              acne: 'Acne Care',
-              diabetic: 'Supplements',
-              hiv: 'HIV-AIDS',
-              respiratory: 'Supplements',
-              bladder: 'Supplements',
-              women: 'Supplements',
-              antifungal: 'Anti Fungal',
-              antibiotic: 'Anti Biotic'
-            };
-
-            const productCategory = categoryMap[category.id];
-            const categoryPath = `/all-pills?category=${encodeURIComponent(productCategory)}`;
-
+          {visibleCategories.map((category) => {
             return (
-              <Link key={category.id} to={categoryPath} className="block no-underline">
+              <Link key={category.id} to={category.href} className="block no-underline">
                 <div
                   className={`relative flex h-44 cursor-pointer flex-col justify-between overflow-hidden rounded-3xl p-4 shadow-md transition-transform duration-300 hover:scale-105 hover:shadow-lg sm:h-52 sm:p-6 ${
                     category.bgGradient ? category.bgColor : category.bgColor

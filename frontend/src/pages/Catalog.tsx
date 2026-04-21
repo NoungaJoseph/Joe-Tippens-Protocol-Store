@@ -12,6 +12,7 @@ import {
 import { useCart } from '../context/CartContext';
 import freeDeliveryPromo from '../assets/promo/free delivery.png';
 import allCategoryBanner from '../assets/images/all-category-banner.jpg';
+import { hasProductsForCatalogPath } from '../utils/catalogVisibility';
 
 const trendingSearchImages = import.meta.glob('../assets/trendind searchs/*', {
   eager: true,
@@ -184,6 +185,10 @@ const Catalog: React.FC = () => {
     { title: 'HCQS', subtitle: 'Medication', href: '/all-pills?search=hcqs', image: findTrendingImage('HCQS Medication.png') },
     { title: 'AZITHROMYCIN', subtitle: 'Medication', href: '/all-pills?search=azithromycin', image: findTrendingImage('AZITHROMYCIN Medication.png') }
   ];
+  const visibleAllCategoryCards = useMemo(
+    () => allCategoryCards.filter((category) => hasProductsForCatalogPath(MOCK_PRODUCTS, category.href)),
+    []
+  );
 
   const categoryPalettes = [
     'from-[#6d8fa9] to-[#6488a3]',
@@ -203,7 +208,7 @@ const Catalog: React.FC = () => {
     }
   };
 
-  const quickCategoryLinks = allCategoryCards.slice(0, 10);
+  const quickCategoryLinks = visibleAllCategoryCards.slice(0, 10);
   const collectionTitle = isIvermectinPage ? 'Ivermectin' : 'Fenbendazole';
   const collectionPromoImage = freeDeliveryPromo;
 
@@ -437,7 +442,7 @@ const Catalog: React.FC = () => {
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 gap-3 sm:gap-6 lg:grid-cols-3 xl:grid-cols-4">
-            {allCategoryCards.map((category, index) => (
+            {visibleAllCategoryCards.map((category, index) => (
               <Link
                 key={`${category.title}-${category.subtitle}`}
                 to={category.href}
