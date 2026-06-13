@@ -18,27 +18,27 @@ interface Product {
 const ProductShowcase: React.FC = () => {
   const products: Product[] = [
     {
-      id: 'medical-emergency-kit',
+      id: 'usa-trio',
       name: 'Medical Emergency Kit',
       originalPrice: 260,
       price: 210,
       image: usaMedicalTrio
     },
     {
-      id: 'fenbendazole-1000',
+      id: 'fenben-powder',
       name: 'Fenbendazole 1000 mg',
       originalPrice: 280,
       price: 250,
       image: fenbendazolePowder
     },
     {
-      id: 'medrol',
+      id: 'iverheal',
       name: 'MEDROL (METHYLPREDNISOLONE)',
       price: 160,
       image: methylprednisoloneImage
     },
     {
-      id: 'parasite-cleaner',
+      id: 'ivermectin-paste',
       name: 'Advanced Parasite Cleanser Kit',
       price: 110,
       image: ivermectinPaste
@@ -77,7 +77,7 @@ const ProductShowcase: React.FC = () => {
           {products.map((product) => (
             <div key={product.id} className="flex h-full flex-col px-2">
               <div className="mb-6 h-72 overflow-hidden bg-transparent">
-                <Link to={product.id === 'fenbendazole-1000' ? '/all-pills?search=fenbendazole' : '/all-pills'}>
+                <Link to={`/product/${product.id}`}>
                   <img
                     src={product.image}
                     alt={product.name}

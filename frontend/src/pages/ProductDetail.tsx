@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link, useNavigate } from 'react-router-dom';
 import { Minus, Plus, ShoppingCart, ArrowLeft, Truck, Shield, CheckCircle, Eye, HelpCircle, Star, User, Mail, X, ChevronDown, ChevronUp } from 'lucide-react';
 import { MOCK_PRODUCTS } from '../constants';
 import { useCart } from '../context/CartContext';
