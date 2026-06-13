@@ -71,10 +71,15 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
       body: JSON.stringify({ email, password })
     });
 
-    const data = await res.json();
+    let data;
+    try {
+      data = await res.json();
+    } catch (err) {
+      throw new Error(`Server connection failed. Please ensure your backend is running properly and connected to the database. (Status: ${res.status})`);
+    }
 
     if (!res.ok) {
-      throw new Error(data.msg || 'Login failed');
+      throw new Error(data?.msg || 'Login failed');
     }
 
     localStorage.setItem('pureprotocol_token', data.token);
@@ -90,10 +95,15 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
       body: JSON.stringify({ firstName, lastName, email, password })
     });
 
-    const data = await res.json();
+    let data;
+    try {
+      data = await res.json();
+    } catch (err) {
+      throw new Error(`Server connection failed. Please ensure your backend is running properly and connected to the database. (Status: ${res.status})`);
+    }
 
     if (!res.ok) {
-      throw new Error(data.msg || 'Registration failed');
+      throw new Error(data?.msg || 'Registration failed');
     }
 
     localStorage.setItem('pureprotocol_token', data.token);
