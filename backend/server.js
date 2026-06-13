@@ -32,6 +32,8 @@ app.use(cors({
     if (!origin) return callback(null, true);
     if (
       origin.endsWith(".vercel.app") ||
+      origin.endsWith(".up.railway.app") ||
+      origin.endsWith(".railway.app") ||
       allowedOrigins.includes(origin)
     ) {
       return callback(null, true);
