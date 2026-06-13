@@ -1,6 +1,7 @@
 import React, { Suspense, lazy } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { CartProvider } from './context/CartContext';
+import { AuthProvider } from './context/AuthContext';
 import Layout from './components/Layout';
 import ScrollToTop from './components/ScrollToTop';
 
@@ -22,6 +23,8 @@ const Blog = lazy(() => import('./pages/Blog'));
 const BlogPost = lazy(() => import('./pages/BlogPost'));
 const PrivacyPolicy = lazy(() => import('./pages/PrivacyPolicy'));
 const PaymentStatus = lazy(() => import('./pages/PaymentStatus'));
+const Login = lazy(() => import('./pages/Login'));
+const Register = lazy(() => import('./pages/Register'));
 
 // Simple Loading Fallback
 const PageLoader = () => (
@@ -32,8 +35,9 @@ const PageLoader = () => (
 
 const App: React.FC = () => {
   return (
-    <CartProvider>
-      <Router>
+    <AuthProvider>
+      <CartProvider>
+        <Router>
         <ScrollToTop />
         <Layout>
           <Suspense fallback={<PageLoader />}>
@@ -55,11 +59,14 @@ const App: React.FC = () => {
               <Route path="/blog/:id" element={<BlogPost />} />
               <Route path="/privacy-policy" element={<PrivacyPolicy />} />
               <Route path="/payment-status" element={<PaymentStatus />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/register" element={<Register />} />
             </Routes>
           </Suspense>
         </Layout>
       </Router>
     </CartProvider>
+    </AuthProvider>
   );
 };
 

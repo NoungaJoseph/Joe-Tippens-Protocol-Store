@@ -2,11 +2,13 @@ import React, { useState, useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { ShoppingCart, Menu, X, User, Search } from 'lucide-react';
 import { useCart } from '../context/CartContext';
+import { useAuth } from '../context/AuthContext';
 import { NAV_LINKS } from '../constants';
 import logo from '../assets/images/logo-v2.png';
 
 const Header: React.FC = () => {
   const { itemCount } = useCart();
+  const { user, isAuthenticated, logout } = useAuth();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const [isVisible, setIsVisible] = useState(true);
@@ -72,7 +74,7 @@ const Header: React.FC = () => {
               <img 
                 src={logo} 
                 alt="Pure Protocol" 
-                className="w-[60px] h-[60px] object-contain"
+                className="w-[90px] h-[90px] object-contain"
               />
               <div className="hidden min-w-0 sm:flex sm:flex-col">
                 <span className="text-base font-bold text-[#2d8680]">
@@ -117,12 +119,26 @@ const Header: React.FC = () => {
               </Link>
 
               {/* User Icon */}
-              <Link 
-                to="/track-order" 
-                className="text-gray-600 hover:text-[#2d8680] transition-colors"
-              >
-                <User size={22} strokeWidth={1.5} />
-              </Link>
+              {isAuthenticated ? (
+                <div className="flex items-center gap-3">
+                  <span className="text-sm font-bold text-gray-700 hidden md:block">
+                    Hi, {user?.firstName}
+                  </span>
+                  <button 
+                    onClick={logout}
+                    className="text-gray-600 hover:text-red-600 transition-colors text-sm font-bold"
+                  >
+                    Logout
+                  </button>
+                </div>
+              ) : (
+                <Link 
+                  to="/login" 
+                  className="text-gray-600 hover:text-[#2d8680] transition-colors"
+                >
+                  <User size={22} strokeWidth={1.5} />
+                </Link>
+              )}
 
               {/* Mobile Menu Button */}
               <button

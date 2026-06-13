@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { ShoppingCart } from 'lucide-react';
+import { useCart } from '../context/CartContext';
 import fenbendazolePowder from '../assets/images/fenbendazole-powder.jpg';
 import usaMedicalTrio from '../assets/images/usa-medical-trio.webp';
 import methylprednisoloneImage from '../assets/images/iverheal-6.jpg';
@@ -44,13 +45,34 @@ const ProductShowcase: React.FC = () => {
     }
   ];
 
+  const { addToCart } = useCart();
+
   const handleAddToCart = (product: Product) => {
-    console.log(`Added ${product.name} to cart`);
+    // Map minimal product to a full CartItem compatible object, or look it up in MOCK_PRODUCTS.
+    // For simplicity, we just pass what we have; CartContext might need more fields so let's mock the missing ones.
+    const fullProduct = {
+      id: product.id,
+      name: product.name,
+      price: product.price,
+      image: product.image,
+      category: 'Top Products',
+      description: '',
+      prescription: false,
+      rating: 5,
+      reviews: 10,
+      stock: 100,
+      oldPrice: product.originalPrice
+    };
+    addToCart(fullProduct, 1);
   };
 
   return (
     <section className="bg-white px-4 py-12 sm:px-6 lg:px-8">
       <div className="mx-auto max-w-7xl">
+        <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold text-gray-900 font-serif">Trending Now</h2>
+            <div className="w-16 h-1 bg-green-700 mx-auto mt-4"></div>
+        </div>
         <div className="grid grid-cols-1 gap-x-12 gap-y-14 md:grid-cols-2 xl:grid-cols-3">
           {products.map((product) => (
             <div key={product.id} className="flex h-full flex-col px-2">

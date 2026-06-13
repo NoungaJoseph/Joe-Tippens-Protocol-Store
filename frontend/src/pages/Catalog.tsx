@@ -140,7 +140,7 @@ const Catalog: React.FC = () => {
     { title: 'ALZHEIMER', subtitle: 'Medication', href: '/all-pills?search=alzheimer', image: findTrendingImage('ALZHEIMER.png') },
     { title: 'ADDICTION', subtitle: 'Medication', href: '/all-pills?search=addiction', image: findTrendingImage('ADDICTION.png') },
     { title: 'ANTI BIOTICS', subtitle: 'Medication', href: '/all-pills?search=antibiotic', image: findTrendingImage('ANTI BIOTIC.png') },
-    { title: 'ANTI CANCER', subtitle: 'Medication', href: '/all-pills?search=anti cancer', image: findTrendingImage('ANTI CANCER.png') },
+    { title: 'ANTI CANCER', subtitle: 'Medication', href: '/all-pills?category=Anti%20Cancer', image: findTrendingImage('ANTI CANCER.png') },
     { title: 'ANTI FUNGAL', subtitle: 'Medication', href: '/all-pills?category=Anti Fungal', image: findTrendingImage('ANTI FUNGAL.png') },
     { title: 'ANTI MALERIAL', subtitle: 'Medication', href: '/all-pills?search=anti malarial', image: findTrendingImage('ANTI MALERIAL.png') },
     { title: 'ANTI MIGRAINE', subtitle: 'Medication', href: '/all-pills?search=migraine', image: findTrendingImage('ANTI MIGRAINE.png') },

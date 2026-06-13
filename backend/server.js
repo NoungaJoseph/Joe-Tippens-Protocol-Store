@@ -4,6 +4,7 @@ const cors = require("cors");
 const helmet = require("helmet");
 const rateLimit = require("express-rate-limit");
 const nodemailer = require("nodemailer");
+const mongoose = require("mongoose");
 
 const app = express();
 
@@ -104,5 +105,22 @@ app.get("/", (req, res) => {
   res.send("PureProtocol Backend is running!");
 });
 
+app.use("/api/auth", require("./routes/auth"));
+
 const PORT = process.env.PORT || 4242;
-app.listen(PORT, () => console.log(`Node server listening on port ${PORT}!`));
+
+// Connect to MongoDB
+mongoose
+  .connect(process.env.MONGO_URI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
+  .then(() => {
+    console.log("MongoDB Connected");
+    app.listen(PORT, () => console.log(`Node server listening on port ${PORT}!`));
+  })
+  .catch((err) => {
+    console.error("MongoDB connection error:", err);
+    // Fallback to start server even if DB fails initially
+    app.listen(PORT, () => console.log(`Node server listening on port ${PORT}! (DB not connected)`));
+  });

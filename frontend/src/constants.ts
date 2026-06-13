@@ -5,6 +5,7 @@ import { HIV_COLLECTION_PRODUCTS } from './hivCollection';
 import { COLON_CARE_COLLECTION_PRODUCTS } from './colonCareCollection';
 import { ANTI_FUNGAL_COLLECTION_PRODUCTS } from './antiFungalCollection';
 import { CARDIAC_COLLECTION_PRODUCTS } from './cardiacCollection';
+import { ANTI_CANCER_COLLECTION_PRODUCTS } from './antiCancerCollection';
 
 // Import Images
 import onco1 from './assets/images/onco-adjunct-pathway-1.webp';
@@ -639,7 +640,8 @@ export const MOCK_PRODUCTS: Product[] = [
   ...HIV_COLLECTION_PRODUCTS,
   ...CARDIAC_COLLECTION_PRODUCTS,
   ...COLON_CARE_COLLECTION_PRODUCTS,
-  ...ANTI_FUNGAL_COLLECTION_PRODUCTS
+  ...ANTI_FUNGAL_COLLECTION_PRODUCTS,
+  ...ANTI_CANCER_COLLECTION_PRODUCTS
 ];
 
 export const NAV_LINKS = [

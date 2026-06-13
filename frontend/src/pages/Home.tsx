@@ -44,11 +44,11 @@ const Home: React.FC = () => {
     ];
 
     const mostLoved = MOCK_PRODUCTS.filter((product) =>
-        ['120-day-protocol', 'usa-trio', 'iverjohn-3mg', 'iverjohn-6mg', 'covimectin-tablet-12mg', 'fenben-powder'].includes(product.id)
+        ['120-day-protocol', 'usa-trio', 'iverjohn-3mg', 'iverjohn-6mg', 'covimectin-tablet-12mg', 'fenben-powder', 'mebendazole-500-mg-ivermectin-25mg', 'fenbendazole-tablet'].includes(product.id)
     );
 
     const featured = MOCK_PRODUCTS.filter((product) =>
-        ['fenben-tabs', 'ivermectin-tabs', 'cbd-oil-kids', 'vit-b17-cup', 'ivecop-standard-tablet', 'ivermectin-paste-dewormer'].includes(product.id)
+        ['fenben-tabs', 'ivermectin-tabs', 'cbd-oil-kids', 'vit-b17-cup', 'ivecop-standard-tablet', 'ivermectin-paste-dewormer', 'ivermectin-tablet', 'covilife-40mg-tablet-ivermectin', 'ivermectin-injection-1'].includes(product.id)
     );
 
     const newArrivals = MOCK_PRODUCTS.filter((product) =>
@@ -204,15 +204,15 @@ const Home: React.FC = () => {
                             </div>
 
                             <div className="relative lg:w-[42%]">
-                                <div className="absolute -left-4 top-8 hidden rounded-full border-2 border-[#7bc49b] bg-white px-5 py-4 text-center md:block">
+                                <div className="absolute -left-4 top-8 hidden rounded-full border-2 border-[#7bc49b] bg-white px-5 py-4 text-center md:block z-10">
                                     <p className="text-xs font-bold uppercase text-[#7bc49b]">Fast</p>
                                     <p className="text-sm font-semibold text-gray-800">Arrival</p>
                                 </div>
-                                <div className="absolute -bottom-5 left-8 hidden rounded-full border-2 border-[#1f8a57] bg-white px-6 py-4 text-center lg:block">
+                                <div className="absolute -bottom-5 left-8 hidden rounded-full border-2 border-[#1f8a57] bg-white px-6 py-4 text-center lg:block z-10">
                                     <p className="text-xs font-bold uppercase text-[#1f8a57]">Top Rated</p>
                                     <p className="text-sm font-semibold text-gray-800">New Stock</p>
                                 </div>
-                                <div className="absolute -right-3 bottom-10 hidden rounded-full border-2 border-[#7bc49b] bg-white px-5 py-4 text-center xl:block">
+                                <div className="absolute -right-3 bottom-10 hidden rounded-full border-2 border-[#7bc49b] bg-white px-5 py-4 text-center xl:block z-10">
                                     <p className="text-xs font-bold uppercase text-[#7bc49b]">
                                         {currentNewArrival + 1}/{newArrivals.length}
                                     </p>

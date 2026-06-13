@@ -1,9 +1,32 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import { User, Mail, Lock } from 'lucide-react';
-import { FORMSPREE_ENDPOINT } from '../config/formspree';
+import { useAuth } from '../context/AuthContext';
 
 const Register: React.FC = () => {
+  const navigate = useNavigate();
+  const { register } = useAuth();
+  const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false);
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setError('');
+    setLoading(true);
+    try {
+      await register(firstName, lastName, email, password);
+      navigate('/');
+    } catch (err: any) {
+      setError(err.message || 'Failed to register account');
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <div className="min-h-screen bg-gray-50 flex flex-col justify-center py-12 sm:px-6 lg:px-8">
       <div className="sm:mx-auto sm:w-full sm:max-w-md">
@@ -17,23 +40,26 @@ const Register: React.FC = () => {
 
       <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
         <div className="bg-white py-8 px-4 shadow-xl sm:rounded-lg sm:px-10 border border-gray-100">
+          {error && (
+            <div className="mb-4 bg-red-50 border border-red-200 text-red-600 px-4 py-3 rounded-md text-sm">
+              {error}
+            </div>
+          )}
           <form
-            action={FORMSPREE_ENDPOINT}
-            method="POST"
+            onSubmit={handleSubmit}
             className="space-y-6"
           >
-            <input type="hidden" name="_subject" value="New Account Registration" />
             <div className="grid grid-cols-2 gap-4">
               <div>
                 <label className="block text-sm font-medium text-gray-700">First Name</label>
                 <div className="mt-1 relative">
-                  <input type="text" name="first_name" required className="block w-full px-3 py-3 border border-gray-300 rounded-md shadow-sm focus:ring-emerald-500 focus:border-emerald-500 sm:text-sm" />
+                  <input type="text" value={firstName} onChange={(e) => setFirstName(e.target.value)} name="first_name" required className="block w-full px-3 py-3 border border-gray-300 rounded-md shadow-sm focus:ring-emerald-500 focus:border-emerald-500 sm:text-sm" />
                 </div>
               </div>
               <div>
                 <label className="block text-sm font-medium text-gray-700">Last Name</label>
                 <div className="mt-1 relative">
-                  <input type="text" name="last_name" required className="block w-full px-3 py-3 border border-gray-300 rounded-md shadow-sm focus:ring-emerald-500 focus:border-emerald-500 sm:text-sm" />
+                  <input type="text" value={lastName} onChange={(e) => setLastName(e.target.value)} name="last_name" required className="block w-full px-3 py-3 border border-gray-300 rounded-md shadow-sm focus:ring-emerald-500 focus:border-emerald-500 sm:text-sm" />
                 </div>
               </div>
             </div>
@@ -41,7 +67,7 @@ const Register: React.FC = () => {
             <div>
               <label className="block text-sm font-medium text-gray-700">Email address</label>
               <div className="mt-1 relative">
-                <input type="email" name="email" required className="block w-full px-3 py-3 pl-10 border border-gray-300 rounded-md shadow-sm focus:ring-emerald-500 focus:border-emerald-500 sm:text-sm" />
+                <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} name="email" required className="block w-full px-3 py-3 pl-10 border border-gray-300 rounded-md shadow-sm focus:ring-emerald-500 focus:border-emerald-500 sm:text-sm" />
                 <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" size={18} />
               </div>
             </div>
@@ -49,7 +75,7 @@ const Register: React.FC = () => {
             <div>
               <label className="block text-sm font-medium text-gray-700">Password</label>
               <div className="mt-1 relative">
-                <input type="password" name="password" required className="block w-full px-3 py-3 pl-10 border border-gray-300 rounded-md shadow-sm focus:ring-emerald-500 focus:border-emerald-500 sm:text-sm" />
+                <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} name="password" required className="block w-full px-3 py-3 pl-10 border border-gray-300 rounded-md shadow-sm focus:ring-emerald-500 focus:border-emerald-500 sm:text-sm" />
                 <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" size={18} />
               </div>
             </div>
@@ -57,9 +83,10 @@ const Register: React.FC = () => {
             <div>
               <button
                 type="submit"
-                className="w-full flex justify-center py-3 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-emerald-600 hover:bg-emerald-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-emerald-500 transition-colors"
+                disabled={loading}
+                className="w-full flex justify-center py-3 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-emerald-600 hover:bg-emerald-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-emerald-500 transition-colors disabled:opacity-50"
               >
-                Create Account
+                {loading ? 'Creating account...' : 'Create Account'}
               </button>
             </div>
           </form>

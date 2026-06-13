@@ -15,6 +15,7 @@ import ivermectinImage from '../assets/trendind searchs/IVERMECTIN Tablets.png';
 import edImage from '../assets/trendind searchs/ERECTILE disfunction.png';
 import cardiacImage from '../assets/trendind searchs/CARDIAC CARE.png';
 import colonImage from '../assets/trendind searchs/COLON CARE.png';
+import antiCancerImage from '../assets/trendind searchs/ANTI CANCER.png';
 
 interface CategoryCard {
   id: string;
@@ -126,6 +127,14 @@ const TopTrendingSearch: React.FC = () => {
       bgColor: 'bg-green-500',
       illustration: colonImage,
       href: '/all-pills?category=Colon%20Care',
+    },
+    {
+      id: 'anticancer',
+      title: 'ANTI CANCER',
+      subtitle: 'Medication',
+      bgColor: 'bg-rose-500',
+      illustration: antiCancerImage,
+      href: '/all-pills?category=Anti%20Cancer',
     },
   ];
   const visibleCategories = useMemo(

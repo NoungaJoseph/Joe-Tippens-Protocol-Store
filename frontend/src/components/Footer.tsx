@@ -28,7 +28,7 @@ const Footer: React.FC = () => {
         <div className="grid grid-cols-1 gap-10 border-b border-slate-300 pb-10 lg:grid-cols-2">
           <div>
             <div className="mb-5 flex items-center gap-4">
-              <img src={logo} alt="Pure Protocol" className="h-16 w-16 object-contain" />
+              <img src={logo} alt="Pure Protocol" className="h-24 w-24 object-contain" />
               <div>
                 <p className="text-3xl font-black tracking-[-0.04em] text-[#2d7f78] sm:text-4xl">Pure Protocol</p>
                 <p className="text-base font-medium text-slate-500">Quality Meds</p>
