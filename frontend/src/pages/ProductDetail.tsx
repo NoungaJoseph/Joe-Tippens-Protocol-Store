@@ -172,7 +172,7 @@ const ProductDetail: React.FC = () => {
     const allImages = product.images && product.images.length > 0 ? product.images : [product.image];
 
     return (
-        <div className="bg-white min-h-screen pt-24 pb-12">
+        <div className="bg-white min-h-screen pt-24 pb-12 overflow-x-hidden">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <Link to={`/all-pills?category=${encodeURIComponent(product.category)}`} className="inline-flex items-center text-gray-500 hover:text-green-700 mb-8 transition-colors font-medium">
                     <ArrowLeft size={18} className="mr-2" /> Back to {product.category}
@@ -378,10 +378,10 @@ const ProductDetail: React.FC = () => {
                 {/* Product Tabs Section */}
                 <div className="border-t border-gray-200">
                     {/* Tabs Header */}
-                    <div className="flex border-b border-gray-200">
+                    <div className="flex overflow-x-auto whitespace-nowrap border-b border-gray-200 scrollbar-hide">
                         <button
                             onClick={() => setActiveTab('description')}
-                            className={`px-8 py-4 font-semibold text-sm sm:text-base transition-colors ${activeTab === 'description'
+                            className={`px-4 sm:px-8 py-3 sm:py-4 font-semibold text-sm sm:text-base transition-colors ${activeTab === 'description'
                                 ? 'border-b-2 border-green-700 text-green-700 bg-green-50/50'
                                 : 'text-gray-500 hover:text-gray-700 hover:bg-gray-50'
                                 }`}
@@ -390,7 +390,7 @@ const ProductDetail: React.FC = () => {
                         </button>
                         <button
                             onClick={() => setActiveTab('additional')}
-                            className={`px-8 py-4 font-semibold text-sm sm:text-base transition-colors ${activeTab === 'additional'
+                            className={`px-4 sm:px-8 py-3 sm:py-4 font-semibold text-sm sm:text-base transition-colors ${activeTab === 'additional'
                                 ? 'border-b-2 border-green-700 text-green-700 bg-green-50/50'
                                 : 'text-gray-500 hover:text-gray-700 hover:bg-gray-50'
                                 }`}
@@ -399,7 +399,7 @@ const ProductDetail: React.FC = () => {
                         </button>
                         <button
                             onClick={() => setActiveTab('reviews')}
-                            className={`px-8 py-4 font-semibold text-sm sm:text-base transition-colors ${activeTab === 'reviews'
+                            className={`px-4 sm:px-8 py-3 sm:py-4 font-semibold text-sm sm:text-base transition-colors ${activeTab === 'reviews'
                                 ? 'border-b-2 border-green-700 text-green-700 bg-green-50/50'
                                 : 'text-gray-500 hover:text-gray-700 hover:bg-gray-50'
                                 }`}
