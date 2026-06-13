@@ -44,7 +44,7 @@ app.use(cors({
     return callback(new Error(`CORS blocked: ${origin}`));
   },
   methods: ["GET", "POST", "OPTIONS"],
-  allowedHeaders: ["Content-Type", "Authorization"],
+  allowedHeaders: ["Content-Type", "Authorization", "x-auth-token"],
 }));
 
 app.options("*", cors());
