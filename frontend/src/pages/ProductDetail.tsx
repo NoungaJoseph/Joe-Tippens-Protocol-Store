@@ -310,35 +310,37 @@ const ProductDetail: React.FC = () => {
                             </div>
 
                             <div className="flex flex-col sm:flex-row gap-4 mb-8">
-                                <div className="flex items-center border border-gray-300 rounded-lg bg-white shadow-sm h-14">
+                                <div className="flex items-center border border-gray-300 rounded-lg bg-white shadow-sm h-14 w-full sm:w-auto justify-between sm:justify-start">
                                     <button
                                         onClick={handleDecrement}
-                                        className="px-4 h-full hover:bg-gray-50 text-gray-600 transition-colors rounded-l-lg"
+                                        className="px-6 sm:px-4 h-full hover:bg-gray-50 text-gray-600 transition-colors rounded-l-lg border-r border-gray-200"
                                     >
                                         <Minus size={18} />
                                     </button>
-                                    <div className="w-16 text-center font-bold text-lg">{quantity}</div>
+                                    <div className="w-16 sm:w-16 text-center font-bold text-lg flex-1 sm:flex-none">{quantity}</div>
                                     <button
                                         onClick={handleIncrement}
-                                        className="px-4 h-full hover:bg-gray-50 text-gray-600 transition-colors rounded-r-lg"
+                                        className="px-6 sm:px-4 h-full hover:bg-gray-50 text-gray-600 transition-colors rounded-r-lg border-l border-gray-200"
                                     >
                                         <Plus size={18} />
                                     </button>
                                 </div>
 
-                                <button
-                                    onClick={handleAddToCart}
-                                    className="flex-1 bg-green-700 text-white h-14 rounded-lg hover:bg-green-800 transition-all shadow-lg hover:shadow-green-200 flex items-center justify-center gap-2 font-bold text-lg"
-                                >
-                                    <ShoppingCart size={22} /> Add to Cart
-                                </button>
-                                
-                                <button
-                                    onClick={handleToggleSave}
-                                    className={`w-14 h-14 flex items-center justify-center rounded-lg border-2 transition-colors ${isSaved ? 'border-pink-500 bg-pink-50 text-pink-600' : 'border-gray-200 bg-white text-gray-400 hover:border-pink-500 hover:text-pink-600'}`}
-                                >
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill={isSaved ? "currentColor" : "none"} stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
-                                </button>
+                                <div className="flex gap-3 w-full sm:flex-1">
+                                    <button
+                                        onClick={handleAddToCart}
+                                        className="flex-1 bg-green-700 text-white h-14 rounded-lg hover:bg-green-800 transition-all shadow-lg hover:shadow-green-200 flex items-center justify-center gap-2 font-bold text-lg w-full"
+                                    >
+                                        <ShoppingCart size={22} /> Add to Cart
+                                    </button>
+                                    
+                                    <button
+                                        onClick={handleToggleSave}
+                                        className={`w-14 h-14 shrink-0 flex items-center justify-center rounded-lg border-2 transition-colors ${isSaved ? 'border-pink-500 bg-pink-50 text-pink-600' : 'border-gray-200 bg-white text-gray-400 hover:border-pink-500 hover:text-pink-600'}`}
+                                    >
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill={isSaved ? "currentColor" : "none"} stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+                                    </button>
+                                </div>
                             </div>
 
                             {showNotification && (

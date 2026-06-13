@@ -486,7 +486,9 @@ const Catalog: React.FC = () => {
           className="absolute inset-0 w-full h-full object-cover"
         />
         <div className="relative z-20 text-center text-white px-4">
-          <h1 className="text-4xl lg:text-5xl font-bold tracking-tight">All Products</h1>
+          <h1 className="text-4xl lg:text-5xl font-bold tracking-tight uppercase">
+            {selectedCategories.length === 1 ? selectedCategories[0] : (searchTerm ? `SEARCH: ${searchTerm}` : 'ALL PRODUCTS')}
+          </h1>
         </div>
       </section>
 
