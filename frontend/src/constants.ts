@@ -646,7 +646,17 @@ export const MOCK_PRODUCTS: Product[] = [
   ...COLON_CARE_COLLECTION_PRODUCTS,
   ...ANTI_FUNGAL_COLLECTION_PRODUCTS,
   ...ANTI_CANCER_COLLECTION_PRODUCTS
-];
+].map(product => {
+  if (!product.reviewsData || product.reviewsData.length === 0) {
+    const reviewCount = product.reviews || Math.floor(Math.random() * 5) + 4;
+    return {
+      ...product,
+      reviews: reviewCount,
+      reviewsData: generateReviews(product.id, reviewCount)
+    };
+  }
+  return product;
+});
 
 export const NAV_LINKS = [
   { label: 'Home', path: '/' },
