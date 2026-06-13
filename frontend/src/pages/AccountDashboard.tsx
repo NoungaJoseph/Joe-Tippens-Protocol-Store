@@ -28,21 +28,21 @@ const AccountDashboard: React.FC = () => {
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Header section */}
-        <div className="bg-white rounded-3xl shadow-sm p-8 mb-8 border border-gray-100 flex flex-col md:flex-row items-center justify-between gap-6">
-          <div className="flex items-center gap-6">
-            <div className="w-20 h-20 bg-green-100 text-green-700 rounded-full flex items-center justify-center text-2xl font-black shadow-inner">
+        <div className="bg-white rounded-xl shadow-sm p-5 sm:p-6 mb-6 border border-gray-100 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <div className="flex items-center gap-4 w-full sm:w-auto">
+            <div className="w-14 h-14 shrink-0 bg-green-100 text-green-700 rounded-full flex items-center justify-center text-xl font-bold">
               {user.firstName[0]}{user.lastName[0]}
             </div>
-            <div>
-              <h1 className="text-3xl font-black text-gray-900 tracking-tight">
-                Welcome back, {user.firstName}!
+            <div className="min-w-0 flex-1">
+              <h1 className="text-xl sm:text-2xl font-bold text-gray-900 truncate">
+                Welcome, {user.firstName}!
               </h1>
-              <p className="text-gray-500 font-medium">{user.email}</p>
+              <p className="text-sm text-gray-500 truncate">{user.email}</p>
             </div>
           </div>
           <button 
             onClick={handleLogout}
-            className="flex items-center gap-2 px-6 py-3 bg-red-50 text-red-600 hover:bg-red-100 rounded-xl font-bold transition-colors"
+            className="flex items-center justify-center gap-2 w-full sm:w-auto px-5 py-2.5 bg-red-50 text-red-600 hover:bg-red-100 rounded-lg font-semibold transition-colors"
           >
             <LogOut size={18} />
             Sign Out
@@ -54,35 +54,35 @@ const AccountDashboard: React.FC = () => {
           
           {/* Sidebar */}
           <div className="lg:w-64 flex-shrink-0">
-            <div className="bg-white rounded-3xl shadow-sm p-4 border border-gray-100 sticky top-24">
-              <nav className="space-y-2">
+            <div className="bg-white rounded-xl shadow-sm p-3 border border-gray-100 sticky top-24">
+              <nav className="space-y-1">
                 <button
                   onClick={() => setActiveTab('saved')}
-                  className={`w-full flex items-center gap-3 px-5 py-4 rounded-2xl font-bold transition-all text-left ${
+                  className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg font-medium transition-colors text-left ${
                     activeTab === 'saved' 
-                      ? 'bg-green-700 text-white shadow-lg shadow-green-700/20' 
+                      ? 'bg-green-50 text-green-700' 
                       : 'text-gray-600 hover:bg-gray-50'
                   }`}
                 >
-                  <Heart size={20} className={activeTab === 'saved' ? 'fill-current' : ''} />
+                  <Heart size={18} className={activeTab === 'saved' ? 'fill-current' : ''} />
                   Saved Products
                 </button>
                 <button
                   onClick={() => setActiveTab('orders')}
-                  className={`w-full flex items-center gap-3 px-5 py-4 rounded-2xl font-bold transition-all text-left ${
+                  className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg font-medium transition-colors text-left ${
                     activeTab === 'orders' 
-                      ? 'bg-green-700 text-white shadow-lg shadow-green-700/20' 
+                      ? 'bg-green-50 text-green-700' 
                       : 'text-gray-600 hover:bg-gray-50'
                   }`}
                 >
-                  <Package size={20} />
+                  <Package size={18} />
                   Order History
                 </button>
                 <button
                   onClick={() => navigate('/all-pills')}
-                  className="w-full flex items-center gap-3 px-5 py-4 rounded-2xl font-bold transition-all text-left text-gray-600 hover:bg-gray-50 mt-4 border-t border-dashed border-gray-200"
+                  className="w-full flex items-center gap-3 px-4 py-3 rounded-lg font-medium transition-colors text-left text-gray-600 hover:bg-gray-50 mt-2 border-t border-gray-100"
                 >
-                  <Package size={20} />
+                  <Package size={18} />
                   Continue Shopping
                 </button>
               </nav>
@@ -94,10 +94,10 @@ const AccountDashboard: React.FC = () => {
             
             {/* Saved Products Tab */}
             {activeTab === 'saved' && (
-              <div className="bg-white rounded-3xl shadow-sm p-8 border border-gray-100 min-h-[400px]">
-                <h2 className="text-2xl font-bold mb-8 flex items-center gap-3">
-                  <div className="w-10 h-10 bg-pink-100 text-pink-600 rounded-full flex items-center justify-center">
-                    <Heart size={20} className="fill-current" />
+              <div className="bg-white rounded-xl shadow-sm p-5 sm:p-6 border border-gray-100 min-h-[400px]">
+                <h2 className="text-xl font-bold mb-6 flex items-center gap-3 text-gray-900">
+                  <div className="w-8 h-8 bg-pink-100 text-pink-600 rounded-lg flex items-center justify-center">
+                    <Heart size={16} className="fill-current" />
                   </div>
                   Saved Products
                 </h2>
@@ -129,8 +129,8 @@ const AccountDashboard: React.FC = () => {
                             className="w-full h-full object-cover mix-blend-multiply group-hover:scale-105 transition-transform duration-500"
                           />
                         </div>
-                        <div className="p-6 flex flex-col flex-1">
-                          <h3 className="font-bold text-gray-900 mb-1 text-lg leading-tight line-clamp-2">{product.name}</h3>
+                        <div className="p-4 sm:p-5 flex flex-col flex-1">
+                          <h3 className="font-bold text-gray-900 mb-1 text-base leading-tight line-clamp-2">{product.name}</h3>
                           <div className="mt-auto pt-4 flex items-center justify-between">
                             <span className="font-black text-green-700 text-xl tracking-tight">${product.price.toFixed(2)}</span>
                             <button
@@ -150,10 +150,10 @@ const AccountDashboard: React.FC = () => {
 
             {/* Order History Tab */}
             {activeTab === 'orders' && (
-              <div className="bg-white rounded-3xl shadow-sm p-8 border border-gray-100 min-h-[400px]">
-                <h2 className="text-2xl font-bold mb-8 flex items-center gap-3">
-                  <div className="w-10 h-10 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center">
-                    <Package size={20} />
+              <div className="bg-white rounded-xl shadow-sm p-5 sm:p-6 border border-gray-100 min-h-[400px]">
+                <h2 className="text-xl font-bold mb-6 flex items-center gap-3 text-gray-900">
+                  <div className="w-8 h-8 bg-blue-100 text-blue-600 rounded-lg flex items-center justify-center">
+                    <Package size={16} />
                   </div>
                   Order History
                 </h2>
