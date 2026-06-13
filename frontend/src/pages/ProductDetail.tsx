@@ -174,8 +174,8 @@ const ProductDetail: React.FC = () => {
     return (
         <div className="bg-white min-h-screen pt-24 pb-12">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <Link to="/all-pills" className="inline-flex items-center text-gray-500 hover:text-green-700 mb-8 transition-colors font-medium">
-                    <ArrowLeft size={18} className="mr-2" /> Back to Catalog
+                <Link to={`/all-pills?category=${encodeURIComponent(product.category)}`} className="inline-flex items-center text-gray-500 hover:text-green-700 mb-8 transition-colors font-medium">
+                    <ArrowLeft size={18} className="mr-2" /> Back to {product.category}
                 </Link>
 
                 {/* Main Product Section */}
