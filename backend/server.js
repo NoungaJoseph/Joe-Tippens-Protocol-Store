@@ -8,10 +8,11 @@ const mongoose = require("mongoose");
 
 const app = express();
 
-// Middleware
 const allowedOrigins = [
   "http://localhost:3000",
   "http://localhost:5173",
+  "https://pureprotocols.com",
+  "https://www.pureprotocols.com",
 ];
 
 app.use(helmet({
