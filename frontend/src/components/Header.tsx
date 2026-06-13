@@ -120,17 +120,13 @@ const Header: React.FC = () => {
 
               {/* User Icon */}
               {isAuthenticated ? (
-                <div className="flex items-center gap-3">
-                  <Link to="/account" className="text-sm font-bold text-[#2d8680] hover:underline hidden md:block">
-                    Hi, {user?.firstName}
-                  </Link>
-                  <button 
-                    onClick={logout}
-                    className="text-gray-600 hover:text-red-600 transition-colors text-sm font-bold"
-                  >
-                    Logout
-                  </button>
-                </div>
+                <Link 
+                  to="/account" 
+                  className="flex items-center gap-2 text-sm font-bold text-[#2d8680] hover:text-green-700 transition-colors"
+                >
+                  <User size={22} strokeWidth={1.5} />
+                  <span className="hidden md:inline">Account</span>
+                </Link>
               ) : (
                 <Link 
                   to="/login" 
