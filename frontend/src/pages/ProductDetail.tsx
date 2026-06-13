@@ -3,6 +3,7 @@ import { useParams, Link } from 'react-router-dom';
 import { Minus, Plus, ShoppingCart, ArrowLeft, Truck, Shield, CheckCircle, Eye, HelpCircle, Star, User, Mail, X, ChevronDown, ChevronUp } from 'lucide-react';
 import { MOCK_PRODUCTS } from '../constants';
 import { useCart } from '../context/CartContext';
+import { useAuth } from '../context/AuthContext';
 import SocialShare from '../components/SocialShare';
 import { FORMSPREE_ENDPOINT } from '../config/formspree';
 
@@ -10,6 +11,8 @@ const ProductDetail: React.FC = () => {
     const { id } = useParams<{ id: string }>();
     const product = MOCK_PRODUCTS.find((p) => p.id === id);
     const { addToCart } = useCart();
+    const { user, isAuthenticated, toggleSavedProduct } = useAuth();
+    const navigate = useNavigate();
 
     const [quantity, setQuantity] = useState(1);
 
@@ -111,6 +114,18 @@ const ProductDetail: React.FC = () => {
         setShowNotification(true);
         setTimeout(() => setShowNotification(false), 3000);
     };
+
+    const handleToggleSave = () => {
+        if (!isAuthenticated) {
+            navigate('/login');
+            return;
+        }
+        if (product) {
+            toggleSavedProduct(product.id);
+        }
+    };
+
+    const isSaved = isAuthenticated && user?.savedProducts?.includes(product?.id || '');
 
     const handleQuestionChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
         const { name, value } = e.target;
@@ -244,7 +259,7 @@ const ProductDetail: React.FC = () => {
                                 </span>
                                 <div className="flex text-yellow-400 text-sm">
                                     {'⭐'.repeat(Math.floor(product.rating))}
-                                    <span className="text-gray-400 ml-1">({product.reviews} reviews)</span>
+                                    <span className="text-gray-400 ml-1">({product.reviewsData?.length || product.reviews} reviews)</span>
                                 </div>
                             </div>
 
@@ -317,6 +332,13 @@ const ProductDetail: React.FC = () => {
                                 >
                                     <ShoppingCart size={22} /> Add to Cart
                                 </button>
+                                
+                                <button
+                                    onClick={handleToggleSave}
+                                    className={`w-14 h-14 flex items-center justify-center rounded-lg border-2 transition-colors ${isSaved ? 'border-pink-500 bg-pink-50 text-pink-600' : 'border-gray-200 bg-white text-gray-400 hover:border-pink-500 hover:text-pink-600'}`}
+                                >
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill={isSaved ? "currentColor" : "none"} stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+                                </button>
                             </div>
 
                             {showNotification && (
@@ -380,7 +402,7 @@ const ProductDetail: React.FC = () => {
                                 : 'text-gray-500 hover:text-gray-700 hover:bg-gray-50'
                                 }`}
                         >
-                            Reviews ({product.reviews})
+                            Reviews ({product.reviewsData?.length || product.reviews})
                         </button>
                     </div>
 
@@ -420,7 +442,7 @@ const ProductDetail: React.FC = () => {
                                         className="flex items-center gap-2 text-rose-700 font-bold hover:text-rose-800 transition-colors mb-6 text-lg"
                                     >
                                         {showReviews ? <ChevronUp size={24} /> : <ChevronDown size={24} />}
-                                        Showing all {product.reviews} reviews
+                                        Showing all {product.reviewsData?.length || product.reviews} reviews
                                     </button>
 
                                     {showReviews && (
@@ -445,9 +467,10 @@ const ProductDetail: React.FC = () => {
                                     )}
                                 </div>
 
-                                <div className="bg-white p-0 sm:p-0">
-                                    <h4 className="text-lg font-bold text-gray-900 mb-1">Be the first to review "{product.name}"</h4>
-                                    <p className="text-gray-500 text-sm mb-6">Your email address will not be published. Required fields are marked *</p>
+                                {isAuthenticated ? (
+                                    <div className="bg-white p-0 sm:p-0">
+                                        <h4 className="text-lg font-bold text-gray-900 mb-1">Leave a review</h4>
+                                        <p className="text-gray-500 text-sm mb-6">Your email address will not be published. Required fields are marked *</p>
 
                                     <form
                                         action={FORMSPREE_ENDPOINT}
@@ -518,6 +541,15 @@ const ProductDetail: React.FC = () => {
                                         </button>
                                     </form>
                                 </div>
+                                ) : (
+                                    <div className="bg-gray-50 rounded-lg p-6 text-center border border-gray-200 mt-8">
+                                        <h4 className="text-lg font-bold text-gray-900 mb-2">Want to leave a review?</h4>
+                                        <p className="text-gray-600 mb-4">You must be logged in to leave a review for this product.</p>
+                                        <Link to="/login" className="inline-block bg-rose-600 text-white px-6 py-2 rounded-lg font-bold hover:bg-rose-700 transition-colors shadow-sm">
+                                            Log In / Register
+                                        </Link>
+                                    </div>
+                                )}
                             </div>
                         )}
                     </div>

@@ -5,6 +5,8 @@ const helmet = require("helmet");
 const rateLimit = require("express-rate-limit");
 const nodemailer = require("nodemailer");
 const mongoose = require("mongoose");
+const auth = require("./middleware/auth");
+const User = require("./models/User");
 
 const app = express();
 
@@ -65,8 +67,8 @@ const transporter = nodemailer.createTransport({
   },
 });
 
-// Order Notification Route
-app.post("/api/order", limiter, async (req, res) => {
+// Order Notification Route (Protected)
+app.post("/api/order", limiter, auth, async (req, res) => {
   const { formData, items, total, paymentMethod } = req.body;
 
   const itemsHtml = items.map(item => `
@@ -94,8 +96,21 @@ app.post("/api/order", limiter, async (req, res) => {
   };
 
   try {
+    // Save order to User profile
+    const user = await User.findById(req.user.id);
+    if (user) {
+      user.orders.push({
+        items,
+        total,
+        paymentMethod,
+        shippingDetails: formData,
+        date: new Date()
+      });
+      await user.save();
+    }
+
     await transporter.sendMail(mailOptions);
-    res.status(200).json({ message: "Order notification sent successfully" });
+    res.status(200).json({ message: "Order processed and notification sent successfully" });
   } catch (error) {
     console.error("Email Error:", error);
     // Even if email fails, we don't want to break the user experience entirely

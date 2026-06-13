@@ -25,6 +25,8 @@ const PrivacyPolicy = lazy(() => import('./pages/PrivacyPolicy'));
 const PaymentStatus = lazy(() => import('./pages/PaymentStatus'));
 const Login = lazy(() => import('./pages/Login'));
 const Register = lazy(() => import('./pages/Register'));
+const AccountDashboard = lazy(() => import('./pages/AccountDashboard'));
+import ProtectedRoute from './components/ProtectedRoute';
 
 // Simple Loading Fallback
 const PageLoader = () => (
@@ -46,7 +48,16 @@ const App: React.FC = () => {
               <Route path="/all-pills" element={<Catalog />} />
               <Route path="/product/:id" element={<ProductDetail />} />
               <Route path="/cart" element={<Cart />} />
-              <Route path="/checkout" element={<Checkout />} />
+              <Route path="/checkout" element={
+                <ProtectedRoute>
+                  <Checkout />
+                </ProtectedRoute>
+              } />
+              <Route path="/account" element={
+                <ProtectedRoute>
+                  <AccountDashboard />
+                </ProtectedRoute>
+              } />
               <Route path="/order-confirmation" element={<OrderConfirmation />} />
               <Route path="/about" element={<About />} />
               <Route path="/contact" element={<Contact />} />

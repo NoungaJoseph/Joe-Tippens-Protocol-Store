@@ -18,6 +18,19 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  savedProducts: [{
+    type: String, // Storing the product ID from frontend
+  }],
+  orders: [{
+    items: Array,
+    total: Number,
+    paymentMethod: String,
+    shippingDetails: Object,
+    date: {
+      type: Date,
+      default: Date.now
+    }
+  }],
 }, { timestamps: true });
 
 module.exports = mongoose.model('User', userSchema);

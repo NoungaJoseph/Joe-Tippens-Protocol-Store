@@ -3,6 +3,7 @@ const router = express.Router();
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const User = require('../models/User');
+const auth = require('../middleware/auth');
 
 // @route   POST /api/auth/register
 // @desc    Register a user
@@ -93,18 +94,42 @@ router.post('/login', async (req, res) => {
 // @route   GET /api/auth/me
 // @desc    Get logged in user
 // @access  Private
-router.get('/me', async (req, res) => {
-  const token = req.header('x-auth-token');
-  if (!token) {
-    return res.status(401).json({ msg: 'No token, authorization denied' });
-  }
-
+router.get('/me', auth, async (req, res) => {
   try {
-    const decoded = jwt.verify(token, process.env.JWT_SECRET || 'secret123');
-    const user = await User.findById(decoded.user.id).select('-password');
+    const user = await User.findById(req.user.id).select('-password');
     res.json(user);
   } catch (err) {
-    res.status(401).json({ msg: 'Token is not valid' });
+    console.error(err.message);
+    res.status(500).send('Server error');
+  }
+});
+
+// @route   POST /api/auth/save-product
+// @desc    Toggle saving a product
+// @access  Private
+router.post('/save-product', auth, async (req, res) => {
+  try {
+    const { productId } = req.body;
+    const user = await User.findById(req.user.id);
+    
+    if (!user) {
+      return res.status(404).json({ msg: 'User not found' });
+    }
+
+    const index = user.savedProducts.indexOf(productId);
+    if (index > -1) {
+      // Product already saved, remove it
+      user.savedProducts.splice(index, 1);
+    } else {
+      // Product not saved, add it
+      user.savedProducts.push(productId);
+    }
+
+    await user.save();
+    res.json(user.savedProducts);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('Server error');
   }
 });
 

@@ -79,7 +79,11 @@ import blog14 from './assets/images/blog/blog-14.jpg';
 import blog15 from './assets/images/blog/blog-15.jpg';
 
 // Helper to generate random reviews
-const generateReviews = (productId: string, count: number): Review[] => {
+const generateReviews = (productId: string, requestedCount: number): Review[] => {
+  let count = requestedCount;
+  if (count < 4) count = Math.floor(Math.random() * 5) + 4; // 4 to 8
+  if (count > 15) count = Math.floor(Math.random() * 5) + 11; // 11 to 15
+
   const names = ["Sarah M.", "John D.", "Michael R.", "Emily K.", "Robert B.", "Jessica T.", "David W.", "Jennifer L.", "William H.", "Elizabeth S."];
   const sentiments = [
     "Absolutely amazing product. It changed my life!",

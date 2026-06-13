@@ -121,9 +121,9 @@ const Header: React.FC = () => {
               {/* User Icon */}
               {isAuthenticated ? (
                 <div className="flex items-center gap-3">
-                  <span className="text-sm font-bold text-gray-700 hidden md:block">
+                  <Link to="/account" className="text-sm font-bold text-[#2d8680] hover:underline hidden md:block">
                     Hi, {user?.firstName}
-                  </span>
+                  </Link>
                   <button 
                     onClick={logout}
                     className="text-gray-600 hover:text-red-600 transition-colors text-sm font-bold"
@@ -180,11 +180,17 @@ const Header: React.FC = () => {
 
       {/* Mobile Menu */}
       <div
-        className={`lg:hidden fixed left-0 top-20 bottom-0 w-72 max-w-[85vw] bg-white shadow-xl z-30 transform transition-transform duration-300 ease-in-out overflow-y-auto ${
+        className={`lg:hidden fixed left-0 top-0 bottom-0 w-72 max-w-[85vw] bg-white shadow-2xl z-50 transform transition-transform duration-300 ease-in-out overflow-y-auto ${
           isMenuOpen ? 'translate-x-0' : '-translate-x-full'
         }`}
       >
         <div className="p-6">
+          <div className="flex justify-between items-center mb-8 border-b border-gray-100 pb-4">
+            <span className="font-bold text-[#2d8680] text-xl">Menu</span>
+            <button onClick={() => setIsMenuOpen(false)} className="text-gray-500 hover:text-red-500 transition-colors p-1 bg-gray-50 rounded-full">
+              <X size={24} />
+            </button>
+          </div>
           {/* Mobile Navigation Menu */}
           <nav className="space-y-2">
             {primaryNavLinks.map((item, index) => (
@@ -192,7 +198,7 @@ const Header: React.FC = () => {
                 key={`${item.label}-${index}`}
                 to={item.path}
                 onClick={() => setIsMenuOpen(false)}
-                className="block px-4 py-2.5 rounded-lg text-sm font-medium text-gray-700 hover:bg-green-50 hover:text-green-700 transition-colors"
+                className="block px-4 py-2.5 rounded-lg text-base font-medium text-gray-700 hover:bg-green-50 hover:text-green-700 transition-colors"
               >
                 {item.label}
               </Link>
@@ -205,7 +211,7 @@ const Header: React.FC = () => {
                 key={link.path}
                 to={link.path}
                 onClick={() => setIsMenuOpen(false)}
-                className="block px-4 py-2.5 rounded-lg text-sm font-medium text-gray-700 hover:bg-green-50 hover:text-green-700 transition-colors"
+                className="block px-4 py-2.5 rounded-lg text-base font-medium text-gray-700 hover:bg-green-50 hover:text-green-700 transition-colors"
               >
                 {link.label}
               </Link>
@@ -217,7 +223,7 @@ const Header: React.FC = () => {
       {/* Mobile Overlay */}
       {isMenuOpen && (
         <div
-          className="lg:hidden fixed inset-0 top-20 bg-black/20 z-20 backdrop-blur-sm"
+          className="lg:hidden fixed inset-0 bg-black/60 z-40 backdrop-blur-sm transition-opacity"
           onClick={() => setIsMenuOpen(false)}
         ></div>
       )}

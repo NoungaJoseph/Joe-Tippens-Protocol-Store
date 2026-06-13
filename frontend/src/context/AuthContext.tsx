@@ -5,6 +5,8 @@ export interface User {
   firstName: string;
   lastName: string;
   email: string;
+  savedProducts?: string[];
+  orders?: any[];
 }
 
 interface AuthContextType {
@@ -12,6 +14,7 @@ interface AuthContextType {
   login: (email: string, password?: string) => Promise<void>;
   register: (firstName: string, lastName: string, email: string, password?: string) => Promise<void>;
   logout: () => void;
+  toggleSavedProduct: (productId: string) => Promise<void>;
   isAuthenticated: boolean;
   loading: boolean;
 }
@@ -41,7 +44,9 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
               id: userData._id,
               firstName: userData.firstName,
               lastName: userData.lastName,
-              email: userData.email
+              email: userData.email,
+              savedProducts: userData.savedProducts || [],
+              orders: userData.orders || []
             });
           } else {
             localStorage.removeItem('pureprotocol_token');
@@ -100,8 +105,31 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
     localStorage.removeItem('pureprotocol_token');
   };
 
+  const toggleSavedProduct = async (productId: string) => {
+    const token = localStorage.getItem('pureprotocol_token');
+    if (!token || !user) return;
+
+    try {
+      const res = await fetch(`${API_URL}/auth/save-product`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'x-auth-token': token
+        },
+        body: JSON.stringify({ productId })
+      });
+
+      if (res.ok) {
+        const updatedSavedProducts = await res.json();
+        setUser({ ...user, savedProducts: updatedSavedProducts });
+      }
+    } catch (error) {
+      console.error('Failed to toggle saved product', error);
+    }
+  };
+
   return (
-    <AuthContext.Provider value={{ user, login, register, logout, isAuthenticated: !!user, loading }}>
+    <AuthContext.Provider value={{ user, login, register, logout, toggleSavedProduct, isAuthenticated: !!user, loading }}>
       {!loading && children}
     </AuthContext.Provider>
   );
