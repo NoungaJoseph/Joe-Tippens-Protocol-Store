@@ -18,8 +18,8 @@ interface AuthContextType {
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
-// Using a relative URL or absolute based on env
-const API_URL = 'http://localhost:4242/api';
+// Using environment variable for production, fallback to local
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:4242/api';
 
 export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   const [user, setUser] = useState<User | null>(null);
