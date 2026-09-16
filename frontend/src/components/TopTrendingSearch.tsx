@@ -1,0 +1,254 @@
+import React, { useMemo, useState } from 'react';
+import { Link } from 'react-router-dom';
+import { MessageCircle } from 'lucide-react';
+import { MOCK_PRODUCTS } from '../constants';
+import { hasProductsForCatalogPath } from '../utils/catalogVisibility';
+import acneCareImage from '../assets/trendind searchs/ACNE Care.png';
+import diabeticCareImage from '../assets/trendind searchs/DAIBETIC.png';
+import hivAidsImage from '../assets/trendind searchs/HIVAIDS.png';
+import respiratoryImage from '../assets/trendind searchs/RESPIRATORY.png';
+import bladderImage from '../assets/trendind searchs/BLADDER.png';
+import womenImage from '../assets/trendind searchs/WOMEN.png';
+import antiFungalImage from '../assets/trendind searchs/ANTI FUNGAL.png';
+import antiBioticImage from '../assets/trendind searchs/ANTI BIOTIC.png';
+import ivermectinImage from '../assets/trendind searchs/IVERMECTIN Tablets.png';
+import edImage from '../assets/trendind searchs/ERECTILE disfunction.png';
+import cardiacImage from '../assets/trendind searchs/CARDIAC CARE.png';
+import colonImage from '../assets/trendind searchs/COLON CARE.png';
+import antiCancerImage from '../assets/trendind searchs/ANTI CANCER.png';
+
+interface CategoryCard {
+  id: string;
+  title: string;
+  subtitle: string;
+  bgColor: string;
+  bgGradient?: boolean;
+  illustration: string;
+  href: string;
+}
+
+const TopTrendingSearch: React.FC = () => {
+  const [chatOpen, setChatOpen] = useState(false);
+
+  const categories: CategoryCard[] = [
+    {
+      id: 'acne',
+      title: 'ACNE',
+      subtitle: 'Care',
+      bgColor: 'bg-purple-300',
+      illustration: acneCareImage,
+      href: '/all-pills?search=acne',
+    },
+    {
+      id: 'diabetic',
+      title: 'DIABETIC',
+      subtitle: 'Care',
+      bgColor: 'bg-blue-400',
+      illustration: diabeticCareImage,
+      href: '/all-pills?search=diabetic',
+    },
+    {
+      id: 'hiv',
+      title: 'HIV/AIDS',
+      subtitle: 'Care',
+      bgColor: 'bg-red-400',
+      illustration: hivAidsImage,
+      href: '/all-pills?category=HIV-AIDS',
+    },
+    {
+      id: 'respiratory',
+      title: 'RESPIRATORY',
+      subtitle: 'Care',
+      bgColor: 'bg-purple-400',
+      illustration: respiratoryImage,
+      href: '/all-pills?search=respiratory',
+    },
+    {
+      id: 'bladder',
+      title: 'BLADDER',
+      subtitle: 'Prostate',
+      bgColor: 'bg-blue-300',
+      illustration: bladderImage,
+      href: '/all-pills?search=bladder',
+    },
+    {
+      id: 'women',
+      title: 'WOMEN',
+      subtitle: 'Health',
+      bgColor: 'bg-gradient-to-br from-pink-400 to-purple-400',
+      bgGradient: true,
+      illustration: womenImage,
+      href: '/all-pills?search=women',
+    },
+    {
+      id: 'antifungal',
+      title: 'ANTI FUNGAL',
+      subtitle: 'Medication',
+      bgColor: 'bg-blue-500',
+      illustration: antiFungalImage,
+      href: '/all-pills?category=Anti%20Fungal',
+    },
+    {
+      id: 'antibiotic',
+      title: 'ANTI BIOTIC',
+      subtitle: 'Medication',
+      bgColor: 'bg-green-300',
+      illustration: antiBioticImage,
+      href: '/all-pills?search=antibiotic',
+    },
+    {
+      id: 'ivermectin',
+      title: 'IVERMECTIN',
+      subtitle: 'Tablets',
+      bgColor: 'bg-emerald-500',
+      illustration: ivermectinImage,
+      href: '/all-pills?category=Ivermectin',
+    },
+    {
+      id: 'ed',
+      title: 'ERECTILE',
+      subtitle: 'Dysfunction',
+      bgColor: 'bg-teal-500',
+      illustration: edImage,
+      href: '/all-pills?category=Erectile%20Dysfunction',
+    },
+    {
+      id: 'cardiac',
+      title: 'CARDIAC',
+      subtitle: 'Care',
+      bgColor: 'bg-cyan-500',
+      illustration: cardiacImage,
+      href: '/all-pills?category=Cardiac%20Care',
+    },
+    {
+      id: 'colon',
+      title: 'COLON',
+      subtitle: 'Care',
+      bgColor: 'bg-green-500',
+      illustration: colonImage,
+      href: '/all-pills?category=Colon%20Care',
+    },
+    {
+      id: 'anticancer',
+      title: 'ANTI CANCER',
+      subtitle: 'Medication',
+      bgColor: 'bg-rose-500',
+      illustration: antiCancerImage,
+      href: '/all-pills?category=Anti%20Cancer',
+    },
+  ];
+  const visibleCategories = useMemo(
+    () => categories.filter((category) => hasProductsForCatalogPath(MOCK_PRODUCTS, category.href)),
+    []
+  );
+
+  return (
+    <section className="w-full bg-white px-4 py-14 sm:px-6 lg:px-8 lg:py-20">
+      <style>{`
+        @keyframes fadeIn {
+          from {
+            opacity: 0;
+            transform: translateY(20px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+        .animate-fade-in {
+          animation: fadeIn 0.3s ease-out forwards;
+        }
+      `}</style>
+
+      {/* Section Title */}
+      <div className="mb-10 text-center sm:mb-16">
+        <h2 className="text-4xl font-semibold text-center sm:text-5xl" style={{ color: '#2f5d50' }}>
+          Top Trending Search
+        </h2>
+      </div>
+
+      {/* Categories Grid */}
+      <div className="mx-auto mb-12 max-w-7xl">
+        <div className="grid grid-cols-2 gap-4 sm:gap-6 lg:grid-cols-4 lg:gap-8">
+          {visibleCategories.map((category) => {
+            return (
+              <Link key={category.id} to={category.href} className="block no-underline">
+                <div
+                  className={`relative flex h-44 cursor-pointer flex-col justify-between overflow-hidden rounded-3xl p-4 shadow-md transition-transform duration-300 hover:scale-105 hover:shadow-lg sm:h-52 sm:p-6 ${
+                    category.bgGradient ? category.bgColor : category.bgColor
+                  }`}
+                  style={{
+                    borderRadius: '24px'
+                  }}
+                >
+                  {/* Content */}
+                  <div className="relative z-10">
+                    <h3 className="text-lg font-bold uppercase tracking-wide text-white sm:text-2xl">
+                      {category.title}
+                    </h3>
+                    <p className="mt-1 text-sm font-light text-white/90 sm:text-base">
+                      {category.subtitle}
+                    </p>
+                  </div>
+
+                  <img
+                    src={category.illustration}
+                    alt={`${category.title} ${category.subtitle}`}
+                    className="absolute bottom-0 right-2 h-20 w-20 object-contain sm:right-3 sm:h-28 sm:w-28"
+                  />
+                </div>
+              </Link>
+            );
+          })}
+        </div>
+      </div>
+
+      {/* All Category Button */}
+      <div className="text-center mb-20">
+        <Link to="/all-pills" className="inline-block no-underline">
+          <button
+            className="px-8 py-3 rounded-xl font-semibold text-white text-lg transition-all duration-300 hover:brightness-110 active:scale-95"
+            style={{ backgroundColor: '#2f5d50' }}
+          >
+            All Category &gt;
+          </button>
+        </Link>
+      </div>
+
+      {/* Floating Chat Button */}
+      <div className="fixed bottom-6 right-6 z-50">
+        <button
+          onClick={() => setChatOpen(!chatOpen)}
+          className="w-14 h-14 rounded-full bg-green-500 text-white shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110 flex items-center justify-center"
+        >
+          <MessageCircle size={28} />
+        </button>
+      </div>
+
+      {/* Chat Bubble (Optional - Shows when clicked) */}
+      {chatOpen && (
+        <div className="fixed bottom-24 right-6 w-80 bg-white rounded-2xl shadow-2xl p-6 z-50 animate-fade-in">
+          <div className="flex justify-between items-center mb-4">
+            <h3 className="text-lg font-bold text-gray-900">Chat with us</h3>
+            <button
+              onClick={() => setChatOpen(false)}
+              className="text-gray-500 hover:text-gray-700 text-2xl leading-none"
+            >
+              ×
+            </button>
+          </div>
+          <div className="text-sm text-gray-600">
+            <p>Hi! How can we help you today? Our team is here to support you with any questions!</p>
+          </div>
+          <input
+            type="text"
+            placeholder="Type your message..."
+            className="w-full mt-4 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-green-500"
+          />
+        </div>
+      )}
+    </section>
+  );
+};
+
+export default TopTrendingSearch;
