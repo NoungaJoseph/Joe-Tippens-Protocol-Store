@@ -1,16 +1,47 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
-import { CheckCircle, AlertTriangle, Lock, CreditCard, Landmark, Bitcoin, DollarSign, Send } from 'lucide-react';
+import { useAuth } from '../context/AuthContext';
+import { CheckCircle, AlertTriangle, Lock, CreditCard, Landmark, Bitcoin, DollarSign, Send, UserCheck } from 'lucide-react';
 import { FORMSPREE_ENDPOINT } from '../config/formspree';
 
 const Checkout: React.FC = () => {
     const { items, cartTotal, clearCart } = useCart();
+    const { user } = useAuth();
     const navigate = useNavigate();
 
     const [formData, setFormData] = useState({
-        firstName: '', lastName: '', email: '', phone: '', address: '', city: '', state: '', zip: '', message: ''
+        firstName: user?.firstName || '',
+        lastName: user?.lastName || '',
+        email: user?.email || '',
+        phone: '',
+        address: '',
+        city: '',
+        state: '',
+        zip: '',
+        message: ''
     });
+
+    // Auto-fill from logged in user profile and any previous order shipping info
+    useEffect(() => {
+        if (user) {
+            const previousShipping = user.orders && user.orders.length > 0
+                ? user.orders[user.orders.length - 1].shippingDetails
+                : null;
+
+            setFormData(prev => ({
+                ...prev,
+                firstName: prev.firstName || user.firstName || '',
+                lastName: prev.lastName || user.lastName || '',
+                email: prev.email || user.email || '',
+                phone: prev.phone || previousShipping?.phone || '',
+                address: prev.address || previousShipping?.address || '',
+                city: prev.city || previousShipping?.city || '',
+                state: prev.state || previousShipping?.state || '',
+                zip: prev.zip || previousShipping?.zip || '',
+            }));
+        }
+    }, [user]);
     const [paymentMethod, setPaymentMethod] = useState('');
     const [step, setStep] = useState(1);
     const [error, setError] = useState<string | null>(null);
@@ -72,6 +103,30 @@ const Checkout: React.FC = () => {
 
             if (!response.ok) {
                 throw new Error(`Formspree submission failed: ${response.status}`);
+            }
+
+            // Also record order on user profile if logged in
+            const token = localStorage.getItem('pureprotocol_token');
+            if (token) {
+                try {
+                    const rawApiUrl = (import.meta.env.VITE_API_URL || 'http://localhost:4242').replace(/\/+$/, '');
+                    const apiUrl = rawApiUrl.endsWith('/api') ? rawApiUrl : `${rawApiUrl}/api`;
+                    fetch(`${apiUrl}/order`, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'x-auth-token': token,
+                        },
+                        body: JSON.stringify({
+                            formData,
+                            items,
+                            total,
+                            paymentMethod,
+                        }),
+                    }).catch(e => console.warn('Order profile sync error:', e));
+                } catch (e) {
+                    console.warn('Order profile sync failed:', e);
+                }
             }
 
             setLoading(false);
@@ -169,6 +224,23 @@ const Checkout: React.FC = () => {
                                         <div className="w-10 h-10 bg-green-100 text-green-700 rounded-full flex items-center justify-center text-sm font-black italic">SH</div>
                                         Shipping Information
                                     </h2>
+
+                                    {user && (
+                                        <div className="mb-6 p-4 bg-emerald-50 border border-emerald-200 rounded-2xl flex items-center justify-between text-xs text-emerald-900 shadow-sm">
+                                            <div className="flex items-center gap-2.5">
+                                                <div className="w-7 h-7 rounded-full bg-emerald-100 flex items-center justify-center text-emerald-700">
+                                                    <UserCheck size={16} />
+                                                </div>
+                                                <span>
+                                                    Logged in as <strong className="font-bold">{user.firstName} {user.lastName}</strong> ({user.email})
+                                                </span>
+                                            </div>
+                                            <span className="bg-emerald-200/60 text-emerald-800 font-semibold px-2.5 py-1 rounded-full text-[11px]">
+                                                Auto-filled
+                                            </span>
+                                        </div>
+                                    )}
+
                                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                         {[
                                             { label: 'First Name', name: 'firstName', placeholder: 'John' },
