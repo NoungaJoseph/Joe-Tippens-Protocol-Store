@@ -12,8 +12,16 @@ import premiumQualityImage from '../assets/DESIGN PHASE/premium quality.png';
 import securePaymentsImage from '../assets/DESIGN PHASE/secure payments.png';
 import supportImage from '../assets/DESIGN PHASE/247service.png';
 import fastDeliveryImage from '../assets/DESIGN PHASE/fast delivery.png';
+import useSEO from '../utils/useSEO';
 
 const Home: React.FC = () => {
+    useSEO({
+        title: 'PureProtocol | Joe Tippens Protocol Store & Alternative Therapeutics',
+        description: 'Official destination for PureProtocol & Joe Tippens Protocol supplements. Find high-purity Fenbendazole, Ivermectin, Vitamin B17, and oncology adjunctive therapies with express worldwide shipping.',
+        canonical: '/',
+        keywords: 'Joe Tippens Protocol, Fenbendazole, Ivermectin, PureProtocol, Mebendazole, Cancer Adjunct Protocol, Vitamin B17, Online Pharmacy',
+    });
+
     const [currentNewArrival, setCurrentNewArrival] = useState(0);
 
     const featureHighlights = [

@@ -3,8 +3,16 @@ import { Calendar, User, ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { BLOG_POSTS } from '../constants';
 import blogBg from '../assets/images/blog-bg.jpg';
+import useSEO from '../utils/useSEO';
 
 const Blog: React.FC = () => {
+    useSEO({
+        title: 'Health Hub & Protocol Articles | PureProtocol',
+        description: 'Explore research, protocols, and wellness insights on Joe Tippens Protocol, Fenbendazole mechanisms, Ivermectin, and integrative healthcare.',
+        canonical: '/blog',
+        keywords: 'Joe Tippens Protocol research, cancer adjunct therapy, Fenbendazole science, health articles',
+    });
+
     const [visibleCount, setVisibleCount] = useState(9);
     const visiblePosts = BLOG_POSTS.slice(0, visibleCount);
     const hasMore = visibleCount < BLOG_POSTS.length;

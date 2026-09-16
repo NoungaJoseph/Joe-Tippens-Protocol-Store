@@ -1,8 +1,16 @@
 import React from 'react';
 import { Shield, Truck, Globe, CreditCard, Activity, Clock, Award } from 'lucide-react';
 import aboutBg from '../assets/images/about-bg.jpg';
+import useSEO from '../utils/useSEO';
 
 const About: React.FC = () => {
+    useSEO({
+        title: 'About Us | PureProtocol Online Pharmacy',
+        description: 'Learn about PureProtocol, our commitment to high-purity medical solutions, Joe Tippens Protocol guidance, and reliable worldwide shipping.',
+        canonical: '/about',
+        keywords: 'about PureProtocol, online pharmacy mission, pure fenbendazole source, quality assurance',
+    });
+
     return (
         <div className="bg-white">
             {/* Hero Section */}

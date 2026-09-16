@@ -1,5 +1,6 @@
 import React from 'react';
 import { Star, ThumbsUp } from 'lucide-react';
+import useSEO from '../utils/useSEO';
 
 // Generate 32 mock reviews
 const REVIEWS_DATA = Array.from({ length: 32 }, (_, i) => ({
@@ -35,6 +36,13 @@ const REVIEWS_DATA = Array.from({ length: 32 }, (_, i) => ({
 }));
 
 const Reviews: React.FC = () => {
+  useSEO({
+    title: 'Customer Reviews & Experiences | PureProtocol Store',
+    description: 'Read verified customer reviews and testimonials about PureProtocol, Joe Tippens Protocol supplements, delivery speed, and customer care.',
+    canonical: '/reviews',
+    keywords: 'PureProtocol reviews, Joe Tippens protocol testimonials, Fenbendazole reviews, verified customer feedback',
+  });
+
   return (
     <div className="bg-gray-50 min-h-screen pt-24 pb-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

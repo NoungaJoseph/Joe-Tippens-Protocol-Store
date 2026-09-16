@@ -58,15 +58,6 @@ const Footer: React.FC = () => {
               >
                 <Facebook size={20} />
               </a>
-              <a
-                href="https://x.com"
-                target="_blank"
-                rel="noreferrer"
-                className="flex h-11 w-11 items-center justify-center rounded-full bg-black text-white transition hover:opacity-80"
-                aria-label="Twitter"
-              >
-                <Twitter size={20} />
-              </a>
             </div>
           </div>
 
@@ -133,7 +124,7 @@ const Footer: React.FC = () => {
               <li><Link to="/about" className="hover:text-[#2d7f78]">Why Pure Protocol</Link></li>
               <li><Link to="/about" className="hover:text-[#2d7f78]">About us</Link></li>
               <li><Link to="/contact" className="hover:text-[#2d7f78]">Contact us</Link></li>
-              <li><Link to="/all-pills" className="hover:text-[#2d7f78]">Sitemap</Link></li>
+              <li><a href="/sitemap.xml" target="_blank" rel="noopener noreferrer" className="hover:text-[#2d7f78]">Sitemap</a></li>
               <li><Link to="/faq" className="hover:text-[#2d7f78]">FAQ&apos;s</Link></li>
               <li><Link to="/shipping-policy" className="hover:text-[#2d7f78]">Package & packets</Link></li>
             </ul>

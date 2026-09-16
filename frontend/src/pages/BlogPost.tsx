@@ -3,6 +3,7 @@ import { useParams, Link } from 'react-router-dom';
 import { ArrowLeft, Calendar, User, Tag, Share2 } from 'lucide-react';
 import { BLOG_POSTS } from '../constants';
 import SocialShare from '../components/SocialShare';
+import useSEO from '../utils/useSEO';
 
 const BlogPost: React.FC = () => {
   const { id } = useParams<{ id: string }>();
@@ -12,6 +13,48 @@ const BlogPost: React.FC = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [id]);
+
+  const postImage = post?.image
+    ? post.image.startsWith('http')
+      ? post.image
+      : `https://pureprotocols.com${post.image.startsWith('/') ? '' : '/'}${post.image}`
+    : 'https://pureprotocols.com/src/assets/images/logo-v2.png';
+
+  const articleSchema = post ? {
+    '@context': 'https://schema.org',
+    '@type': 'BlogPosting',
+    headline: post.title,
+    description: post.excerpt,
+    image: [postImage],
+    datePublished: post.date,
+    dateModified: post.date,
+    author: {
+      '@type': 'Person',
+      name: post.author || 'PureProtocol Medical Team'
+    },
+    publisher: {
+      '@type': 'Organization',
+      name: 'PureProtocol Store',
+      logo: {
+        '@type': 'ImageObject',
+        url: 'https://pureprotocols.com/src/assets/images/logo-v2.png'
+      }
+    },
+    mainEntityOfPage: {
+      '@type': 'WebPage',
+      '@id': `https://pureprotocols.com/blog/${post.id}`
+    }
+  } : undefined;
+
+  useSEO({
+    title: post ? post.title : 'Article Not Found',
+    description: post ? post.excerpt : undefined,
+    canonical: post ? `/blog/${post.id}` : undefined,
+    image: postImage,
+    type: 'article',
+    keywords: post ? `${post.title}, ${post.category}, Joe Tippens Protocol, health article, alternative therapy` : undefined,
+    jsonLd: articleSchema,
+  });
 
   if (!post) {
     return (

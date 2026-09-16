@@ -13,6 +13,7 @@ import { useCart } from '../context/CartContext';
 import freeDeliveryPromo from '../assets/promo/free delivery.png';
 import allCategoryBanner from '../assets/images/all-category-banner.jpg';
 import { hasProductsForCatalogPath } from '../utils/catalogVisibility';
+import useSEO from '../utils/useSEO';
 
 const trendingSearchImages = import.meta.glob('../assets/trendind searchs/*', {
   eager: true,
@@ -33,6 +34,17 @@ const Catalog: React.FC = () => {
   const [prescriptionFilter, setPrescriptionFilter] = useState('all');
   const [sortOption, setSortOption] = useState('');
   const [isMobileFilterOpen, setIsMobileFilterOpen] = useState(false);
+
+  const categoryTitle = selectedCategories.length > 0
+    ? selectedCategories.join(', ')
+    : 'All Supplements & Pharmaceuticals';
+
+  useSEO({
+    title: `${categoryTitle} | PureProtocol Store`,
+    description: `Explore ${categoryTitle} at PureProtocol Store. Authentic high-purity formulations, lab-tested quality with rapid worldwide shipping.`,
+    canonical: location.pathname,
+    keywords: `${categoryTitle}, Joe Tippens Protocol, pure Fenbendazole, Ivermectin, anti cancer supplements, buy online`,
+  });
 
   // Pagination State
   const ITEMS_PER_PAGE = 6;

@@ -31,6 +31,8 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
           <img
             src={imageError ? fallbackImage : product.image}
             alt={product.name}
+            loading="lazy"
+            decoding="async"
             onError={() => setImageError(true)}
             className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300"
           />

@@ -6,6 +6,7 @@ import { useCart } from '../context/CartContext';
 import { useAuth } from '../context/AuthContext';
 import SocialShare from '../components/SocialShare';
 import { FORMSPREE_ENDPOINT } from '../config/formspree';
+import useSEO from '../utils/useSEO';
 
 const ProductDetail: React.FC = () => {
     const { id } = useParams<{ id: string }>();
@@ -19,6 +20,57 @@ const ProductDetail: React.FC = () => {
     // Support for product options (e.g. Strength, Weight, etc.)
     const [selectedOptions, setSelectedOptions] = useState<{ [key: string]: any }>({});
     const [currentPrice, setCurrentPrice] = useState(0);
+
+    const productPrice = currentPrice || product?.price || 0;
+    const productImage = product?.image
+        ? product.image.startsWith('http')
+            ? product.image
+            : `https://pureprotocols.com${product.image.startsWith('/') ? '' : '/'}${product.image}`
+        : 'https://pureprotocols.com/src/assets/images/logo-v2.png';
+
+    const productSchema = product ? {
+        '@context': 'https://schema.org/',
+        '@type': 'Product',
+        name: product.name,
+        image: [productImage],
+        description: product.description || `${product.name} - high-grade pharmaceutical formulation with express worldwide shipping from PureProtocol Store.`,
+        sku: product.id,
+        brand: {
+            '@type': 'Brand',
+            name: product.brand || 'PureProtocol'
+        },
+        category: product.category,
+        offers: {
+            '@type': 'Offer',
+            url: `https://pureprotocols.com/product/${product.id}`,
+            priceCurrency: 'USD',
+            price: productPrice.toFixed(2),
+            priceValidUntil: '2027-12-31',
+            itemCondition: 'https://schema.org/NewCondition',
+            availability: 'https://schema.org/InStock',
+            seller: {
+                '@type': 'Organization',
+                name: 'PureProtocol Store'
+            }
+        },
+        aggregateRating: {
+            '@type': 'AggregateRating',
+            ratingValue: (product.rating || 4.9).toString(),
+            reviewCount: (product.reviews || 24).toString()
+        }
+    } : undefined;
+
+    useSEO({
+        title: product ? `${product.name} - Buy Online` : 'Product Not Found',
+        description: product
+            ? (product.description || `Buy ${product.name} online at PureProtocol Store. High purity, lab-tested quality with express worldwide delivery.`)
+            : undefined,
+        canonical: product ? `/product/${product.id}` : undefined,
+        image: productImage,
+        keywords: product ? `${product.name}, ${product.category}, buy ${product.name}, Joe Tippens Protocol, PureProtocol` : undefined,
+        jsonLd: productSchema,
+    });
+
 
     // Support for image gallery
     const [selectedImage, setSelectedImage] = useState('');

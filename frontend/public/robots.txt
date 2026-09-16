@@ -1,0 +1,19 @@
+# Robots.txt for PureProtocol Store (https://pureprotocols.com)
+User-agent: *
+Allow: /
+Disallow: /checkout
+Disallow: /account
+Disallow: /order-confirmation
+Disallow: /payment-status
+
+# AI Crawlers & LLM Scrapers
+User-agent: GPTBot
+Allow: /
+User-agent: PerplexityBot
+Allow: /
+User-agent: ClaudeBot
+Allow: /
+User-agent: Google-Extended
+Allow: /
+
+Sitemap: https://pureprotocols.com/sitemap.xml

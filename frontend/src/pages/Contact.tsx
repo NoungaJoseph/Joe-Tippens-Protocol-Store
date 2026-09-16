@@ -3,9 +3,17 @@ import { useForm, ValidationError } from '@formspree/react';
 import Button from '../components/Button';
 import contactBg from '../assets/images/contact-bg.jpg';
 import { FORMSPREE_FORM_ID } from '../config/formspree';
+import useSEO from '../utils/useSEO';
 
 const Contact: React.FC = () => {
   const [state, handleSubmit] = useForm(FORMSPREE_FORM_ID);
+
+  useSEO({
+    title: 'Contact Customer Support | PureProtocol Store',
+    description: 'Get in touch with PureProtocol customer support team. Questions about orders, Joe Tippens Protocol, or product inquiries.',
+    canonical: '/contact',
+    keywords: 'contact PureProtocol, online pharmacy support, customer service, email, phone',
+  });
 
   if (state.succeeded) {
     return (

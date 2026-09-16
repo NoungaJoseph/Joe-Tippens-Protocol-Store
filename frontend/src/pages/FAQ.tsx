@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { ChevronDown, ChevronUp, Search, Package, ShieldCheck, CreditCard, RefreshCw, HelpCircle, ArrowRight, MessageCircle } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import useSEO from '../utils/useSEO';
 
 const FAQ_DATA = [
   {
@@ -103,6 +104,29 @@ const FAQ: React.FC = () => {
   const [activeCategory, setActiveCategory] = useState("All");
   const [openItem, setOpenItem] = useState<string | null>(null);
   const [searchQuery, setSearchQuery] = useState("");
+
+  const faqSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: FAQ_DATA.flatMap(cat =>
+      cat.items.map(item => ({
+        '@type': 'Question',
+        name: item.q,
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: item.a,
+        },
+      }))
+    ),
+  };
+
+  useSEO({
+    title: 'Frequently Asked Questions (FAQ) | PureProtocol Store',
+    description: 'Find answers to common questions about Joe Tippens Protocol, Fenbendazole, Ivermectin orders, shipping, prescriptions, and dosage at PureProtocol.',
+    canonical: '/faq',
+    keywords: 'PureProtocol FAQ, Joe Tippens Protocol questions, Fenbendazole dosage, shipping times, prescription requirements',
+    jsonLd: faqSchema,
+  });
 
   const toggleItem = (id: string) => {
     setOpenItem(openItem === id ? null : id);

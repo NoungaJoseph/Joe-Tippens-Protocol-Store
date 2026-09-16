@@ -10,12 +10,16 @@ const HeroBanner: React.FC = () => {
     {
       id: 1,
       image: contactBg,
-      heading: 'Fast & Reliable Medical Solutions',
+      heading: 'Joe Tippens Protocol & PureProtocol Solutions',
+      subheading: 'High-purity Fenbendazole, Ivermectin, Vitamin B17, and certified oncology adjunctive therapies.',
+      isH1: true,
     },
     {
       id: 2,
       image: aboutBg,
-      heading: 'Your Health, Our Priority',
+      heading: 'Your Health, Our Priority - Pure Quality Care',
+      subheading: 'Direct access to authentic, lab-tested pharmaceutical formulations with express worldwide delivery.',
+      isH1: false,
     }
   ];
 
@@ -48,9 +52,18 @@ const HeroBanner: React.FC = () => {
               <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
                 <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-2">
                   <div className="text-white">
-                    <h1 className="text-4xl font-bold leading-tight sm:text-5xl md:text-6xl lg:text-7xl">
-                      {slide.heading}
-                    </h1>
+                    {slide.isH1 ? (
+                      <h1 className="text-4xl font-bold leading-tight sm:text-5xl md:text-6xl lg:text-7xl">
+                        {slide.heading}
+                      </h1>
+                    ) : (
+                      <h2 className="text-4xl font-bold leading-tight sm:text-5xl md:text-6xl lg:text-7xl">
+                        {slide.heading}
+                      </h2>
+                    )}
+                    <p className="mt-4 max-w-xl text-lg text-slate-200 sm:text-xl">
+                      {slide.subheading}
+                    </p>
                   </div>
 
                   <div className="hidden lg:block" />
