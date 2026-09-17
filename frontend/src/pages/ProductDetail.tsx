@@ -26,7 +26,7 @@ const ProductDetail: React.FC = () => {
         ? product.image.startsWith('http')
             ? product.image
             : `https://pureprotocols.com${product.image.startsWith('/') ? '' : '/'}${product.image}`
-        : 'https://pureprotocols.com/src/assets/images/logo-v2.png';
+        : 'https://pureprotocols.com/logo-v2.png';
 
     const productSchema = product ? {
         '@context': 'https://schema.org/',
@@ -51,6 +51,41 @@ const ProductDetail: React.FC = () => {
             seller: {
                 '@type': 'Organization',
                 name: 'PureProtocol Store'
+            },
+            shippingDetails: {
+                '@type': 'OfferShippingDetails',
+                shippingRate: {
+                    '@type': 'MonetaryAmount',
+                    value: '0.00',
+                    currency: 'USD'
+                },
+                shippingDestination: {
+                    '@type': 'DefinedRegion',
+                    addressCountry: 'US'
+                },
+                deliveryTime: {
+                    '@type': 'ShippingDeliveryTime',
+                    handlingTime: {
+                        '@type': 'QuantitativeValue',
+                        minValue: 0,
+                        maxValue: 1,
+                        unitCode: 'd'
+                    },
+                    transitTime: {
+                        '@type': 'QuantitativeValue',
+                        minValue: 2,
+                        maxValue: 4,
+                        unitCode: 'd'
+                    }
+                }
+            },
+            hasMerchantReturnPolicy: {
+                '@type': 'MerchantReturnPolicy',
+                applicableCountry: 'US',
+                returnPolicyCategory: 'https://schema.org/MerchantReturnFiniteReturnWindow',
+                merchantReturnDays: 30,
+                returnMethod: 'https://schema.org/ReturnByMail',
+                returnFees: 'https://schema.org/FreeReturn'
             }
         },
         aggregateRating: {

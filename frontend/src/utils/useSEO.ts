@@ -12,7 +12,7 @@ interface SEOProps {
 
 const DEFAULT_DESCRIPTION =
   'Official destination for PureProtocol & Joe Tippens Protocol supplements. Find high-quality Fenbendazole, Ivermectin, and specialized wellness therapeutics with fast worldwide shipping.';
-const DEFAULT_IMAGE = 'https://pureprotocols.com/src/assets/images/logo-v2.png';
+const DEFAULT_IMAGE = 'https://pureprotocols.com/logo-v2.png';
 const BASE_URL = 'https://pureprotocols.com';
 
 export const useSEO = ({
@@ -54,7 +54,7 @@ export const useSEO = ({
       ? canonical.startsWith('http')
         ? canonical
         : `${BASE_URL}${canonical.startsWith('/') ? '' : '/'}${canonical}`
-      : window.location.href;
+      : `${BASE_URL}${window.location.pathname}`;
 
     // 3. Open Graph
     setMetaTag('property', 'og:title', formattedTitle);

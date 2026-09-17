@@ -18,7 +18,7 @@ const BlogPost: React.FC = () => {
     ? post.image.startsWith('http')
       ? post.image
       : `https://pureprotocols.com${post.image.startsWith('/') ? '' : '/'}${post.image}`
-    : 'https://pureprotocols.com/src/assets/images/logo-v2.png';
+    : 'https://pureprotocols.com/logo-v2.png';
 
   const articleSchema = post ? {
     '@context': 'https://schema.org',
@@ -37,7 +37,7 @@ const BlogPost: React.FC = () => {
       name: 'PureProtocol Store',
       logo: {
         '@type': 'ImageObject',
-        url: 'https://pureprotocols.com/src/assets/images/logo-v2.png'
+        url: 'https://pureprotocols.com/logo-v2.png'
       }
     },
     mainEntityOfPage: {
