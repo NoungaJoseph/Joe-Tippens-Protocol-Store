@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>PureProtocol | Joe Tippens Protocol Store & Alternative Therapeutics</title>
   <meta name="description"
-    content="Official destination for PureProtocol & Joe Tippens Protocol supplements. Find high-purity Fenbendazole, Ivermectin, Vitamin B17, and oncology adjunctive therapies with express worldwide shipping." />
+    content="Official Joe Tippens Protocol & PureProtocol store. Buy high-purity Fenbendazole, Ivermectin, Vitamin B17 & oncology supplements with fast worldwide shipping." />
   <meta name="keywords"
     content="Joe Tippens Protocol, Fenbendazole, Ivermectin, PureProtocol, Mebendazole, Cancer Adjunct Protocol, Vitamin B17, Supplements, Online Pharmacy" />
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
@@ -26,7 +26,7 @@
   <meta property="og:site_name" content="PureProtocol Store" />
   <meta property="og:title" content="PureProtocol | Joe Tippens Protocol Store & Supplements" />
   <meta property="og:description"
-    content="Official destination for PureProtocol & Joe Tippens Protocol supplements. High-purity Fenbendazole, Ivermectin, and specialized wellness therapeutics." />
+    content="Official Joe Tippens Protocol & PureProtocol store. Buy high-purity Fenbendazole, Ivermectin, Vitamin B17 & oncology supplements with fast worldwide shipping." />
   <meta property="og:image" content="https://pureprotocols.com/logo-v2.png" />
 
   <!-- Twitter -->
@@ -34,7 +34,7 @@
   <meta property="twitter:url" content="https://pureprotocols.com/" />
   <meta property="twitter:title" content="PureProtocol | Joe Tippens Protocol Store & Supplements" />
   <meta property="twitter:description"
-    content="Official destination for PureProtocol & Joe Tippens Protocol supplements. High-purity Fenbendazole, Ivermectin, and specialized wellness therapeutics." />
+    content="Official Joe Tippens Protocol & PureProtocol store. Buy high-purity Fenbendazole, Ivermectin, Vitamin B17 & oncology supplements with fast worldwide shipping." />
   <meta property="twitter:image" content="https://pureprotocols.com/logo-v2.png" />
 
   <!-- US Geographic Targeting & Internationalization -->
@@ -372,12 +372,36 @@
     .perspective-1000 {
       perspective: 1000px;
     }
+
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
   </style>
 
 </head>
 
 <body class="fade-in">
-  <div id="root"></div>
+  <div id="root">
+    <!-- Static semantic fallback for search engine crawlers (Bingbot, Googlebot) before React mounts -->
+    <header class="sr-only">
+      <h1>PureProtocol - Joe Tippens Protocol Store & Alternative Therapeutics</h1>
+      <p>Official destination for Joe Tippens Protocol supplements, Fenbendazole, Ivermectin, and specialized wellness therapeutics.</p>
+    </header>
+  </div>
+  <noscript>
+    <div style="padding: 24px; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; text-align: center; max-width: 800px; margin: 0 auto;">
+      <h1>PureProtocol - Joe Tippens Protocol Store & Alternative Therapeutics</h1>
+      <p>Official destination for Joe Tippens Protocol supplements, Fenbendazole, Ivermectin, and specialized wellness therapeutics with fast worldwide shipping.</p>
+    </div>
+  </noscript>
   <script type="module" src="/src/index.tsx"></script>
 </body>
 

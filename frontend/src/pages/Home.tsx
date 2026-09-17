@@ -17,7 +17,7 @@ import useSEO from '../utils/useSEO';
 const Home: React.FC = () => {
     useSEO({
         title: 'PureProtocol | Joe Tippens Protocol Store & Alternative Therapeutics',
-        description: 'Official destination for PureProtocol & Joe Tippens Protocol supplements. Find high-purity Fenbendazole, Ivermectin, Vitamin B17, and oncology adjunctive therapies with express worldwide shipping.',
+        description: 'Official Joe Tippens Protocol & PureProtocol store. Buy high-purity Fenbendazole, Ivermectin, Vitamin B17 & oncology supplements with fast worldwide shipping.',
         canonical: '/',
         keywords: 'Joe Tippens Protocol, Fenbendazole, Ivermectin, PureProtocol, Mebendazole, Cancer Adjunct Protocol, Vitamin B17, Online Pharmacy',
     });
@@ -145,9 +145,9 @@ const Home: React.FC = () => {
                                     </span>
                                 </div>
 
-                                <h1 className="mb-5 max-w-3xl text-4xl font-black leading-[0.95] tracking-[-0.04em] text-gray-950 md:text-6xl lg:text-7xl">
+                                <h2 className="mb-5 max-w-3xl text-4xl font-black leading-[0.95] tracking-[-0.04em] text-gray-950 md:text-6xl lg:text-7xl">
                                     {currentArrival.name}
-                                </h1>
+                                </h2>
 
                                 <p className="mb-8 max-w-2xl text-base leading-8 text-gray-600 md:text-lg">
                                     {getShortDescription(currentArrival.description)}

@@ -11,9 +11,17 @@ interface SEOProps {
 }
 
 const DEFAULT_DESCRIPTION =
-  'Official destination for PureProtocol & Joe Tippens Protocol supplements. Find high-quality Fenbendazole, Ivermectin, and specialized wellness therapeutics with fast worldwide shipping.';
+  'Official Joe Tippens Protocol & PureProtocol store. Buy high-purity Fenbendazole, Ivermectin, Vitamin B17 & oncology supplements with fast worldwide shipping.';
 const DEFAULT_IMAGE = 'https://pureprotocols.com/logo-v2.png';
 const BASE_URL = 'https://pureprotocols.com';
+
+const truncateDescription = (desc: string): string => {
+  const cleaned = desc.replace(/\s+/g, ' ').trim();
+  if (cleaned.length <= 158) return cleaned;
+  const sliced = cleaned.slice(0, 155);
+  const lastSpace = sliced.lastIndexOf(' ');
+  return (lastSpace > 30 ? sliced.slice(0, lastSpace) : sliced) + '...';
+};
 
 export const useSEO = ({
   title,
@@ -33,6 +41,9 @@ export const useSEO = ({
       : `${title} | PureProtocol Store`;
     document.title = formattedTitle;
 
+    // Sanitize description length to strictly stay within Bing/Google limits (25-160 chars)
+    const sanitizedDescription = truncateDescription(description);
+
     // Helper to update or create meta tag
     const setMetaTag = (attr: string, key: string, content: string) => {
       let element = document.querySelector(`meta[${attr}="${key}"]`);
@@ -45,7 +56,7 @@ export const useSEO = ({
     };
 
     // 2. Standard Meta Tags
-    setMetaTag('name', 'description', description);
+    setMetaTag('name', 'description', sanitizedDescription);
     if (keywords) {
       setMetaTag('name', 'keywords', keywords);
     }
@@ -58,14 +69,14 @@ export const useSEO = ({
 
     // 3. Open Graph
     setMetaTag('property', 'og:title', formattedTitle);
-    setMetaTag('property', 'og:description', description);
+    setMetaTag('property', 'og:description', sanitizedDescription);
     setMetaTag('property', 'og:type', type);
     setMetaTag('property', 'og:image', image);
     setMetaTag('property', 'og:url', fullCanonical);
 
     // 4. Twitter Card
     setMetaTag('property', 'twitter:title', formattedTitle);
-    setMetaTag('property', 'twitter:description', description);
+    setMetaTag('property', 'twitter:description', sanitizedDescription);
     setMetaTag('property', 'twitter:image', image);
     setMetaTag('property', 'twitter:card', 'summary_large_image');
 
