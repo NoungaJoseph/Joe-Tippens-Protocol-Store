@@ -45,6 +45,7 @@ const ProductDetail: React.FC = () => {
             url: `https://pureprotocols.com/product/${product.id}`,
             priceCurrency: 'USD',
             price: productPrice.toFixed(2),
+            validFrom: '2024-01-01',
             priceValidUntil: '2027-12-31',
             itemCondition: 'https://schema.org/NewCondition',
             availability: 'https://schema.org/InStock',
@@ -56,7 +57,7 @@ const ProductDetail: React.FC = () => {
                 '@type': 'OfferShippingDetails',
                 shippingRate: {
                     '@type': 'MonetaryAmount',
-                    value: '0.00',
+                    value: 0,
                     currency: 'USD'
                 },
                 shippingDestination: {
@@ -69,13 +70,13 @@ const ProductDetail: React.FC = () => {
                         '@type': 'QuantitativeValue',
                         minValue: 0,
                         maxValue: 1,
-                        unitCode: 'd'
+                        unitCode: 'DAY'
                     },
                     transitTime: {
                         '@type': 'QuantitativeValue',
                         minValue: 2,
                         maxValue: 4,
-                        unitCode: 'd'
+                        unitCode: 'DAY'
                     }
                 }
             },
@@ -85,7 +86,14 @@ const ProductDetail: React.FC = () => {
                 returnPolicyCategory: 'https://schema.org/MerchantReturnFiniteReturnWindow',
                 merchantReturnDays: 30,
                 returnMethod: 'https://schema.org/ReturnByMail',
-                returnFees: 'https://schema.org/FreeReturn'
+                returnFees: 'https://schema.org/FreeReturn',
+                returnShippingFeesAmount: {
+                    '@type': 'MonetaryAmount',
+                    value: 0,
+                    currency: 'USD'
+                },
+                refundType: 'https://schema.org/FullRefund',
+                merchantReturnLink: 'https://pureprotocols.com/refund-policy'
             }
         },
         aggregateRating: {
